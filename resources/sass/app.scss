@@ -1,8 +1,112 @@
 // Fonts
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
+@import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import '~@fortawesome/fontawesome-free/scss/regular';
+@import '~@fortawesome/fontawesome-free/scss/solid';
+@import '~@fortawesome/fontawesome-free/scss/brands';
+
 // Variables
 @import 'variables';
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.t {
+    border-style: solid;
+    box-sizing: border-box;
+    background-color: lightyellow;
+    border-width: thin;
+    border-color: red;
+}
+
+.header {
+    height: 100%;
+    background-color: #00CC00;
+    color: white;
+}
+
+.title {
+    text-transform: uppercase;
+    font-size: 70px;
+}
+
+@media (max-width: 1600px) {
+    .title {;
+        font-size: 60px;
+    }
+}
+
+@media (max-width: 1400px) {
+    .title {
+        font-size: 50px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .title {
+        font-size: 42px;
+    }
+}
+
+@media (max-width: 500px) {
+    .title {
+        font-size: 32px;
+    }
+}
+
+@media (max-width: 400px) {
+    .title {
+        font-size: 25px;
+    }
+}
+
+.navbar-brand {
+    font-size: 2.5rem;
+}
+.nav-link {
+    font-size: 1.5rem;
+}
+
+.dropdown-item {
+    font-size: 1.25rem;
+}
+
+.custom-footer {
+    height: 100%;
+    background-color: #343a40;
+    color: #ffffff;
+}
+
+.vertical-center {
+    margin: auto;
+    width: 100%;
+}
+
+.social-icons {
+    font-size: 3rem;
+}
+
+.social-icons > a {
+    color: white;
+    text-decoration: none;
+}
+
+.sign-in-icon {
+    font-size: 2rem;
+}
+
+.sign-in > a {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+}
+
+/* ============ desktop view ============ */
+@media all and (min-width: 992px) {
+    .navbar .nav-item .dropdown-menu{ display: none; }
+    .navbar .nav-item:hover .nav-link{ color: #fff;  }
+    .navbar .nav-item:hover .dropdown-menu{ display: block; }
+    .navbar .nav-item .dropdown-menu{ margin-top:0; }
+}
+/* ============ desktop view .end// ============ */
