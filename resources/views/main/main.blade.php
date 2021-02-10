@@ -8,7 +8,7 @@
     <title>Remix Niebieszczany</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
     </style>
 </head>
 <body>
