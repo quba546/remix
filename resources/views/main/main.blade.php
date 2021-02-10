@@ -13,31 +13,6 @@
 </head>
 <body>
     <header>
-        <div class="row mx-auto">
-            <div class="d-none col-xl-6 d-xl-flex justify-content-end header-top-bar">
-                <span class="header-top-bar-links">E-mail:
-                    <a href="mailto:example@domain.com"> example@domain.com</a>
-                </span>
-            </div>
-            <div class="d-none col-xl-2 d-xl-flex justify-content-end header-top-bar">
-                <span class="header-top-bar-links">Tel:
-                    <a href="tel:123123123"> 123123123</a>
-                </span>
-            </div>
-            <div class="col-6 col-xl-1 d-flex justify-content-end header-top-bar">
-                <a href="#" class="d-flex align-items-center header-top-bar-links">
-                    <i class="fab fa-facebook mr-3"></i>
-                </a>
-                <a href="#" class="d-flex align-items-center header-top-bar-links">
-                    <i class="fab fa-instagram"></i>
-                </a>
-            </div>
-            <div class="col-6 col-xl-3 d-flex justify-content-end header-top-bar">
-                <span class="header-top-bar-links">
-                    <a href="#">Logowanie <i class="fas fa-arrow-circle-up"></i></a>
-                </span>
-            </div>
-        </div>
         <div class="header row mx-auto pt-3 pb-3">
             <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center">
                 <a href="#">
@@ -48,7 +23,7 @@
             <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center">
             </div>
         </div>
-        <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav id="navbar_top" class="navbar navbar-expand-xl navbar-dark bg-dark">
             <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -74,12 +49,47 @@
                     <li class="nav-item ml-3">
                         <a class="nav-link" href="#"><i class="far fa-address-book mr-3"></i>Kontakt</a>
                     </li>
+                    <li>
+                        <hr class="d-flex d-xl-none horizontal-hr">
+                    </li>
+                    <li class="row">
+                        <div class="col-6 d-flex d-xl-none justify-content-center">
+                            <a href="#">
+                                <i class="fab fa-facebook navbar-social-icon"></i>
+                            </a>
+                        </div>
+                        <div class="col-6 d-flex d-xl-none justify-content-center">
+                            <a href="#">
+                                <i class="fab fa-instagram navbar-social-icon"></i>
+                            </a>
+                        </div>
+                    </li>
+                    <li class="row">
+                        <div class="col-12 d-flex d-xl-none justify-content-start mt-3 mb-2">
+                            <a href="#" class="vertical-btn">
+                                <span class="text">Logowanie</span>
+                            </a>
+                        </div>
+                    </li>
                 </ul>
+            </div>
+            <div class="d-none d-xl-flex align-items-center">
+                <a href="#">
+                    <i class="fab fa-facebook navbar-social-icon"></i>
+                </a>
+                <a href="#">
+                    <i class="fab fa-instagram ml-4 navbar-social-icon"></i>
+                </a>
+                <a href="#" class="vertical-btn ml-5">
+                    <span class="text">Logowanie</span>
+                </a>
             </div>
         </nav>
     </header>
-    <div class="container mt-3 mb-3">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequuntur deleniti hic itaque provident reprehenderit vel voluptates! A accusantium aliquam earum ex iure modi, sed? Atque, culpa cumque dolorem dolores doloribus ducimus eius error exercitationem fuga magni nam natus nesciunt non nulla optio perspiciatis quas reprehenderit repudiandae tenetur totam veniam veritatis voluptates voluptatum? Alias animi architecto dolorum error ex exercitationem minus mollitia officiis sunt vitae? Accusantium animi asperiores cumque delectus dicta dignissimos dolor dolore ducimus ea eos eveniet explicabo fugiat id impedit iure laboriosam magni molestiae mollitia natus necessitatibus nostrum numquam optio pariatur, perferendis praesentium quae, quaerat quia quo quod reiciendis reprehenderit rerum sequi sunt tempora ullam voluptate, voluptatibus. Animi aperiam assumenda at earum exercitationem expedita explicabo facilis, hic ipsa itaque maxime minima minus molestias mollitia natus nostrum numquam omnis possimus, praesentium quia quis repellendus reprehenderit repudiandae temporibus unde voluptate voluptatum! Ab alias animi aspernatur atque doloremque earum enim eveniet, incidunt, ipsa perferendis sequi tempore ut? Alias aliquid animi asperiores aspernatur assumenda at blanditiis consectetur deleniti distinctio ea et ex facilis harum illo, impedit in incidunt ipsa iusto labore laboriosam magnam magni molestiae nisi placeat provident quae quaerat quibusdam quidem quis repellendus repudiandae sapiente vel vitae? A ad consectetur cum deleniti dolore doloremque ea et fugiat incidunt optio reprehenderit tenetur unde, voluptates. Corporis, itaque, quisquam. Accusamus, culpa cum cupiditate deserunt, doloribus ducimus eligendi et facilis illum in maiores mollitia quae, reprehenderit repudiandae suscipit. Fugiat incidunt laborum non obcaecati sit sunt? Commodi, ipsam maiores pariatur quam quis recusandae. Aliquid debitis dolorum, eum exercitationem maxime natus nemo officia sequi soluta. Doloremque dolorum molestiae quidem quis reiciendis, rerum velit. Aut autem blanditiis cumque delectus deleniti enim hic non, sed? Asperiores blanditiis, deserunt ipsum iusto nisi quibusdam quo reiciendis sequi suscipit totam? Architecto deleniti in ipsum minus nobis odio pariatur, perferendis quod repellendus veniam!
+    <div class="wrapper">
+        <div class="container p-3">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab aliquid architecto aut autem, commodi doloremque doloribus eaque eius ipsa libero magnam, magni maiores molestias neque nobis odio omnis provident ratione reiciendis repudiandae sequi tempora unde, vitae? Cum dolor dolorem ea fugiat illum numquam officiis temporibus? Adipisci, aspernatur atque blanditiis cumque deleniti dolor explicabo fugit harum laudantium modi nam nisi nostrum praesentium quia reiciendis rem sint sunt tenetur vel velit? Distinctio fugit laboriosam odit placeat. Accusantium aspernatur delectus ex exercitationem fugiat illum ipsum laborum numquam, provident quam, quas, qui quod reprehenderit rerum similique soluta ut. Dolor ea eum mollitia neque officia porro ratione rerum sed totam. A alias animi corporis deleniti dolor dolores eaque eligendi ex hic illum in ipsum iste itaque laboriosam magni mollitia nemo nostrum numquam perspiciatis quam quibusdam rem reprehenderit repudiandae sit tempora, tempore voluptate voluptates! Accusamus aliquid at autem corporis culpa cum dignissimos dolore doloribus eius eum ex expedita harum itaque iure laborum, nesciunt nostrum obcaecati officiis omnis perferendis quaerat quam quibusdam quis! Accusantium ad alias aspernatur cupiditate eos incidunt, inventore, ipsa magnam molestias nihil perspiciatis placeat quasi qui, suscipit velit voluptate voluptates! Alias architecto asperiores atque commodi cumque deserunt dolorum ea esse eum incidunt inventore iste laborum minima nisi nobis optio pariatur porro quo repellat sunt suscipit tempora, tempore voluptas. A adipisci atque corporis ducimus eaque esse, incidunt ipsa itaque perspiciatis provident reprehenderit sit tempore? Illum minima neque quaerat vero. Consectetur culpa cumque dolores doloribus eligendi esse, excepturi expedita facilis fuga id illum in ipsa libero magnam magni minima natus, nihil nisi odit quasi quia quisquam quod quos repellat repudiandae rerum sed sequi, sunt tempora temporibus veniam veritatis vero voluptas voluptate voluptatem voluptates voluptatibus. Autem, cumque dolor dolore eum ex illo iusto labore nobis non pariatur quo quod, rerum similique tempora voluptates! Blanditiis, consequuntur debitis, deleniti deserunt dolor dolore eius iusto molestiae natus odit officiis quae quasi reiciendis rerum, soluta unde vitae. Adipisci deleniti, eaque natus nesciunt quas voluptate? Aliquid commodi consectetur eos modi non numquam placeat praesentium repellat sed similique. Ab autem beatae deleniti ducimus illo ipsam possimus ratione, reprehenderit sapiente temporibus ut voluptates? Accusamus animi aspernatur assumenda deserunt dignissimos, dolorum esse fuga fugit impedit libero nobis officia pariatur quas. Accusantium ad culpa debitis dignissimos eum impedit incidunt, inventore nisi possimus quidem repellat repellendus sapiente sint sunt totam! Aliquid aperiam atque beatae dignissimos et facere iusto labore, laboriosam necessitatibus quae quam, quas quisquam ratione temporibus vel. Ad, aliquid aut consequatur, cumque ea eveniet ex excepturi fugiat hic iusto laudantium minima molestiae necessitatibus nemo nisi nostrum nulla numquam optio rem rerum, saepe sint tenetur ut. Accusamus aliquid beatae cum debitis delectus deserunt distinctio, dolorem dolores earum enim explicabo facere incidunt iste laborum magnam mollitia nesciunt nulla odio officia pariatur quia quis sed similique tempore ullam ut voluptas voluptates. A alias at delectus dicta ea eaque earum eligendi error esse fuga fugiat hic id illum in ipsam ipsum itaque laboriosam libero minima nam natus nesciunt nostrum nulla numquam, optio porro praesentium quaerat quas quasi quo similique sit suscipit temporibus ullam veniam vitae voluptas? Atque cupiditate eos excepturi id minima, necessitatibus qui tempore voluptatibus. Aperiam autem dolorum ducimus suscipit unde! Ad cumque deserunt doloremque ea, fuga id, illum ipsum laborum nulla possimus qui quibusdam sed. Accusantium atque consectetur cum deleniti dolorem enim harum in, magni neque, nulla praesentium quas qui reiciendis saepe soluta tenetur, voluptatem. A dicta eius eum, eveniet excepturi ipsum neque omnis quam, sit sunt vero voluptatem? A at commodi, cumque distinctio eius expedita explicabo facilis illo itaque iure magnam maiores minus necessitatibus, nostrum nulla numquam odio officiis quidem, quo soluta totam velit voluptatem. Atque consequatur, dolores et excepturi numquam, officia qui quisquam quos ratione similique tempora vitae voluptatem. Accusantium aliquam assumenda illo quia soluta unde voluptas. Ab consequatur eos esse illum ipsa maxime natus nihil nisi odit officiis omnis possimus, provident quasi, quo, sed temporibus unde ut veniam. Cumque, natus, sunt. Aliquam aperiam delectus dicta distinctio doloribus eaque enim eveniet facilis harum ipsam laboriosam laborum laudantium modi nam natus necessitatibus nesciunt omnis perspiciatis porro praesentium quo rem repellat repellendus sint tempora, ut veritatis vitae? Accusamus aperiam aspernatur atque beatae consequuntur, culpa doloremque ea earum ex excepturi expedita in incidunt iste, libero minus nemo neque nesciunt nihil non obcaecati odio, odit quam quia ratione repellat rerum saepe sapiente soluta suscipit tempore unde velit vitae voluptas! Aliquid at atque blanditiis deleniti ea hic in nihil nostrum nulla porro! Accusantium autem dignissimos, magni maiores molestiae mollitia odio odit tempora totam? A adipisci amet aspernatur ea earum, ex explicabo facilis libero minus nulla quam quasi rerum tenetur voluptates voluptatibus? Accusantium architecto consequatur eligendi fugiat ipsa, necessitatibus neque quaerat suscipit unde velit. Dignissimos, dolorum, eum ex id ipsa iste, nemo numquam officia rem repellat rerum veniam voluptate. Corporis cum magni quae quis tempora, totam vero! Adipisci, beatae commodi corporis cupiditate distinctio doloremque expedita iure minus, mollitia odio officiis placeat possimus quae rerum, vero! Debitis dolor doloribus explicabo fuga iste modi numquam odit pariatur placeat praesentium. Ab, alias architecto autem consectetur dicta dignissimos dolorem ea eligendi facilis modi natus necessitatibus nihil, nobis nostrum obcaecati omnis porro quia rem repellat similique temporibus ullam veritatis! Accusamus assumenda, ex illum inventore maxime nostrum officiis quam quia reprehenderit ullam! Distinctio, eos ex fugiat non obcaecati odit ratione tempore voluptate! Adipisci aperiam, consequatur culpa cupiditate dicta distinctio expedita harum, itaque laboriosam modi nam natus possimus quibusdam quidem rerum totam voluptatem. Adipisci asperiores atque consequatur cum doloremque ea facilis fuga, illo, impedit minima minus praesentium quam repellat reprehenderit sequi similique temporibus, tenetur totam veritatis voluptate! A beatae commodi cupiditate doloribus enim id ipsam necessitatibus nobis reiciendis tempora! Ab ad, adipisci architecto at, distinctio ea eligendi ex optio unde ut veritatis vero voluptatem voluptatum. Asperiores nemo, optio provident quisquam tempora voluptatum. Corporis est in inventore iure minima non obcaecati quo, recusandae sed velit? Dolore ipsa itaque mollitia necessitatibus, tempore totam. Aperiam aspernatur consequatur deleniti, ducimus eaque facere illo iste iusto neque nobis odit officia quos recusandae repudiandae saepe, similique sit? Cum dolorum nostrum officia officiis quas quibusdam soluta?
+        </div>
     </div>
     <footer id="footer">
         <div class="row mx-auto custom-footer">
@@ -106,6 +116,26 @@
                     <tr>
                         <td></td>
                         <td><a href="#">Kontakt</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#">Terminarz</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#">Tabela</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#">Kadra</a></td>
+                        <td></td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td><a href="#">Statystyki</a></td>
                         <td></td>
                     </tr>
                     </tbody>
