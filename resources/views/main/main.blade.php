@@ -7,23 +7,45 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Remix Niebieszczany</title>
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    </style>
 </head>
 <body>
     <header>
+        <div class="row mx-auto">
+            <div class="d-none col-xl-6 d-xl-flex justify-content-end header-top-bar">
+                <span class="header-top-bar-links">E-mail:
+                    <a href="mailto:example@domain.com"> example@domain.com</a>
+                </span>
+            </div>
+            <div class="d-none col-xl-2 d-xl-flex justify-content-end header-top-bar">
+                <span class="header-top-bar-links">Tel:
+                    <a href="tel:123123123"> 123123123</a>
+                </span>
+            </div>
+            <div class="col-6 col-xl-1 d-flex justify-content-end header-top-bar">
+                <a href="#" class="d-flex align-items-center header-top-bar-links">
+                    <i class="fab fa-facebook mr-3"></i>
+                </a>
+                <a href="#" class="d-flex align-items-center header-top-bar-links">
+                    <i class="fab fa-instagram"></i>
+                </a>
+            </div>
+            <div class="col-6 col-xl-3 d-flex justify-content-end header-top-bar">
+                <span class="header-top-bar-links">
+                    <a href="#">Logowanie <i class="fas fa-arrow-circle-up"></i></a>
+                </span>
+            </div>
+        </div>
         <div class="header row mx-auto pt-3 pb-3">
-            <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center">
+            <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center">
                 <a href="#">
                     <img src="{{ url('/assets/remix-logo.png') }}" alt="Logo Remix Niebieszczany">
                 </a>
             </div>
-            <div class="col-12 col-lg-6 d-flex align-items-center justify-content-center title">Remix Niebieszczany</div>
-            <div class="col-12 col-lg-3 d-flex align-items-center justify-content-center">
-                <span class="sign-in-icon">
-                    <i class="fas fa-sign-in-alt mr-3"></i>
-                </span>
-                <span class="sign-in">
-                    <a href="#" >Logowanie</a>
-                </span>
+            <div class="col-12 col-lg-8 d-flex align-items-center justify-content-center text-center title">LKS Remix Niebieszczany</div>
+            <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center">
             </div>
         </div>
         <nav id="navbar_top" class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -61,13 +83,13 @@
     </div>
     <footer id="footer">
         <div class="row mx-auto custom-footer">
-            <div class="col-12 col-lg-4 pt-3 pb-3 text-center vertical-center">
+            <div class="col-12 col-xl-3 pt-3 pb-3 text-center">
                 <table class="vertical-center">
                     <thead>
                     <tr>
-                        <td>Regulaminy</td>
-                        <td>Mapa strony</td>
-                        <td>Klub w innych serwisach</td>
+                        <td class="left-side-footer">Regulaminy</td>
+                        <td class="left-side-footer">Mapa strony</td>
+                        <td class="left-side-footer">Klub w innych<br>serwisach</td>
                     </tr>
                     </thead>
                     <tbody>
@@ -89,70 +111,47 @@
                     </tbody>
                 </table>
             </div>
-            <div class="col-12 col-lg-4 pt-3 pb-3 text-center vertical-center">
-                <span>Odwiedź nas w mediach społecznościowych</span>
+            <div class="col-xl-1">
+                <hr class="d-none d-xl-flex vertical-hr">
+                <hr class="d-flex d-xl-none horizontal-hr">
+            </div>
+            <div class="col-12 col-xl-4 pt-3 pb-3 text-center vertical-center">
+                <span class="footer-text">Odwiedź nas w mediach społecznościowych</span>
                 <br>
                 <span class="social-icons">
                     <a href="#">
-                        <i class="fab fa-facebook mr-5"></i>
+                        <i class="fab fa-facebook mr-3"></i>
                     </a>
                     <a href="#">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </span>
                 <br>
-                <span>
+                <span class="footer-text">
                     Tel:<a href="tel:123123123"> 123123123</a>
                 </span>
                 <br>
-                <span>
+                <span class="footer-text">
                     E-mail:<a href="mailto:example@domain.com"> example@domain.com</a>
                 </span>
                 <br>
-                <span>NIP: 6871791491</span>
+                <span class="footer-text">NIP: 6871791491</span>
                 <br>
-                <span>REGON: 371011186</span>
+                <span class="footer-text">REGON: 371011186</span>
             </div>
-            <div class="col-12 col-lg-4 pt-3 pb-3 text-center vertical-center">
-                <span>Wszelkie prawa zastrzeżone</span>
+            <div class="col-xl-1">
+                <hr class="d-none d-xl-flex vertical-hr">
+                <hr class="d-flex d-xl-none horizontal-hr">
+            </div>
+            <div class="col-12 col-xl-3 pt-3 pb-3 text-center vertical-center">
+                <span class="footer-text">Wszelkie prawa zastrzeżone</span>
                 <br>
-                <span>&copy;<script>document.write(new Date().getFullYear().toString());</script> Remix Niebieszczany</span>
-                <br>
-                <span>Stronę wykonał Jakub Pałys</span>
+                <span class="footer-text">&copy;<script>document.write(new Date().getFullYear().toString());</script> Remix Niebieszczany</span>
+                <br><br>
+                <span class="footer-text">Stronę wykonał Jakub Pałys</span>
             </div>
         </div>
     </footer>
     <script src="{{ mix('/js/app.js') }}"></script>
-    <script>
-        $(document).ready(function() {
-            setInterval(function() {
-                let selector = $('#footer');
-
-                let docHeight = $(window).height();
-                let footerHeight = selector.height();
-                let footerTop = selector.position().top + footerHeight;
-                let marginTop = (docHeight - footerTop + 10);
-
-                if (footerTop < docHeight)
-                    selector.css('margin-top', marginTop + 'px'); // padding of 30 on footer
-                else
-                    selector.css('margin-top', '0px');
-                // console.log("docheight: " + docHeight + "\n" + "footerheight: " + footerHeight + "\n" + "footertop: " + footerTop + "\n" + "new docheight: " + $(window).height() + "\n" + "margintop: " + marginTop);
-            }, 250);
-        });
-    </script>
-    <script>
-        $(window).scroll(function(){
-            if ($(this).scrollTop() > $('.header').height()) {
-                $('#navbar_top').addClass("fixed-top");
-                // add padding top to show content behind navbar
-                $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
-            }else{
-                $('#navbar_top').removeClass("fixed-top");
-                // remove padding top from body
-                $('body').css('padding-top', '0');
-            }
-        });
-    </script>
 </body>
 </html>
