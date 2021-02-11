@@ -8,12 +8,14 @@
     <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center">
     </div>
 </div>
-<nav id="navbar_top" class="navbar navbar-expand-xl navbar-dark bg-dark">
+<nav id="navbar_top" class="navbar navbar-expand-xl navbar-custom shadow-lg">
     <a class="navbar-brand d-flex d-xl-none" href="#">
         <img src="{{ url('/assets/remix-logo.png') }}" height="40px" alt="Logo Remix Niebieszczany">
     </a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon">
+            <i class="fas fa-bars" style="color:#fff; font-size:28px;"></i>
+        </span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav mx-auto">

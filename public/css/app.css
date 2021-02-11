@@ -16143,11 +16143,11 @@ h3 {
 
 #header {
   height: 100%;
-  background-color: #77cc6d;
+  background-color: #343a40;
   color: white;
 }
 
-.header > div > a > img:hover {
+#header > div > a > img:hover {
   transform: scale(1.15);
   transition-duration: 0.5s;
 }
@@ -16160,6 +16160,27 @@ h3 {
 
 a:link {
   text-decoration: none;
+}
+
+.navbar-custom {
+  background-color: #77cc6d;
+}
+
+/* change the brand and text color */
+.navbar-custom .navbar-brand,
+.navbar-custom .navbar-text {
+  color: #343a40;
+}
+
+/* change the link color */
+.navbar-custom .navbar-nav .nav-link {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* change the color of active or hovered links */
+.navbar-custom .nav-item.active .nav-link,
+.navbar-custom .nav-item:hover .nav-link {
+  color: #ffffff;
 }
 
 .nav-link {
@@ -16233,8 +16254,16 @@ a:link {
 
 .custom-footer {
   height: 100%;
-  background-color: #343a40;
+  background-color: #77cc6d;
   color: #ffffff;
+}
+
+.letter-spacing-1 {
+  letter-spacing: 1px;
+}
+
+.word-spacing-2 {
+  word-spacing: 2px;
 }
 
 .vertical-center {
