@@ -16141,9 +16141,9 @@ h3 {
   border-color: red;
 }
 
-.header {
+#header {
   height: 100%;
-  background-color: #00CC00;
+  background-color: #77cc6d;
   color: white;
 }
 
@@ -16153,7 +16153,6 @@ h3 {
 }
 
 .title {
-  text-transform: uppercase;
   font-size: 3.75vw;
   font-family: "Orbitron", sans-serif;
   letter-spacing: 1px;
@@ -16174,14 +16173,6 @@ a:link {
 .navbar-social-icon {
   font-size: 32px;
   color: white;
-}
-
-.fb {
-  color: #3b5999;
-}
-
-.insta {
-  color: #e4405f;
 }
 
 /* ===== Sign-in button ====== */
@@ -16251,19 +16242,6 @@ a:link {
   width: 100%;
 }
 
-.left-side-footer {
-  text-transform: uppercase;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-.footer-text {
-  text-transform: uppercase;
-  word-spacing: 3px;
-  letter-spacing: 1px;
-  font-size: 0.75rem;
-}
-
 .social-icons {
   font-size: 2.5rem;
 }
@@ -16307,3 +16285,52 @@ a:link {
   }
 }
 /* ============ desktop view .end// ============ */
+/* ============ Table styles ============ */
+.table-home-font {
+  font-size: 16px;
+}
+
+.table-team-name {
+  font-size: 1.25rem;
+}
+
+.table-icon {
+  font-size: 1.5rem;
+}
+
+.table-score {
+  font-size: 2rem;
+}
+
+/* ============= hr with text ============= */
+.hr-text {
+  line-height: 1em;
+  position: relative;
+  outline: 0;
+  border: 0;
+  color: black;
+  text-align: center;
+  height: 1.5em;
+  opacity: 0.5;
+}
+.hr-text:before {
+  content: "";
+  background: linear-gradient(to right, transparent, #818078, transparent);
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 1px;
+}
+.hr-text:after {
+  content: attr(data-content);
+  position: relative;
+  display: inline-block;
+  color: black;
+  padding: 0 0.5em;
+  line-height: 1.5em;
+  color: #818078;
+  background-color: #fcfcfa;
+}
+
+/* ======================================== */
