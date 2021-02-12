@@ -32,6 +32,10 @@
                 @yield('stats')
             @case('season.timetable')
                 @yield('timetable')
+            @case('login')
+                @yield('content')
+            @case('register')
+                @yield('content')
         @endswitch
     </div>
 </div>

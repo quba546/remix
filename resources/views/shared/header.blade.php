@@ -5,12 +5,16 @@
         </a>
     </div>
     <div class="col-12 col-lg-8 d-flex align-items-center justify-content-center text-center text-uppercase title">LKS Remix Niebieszczany</div>
-    <div class="col-12 col-lg-2 d-flex align-items-center justify-content-center">
+    <div class="col-12 col-lg-2 d-flex align-items-center justify-content-end">
+        <div class="share-button d-none d-xl-flex">
+            <span>Polub nas</span>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+        </div>
     </div>
 </div>
 <nav id="navbar_top" class="navbar navbar-expand-xl navbar-custom shadow-lg">
     <a class="navbar-brand d-flex d-xl-none" href="#">
-        <img src="{{ url('/assets/remix-logo.png') }}" height="40px" alt="Logo Remix Niebieszczany">
     </a>
     <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon">
@@ -31,7 +35,7 @@
                     <a class="dropdown-item" href="#">Statystyki</a>
                 </div>
             <li class="nav-item ml-3">
-                <a class="nav-link" href="#"><i class="fas fa-child mr-3"></i>Sekcje młodzieżowe</a>
+                <a class="nav-link disabled" href="#"><i class="fas fa-child mr-3"></i>Sekcje młodzieżowe</a>
             </li>
             <li class="nav-item ml-3">
                 <a class="nav-link" href="#"><i class="fas fa-info-circle mr-3"></i>O klubie</a>
@@ -43,33 +47,22 @@
                 <hr class="d-flex d-xl-none horizontal-hr">
             </li>
             <li class="row">
-                <div class="col-6 d-flex d-xl-none justify-content-center">
-                    <a href="#">
-                        <i class="fab fa-facebook navbar-social-icon"></i>
-                    </a>
-                </div>
-                <div class="col-6 d-flex d-xl-none justify-content-center">
-                    <a href="#">
-                        <i class="fab fa-instagram navbar-social-icon"></i>
-                    </a>
-                </div>
-            </li>
-            <li class="row">
-                <div class="col-12 d-flex d-xl-none justify-content-start mt-3 mb-2">
+                <div class="col-6 d-flex d-xl-none justify-content-start mt-3 mb-2">
                     <a href="#" class="vertical-btn">
                         <span class="text">Logowanie</span>
                     </a>
+                </div>
+                <div class="col-6 d-flex d-xl-none justify-content-end mt-3 mb-2">
+                    <div class="share-button-mobile d-flex d-xl-none">
+                        <span>Polub nas</span>
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
                 </div>
             </li>
         </ul>
     </div>
     <div class="d-none d-xl-flex align-items-center">
-        <a href="#">
-            <i class="fab fa-facebook navbar-social-icon"></i>
-        </a>
-        <a href="#">
-            <i class="fab fa-instagram ml-4 navbar-social-icon"></i>
-        </a>
         <a href="#" class="vertical-btn ml-5">
             <span class="text">Logowanie</span>
         </a>
