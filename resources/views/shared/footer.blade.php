@@ -5,7 +5,8 @@
             <tr>
                 <td class="text-uppercase font-weight-bold letter-spacing-1">Regulaminy</td>
                 <td class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Mapa strony</td>
-                <td class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Klub w innych<br>serwisach</td>
+                <td class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Klub w innych<br>serwisach
+                </td>
             </tr>
             </thead>
             <tbody>

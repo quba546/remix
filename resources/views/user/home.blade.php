@@ -2,12 +2,12 @@
 
 @section('home')
     <div class="row mx-auto pt-5 pb-5">
-        <div class="col-12 col-xl-3">
+        <div class="col-12 col-xl-4 pl-xl-5">
             <aside>
                 <table class="table table-sm table-borderless shadow-lg table-home-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="4" scope="col" class="text-center align-middle text-uppercase">Ostatni mecz</th>
+                        <th colspan="4" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Ostatni mecz</th>
                     </tr>
                     </thead>
                     <tbody class="table-light">
@@ -30,7 +30,7 @@
                 <table class="table table-sm table-borderless shadow-lg mt-4 table-home-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="4" scope="col" class="text-center align-middle text-uppercase">Najbliższy mecz</th>
+                        <th colspan="4" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najbliższy mecz</th>
                     </tr>
                     </thead>
                     <tbody class="table-light">
@@ -52,15 +52,17 @@
                 </table>
             </aside>
         </div>
-        <div class="col-12 col-xl-6 text-center">
+        <div class="col-12 col-xl-4 text-center">
             <div id="fb-widget"></div>
         </div>
-        <div class="col-12 col-xl-3">
+        <div class="col-12 col-xl-4 pr-xl-5">
             <aside>
                 <table class="table table-sm table-striped shadow-lg table-home-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="4" class="text-center align-middle text-uppercase">Klasa A 2020/2021, grupa: Krosno I</th>
+                        <th colspan="4" class="text-center align-middle text-uppercase">Klasa A 2020/2021, grupa: Krosno
+                            I
+                        </th>
                     </tr>
                     <tr>
                         <th class="text-center align-middle">Pozycja</th>
@@ -81,7 +83,7 @@
                 <table class="table table-sm table-striped shadow-lg mt-4 table-home-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="3" scope="col" class="text-center align-middle text-uppercase">Najlepsi strzelcy</th>
+                        <th colspan="3" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najlepsi strzelcy</th>
                     </tr>
                     <tr>
                         <th scope="col" class="text-center align-middle">Bramki</th>

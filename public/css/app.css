@@ -16144,7 +16144,7 @@ h3 {
 #header {
   height: 100%;
   background-color: #343a40;
-  color: white;
+  color: #ffffff;
 }
 
 #header > div > a > img:hover {
@@ -16193,7 +16193,7 @@ a:link {
 
 .navbar-social-icon {
   font-size: 32px;
-  color: white;
+  color: #ffffff;
 }
 
 /* ===== Sign-in button ====== */
@@ -16249,7 +16249,7 @@ a:link {
 .wrapper {
   background: white;
   background: linear-gradient(350deg, white 0%, #d1fad8 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#d1fad8",GradientType=1);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#d1fad8", GradientType=1);
 }
 
 .custom-footer {
@@ -16276,7 +16276,7 @@ a:link {
 }
 
 .social-icons > a {
-  color: white;
+  color: #ffffff;
   text-decoration: none;
 }
 

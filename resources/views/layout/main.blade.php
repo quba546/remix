@@ -12,17 +12,32 @@
     </style>
 </head>
 <body>
-    <header>
-        @include('shared/header')
-    </header>
-    <div class="wrapper">
-        <div>
-            @yield('home')
-        </div>
+<header>
+    @include('shared.header')
+</header>
+<div class="wrapper">
+    <div>
+        @switch(\Illuminate\Support\Facades\Route::current()->getName())
+            @case('home')
+                @yield('home')
+            @case('contact')
+                @yield('contact')
+            @case('about-us')
+                @yield('about-us')
+            @case('season.table')
+                @yield('table')
+            @case('season.team')
+                @yield('team')
+            @case('season.stats')
+                @yield('stats')
+            @case('season.timetable')
+                @yield('timetable')
+        @endswitch
     </div>
-    <footer id="footer">
-        @include('shared/footer')
-    </footer>
-    <script src="{{ mix('/js/app.js') }}"></script>
+</div>
+<footer id="footer">
+    @include('shared.footer')
+</footer>
+<script src="{{ mix('/js/app.js') }}"></script>
 </body>
 </html>

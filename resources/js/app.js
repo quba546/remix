@@ -1,8 +1,8 @@
 require('./bootstrap');
 
 // footer on bottom page
-$(document).ready(function() {
-    setInterval(function() {
+$(document).ready(function () {
+    setInterval(function () {
         let selector = $('#footer');
 
         let docHeight = $(window).height();
@@ -19,7 +19,7 @@ $(document).ready(function() {
 });
 
 // sticky navbar
-$(window).scroll(function(){
+$(window).scroll(function () {
     if ($(this).scrollTop() > $('#header').height()) {
         console.log($('#header').height());
         $('#navbar_top').addClass("fixed-top");
@@ -37,7 +37,7 @@ function calculateWidgetWith() {
     let current_window_width = window.innerWidth;
     let fb_width = "500";
 
-    if (current_window_width < 400) fb_width="325";
+    if (current_window_width < 400) fb_width = "325";
     else if (current_window_width >= 400 && current_window_width < 450) fb_width = "325";
     else if (current_window_width >= 450 && current_window_width < 600) fb_width = "400";
     else if (current_window_width >= 600 && current_window_width < 750) fb_width = "450";
@@ -46,16 +46,16 @@ function calculateWidgetWith() {
     else if (current_window_width >= 1400 && current_window_width < 1600) fb_width = "400";
     else if (current_window_width >= 1600) fb_width = "500";
 
-    document.getElementById("fb-widget").innerHTML = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fniebieszczany.remix%2F&tabs=timeline&width='+fb_width+'&height=600&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId" width="'+fb_width+'" height="610" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>';
+    document.getElementById("fb-widget").innerHTML = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fniebieszczany.remix%2F&tabs=timeline&width=' + fb_width + '&height=600&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId" width="' + fb_width + '" height="610" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>';
 }
 
 window.addEventListener("load", calculateWidgetWith, false);
-window.addEventListener("orientationchange", function() {
+window.addEventListener("orientationchange", function () {
     window.location.reload();
 }, false);
 
 let width = jQuery(window).width();
-jQuery(window).on('resize', function() {
+jQuery(window).on('resize', function () {
     if (jQuery(this).width() !== width) {
         width = jQuery(this).width();
         calculateWidgetWith();
