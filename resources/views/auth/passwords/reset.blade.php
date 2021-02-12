@@ -1,11 +1,11 @@
-@extends('layouts.app')
+@extends('layout.main')
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row pt-5 pb-5 justify-content-center">
         <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+            <div class="card shadow-lg">
+                <div class="card-header bg-dark font-white">{{ __('Reset Password') }}</div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('password.update') }}">
@@ -51,7 +51,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-success">
                                     {{ __('Reset Password') }}
                                 </button>
                             </div>

@@ -20,22 +20,38 @@
         @switch(\Illuminate\Support\Facades\Route::current()->getName())
             @case('home')
                 @yield('home')
+                @break
             @case('contact')
                 @yield('contact')
+                @break
             @case('about-us')
                 @yield('about-us')
+                @break
             @case('season.table')
                 @yield('table')
+                @break
             @case('season.team')
+                @break
                 @yield('team')
+                @break
             @case('season.stats')
                 @yield('stats')
+                @break
             @case('season.timetable')
                 @yield('timetable')
+                @break
             @case('login')
                 @yield('content')
+                @break
             @case('register')
                 @yield('content')
+                @break
+            @case('password.request')
+                @yield('content')
+                @break
+            @case('password.confirm')
+                @yield('content')
+                @break
         @endswitch
     </div>
 </div>
