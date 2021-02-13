@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('team')
+@section('content')
     <div class="container">
         <div class="row mx-auto">
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">

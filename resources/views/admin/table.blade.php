@@ -1,17 +1,17 @@
 @extends('layout.main')
 
-@section('table')
-    <div class="row mr-lg-auto mx-auto bg-white">
+@section('content')
+    <div class="row mr-lg-auto mx-auto">
         <div class="col-12 col-lg-3 col-xl-2 mt-3 mb-3">
-            @include('shared.admin-sidebar')
+            @include('shared.sidebar-admin')
         </div>
         <div class="col-12 col-lg-1 col-xl-2"></div>
-        <div class="col-12 col-lg-7 col-xl-6 mt-3 mb-3 text-center border border-success rounded p-2 shadow-lg">
+        <div class="col-12 col-lg-7 col-xl-6 mt-3 mb-3 text-center p-2 shadow-lg bg-white">
             <h2 class="text-uppercase font-weight-bold">Tabela ligowa</h2>
             <div class="border border-success rounded mt-3 m-2">
                 <h5 class="mt-2 font-weight-bold">Dane do tabeli</h5>
                 <hr>
-                <form>
+                <form method="POST">
                     <div class="form-group ml-2 mr-2">
                         <label for="tableUrl">Adres URL do tabeli</label>
                         <input type="url" class="form-control" id="tableUrl" aria-describedby="urlHelp"

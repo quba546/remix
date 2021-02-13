@@ -1,12 +1,12 @@
 @extends('layout.main')
 
-@section('list')
-    <div class="row mr-lg-auto mx-auto bg-white">
+@section('content')
+    <div class="row mr-lg-auto mx-auto">
         <div class="col-12 col-lg-3 col-xl-2 mt-3 mb-3">
-            @include('shared.admin-sidebar')
+            @include('shared.sidebar-admin')
         </div>
         <div class="col-12 col-lg-1 col-xl-2"></div>
-        <div class="col-12 col-lg-7 col-xl-6 mt-3 mb-3 text-center border border-success rounded p-2 shadow-lg">
+        <div class="col-12 col-lg-7 col-xl-6 mt-3 mb-3 text-center bg-white p-2 shadow-lg">
             <h2 class="text-uppercase font-weight-bold">Lista zawodników</h2>
             <table class="table table-sm table-responsive-lg table-striped table-hover table-bordered table-home-font">
                 <thead class="thead-dark">

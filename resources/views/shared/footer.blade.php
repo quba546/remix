@@ -11,38 +11,38 @@
             </thead>
             <tbody>
             <tr>
-                <td><a href="#">Polityka prywatności</a></td>
-                <td><a href="#">Sekcja młodzieżowa</a></td>
-                <td><a href="#">90minut.pl</a></td>
+                <td><a href="#" class="font-white">Polityka prywatności</a></td>
+                <td><a href="#" class="font-white">Sekcja młodzieżowa</a></td>
+                <td><a href="#" class="font-white">90minut.pl</a></td>
             </tr>
             <tr>
                 <td></td>
-                <td><a href="#">O klubie</a></td>
-                <td><a href="#">laczynaspilka.pl</a></td>
+                <td><a href="#" class="font-white">O klubie</a></td>
+                <td><a href="#" class="font-white">laczynaspilka.pl</a></td>
             </tr>
             <tr>
                 <td></td>
-                <td><a href="#">Kontakt</a></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td><a href="#">Terminarz</a></td>
+                <td><a href="#" class="font-white">Kontakt</a></td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
-                <td><a href="#">Tabela</a></td>
+                <td><a href="#" class="font-white">Terminarz</a></td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
-                <td><a href="#">Kadra</a></td>
+                <td><a href="#" class="font-white">Tabela</a></td>
                 <td></td>
             </tr>
             <tr>
                 <td></td>
-                <td><a href="#">Statystyki</a></td>
+                <td><a href="#" class="font-white">Kadra</a></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><a href="#" class="font-white">Statystyki</a></td>
                 <td></td>
             </tr>
             </tbody>
@@ -53,7 +53,7 @@
         <hr class="d-flex d-xl-none horizontal-hr">
     </div>
     <div class="col-12 col-xl-4 pt-3 pb-3 text-center vertical-center">
-        <span class="text-uppercase letter-spacing-1 word-spacing-2">Odwiedź nas w mediach społecznościowych</span>
+        <span class="text-uppercase letter-spacing-1 word-spacing-2 font-weight-bold">Odwiedź nas w mediach społecznościowych</span>
         <br>
         <span class="social-icons">
                     <a href="#">
@@ -65,11 +65,11 @@
                 </span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">
-                    Tel:<a href="tel:123123123"> 123123123</a>
+                    Tel:<a href="tel:123123123" class="font-white"> 123123123</a>
                 </span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">
-            E-mail:<a href="mailto:example@domain.com"> example@domain.com</a>
+            E-mail:<a href="mailto:example@domain.com" class="font-white"> example@domain.com</a>
         </span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">NIP: 6871791491</span>

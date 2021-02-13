@@ -1,4 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@import url(https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap);
 @charset "UTF-8";
 /*!
  * Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com
@@ -16146,7 +16147,7 @@ h3 {
 }
 
 .btn-custom {
-  background-color: #77cc6d;
+  background-color: #77cc4d;
   color: #ffffff;
 }
 
@@ -16172,7 +16173,7 @@ a:link {
 }
 
 .navbar-custom {
-  background-color: #77cc6d;
+  background-color: #77cc4d;
 }
 
 /* change the brand and text color */
@@ -16183,26 +16184,21 @@ a:link {
 
 /* change the link color */
 .navbar-custom .navbar-nav .nav-link {
-  color: rgba(255, 255, 255, 0.5);
+  color: #ffffff;
 }
 
 /* change the color of active or hovered links */
 .navbar-custom .nav-item.active .nav-link,
 .navbar-custom .nav-item:hover .nav-link {
-  color: #ffffff;
+  color: #343a40;
 }
 
 .nav-link {
-  font-size: 1.1rem;
+  font-size: 1.3rem;
 }
 
 .dropdown-item {
   font-size: 1rem;
-}
-
-.navbar-social-icon {
-  font-size: 32px;
-  color: #ffffff;
 }
 
 /* ======== Social icons in header desktop ========= */
@@ -16298,7 +16294,7 @@ a:link {
   position: absolute;
   width: 100%;
   height: 100%;
-  background: #77cc6d;
+  background: #77cc4d;
   color: #ffffff;
   text-align: center;
   line-height: 35px;
@@ -16391,15 +16387,15 @@ a:link {
 
 /* ================ */
 .wrapper {
-  background: white;
-  background: linear-gradient(350deg, white 0%, #d1fad8 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#d1fad8", GradientType=1);
+  background-color: #f5fafd;
 }
 
 .custom-footer {
   height: 100%;
-  background-color: #77cc6d;
+  background-color: #77cc4d;
   color: #ffffff;
+  font-family: "Lato", sans-serif;
+  font-weight: 300;
 }
 
 .letter-spacing-1 {

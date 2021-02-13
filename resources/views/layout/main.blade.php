@@ -18,27 +18,26 @@
 <div class="wrapper">
     <div>
         @switch(\Illuminate\Support\Facades\Route::current()->getName())
-            @case('home')
-                @yield('home')
+            @case('homePage')
+                @yield('content')
                 @break
             @case('contact')
-                @yield('contact')
+                @yield('content')
                 @break
             @case('about-us')
-                @yield('about-us')
+                @yield('content')
                 @break
             @case('season.table')
-                @yield('table')
+                @yield('content')
                 @break
             @case('season.team')
-                @break
-                @yield('team')
+                @yield('content')
                 @break
             @case('season.stats')
-                @yield('stats')
+                @yield('content')
                 @break
             @case('season.timetable')
-                @yield('timetable')
+                @yield('content')
                 @break
             @case('login')
                 @yield('content')
@@ -53,16 +52,19 @@
                 @yield('content')
                 @break
             @case('admin.dashboard')
-                @yield('dashboard')
+                @yield('content')
                 @break
             @case('admin.table')
-                @yield('table')
+                @yield('content')
                 @break
             @case('admin.matches')
-                @yield('matches')
+                @yield('content')
                 @break
-            @case('admin.list')
-                @yield('list')
+            @case('admin.player.list')
+                @yield('content')
+                @break
+            @case('admin.player.details')
+                @yield('content')
                 @break
         @endswitch
     </div>

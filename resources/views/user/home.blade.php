@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@section('home')
+@section('content')
     <div class="row mx-auto pt-5 pb-5">
         <div class="col-12 col-xl-4 pl-xl-5">
             <aside>
