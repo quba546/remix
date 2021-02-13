@@ -47,6 +47,22 @@ Route::get('/season/stats', function () {
     return view('user.season.stats');
 })->name('season.stats');
 
+Route::get('/admin/dashboard', function () {
+    return view('admin.dashboard');
+})->name('admin.dashboard');
+
+Route::get('/admin/table', function () {
+    return view('admin.table');
+})->name('admin.table');
+
+Route::get('/admin/matches', function () {
+    return view('admin.matches');
+})->name('admin.matches');
+
+Route::get('/admin/list', function () {
+    return view('admin.list');
+})->name('admin.list');
+
 /* ====================== */
 Auth::routes();
 

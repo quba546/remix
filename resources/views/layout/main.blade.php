@@ -52,6 +52,18 @@
             @case('password.confirm')
                 @yield('content')
                 @break
+            @case('admin.dashboard')
+                @yield('dashboard')
+                @break
+            @case('admin.table')
+                @yield('table')
+                @break
+            @case('admin.matches')
+                @yield('matches')
+                @break
+            @case('admin.list')
+                @yield('list')
+                @break
         @endswitch
     </div>
 </div>
