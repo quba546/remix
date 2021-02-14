@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\MainController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +21,7 @@ Route::get('/', function () {
 });*/
 
 Route::group([], function () {
-    Route::get('/', [MainController::class, 'index'])
+    Route::get('/', [UserController::class, 'index'])
         ->name('homePage');
 
     Route::get('/contact', function () {

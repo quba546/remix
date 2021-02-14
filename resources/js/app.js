@@ -20,8 +20,9 @@ $(document).ready(function () {
 
 // sticky navbar
 $(window).scroll(function () {
-    if ($(this).scrollTop() > $('#header').height()) {
-        console.log($('#header').height());
+    let $selector = $('#header');
+    if ($(this).scrollTop() > $selector.height()) {
+        console.log($selector.height());
         $('#navbar_top').addClass("fixed-top");
         // add padding top to show content behind navbar
         $('body').css('padding-top', $('.navbar').outerHeight() + 'px');
@@ -46,7 +47,9 @@ function calculateWidgetWith() {
     else if (current_window_width >= 1400 && current_window_width < 1600) fb_width = "400";
     else if (current_window_width >= 1600) fb_width = "500";
 
-    document.getElementById("fb-widget").innerHTML = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fniebieszczany.remix%2F&tabs=timeline&width=' + fb_width + '&height=600&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId" width="' + fb_width + '" height="610" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true" allow="encrypted-media"></iframe>';
+    if (document.getElementById("fb-widget")) {
+        document.getElementById("fb-widget").innerHTML = '<iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2Fniebieszczany.remix%2F&tabs=timeline&width=' + fb_width + '&height=600&small_header=false&adapt_container_width=false&hide_cover=false&show_facepile=true&appId" width="' + fb_width + '" height="610" style="border:none;overflow:hidden" allowTransparency="true" allow="encrypted-media"></iframe>';
+    }
 }
 
 window.addEventListener("load", calculateWidgetWith, false);
@@ -91,3 +94,21 @@ $(document).ready(function(){
         return false;
     });
 });
+
+// logic for last and upcoming matches forms in admin panel
+window.onload = function() {
+    let gameType = document.getElementById('game-type');
+    if (gameType) {
+        gameType.onchange = function() {
+            let element = document.getElementById("date-div-toggler");
+            // The code of your function
+            if (gameType.value === "league") {
+                document.getElementById("league-matches").style.display = "block";
+                element.className = element.className.replace(/\bcol-md-12\b/g, "col-md-6");
+            } else {
+                document.getElementById("league-matches").style.display = "none";
+                element.className = element.className.replace(/\bcol-md-6\b/g, "col-md-12");
+            }
+        }
+    }
+}

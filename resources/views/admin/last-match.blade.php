@@ -28,13 +28,23 @@
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
+                                    <div class="form-group col-md-12">
+                                        <label for="game-type">Rodzaj meczu</label>
+                                        <select class="custom-select" id="game-type" name="gameType" required>
+                                            <option selected value="league">ligowy</option>
+                                            <option value="friendly">sparing</option>
+                                            <option value="cup">pucharowy</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <div class="form-row">
-                                            <div class="form-group col-md-6">
+                                            <div id="league-matches" class="form-group col-md-6">
                                                 <label for="round">Kolejka</label>
                                                 <input type="number" class="form-control" id="round" placeholder="1" min="1" max="38" required>
                                             </div>
-                                            <div class="form-group col-md-6">
+                                            <div id="date-div-toggler" class="form-group col-md-6">
                                                 <label for="date">Data</label>
                                                 <input type="date" class="form-control" id="date" required>
                                             </div>
