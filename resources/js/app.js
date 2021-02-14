@@ -61,3 +61,8 @@ jQuery(window).on('resize', function () {
         calculateWidgetWith();
     }
 });
+
+$("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+});

@@ -1,83 +1,94 @@
 @extends('layout.main')
 
 @section('content')
-    <div class="row mr-lg-auto mx-auto">
-        <div class="col-12 col-lg-3 col-xl-2 mt-3 mb-3">
-            @include('shared.sidebar-admin')
-        </div>
-        <div class="col-12 col-lg-1 col-xl-2"></div>
-        <div class="col-12 col-lg-7 col-xl-6 mt-3 mb-3 text-center bg-white p-2 shadow-lg">
-            <h2 class="text-uppercase font-weight-bold">Ostatni i najbliższy mecz</h2>
-                <div class="border border-success rounded mt-3 m-2">
-                    <h5 class="mt-2 font-weight-bold">Ostatni mecz</h5>
-                    <hr>
-                    <form method="POST">
-                        <div class="form-row ml-2 mr-2">
-                            <div class="form-group col-md-6">
-                                <label for="home">Gospodarz</label>
-                                <input type="text" class="form-control" id="home" placeholder="REMIX Niebieszczany" size="50" required>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="guest">Gość</label>
-                                <input type="text" class="form-control" id="guest" placeholder="Manchester United" size="50" required>
-                            </div>
-                        </div>
-                        <div class="form-row ml-2 mr-2">
-                            <div class="form-group col-md-6">
-                                <div class="form-row">
+    <div class="d-flex" id="wrapper">
+    @include('shared.sidebar-admin')
+    <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
+            </nav>
+            <div class="container-fluid">
+                <div class="row mt-5">
+                    <div class="col-1 col-lg-2"></div>
+                    <div class="col-10 col-lg-8 bg-white shadow-lg text-center">
+                        <h2 class="text-uppercase font-weight-bold mt-3">Ostatni i najbliższy mecz</h2>
+                        <div class="border border-success rounded m-4">
+                            <h5 class="mt-2 font-weight-bold">Ostatni mecz</h5>
+                            <hr>
+                            <form method="POST">
+                                <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
-                                        <label for="round">Kolejka</label>
-                                        <input type="number" class="form-control" id="round" placeholder="1" min="1" max="38" required>
+                                        <label for="home">Gospodarz</label>
+                                        <input type="text" class="form-control" id="home" placeholder="REMIX Niebieszczany" size="50" required>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="date">Data</label>
-                                        <input type="date" class="form-control" id="date" required>
+                                        <label for="guest">Gość</label>
+                                        <input type="text" class="form-control" id="guest" placeholder="Manchester United" size="50" required>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="score">Wynik</label>
-                                <input type="text" class="form-control" id="score" placeholder="1-0" size="5" required>
-                            </div>
+                                <div class="form-row ml-2 mr-2">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="round">Kolejka</label>
+                                                <input type="number" class="form-control" id="round" placeholder="1" min="1" max="38" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="date">Data</label>
+                                                <input type="date" class="form-control" id="date" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="score">Wynik</label>
+                                        <input type="text" class="form-control" id="score" placeholder="1-0" size="5" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success mb-3">Zapisz</button>
+                            </form>
                         </div>
-                        <button type="submit" class="btn btn-success mb-2">Zapisz</button>
-                    </form>
+                        <div class="border border-success rounded m-4">
+                            <h5 class="mt-2 font-weight-bold">Najbliższy mecz</h5>
+                            <hr>
+                            <form method="POST">
+                                <div class="form-row ml-2 mr-2">
+                                    <div class="form-group col-md-6">
+                                        <label for="home">Gospodarz</label>
+                                        <input type="text" class="form-control" id="home" placeholder="REMIX Niebieszczany" size="50" required>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="guest">Gość</label>
+                                        <input type="text" class="form-control" id="guest" placeholder="Manchester United" size="50" required>
+                                    </div>
+                                </div>
+                                <div class="form-row ml-2 mr-2">
+                                    <div class="form-group col-md-6">
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="round">Kolejka</label>
+                                                <input type="number" class="form-control" id="round" placeholder="1" min="1" max="38" required>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="date">Data</label>
+                                                <input type="date" class="form-control" id="date" min="{{\Carbon\Carbon::now()->toDateString()}}" required>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="place">Lokalizacja</label>
+                                        <input type="text" class="form-control" id="place" placeholder="Niebieszczany" size="30" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-success mb-3">Zapisz</button>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-1 col-lg-2"></div>
                 </div>
-            <div class="border border-success rounded mt-4 m-2">
-                <h5 class="mt-2 font-weight-bold">Najbliższy mecz</h5>
-                <hr>
-                <form method="POST">
-                    <div class="form-row ml-2 mr-2">
-                        <div class="form-group col-md-6">
-                            <label for="home">Gospodarz</label>
-                            <input type="text" class="form-control" id="home" placeholder="REMIX Niebieszczany" size="50" required>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="guest">Gość</label>
-                            <input type="text" class="form-control" id="guest" placeholder="Manchester United" size="50" required>
-                        </div>
-                    </div>
-                    <div class="form-row ml-2 mr-2">
-                        <div class="form-group col-md-6">
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="round">Kolejka</label>
-                                    <input type="number" class="form-control" id="round" placeholder="1" min="1" max="38" required>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="date">Data</label>
-                                    <input type="date" class="form-control" id="date" min="{{\Carbon\Carbon::now()->toDateString()}}" required>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group col-md-6">
-                            <label for="place">Lokalizacja</label>
-                            <input type="text" class="form-control" id="place" placeholder="Niebieszczany" size="30" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success mb-2">Zapisz</button>
-                </form>
             </div>
-        <div class="col-12 col-lg-1 col-xl-2"></div>
+        </div>
+        <!-- /#page-content-wrapper -->
     </div>
+    <!-- /#wrapper -->
 @endsection
