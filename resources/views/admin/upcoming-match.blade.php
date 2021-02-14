@@ -46,7 +46,7 @@
                                             </div>
                                             <div id="date-div-toggler" class="form-group col-md-6">
                                                 <label for="date">Data</label>
-                                                <input type="date" class="form-control" id="date" min="{{\Carbon\Carbon::now()->toDateString()}}" required>
+                                                <input type="date" class="form-control" id="date" min="{{\Carbon\Carbon::today()->toDateString()}}" required>
                                             </div>
                                         </div>
                                     </div>

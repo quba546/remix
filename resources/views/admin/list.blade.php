@@ -21,6 +21,7 @@
                                 <th class="text-center align-middle">Nazwisko</th>
                                 <th class="text-center align-middle">Pozycja</th>
                                 <th class="text-center align-middle">Opcje</th>
+                                <th class="text-center align-middle">Ostatnia aktualizacja</th>
                             </tr>
                             </thead>
                             <tbody class="table-light">
@@ -30,6 +31,7 @@
                                 <td class="text-center align-middle">Kowalski</td>
                                 <td class="text-center align-middle">obrońca</td>
                                 <td class="text-center align-middle">Szczegóły</td>
+                                <td class="text-center align-middle">10-02-2021</td>
                             </tr>
                             </tbody>
                         </table>

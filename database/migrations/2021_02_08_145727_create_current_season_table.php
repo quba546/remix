@@ -13,10 +13,10 @@ class CreateCurrentSeasonTable extends Migration
      */
     public function up()
     {
-        Schema::create('current_season', function (Blueprint $table) {
+        Schema::create('season_table', function (Blueprint $table) {
             $table->id();
             $table->tinyInteger('place')->nullable()->default(null);
-            $table->string('team_name')->nullable()->default('Brak danych');
+            $table->string('team_name')->nullable()->default(null);
             $table->tinyInteger('played_matches')->nullable()->default(null);
             $table->tinyInteger('points')->nullable()->default(null);
             $table->tinyInteger('wins')->nullable()->default(null);
@@ -34,6 +34,6 @@ class CreateCurrentSeasonTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('current_season');
+        Schema::dropIfExists('season_table');
     }
 }
