@@ -5,20 +5,19 @@
             <tr>
                 <td class="text-uppercase font-weight-bold letter-spacing-1">Regulaminy</td>
                 <td class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Mapa strony</td>
-                <td class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Klub w innych<br>serwisach
-                </td>
+                <td class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Klub w innych serwisach</td>
             </tr>
             </thead>
             <tbody>
             <tr>
                 <td><a href="#" class="font-white">Polityka prywatności</a></td>
                 <td><a href="#" class="font-white">Sekcja młodzieżowa</a></td>
-                <td><a href="#" class="font-white">90minut.pl</a></td>
+                <td><a href="#" target="_blank" class="font-white">90minut.pl</a></td>
             </tr>
             <tr>
                 <td></td>
                 <td><a href="#" class="font-white">O klubie</a></td>
-                <td><a href="#" class="font-white">laczynaspilka.pl</a></td>
+                <td><a href="#" target="_blank" class="font-white">laczynaspilka.pl</a></td>
             </tr>
             <tr>
                 <td></td>
@@ -56,20 +55,20 @@
         <span class="text-uppercase letter-spacing-1 word-spacing-2 font-weight-bold">Odwiedź nas w mediach społecznościowych</span>
         <br>
         <span class="social-icons">
-                    <a href="#">
+                    <a href="#" target="_blank">
                         <i class="fab fa-facebook mr-3"></i>
                     </a>
-                    <a href="#">
+                    <a href="#" target="_blank">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">
-                    Tel:<a href="tel:123123123" class="font-white"> 123123123</a>
+                    Tel:<a href="tel:123123123" target="_blank" class="font-white"> 123123123</a>
                 </span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">
-            E-mail:<a href="mailto:example@domain.com" class="font-white"> example@domain.com</a>
+            E-mail:<a href="mailto:example@domain.com" target="_blank" class="font-white"> example@domain.com</a>
         </span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">NIP: 6871791491</span>

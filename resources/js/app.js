@@ -62,7 +62,32 @@ jQuery(window).on('resize', function () {
     }
 });
 
+// toggler for admin sidebar nav
 $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
+});
+
+// scroll to top page button
+$(document).ready(function(){
+    let body = document.body,
+        html = document.documentElement;
+
+    let height = Math.max( body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight );
+
+    $(window).scroll(function () {
+        if ($(this).scrollTop() > height/2) {
+            $('#back-to-top').fadeIn();
+        } else {
+            $('#back-to-top').fadeOut();
+        }
+    });
+    // scroll body to 0px on click
+    $('#back-to-top').click(function () {
+        $('body,html').animate({
+            scrollTop: 0
+        }, 400);
+        return false;
+    });
 });

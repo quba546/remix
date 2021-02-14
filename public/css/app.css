@@ -16172,6 +16172,7 @@ a:link {
   text-decoration: none;
 }
 
+/* ========= custom bootstrap style navbar  ========== */
 .navbar-custom {
   background-color: #77cc4d;
 }
@@ -16201,6 +16202,7 @@ a:link {
   font-size: 1rem;
 }
 
+/* ========================================= */
 /* ======== Social icons in header desktop ========= */
 .share-button {
   width: 150px;
@@ -16552,3 +16554,10 @@ a:link {
 }
 
 /* ============================ */
+.back-to-top {
+  position: fixed;
+  z-index: 999;
+  bottom: 25px;
+  right: 25px;
+  display: none;
+}

@@ -106,7 +106,7 @@
         <div class="col-12 text-center">
             <h2>Główny sponsor klubu</h2>
             <hr class="hr-text" data-content="DRUCZEK SANOK">
-            <img src="/" alt="Druczek Sanok logo">
+            <a href="#" target="_blank"><img src="{{ url('/assets/druczek-logo.png') }}" alt="Druczek Sanok logo" height="100px"></a>
             <br>
             <hr class="hr-text">
         </div>

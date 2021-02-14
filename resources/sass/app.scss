@@ -50,6 +50,7 @@ a:link {
     text-decoration: none;
 }
 
+/* ========= custom bootstrap style navbar  ========== */
 // custom navbar styles
 .navbar-custom {
     background-color: $primary-color;
@@ -79,6 +80,7 @@ a:link {
 .dropdown-item {
     font-size: 1rem;
 }
+/* ========================================= */
 
 /* ======== Social icons in header desktop ========= */
 .share-button {
@@ -142,6 +144,7 @@ a:link {
     margin-left: 20px;
 }
 /* ========================================= */
+
 /* ======== Social icons in header mobile ========= */
 .share-button-mobile {
     width: 150px;
@@ -442,5 +445,12 @@ a:link {
     font-size: 30px;
     cursor: pointer;
 }
-
 /* ============================ */
+
+.back-to-top {
+    position: fixed;
+    z-index: 999;
+    bottom: 25px;
+    right: 25px;
+    display: none;
+}
