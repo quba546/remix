@@ -65,9 +65,18 @@ Route::group([], function () {
             return view('admin.table');
         })->name('table');
 
-        Route::get('matches', function () {
-            return view('admin.matches');
-        })->name('matches');
+        Route::group([
+            'prefix' => 'match/',
+            'as' => 'match.'
+        ], function () {
+            Route::get('last', function () {
+                return view('admin.last-match');
+            })->name('last');
+
+            Route::get('upcoming', function () {
+                return view('admin.upcoming-match');
+            })->name('upcoming');
+        });
 
         Route::group([
             'prefix' => 'player/',

@@ -57,7 +57,10 @@
             @case('admin.table')
                 @yield('content')
                 @break
-            @case('admin.matches')
+            @case('admin.match.last')
+                @yield('content')
+                @break
+            @case('admin.match.upcoming')
                 @yield('content')
                 @break
             @case('admin.player.list')
