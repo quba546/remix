@@ -14,7 +14,7 @@ class MatchTypeSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('match_type')->insert([
+        DB::table('match_types')->insert([
             [
                 'id' => 1,
                 'type' => 'Mecz ligowy',

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Repository\Eloquent;
 
-use App\Models\PlayersStats;
+use App\Models\PlayerStats;
 use App\Repository\PlayersStatsRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 
 class PlayersStatsRepository extends BaseRepository implements PlayersStatsRepositoryInterface
 {
-    private PlayersStats $playersStats;
+    private PlayerStats $playersStats;
 
-    public function __construct(PlayersStats $playersStats)
+    public function __construct(PlayerStats $playersStats)
     {
         $this->playersStats = $playersStats;
     }

@@ -14,7 +14,7 @@ class AlterAddForeignKeyToUpcomingMatchTable extends Migration
     public function up()
     {
         Schema::table('upcoming_match', function (Blueprint $table) {
-            $table->foreign('match_type_id')->references('id')->on('match_type');
+            $table->foreign('match_type_id')->references('id')->on('match_types');
         });
     }
 

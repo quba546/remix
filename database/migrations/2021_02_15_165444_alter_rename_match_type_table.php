@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterAddForeignKeyToLastMatchTable extends Migration
+class AlterRenameMatchTypeTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,7 @@ class AlterAddForeignKeyToLastMatchTable extends Migration
      */
     public function up()
     {
-        Schema::table('last_match', function (Blueprint $table) {
-            $table->foreign('match_type_id')->references('id')->on('match_types');
-        });
+        Schema::rename('match_type', 'match_types');
     }
 
     /**
@@ -25,8 +23,6 @@ class AlterAddForeignKeyToLastMatchTable extends Migration
      */
     public function down()
     {
-        Schema::table('last_match', function (Blueprint $table) {
-            $table->dropForeign(['match_type_id']);
-        });
+        Schema::rename('match_types', 'match_type');
     }
 }

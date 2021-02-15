@@ -13,21 +13,21 @@
                     <tbody class="table-light">
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-futbol table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">Mecz ligowy</td>
+                        <td colspan="3" class="text-center align-middle">{{ $lastMatch['match_types']['type'] }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">Kolejka 15 - 11.11.2020</td>
+                        <td colspan="3" class="text-center align-middle">{{ $lastMatch['match_types']['round'] ? 'Kolejka ' . $lastMatch['match_types']['round'] . ' - ' . $lastMatch['date'] : $lastMatch['date'] }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">LKS Rafhaus Długie</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch['host'] }}</td>
                         <td class="text-center align-middle font-weight-bold">-</td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">REMIX Niebieszczany</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch['guest'] }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-trophy table-icon"></i></td>
-                        <td colspan="3" class="text-center font-weight-bold table-score">3-2</td>
+                        <td colspan="3" class="text-center font-weight-bold table-score">{{ $lastMatch['score'] }}</td>
                     </tr>
                     </tbody>
                 </table>
