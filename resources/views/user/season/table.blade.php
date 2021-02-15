@@ -6,7 +6,7 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="p-3">
                     <h2>Tabela</h2>
-                    <table class="table table-sm table-responsive-lg table-striped table-hover table-bordered table-home-font">
+                    <table class="table table-sm table-responsive-lg table-striped table-bordered table-home-font">
                         <thead class="thead-dark">
                             <tr>
                                 <th colspan="8" class="text-center align-middle text-uppercase">{{ $table[0]->league_name ?? '' }}</th>

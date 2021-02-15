@@ -43,13 +43,11 @@ Route::group([], function () {
         Route::get('table', [UserController::class, 'showTable'])
             ->name('table');
 
-        Route::get('team', function () {
-            return view('user.season.team');
-        })->name('team');
+        Route::get('team', [UserController::class, 'showPlayers'])
+            ->name('team');
 
-        Route::get('stats', function () {
-            return view('user.season.stats');
-        })->name('stats');
+        Route::get('stats', [UserController::class, 'showPlayersStats'])
+            ->name('stats');
     });
 
     Route::group([

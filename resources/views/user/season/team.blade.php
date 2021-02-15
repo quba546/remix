@@ -6,7 +6,7 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="p-3">
                     <h2>Kadra</h2>
-                    <table class="table table-sm table-responsive-lg table-striped table-hover table-bordered table-home-font">
+                    <table class="table table-sm table-striped table-bordered table-home-font">
                         <thead class="thead-dark">
                         <tr>
                             <th class="text-center align-middle">Nr</th>
@@ -16,12 +16,14 @@
                         </tr>
                         </thead>
                         <tbody class="table-light">
-                        <tr>
-                            <td class="text-center align-middle">8</td>
-                            <td class="text-center align-middle">Jan</td>
-                            <td class="text-center align-middle">Kowalski</td>
-                            <td class="text-center align-middle">obrońca</td>
-                        </tr>
+                        @foreach($players ?? [] as $player)
+                            <tr>
+                                <td class="text-center align-middle">{{ $player->nr }}</td>
+                                <td class="text-center align-middle">{{ $player->first_name }}</td>
+                                <td class="text-center align-middle">{{ $player->last_name }}</td>
+                                <td class="text-center align-middle">{{ $player->position }}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

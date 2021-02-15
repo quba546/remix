@@ -6,7 +6,7 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="p-3">
                     <h2>Statystyki zawodników</h2>
-                    <table class="table table-sm table-responsive-lg table-striped table-hover table-bordered table-home-font">
+                    <table class="table table-sm table-responsive-lg table-striped table-bordered table-home-font">
                         <thead class="thead-dark">
                         <tr>
                             <th class="text-center align-middle">Nr</th>
@@ -22,18 +22,20 @@
                         </tr>
                         </thead>
                         <tbody class="table-light">
-                        <tr>
-                            <td class="text-center align-middle">8</td>
-                            <td class="text-center align-middle">Jan</td>
-                            <td class="text-center align-middle">Kowalski</td>
-                            <td class="text-center align-middle">obrońca</td>
-                            <td class="text-center align-middle">10</td>
-                            <td class="text-center align-middle">5</td>
-                            <td class="text-center align-middle">0</td>
-                            <td class="text-center align-middle">4</td>
-                            <td class="text-center align-middle">1</td>
-                            <td class="text-center align-middle">20</td>
-                        </tr>
+                        @foreach($playersStats ?? [] as $playerStats)
+                            <tr>
+                                <td class="text-center align-middle">{{ $playerStats->nr }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->first_name }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->last_name }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->position }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->goals }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->assists }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->clean_sheets }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->yellow_cards }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->red_cards }}</td>
+                                <td class="text-center align-middle">{{ $playerStats->played_matches }}</td>
+                            </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

@@ -100,11 +100,13 @@
                     </tr>
                     </thead>
                     <tbody class="table-light">
-                    <tr>
-                        <td class="text-center align-middle">10</td>
-                        <td class="text-center align-middle">Jan</td>
-                        <td class="text-center align-middle">Kowalski</td>
-                    </tr>
+                    @foreach($bestScorers ?? [] as $bestScorer)
+                        <tr>
+                            <td class="text-center align-middle">{{ $bestScorer->goals }}</td>
+                            <td class="text-center align-middle">{{ $bestScorer->first_name }}</td>
+                            <td class="text-center align-middle">{{ $bestScorer->last_name }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
             </aside>
