@@ -40,9 +40,8 @@ Route::group([], function () {
             return view('user.season.timetable');
         })->name('timetable');
 
-        Route::get('table', function () {
-            return view('user.season.table');
-        })->name('table');
+        Route::get('table', [UserController::class, 'showTable'])
+            ->name('table');
 
         Route::get('team', function () {
             return view('user.season.team');

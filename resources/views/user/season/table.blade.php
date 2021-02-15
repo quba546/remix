@@ -9,7 +9,7 @@
                     <table class="table table-sm table-responsive-lg table-striped table-hover table-bordered table-home-font">
                         <thead class="thead-dark">
                             <tr>
-                                <th colspan="8" class="text-center align-middle text-uppercase">Klasa A 2020/2021, grupa: Krosno I</th>
+                                <th colspan="8" class="text-center align-middle text-uppercase">{{ $table[0]->league_name ?? '' }}</th>
                             </tr>
                             <tr>
                                 <th class="text-center align-middle">Pozycja</th>
@@ -23,16 +23,18 @@
                             </tr>
                         </thead>
                         <tbody class="table-light">
+                        @foreach($table ?? [] as $row)
                             <tr>
-                                <td class="text-center align-middle">1</td>
-                                <td class="text-center align-middle">Remix Niebieszczany</td>
-                                <td class="text-center align-middle">14</td>
-                                <td class="text-center align-middle font-weight-bold">12</td>
-                                <td class="text-center align-middle">3</td>
-                                <td class="text-center align-middle">3</td>
-                                <td class="text-center align-middle">8</td>
-                                <td class="text-center align-middle">22-37</td>
+                                <td class="text-center align-middle">{{ $row->place }}</td>
+                                <td class="text-center align-middle">{{ $row->team_name }}</td>
+                                <td class="text-center align-middle">{{ $row->played_matches }}</td>
+                                <td class="text-center align-middle font-weight-bold">{{ $row->points }}</td>
+                                <td class="text-center align-middle">{{ $row->wins }}</td>
+                                <td class="text-center align-middle">{{ $row->draws }}</td>
+                                <td class="text-center align-middle">{{ $row->defeats }}</td>
+                                <td class="text-center align-middle">{{ $row->goal_ratio }}</td>
                             </tr>
+                        @endforeach
                         </tbody>
                     </table>
                 </div>

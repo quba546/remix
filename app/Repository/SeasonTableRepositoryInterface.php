@@ -10,4 +10,5 @@ use Illuminate\Database\Eloquent\Collection;
 interface SeasonTableRepositoryInterface
 {
     public function shortTable() : Collection;
+    public function table() : Collection;
 }

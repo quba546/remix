@@ -23,4 +23,11 @@ class SeasonTableRepository extends BaseRepository implements SeasonTableReposit
             ->all('place', 'team_name', 'played_matches', 'points', 'league_name')
             ->sortBy('place');
     }
+
+    public function table() : Collection
+    {
+        return $this->seasonTable
+            ->all('place', 'team_name', 'played_matches', 'points', 'wins', 'draws', 'defeats', 'goal_ratio', 'league_name')
+            ->sortBy('place');
+    }
 }

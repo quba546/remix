@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Repository\SeasonTableRepositoryInterface;
+use Illuminate\Contracts\View\View;
 
 class UserController extends Controller
 {
@@ -13,11 +14,20 @@ class UserController extends Controller
         $this->seasonTableRepository = $seasonTableRepository;
     }
 
-    public function index()
+    public function index() : View
     {
         return view('user.home',
             [
                 'shortTable' => $this->seasonTableRepository->shortTable(),
+            ]
+        );
+    }
+
+    public function showTable() : View
+    {
+        return view('user.season.table',
+            [
+                'table' => $this->seasonTableRepository->table()
             ]
         );
     }
