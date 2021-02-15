@@ -17,7 +17,7 @@ class UpcomingMatchSeeder extends Seeder
     public function run()
     {
         DB::table('upcoming_match')->insert([
-            'match_type' => 'sparing',
+            'match_type_id' => 2,
             'date' => Carbon::today()->addDays(13),
             'host' => 'LKS Rafhaus Długie',
             'guest' => 'Remix Niebieszczany',

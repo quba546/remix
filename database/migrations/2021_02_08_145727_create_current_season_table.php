@@ -15,13 +15,13 @@ class CreateCurrentSeasonTable extends Migration
     {
         Schema::create('season_table', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('place')->nullable()->default(null);
+            $table->smallInteger('place')->nullable()->default(null);
             $table->string('team_name')->nullable()->default(null);
-            $table->tinyInteger('played_matches')->nullable()->default(null);
-            $table->tinyInteger('points')->nullable()->default(null);
-            $table->tinyInteger('wins')->nullable()->default(null);
-            $table->tinyInteger('draws')->nullable()->default(null);
-            $table->tinyInteger('defeats')->nullable()->default(null);
+            $table->smallInteger('played_matches')->nullable()->default(null);
+            $table->smallInteger('points')->nullable()->default(null);
+            $table->smallInteger('wins')->nullable()->default(null);
+            $table->smallInteger('draws')->nullable()->default(null);
+            $table->smallInteger('defeats')->nullable()->default(null);
             $table->string('goal_ratio', 50)->nullable()->default(null);
             $table->timestamps();
         });

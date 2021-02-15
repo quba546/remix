@@ -17,8 +17,7 @@ class LastMatchSeeder extends Seeder
     public function run()
     {
         DB::table('last_match')->insert([
-            'match_type' => 'ligowy',
-            'round' => 10,
+            'match_type_id' => 1,
             'date' => Carbon::today(),
             'host' => 'Remix Niebieszczany',
             'guest' => 'Górnik Strachocina',

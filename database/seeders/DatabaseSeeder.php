@@ -16,6 +16,7 @@ class DatabaseSeeder extends Seeder
         // \App\Models\User::factory(10)->create();
         $this->call(TeamsSeeder::class);
         $this->call(PlayersSeeder::class);
+        $this->call(MatchTypeSeeder::class);
         $this->call(LastMatchSeeder::class);
         $this->call(UpcomingMatchSeeder::class);
     }

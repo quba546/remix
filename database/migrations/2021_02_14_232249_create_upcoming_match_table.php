@@ -15,8 +15,7 @@ class CreateUpcomingMatchTable extends Migration
     {
         Schema::create('upcoming_match', function (Blueprint $table) {
             $table->id();
-            $table->string('match_type', 50)->nullable();
-            $table->tinyInteger('round')->nullable();
+            $table->unsignedBigInteger('match_type_id');
             $table->date('date')->nullable();
             $table->string('host', 100);
             $table->string('guest', 100);

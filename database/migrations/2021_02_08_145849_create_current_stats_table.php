@@ -15,16 +15,16 @@ class CreateCurrentStatsTable extends Migration
     {
         Schema::create('players_stats', function (Blueprint $table) {
             $table->id();
-            $table->tinyInteger('nr')->nullable();
+            $table->smallInteger('nr')->nullable();
             $table->string('first_name', 50);
             $table->string('last_name', 50);
             $table->string('position', 50)->nullable();
-            $table->tinyInteger('goals')->nullable()->default(0);
-            $table->tinyInteger('assists')->nullable()->default(0);
-            $table->tinyInteger('played_matches')->nullable()->default(0);
-            $table->tinyInteger('clean_sheets')->nullable()->default(0);
-            $table->tinyInteger('yellow_cards')->nullable()->default(0);
-            $table->tinyInteger('red_cards')->nullable()->default(0);
+            $table->smallInteger('goals')->nullable()->default(0);
+            $table->smallInteger('assists')->nullable()->default(0);
+            $table->smallInteger('played_matches')->nullable()->default(0);
+            $table->smallInteger('clean_sheets')->nullable()->default(0);
+            $table->smallInteger('yellow_cards')->nullable()->default(0);
+            $table->smallInteger('red_cards')->nullable()->default(0);
             $table->string('image', 200)->nullable()->default(null);
             $table->timestamps();
         });
