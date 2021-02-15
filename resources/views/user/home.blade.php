@@ -12,6 +12,10 @@
                     </thead>
                     <tbody class="table-light">
                     <tr>
+                        <td class="text-center align-middle"><i class="fas fa-futbol table-icon"></i></td>
+                        <td colspan="3" class="text-center align-middle">Mecz ligowy</td>
+                    </tr>
+                    <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
                         <td colspan="3" class="text-center align-middle">Kolejka 15 - 11.11.2020</td>
                     </tr>
@@ -34,6 +38,10 @@
                     </tr>
                     </thead>
                     <tbody class="table-light">
+                    <tr>
+                        <td class="text-center align-middle"><i class="fas fa-futbol table-icon"></i></td>
+                        <td colspan="3" class="text-center align-middle">Mecz ligowy</td>
+                    </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
                         <td colspan="3" class="text-center align-middle">Kolejka 15 - 11.11.2020</td>
