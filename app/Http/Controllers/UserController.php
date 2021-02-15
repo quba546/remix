@@ -6,7 +6,7 @@ use App\Repository\SeasonTableRepositoryInterface;
 
 class UserController extends Controller
 {
-    private $seasonTableRepository;
+    private SeasonTableRepositoryInterface $seasonTableRepository;
 
     public function __construct(SeasonTableRepositoryInterface $seasonTableRepository)
     {
@@ -15,6 +15,10 @@ class UserController extends Controller
 
     public function index()
     {
-        return view('user.home');
+        return view('user.home',
+            [
+                'shortTable' => $this->seasonTableRepository->shortTable(),
+            ]
+        );
     }
 }

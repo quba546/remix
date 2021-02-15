@@ -32,6 +32,7 @@ class TeamsSeeder extends Seeder
                 'draws' => $drows,
                 'defeats' => $defats,
                 'goal_ratio' => $faker->numberBetween(0, 100) . '-' . $faker->numberBetween(0, 100),
+                'league_name' => 'Klasa A 2020/2021, Grupa: Krosno I',
                 'created_at' => Carbon::now()->subDays($faker->numberBetween(100, 200)),
                 'updated_at' => Carbon::now()->subDays($faker->numberBetween(0, 99))
             ]);

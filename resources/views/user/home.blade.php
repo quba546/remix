@@ -68,9 +68,7 @@
                 <table class="table table-sm table-striped shadow-lg table-home-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="4" class="text-center align-middle text-uppercase">Klasa A 2020/2021, grupa: Krosno
-                            I
-                        </th>
+                        <th colspan="4" class="text-center align-middle text-uppercase">{{ $shortTable[0]->league_name ?? '' }}</th>
                     </tr>
                     <tr>
                         <th class="text-center align-middle">Pozycja</th>
@@ -80,12 +78,14 @@
                     </tr>
                     </thead>
                     <tbody class="table-light">
-                    <tr>
-                        <td class="text-center align-middle">1</td>
-                        <td class="text-center align-middle">REMIX Niebieszczany</td>
-                        <td class="text-center align-middle">14</td>
-                        <td class="text-center align-middle">32</td>
-                    </tr>
+                    @foreach($shortTable ?? [] as $row)
+                        <tr>
+                            <td class="text-center align-middle">{{ $row->place }}</td>
+                            <td class="text-center align-middle">{{ $row->team_name }}</td>
+                            <td class="text-center align-middle">{{ $row->played_matches }}</td>
+                            <td class="text-center align-middle">{{ $row->points }}</td>
+                        </tr>
+                    @endforeach
                     </tbody>
                 </table>
                 <table class="table table-sm table-striped shadow-lg mt-4 table-home-font">
