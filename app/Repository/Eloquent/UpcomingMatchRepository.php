@@ -7,6 +7,7 @@ namespace App\Repository\Eloquent;
 
 use App\Models\UpcomingMatch;
 use App\Repository\UpcomingMatchRepositoryInterface;
+use Illuminate\Support\Collection;
 
 class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRepositoryInterface
 {
@@ -17,7 +18,7 @@ class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRep
         $this->upcomingMatch = $upcomingMatch;
     }
 
-    public function getUpcomingMatch()
+    public function getUpcomingMatch() : Collection
     {
         return $this->upcomingMatch->with('matchType')->get();
     }

@@ -27,16 +27,16 @@
                         <tbody class="table-light">
                         @foreach($standings ?? [] as $row)
                             <tr>
-                                <td class="text-center align-middle">{{ $row->position }}</td>
-                                <td class="text-center align-middle">{{ $row->team }}</td>
-                                <td class="text-center align-middle">{{ $row->played_matches }}</td>
-                                <td class="text-center align-middle font-weight-bold">{{ $row->points }}</td>
-                                <td class="text-center align-middle">{{ $row->wins }}</td>
-                                <td class="text-center align-middle">{{ $row->draws }}</td>
-                                <td class="text-center align-middle">{{ $row->losses }}</td>
-                                <td class="text-center align-middle">{{ $row->goals_scored }}</td>
-                                <td class="text-center align-middle">{{ $row->goals_conceded }}</td>
-                                <td class="text-center align-middle">{{ $row->goals_difference }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->position }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->team }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->played_matches }}</td>
+                                <td class="text-center align-middle font-weight-bold {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->points }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->wins }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->draws }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->losses }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->goals_scored }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->goals_conceded }}</td>
+                                <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->goals_difference }}</td>
                             </tr>
                         @endforeach
                         </tbody>

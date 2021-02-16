@@ -4,10 +4,41 @@
     <div class="row mx-auto pt-5 pb-5">
         <div class="col-12 col-xl-4 pl-xl-5">
             <aside>
+                <table class="table table-sm table-striped table-bordered shadow-lg table-home-font">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th colspan="4" class="text-center align-middle text-uppercase">{{ $shortStanding[0]->league ?? '' }}</th>
+                    </tr>
+                    <tr>
+                        <th class="text-center align-middle">Pozycja</th>
+                        <th class="text-center align-middle">Nazwa</th>
+                        <th class="text-center align-middle">Mecze</th>
+                        <th class="text-center align-middle">Punkty</th>
+                    </tr>
+                    </thead>
+                    <tbody class="table-light">
+                    @foreach($shortStanding ?? [] as $row)
+                        <tr>
+                            <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->position }}</td>
+                            <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->team }}</td>
+                            <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->played_matches }}</td>
+                            <td class="text-center align-middle font-weight-bold {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->points }}</td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </aside>
+        </div>
+        <div class="col-12 col-xl-4 text-center">
+            <div id="fb-widget"></div>
+        </div>
+        <div class="col-12 col-xl-4 pr-xl-5">
+            <aside>
                 <table class="table table-sm table-borderless shadow-lg table-home-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="4" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Ostatni mecz</th>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Ostatni mecz</th>
                     </tr>
                     </thead>
                     <tbody class="table-light">
@@ -34,7 +65,8 @@
                 <table class="table table-sm table-borderless shadow-lg mt-4 table-home-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="4" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najbliższy mecz</th>
+                        <th></th>
+                        <th colspan="3" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najbliższy mecz</th>
                     </tr>
                     </thead>
                     <tbody class="table-light">
@@ -58,37 +90,7 @@
                     </tr>
                     </tbody>
                 </table>
-            </aside>
-        </div>
-        <div class="col-12 col-xl-4 text-center">
-            <div id="fb-widget"></div>
-        </div>
-        <div class="col-12 col-xl-4 pr-xl-5">
-            <aside>
-                <table class="table table-sm table-striped shadow-lg table-home-font">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th colspan="4" class="text-center align-middle text-uppercase">{{ $shortStanding[0]->league ?? '' }}</th>
-                    </tr>
-                    <tr>
-                        <th class="text-center align-middle">Pozycja</th>
-                        <th class="text-center align-middle">Nazwa</th>
-                        <th class="text-center align-middle">Mecze</th>
-                        <th class="text-center align-middle">Punkty</th>
-                    </tr>
-                    </thead>
-                    <tbody class="table-light">
-                    @foreach($shortStanding ?? [] as $row)
-                        <tr>
-                            <td class="text-center align-middle">{{ $row->position }}</td>
-                            <td class="text-center align-middle">{{ $row->team }}</td>
-                            <td class="text-center align-middle">{{ $row->played_matches }}</td>
-                            <td class="text-center align-middle">{{ $row->points }}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
-                <table class="table table-sm table-striped shadow-lg mt-4 table-home-font">
+                <table class="table table-sm table-striped table-bordered shadow-lg mt-4 table-home-font">
                     <thead class="thead-dark">
                     <tr>
                         <th colspan="3" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najlepsi strzelcy</th>
