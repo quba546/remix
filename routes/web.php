@@ -58,9 +58,9 @@ Route::group([], function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
-        Route::get('table', function () {
-            return view('admin.table');
-        })->name('table');
+        Route::get('standings', function () {
+            return view('admin.standings');
+        })->name('standings');
 
         Route::group([
             'prefix' => 'match/',
@@ -80,7 +80,7 @@ Route::group([], function () {
             'as' => 'player.'
         ], function () {
             Route::get('list', function () {
-                return view('admin.list');
+                return view('admin.players-list');
             })->name('list');
 
             Route::get('details/{id}', function () {

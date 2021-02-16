@@ -54,7 +54,7 @@
             @case('admin.dashboard')
                 @yield('content')
                 @break
-            @case('admin.table')
+            @case('admin.standings')
                 @yield('content')
                 @break
             @case('admin.match.last')

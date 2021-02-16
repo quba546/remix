@@ -25,7 +25,7 @@
                                     <small id="urlHelp" class="form-text text-muted">Wpisz powyżej poprawny adres URL z tabelą, z
                                         której chcesz pobrać dane.</small>
                                 </div>
-                                <button type="submit" class="btn btn-success mb-3">Pobierz dane</button>
+                                <button type="submit" class="btn btn-outline-success mb-3">Pobierz dane</button>
                             </form>
                         </div>
                     </div>

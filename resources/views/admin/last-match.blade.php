@@ -55,7 +55,7 @@
                                         <input type="text" class="form-control" id="score" placeholder="1-0" size="5" required>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success mb-3">Zapisz</button>
+                                <button type="submit" class="btn btn-outline-success mb-3">Zapisz</button>
                             </form>
                         </div>
                     </div>

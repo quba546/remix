@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row mx-auto">
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
-                <div class="p-3">
-                    <h2>Statystyki zawodników</h2>
+                <div class="text-center p-3">
+                    <h2 class="text-uppercase font-weight-bold mt-3">Statystyki zawodników</h2>
                     <table class="table table-sm table-responsive-lg table-striped table-bordered table-home-font">
                         <thead class="thead-dark">
                         <tr>

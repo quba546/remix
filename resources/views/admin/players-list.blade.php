@@ -35,7 +35,8 @@
                             </tr>
                             </tbody>
                         </table>
-                        <div class="border border-success rounded m-4">
+                        <button type="button" id="add-player-btn" class="btn btn-outline-success mt-4 mb-2">Dodaj zawodnika</button>
+                        <div id="add-player" class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Dodaj zawodnika</h5>
                             <hr>
                             <form method="POST">
@@ -64,7 +65,7 @@
                                         <input type="number" class="form-control" id="number" placeholder="18" step="1" min="1" max="99">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success mb-3">Dodaj</button>
+                                <button type="submit" class="btn btn-outline-success mb-3">Dodaj</button>
                             </form>
                         </div>
                     </div>

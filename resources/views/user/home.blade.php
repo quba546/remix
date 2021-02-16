@@ -58,11 +58,13 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-trophy table-icon"></i></td>
-                        <td colspan="3" class="text-center font-weight-bold table-score">{{ $lastMatch->score }}</td>
+                        <td></td>
+                        <td class="text-center font-weight-bold table-score">{{ $lastMatch->score }}</td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>
-                <table class="table table-sm table-borderless shadow-lg mt-4 table-home-font">
+                <table class="table table-sm table-borderless shadow-lg mt-5 table-home-font">
                     <thead class="thead-dark">
                     <tr>
                         <th></th>
@@ -90,15 +92,15 @@
                     </tr>
                     </tbody>
                 </table>
-                <table class="table table-sm table-striped table-bordered shadow-lg mt-4 table-home-font">
+                <table class="table table-sm table-striped table-bordered shadow-lg mt-5 table-home-font">
                     <thead class="thead-dark">
                     <tr>
                         <th colspan="3" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najlepsi strzelcy</th>
                     </tr>
                     <tr>
                         <th scope="col" class="text-center align-middle">Bramki</th>
-                        <th scope="col" class="text-center align-middle">Imię</th>
                         <th scope="col" class="text-center align-middle">Nazwisko</th>
+                        <th scope="col" class="text-center align-middle">Imię</th>
                     </tr>
                     </thead>
                     <tbody class="table-light">

@@ -71,7 +71,7 @@
                                         <input type="number" class="form-control" id="redCards" placeholder="0" step="1" min="0">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-success mb-3">Edytuj</button>
+                                <button type="submit" class="btn btn-outline-success mb-3">Edytuj</button>
                             </form>
                         </div>
                     </div>

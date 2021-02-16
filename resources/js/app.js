@@ -112,3 +112,10 @@ window.onload = function() {
         }
     }
 }
+
+// logic for toggler button on admin player list button
+$(document).ready(function() {
+    $("#add-player-btn").click(function() {
+        $("#add-player").toggle();
+    });
+});
