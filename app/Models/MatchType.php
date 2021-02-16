@@ -15,4 +15,9 @@ class MatchType extends Model
     {
         return $this->belongsTo(LastMatch::class, 'match_type_id', 'id');
     }
+
+    public function upcomingMatch()
+    {
+        return $this->belongsTo(UpcomingMatch::class, 'match_type_id', 'id');
+    }
 }
