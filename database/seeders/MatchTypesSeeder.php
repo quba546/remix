@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class MatchTypeSeeder extends Seeder
+class MatchTypesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -18,15 +18,18 @@ class MatchTypeSeeder extends Seeder
             [
                 'id' => 1,
                 'type' => 'Mecz ligowy',
-                'round' => 10
+                'name' => 'Klasa B 2020/2021, Grupa: Krosno I',
+                'round' => '10'
             ],
             [
                 'id' => 2,
                 'type' => 'Sparing',
+                'name' => null,
                 'round' => null
             ],            [
                 'id' => 3,
                 'type' => 'Mecz pucharowy',
+                'name' => 'Puchar Polski',
                 'round' => null
             ],
         ]);

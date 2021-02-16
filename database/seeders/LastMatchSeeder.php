@@ -16,8 +16,10 @@ class LastMatchSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Factory::create();
+
         DB::table('last_match')->insert([
-            'match_type_id' => 1,
+            'match_type_id' => $faker->numberBetween(1, 3),
             'date' => Carbon::today(),
             'host' => 'Remix Niebieszczany',
             'guest' => 'Górnik Strachocina',

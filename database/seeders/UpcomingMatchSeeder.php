@@ -16,8 +16,10 @@ class UpcomingMatchSeeder extends Seeder
      */
     public function run()
     {
+        $faker = Factory::create();
+
         DB::table('upcoming_match')->insert([
-            'match_type_id' => 2,
+            'match_type_id' => $faker->numberBetween(1, 3),
             'date' => Carbon::today()->addDays(13),
             'host' => 'LKS Rafhaus Długie',
             'guest' => 'Remix Niebieszczany',

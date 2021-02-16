@@ -14,9 +14,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $this->call(TeamsSeeder::class);
+        $this->call(StandingsSeeder::class);
         $this->call(PlayersSeeder::class);
-        $this->call(MatchTypeSeeder::class);
+        $this->call(MatchTypesSeeder::class);
         $this->call(LastMatchSeeder::class);
         $this->call(UpcomingMatchSeeder::class);
     }

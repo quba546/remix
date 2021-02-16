@@ -7,7 +7,7 @@ use Faker\Factory;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class TeamsSeeder extends Seeder
+class StandingsSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -21,18 +21,22 @@ class TeamsSeeder extends Seeder
         for ($i = 0; $i < 20; $i++) {
             $wins = $faker->numberBetween(0, 38);
             $drows = $faker->numberBetween(0, 38 - $wins);
-            $defats = 38 - $wins - $drows;
+            $losses = 38 - $wins - $drows;
+            $goalsScored = $faker->numberBetween(0, 100);
+            $goalsConceded = $faker->numberBetween(0, 100);
 
-            DB::table('season_table')->insert([
-                'place' => $i + 1,
-                'team_name' => $faker->lastName . ' ' . $faker->city,
+            DB::table('standings')->insert([
+                'position' => $i + 1,
+                'team' => $faker->lastName . ' ' . $faker->city,
                 'played_matches' => $faker->numberBetween(0, 38),
                 'points' => $wins * 3 + $drows * 1,
                 'wins' => $wins,
                 'draws' => $drows,
-                'defeats' => $defats,
-                'goal_ratio' => $faker->numberBetween(0, 100) . '-' . $faker->numberBetween(0, 100),
-                'league_name' => 'Klasa A 2020/2021, Grupa: Krosno I',
+                'losses' => $losses,
+                'goals_scored' => $goalsScored,
+                'goals_conceded' => $goalsConceded,
+                'goals_difference' => $goalsScored - $goalsConceded,
+                'league' => 'Klasa A 2020/2021, Grupa: Krosno I',
                 'created_at' => Carbon::now()->subDays($faker->numberBetween(100, 200)),
                 'updated_at' => Carbon::now()->subDays($faker->numberBetween(0, 99))
             ]);
