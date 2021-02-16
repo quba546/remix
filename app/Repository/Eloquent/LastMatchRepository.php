@@ -16,9 +16,4 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
     {
         $this->lastMatch = $lastMatch;
     }
-
-    public function lastMatchDetails()
-    {
-        return $this->lastMatch->with('matchTypes')->get();
-    }
 }

@@ -5,45 +5,43 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Repository\LastMatchRepositoryInterface;
-use App\Repository\PlayersStatsRepositoryInterface;
-use App\Repository\SeasonTableRepositoryInterface;
+use App\Repository\PlayerRepositoryInterface;
+use App\Repository\StandingRepositoryInterface;
 use Illuminate\Contracts\View\View;
-use Illuminate\Database\Eloquent\Collection;
 
 class UserController extends Controller
 {
-    private SeasonTableRepositoryInterface $seasonTableRepository;
-    private PlayersStatsRepositoryInterface $playersStatsRepository;
+    private StandingRepositoryInterface $standingRepository;
+    private PlayerRepositoryInterface $playerRepository;
     private LastMatchRepositoryInterface $lastMatchRepository;
 
     public function __construct(
-        SeasonTableRepositoryInterface $seasonTableRepository,
-        PlayersStatsRepositoryInterface $playersStatsRepository,
+        StandingRepositoryInterface $standingRepository,
+        PlayerRepositoryInterface $playerRepository,
         LastMatchRepositoryInterface $lastMatchRepository
     )
     {
-        $this->seasonTableRepository = $seasonTableRepository;
-        $this->playersStatsRepository = $playersStatsRepository;
+        $this->standingRepository = $standingRepository;
+        $this->playerRepository = $playerRepository;
         $this->lastMatchRepository = $lastMatchRepository;
     }
 
     public function index() : View
     {
-        dd($this->lastMatchRepository->lastMatchDetails());
+        //dd($this->standingRepository->shortStanding());
         return view('user.home',
             [
-                'shortTable' => $this->seasonTableRepository->shortTable(),
-                'bestScorers' => $this->playersStatsRepository->bestScorers(3),
-                'lastMatch' => $this->lastMatchRepository->lastMatchDetails()[0]
+                'shortStanding' => $this->standingRepository->shortStanding(),
+                'bestScorers' => $this->playerRepository->bestScorers(3)
             ]
         );
     }
 
-    public function showTable() : View
+    public function showStandings() : View
     {
-        return view('user.season.table',
+        return view('user.season.standings',
             [
-                'table' => $this->seasonTableRepository->table()
+                'standings' => $this->standingRepository->standing()
             ]
         );
     }
@@ -52,7 +50,7 @@ class UserController extends Controller
     {
         return view('user.season.stats',
             [
-               'playersStats' => $this->playersStatsRepository->playersList()
+               'playersStats' => $this->playerRepository->list()
             ]
         );
     }
@@ -61,7 +59,7 @@ class UserController extends Controller
     {
         return view('user.season.team',
             [
-                'players' => $this->playersStatsRepository->shortPlayersList()
+                'players' => $this->playerRepository->shortList()
             ]
         );
     }

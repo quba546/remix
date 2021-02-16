@@ -24,11 +24,11 @@
             <li class="nav-item @if(\Illuminate\Support\Facades\Route::current()->getName() === 'homePage') active @endif">
                 <a class="nav-link" href="{{ route('homePage') }}"><i class="fas fa-home mr-3"></i>Strona główna</a>
             </li>
-            <li class="nav-item dropdown ml-3 @if(in_array(\Illuminate\Support\Facades\Route::current()->getName(), ['season.timetable', 'season.table', 'season.team', 'season.stats'])) active @endif">
+            <li class="nav-item dropdown ml-3 @if(in_array(\Illuminate\Support\Facades\Route::current()->getName(), ['season.timetable', 'season.standings', 'season.team', 'season.stats'])) active @endif">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-male mr-3"></i>Sezon</a>
                 <div class="dropdown-menu shadow p-3 mb-5 bg-white rounded" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('season.timetable') }}">Terminarz</a>
-                    <a class="dropdown-item" href="{{ route('season.table') }}">Tabela</a>
+                    <a class="dropdown-item" href="{{ route('season.standings') }}">Tabela</a>
                     <a class="dropdown-item" href="{{ route('season.team') }}">Kadra</a>
                     <a class="dropdown-item" href="{{ route('season.stats') }}">Statystyki</a>
                 </div>

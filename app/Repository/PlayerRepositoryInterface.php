@@ -6,9 +6,9 @@ namespace App\Repository;
 
 use Illuminate\Database\Eloquent\Collection;
 
-interface PlayersStatsRepositoryInterface
+interface PlayerRepositoryInterface
 {
-    public function playersList() : Collection;
-    public function shortPlayersList() : Collection;
+    public function list() : Collection;
+    public function shortList() : Collection;
     public function bestScorers(int $limit) : Collection;
 }

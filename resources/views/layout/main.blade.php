@@ -27,7 +27,7 @@
             @case('about-us')
                 @yield('content')
                 @break
-            @case('season.table')
+            @case('season.standings')
                 @yield('content')
                 @break
             @case('season.team')

@@ -10,8 +10,8 @@
                         <thead class="thead-dark">
                         <tr>
                             <th class="text-center align-middle">Nr</th>
-                            <th class="text-center align-middle">Imię</th>
                             <th class="text-center align-middle">Nazwisko</th>
+                            <th class="text-center align-middle">Imię</th>
                             <th class="text-center align-middle">Pozycja</th>
                         </tr>
                         </thead>
@@ -19,8 +19,8 @@
                         @foreach($players ?? [] as $player)
                             <tr>
                                 <td class="text-center align-middle">{{ $player->nr }}</td>
+                                <td class="text-center align-middle text-uppercase">{{ $player->last_name }}</td>
                                 <td class="text-center align-middle">{{ $player->first_name }}</td>
-                                <td class="text-center align-middle">{{ $player->last_name }}</td>
                                 <td class="text-center align-middle">{{ $player->position }}</td>
                             </tr>
                         @endforeach
