@@ -8,6 +8,7 @@ use App\Repository\LastMatchRepositoryInterface;
 use App\Repository\PlayersStatsRepositoryInterface;
 use App\Repository\SeasonTableRepositoryInterface;
 use Illuminate\Contracts\View\View;
+use Illuminate\Database\Eloquent\Collection;
 
 class UserController extends Controller
 {
@@ -28,11 +29,12 @@ class UserController extends Controller
 
     public function index() : View
     {
+        dd($this->lastMatchRepository->lastMatchDetails());
         return view('user.home',
             [
                 'shortTable' => $this->seasonTableRepository->shortTable(),
                 'bestScorers' => $this->playersStatsRepository->bestScorers(3),
-                'lastMatch' => $this->lastMatchRepository->lastMatchDetails()[0]->toArray()
+                'lastMatch' => $this->lastMatchRepository->lastMatchDetails()[0]
             ]
         );
     }

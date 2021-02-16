@@ -7,7 +7,6 @@ namespace App\Repository\Eloquent;
 
 use App\Models\LastMatch;
 use App\Repository\LastMatchRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
 
 class LastMatchRepository extends BaseRepository implements LastMatchRepositoryInterface
 {
@@ -18,7 +17,7 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
         $this->lastMatch = $lastMatch;
     }
 
-    public function lastMatchDetails() : Collection
+    public function lastMatchDetails()
     {
         return $this->lastMatch->with('matchTypes')->get();
     }

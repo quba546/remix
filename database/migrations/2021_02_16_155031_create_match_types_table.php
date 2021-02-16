@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMatchTypeTable extends Migration
+class CreateMatchTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class CreateMatchTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('match_type', function (Blueprint $table) {
+        Schema::create('match_types', function (Blueprint $table) {
             $table->id();
             $table->string('type', 50);
+            $table->string('name', 100)->nullable();
             $table->smallInteger('round')->nullable();
         });
     }
@@ -27,6 +28,6 @@ class CreateMatchTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('match_type');
+        Schema::dropIfExists('match_types');
     }
 }

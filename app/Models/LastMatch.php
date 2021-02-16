@@ -12,7 +12,7 @@ class LastMatch extends Model
 
     protected $table = 'last_match';
 
-    public function matchTypes() : hasOne
+    public function matchTypes()
     {
         return $this->hasOne(MatchType::class, 'id');
     }

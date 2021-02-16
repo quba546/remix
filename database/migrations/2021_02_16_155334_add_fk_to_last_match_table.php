@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AlterAddForeignKeyToLastMatchTable extends Migration
+class AddFkToLastMatchTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,11 @@ class AlterAddForeignKeyToLastMatchTable extends Migration
     public function up()
     {
         Schema::table('last_match', function (Blueprint $table) {
-            $table->foreign('match_type_id')->references('id')->on('match_types');
+            $table->foreign('match_type_id')
+                ->references('id')
+                ->on('match_types')
+                ->onUpdate('CASCADE')
+                ->onDelete('CASCADE');
         });
     }
 

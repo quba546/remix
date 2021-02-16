@@ -19,7 +19,7 @@ class CreateLastMatchTable extends Migration
             $table->date('date')->nullable();
             $table->string('host', 100);
             $table->string('guest', 100);
-            $table->string('score', 5)->nullable();
+            $table->string('score', 10);
             $table->timestamps();
         });
     }
