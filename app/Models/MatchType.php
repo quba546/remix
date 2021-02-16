@@ -10,4 +10,9 @@ class MatchType extends Model
     use HasFactory;
 
     public $timestamps = false;
+
+    public function lastMatch()
+    {
+        return $this->belongsTo(LastMatch::class, 'match_type_id', 'id');
+    }
 }

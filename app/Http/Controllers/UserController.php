@@ -28,11 +28,12 @@ class UserController extends Controller
 
     public function index() : View
     {
-        //dd($this->standingRepository->shortStanding());
+        //dd($this->lastMatchRepository->getLastMatch());
         return view('user.home',
             [
                 'shortStanding' => $this->standingRepository->shortStanding(),
-                'bestScorers' => $this->playerRepository->bestScorers(3)
+                'bestScorers' => $this->playerRepository->bestScorers(3),
+                'lastMatch' => $this->lastMatchRepository->getLastMatch()[0]
             ]
         );
     }
