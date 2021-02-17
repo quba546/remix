@@ -10,23 +10,23 @@ use Illuminate\Database\Eloquent\Collection;
 
 class StandingRepository extends BaseRepository implements StandingRepositoryInterface
 {
-    private Standing $standings;
+    private Standing $standingsModel;
 
-    public function __construct(Standing $standings)
+    public function __construct(Standing $standingsModel)
     {
-        $this->standings = $standings;
+        $this->standingsModel = $standingsModel;
     }
 
     public function shortStanding() : Collection
     {
-        return $this->standings
+        return $this->standingsModel
             ->all('position', 'team', 'played_matches', 'points', 'league')
             ->sortBy('position');
     }
 
     public function standing() : Collection
     {
-        return $this->standings
+        return $this->standingsModel
             ->all('position', 'team', 'played_matches', 'points', 'wins', 'draws', 'losses', 'goals_scored', 'goals_conceded', 'goals_difference', 'league')
             ->sortBy('position');
     }

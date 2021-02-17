@@ -32,7 +32,6 @@ class UserController extends Controller
 
     public function index() : View
     {
-        //dd($this->lastMatchRepository->getLastMatch());
         return view('user.home',
             [
                 'shortStanding' => $this->standingRepository->shortStanding(),

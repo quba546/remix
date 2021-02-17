@@ -11,15 +11,15 @@ use Illuminate\Support\Collection;
 
 class LastMatchRepository extends BaseRepository implements LastMatchRepositoryInterface
 {
-    private LastMatch $lastMatch;
+    private LastMatch $lastMatchModel;
 
-    public function __construct(LastMatch $lastMatch)
+    public function __construct(LastMatch $lastMatchModel)
     {
-        $this->lastMatch = $lastMatch;
+        $this->lastMatchModel = $lastMatchModel;
     }
 
     public function getLastMatch() : Collection
     {
-        return $this->lastMatch->with('matchType')->get();
+        return $this->lastMatchModel->with('matchType')->get();
     }
 }

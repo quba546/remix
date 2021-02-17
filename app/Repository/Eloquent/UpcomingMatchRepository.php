@@ -11,16 +11,16 @@ use Illuminate\Support\Collection;
 
 class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRepositoryInterface
 {
-    private UpcomingMatch $upcomingMatch;
+    private UpcomingMatch $upcomingMatchModel;
 
-    public function __construct(UpcomingMatch $upcomingMatch)
+    public function __construct(UpcomingMatch $upcomingMatchModel)
     {
-        $this->upcomingMatch = $upcomingMatch;
+        $this->upcomingMatchModel = $upcomingMatchModel;
     }
 
     public function getUpcomingMatch() : Collection
     {
-        return $this->upcomingMatch->with('matchType')->get();
+        return $this->upcomingMatchModel->with('matchType')->get();
     }
 
 }
