@@ -52,20 +52,20 @@ class UserController extends Controller
         );
     }
 
-    public function showPlayersStats() : View
-    {
-        return view('user.season.stats',
-            [
-               'playersStats' => $this->playerRepository->list()
-            ]
-        );
-    }
-
     public function showPlayers() : View
     {
         return view('user.season.team',
             [
-                'players' => $this->playerRepository->shortList()
+                'players' => $this->playerRepository->shortListPaginated(15)
+            ]
+        );
+    }
+
+    public function showPlayersStats() : View
+    {
+        return view('user.season.stats',
+            [
+               'playersStats' => $this->playerRepository->listPaginated(15)
             ]
         );
     }

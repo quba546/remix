@@ -9,6 +9,7 @@
                     <table class="table table-sm table-striped table-bordered table-home-font">
                         <thead class="thead-dark">
                         <tr>
+                            <th class="text-center align-middle">Lp.</th>
                             <th class="text-center align-middle">Nr</th>
                             <th class="text-center align-middle">Nazwisko</th>
                             <th class="text-center align-middle">Imię</th>
@@ -18,6 +19,7 @@
                         <tbody class="table-light">
                         @foreach($players ?? [] as $player)
                             <tr>
+                                <td class="text-center align-middle">{{ $loop->iteration }}</td>
                                 <td class="text-center align-middle">{{ $player->nr }}</td>
                                 <td class="text-center align-middle text-uppercase">{{ $player->last_name }}</td>
                                 <td class="text-center align-middle">{{ $player->first_name }}</td>
@@ -26,6 +28,7 @@
                         @endforeach
                         </tbody>
                     </table>
+                    {{ $players->links() }}
                 </div>
             </div>
         </div>
