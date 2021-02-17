@@ -16581,3 +16581,8 @@ a:link {
 #add-player {
   display: none;
 }
+
+a.sort-icon {
+  color: #ffffff;
+  text-decoration: none;
+}

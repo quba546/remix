@@ -11,21 +11,48 @@
                         <tr>
                             <th class="text-center align-middle">Lp.</th>
                             <th class="text-center align-middle">Nr</th>
-                            <th class="text-center align-middle">Nazwisko</th>
-                            <th class="text-center align-middle">Imię</th>
-                            <th class="text-center align-middle">Pozycja</th>
-                            <th class="text-center align-middle">Bramki</th>
-                            <th class="text-center align-middle">Asysty</th>
-                            <th class="text-center align-middle">Czyste konta</th>
-                            <th class="text-center align-middle">Żółte kartki</th>
-                            <th class="text-center align-middle">Czerwone kartki</th>
-                            <th class="text-center align-middle">Rozegrane mecze</th>
+                            <th class="text-center align-middle">
+                                Nazwisko
+                                @sortablelink('last_name' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Imię
+                                @sortablelink('first_name' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Pozycja
+                                @sortablelink('position' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Bramki
+                                @sortablelink('goals' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Asysty
+                                @sortablelink('assists' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Czyste konta
+                                @sortablelink('clean_sheets' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Żółte kartki
+                                @sortablelink('yellow_cards' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Czerwone kartki
+                                @sortablelink('red_cards' , '')
+                            </th>
+                            <th class="text-center align-middle">
+                                Rozegrane mecze
+                                @sortablelink('played_matches' , '')
+                            </th>
                         </tr>
                         </thead>
                         <tbody class="table-light">
                         @foreach($playersStats ?? [] as $playerStats)
                             <tr>
-                                <td class="text-center align-middle">{{ $loop->iteration }}</td>
+                                <td class="text-center align-middle">{{ ($playersStats->currentpage()-1) * $playersStats->perpage() + $loop->index + 1 }}</td>
                                 <td class="text-center align-middle">{{ $playerStats->nr }}</td>
                                 <td class="text-center align-middle text-uppercase">{{ $playerStats->last_name }}</td>
                                 <td class="text-center align-middle">{{ $playerStats->first_name }}</td>
