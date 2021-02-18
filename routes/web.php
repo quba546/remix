@@ -5,6 +5,7 @@ use App\Http\Controllers\Main\PlayerController;
 use App\Http\Controllers\Main\PlayerStatsController;
 use App\Http\Controllers\Main\StandingController;
 use App\Http\Controllers\Admin\LastMatchController;
+use App\Http\Controllers\Admin\UpcomingMatchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -76,9 +77,11 @@ Route::group([], function () {
             Route::put('last', [LastMatchController::class, 'update'])
                 ->name('last.update');
 
-            Route::get('upcoming', function () {
-                return view('admin.upcoming-match');
-            })->name('upcoming');
+            Route::get('upcoming/edit', [UpcomingMatchController::class, 'edit'])
+                ->name('upcoming.edit');
+
+            Route::put('upcoming', [UpcomingMatchController::class, 'update'])
+                ->name('upcoming.update');
         });
 
         Route::group([

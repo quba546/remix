@@ -5,18 +5,18 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Repository\LastMatchRepositoryInterface;
+use App\Repository\UpcomingMatchRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
-class LastMatchController extends Controller
+class UpcomingMatchController extends Controller
 {
-    private LastMatchRepositoryInterface $lastMatchRepository;
+    private UpcomingMatchRepositoryInterface $upcomingMatchRepository;
 
-    public function __construct(LastMatchRepositoryInterface $lastMatchRepository)
+    public function __construct(UpcomingMatchRepositoryInterface $upcomingMatchRepository)
     {
-        $this->lastMatchRepository = $lastMatchRepository;
+        $this->upcomingMatchRepository = $upcomingMatchRepository;
     }
 
     /**
@@ -26,9 +26,9 @@ class LastMatchController extends Controller
      */
     public function edit() : View
     {
-        return view('admin.last-match',
+        return view('admin.upcoming-match',
             [
-                'lastMatch' => $this->lastMatchRepository->getLastMatch()[0]
+                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0]
             ]
         );
     }
@@ -41,17 +41,17 @@ class LastMatchController extends Controller
      */
     public function update(Request $request) : RedirectResponse
     {
-        $this->lastMatchRepository->saveLastMatch(
+        $this->upcomingMatchRepository->saveUpcomingMatch(
             [
                 'host' => $request->get('host'),
                 'guest' => $request->get('guest'),
                 'matchType' => $request->get('matchType'),
                 'round' => $request->get('round') ?? null,
                 'date' => $request->get('date'),
-                'score' => $request->get('score'),
+                'place' => $request->get('place'),
             ]
         );
 
-        return redirect()->route('admin.matches.last.edit')->with('success', 'Poprawnie dodano dane o ostatnim meczu');
+        return redirect()->route('admin.matches.upcoming.edit')->with('success', 'Poprawnie dodano dane o najbliższym meczu');
     }
 }

@@ -13,9 +13,9 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
 {
     private LastMatch $lastMatch;
 
-    public function __construct(LastMatch $lastMatchModel)
+    public function __construct(LastMatch $lastMatch)
     {
-        $this->lastMatch = $lastMatchModel;
+        $this->lastMatch = $lastMatch;
     }
 
     public function getLastMatch() : Collection

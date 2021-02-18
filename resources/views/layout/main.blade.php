@@ -60,7 +60,7 @@
             @case('admin.matches.last.edit')
                 @yield('content')
                 @break
-            @case('admin.matches.upcoming')
+            @case('admin.matches.upcoming.edit')
                 @yield('content')
                 @break
             @case('admin.player.list')
