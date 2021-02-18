@@ -11,27 +11,32 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PlayerRepository extends BaseRepository implements PlayerRepositoryInterface
 {
-    private Player $playersModel;
+    private Player $player;
 
     public function __construct(Player $playersModel)
     {
-        $this->playersModel = $playersModel;
+        $this->player = $playersModel;
     }
 
-    public function shortListPaginated(int $limit) : LengthAwarePaginator
+    public function listPaginated(int $limit, array $columns) : LengthAwarePaginator
     {
-        return $this->playersModel->sortable()->paginate($limit, ['last_name', 'first_name', 'nr' , 'position']);
-    }
-
-    public function listPaginated(int $limit) : LengthAwarePaginator
-    {
-        return $this->playersModel->sortable()->paginate($limit, ['first_name', 'last_name', 'nr', 'position', 'goals', 'assists', 'played_matches', 'clean_sheets', 'yellow_cards', 'red_cards']);
+        return $this->player->sortable()->paginate($limit, $columns);
     }
 
     public function bestScorers(int $limit) : Collection
     {
-        return $this->playersModel->all('first_name', 'last_name', 'goals')
+        return $this->player->all('first_name', 'last_name', 'goals')
             ->sortByDesc('goals')
             ->take($limit);
+    }
+
+    public function savePlayer(array $data) : void
+    {
+        $this->player->first_name = $data['firstName'];
+        $this->player->last_name = $data['lastName'];
+        $this->player->nr = $data['nr'];
+        $this->player->position = $data['position'];
+
+        $this->player->save();
     }
 }

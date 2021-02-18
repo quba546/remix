@@ -52,7 +52,7 @@
             <li class="row">
                 <div class="col-6 d-flex d-xl-none justify-content-start mt-3 mb-2">
                     @guest
-                    <a href="{{ route('home') }}" class="vertical-btn">
+                    <a href="#" class="vertical-btn">
                         <span class="text">Logowanie</span>
                     </a>
                     @endguest
@@ -69,7 +69,7 @@
     </div>
         <div class="d-none d-xl-flex align-items-center">
             @guest
-            <a href="{{ route('home') }}" class="vertical-btn ml-5">
+            <a href="#" class="vertical-btn ml-5">
                 <span class="text">Logowanie</span>
             </a>
             @endguest

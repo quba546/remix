@@ -9,7 +9,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface PlayerRepositoryInterface
 {
-    public function shortListPaginated(int $limit) : LengthAwarePaginator;
-    public function listPaginated(int $limit) : LengthAwarePaginator;
+    public function listPaginated(int $limit, array $columns) : LengthAwarePaginator;
     public function bestScorers(int $limit) : Collection;
+    public function savePlayer(array $data) : void;
 }

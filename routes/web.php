@@ -6,6 +6,8 @@ use App\Http\Controllers\Main\PlayerStatsController;
 use App\Http\Controllers\Main\StandingController;
 use App\Http\Controllers\Admin\LastMatchController;
 use App\Http\Controllers\Admin\UpcomingMatchController;
+use App\Http\Controllers\Admin\PlayerController as AdminPlayerController;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -41,17 +43,17 @@ Route::group([], function () {
         'prefix' => '/season/',
         'as' => 'season.'
     ], function () {
-        Route::get('timetable', function () {
+        Route::get('/timetable', function () {
             return view('user.season.timetable');
         })->name('timetable');
 
-        Route::get('standings', [StandingController::class, 'index'])
+        Route::get('/standings', [StandingController::class, 'index'])
             ->name('standings.index');
 
-        Route::get('team', [PlayerController::class, 'index'])
+        Route::get('/team', [PlayerController::class, 'index'])
             ->name('team.index');
 
-        Route::get('stats', [PlayerStatsController::class, 'index'])
+        Route::get('/stats', [PlayerStatsController::class, 'index'])
             ->name('stats.index');
     });
 
@@ -59,40 +61,42 @@ Route::group([], function () {
         'prefix' => '/admin/',
         'as' => 'admin.'
     ], function () {
-        Route::get('', function () {
+        Route::get('/', function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
-        Route::get('standings', function () {
+        Route::get('/standings', function () {
             return view('admin.standings');
         })->name('standings');
 
         Route::group([
-            'prefix' => 'match/',
+            'prefix' => '/matches/',
             'as' => 'matches.'
         ], function () {
-            Route::get('last/edit', [LastMatchController::class, 'edit'])
+            Route::get('/last/edit', [LastMatchController::class, 'edit'])
                 ->name('last.edit');
 
-            Route::put('last', [LastMatchController::class, 'update'])
+            Route::put('/last', [LastMatchController::class, 'update'])
                 ->name('last.update');
 
-            Route::get('upcoming/edit', [UpcomingMatchController::class, 'edit'])
+            Route::get('/upcoming/edit', [UpcomingMatchController::class, 'edit'])
                 ->name('upcoming.edit');
 
-            Route::put('upcoming', [UpcomingMatchController::class, 'update'])
+            Route::put('/upcoming', [UpcomingMatchController::class, 'update'])
                 ->name('upcoming.update');
         });
 
         Route::group([
-            'prefix' => 'player/',
-            'as' => 'player.'
+            'prefix' => '/players',
+            'as' => 'players.'
         ], function () {
-            Route::get('list', function () {
-                return view('admin.players-list');
-            })->name('list');
+            Route::get('/', [AdminPlayerController::class, 'index'])
+                ->name('index');
 
-            Route::get('details/{id}', function () {
+            Route::post('/', [AdminPlayerController::class, 'store'])
+                ->name('store');
+
+            Route::get('/details/{id}', function () {
                 return view('admin.player-details');
             })->name('details');
         });
@@ -102,4 +106,4 @@ Route::group([], function () {
 /* ====================== */
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
