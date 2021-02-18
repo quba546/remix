@@ -2,15 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Main;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
 use App\Repository\LastMatchRepositoryInterface;
 use App\Repository\PlayerRepositoryInterface;
 use App\Repository\StandingRepositoryInterface;
 use App\Repository\UpcomingMatchRepositoryInterface;
-use Illuminate\Contracts\View\View;
 
-class UserController extends Controller
+
+class HomeController extends Controller
 {
     private StandingRepositoryInterface $standingRepository;
     private PlayerRepositoryInterface $playerRepository;
@@ -30,6 +32,11 @@ class UserController extends Controller
         $this->upcomingMatchRepository = $upcomingMatchRepository;
     }
 
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index() : View
     {
         return view('user.home',
@@ -38,33 +45,6 @@ class UserController extends Controller
                 'bestScorers' => $this->playerRepository->bestScorers(3),
                 'lastMatch' => $this->lastMatchRepository->getLastMatch()[0],
                 'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0]
-            ]
-        );
-    }
-
-    public function showStandings() : View
-    {
-        return view('user.season.standings',
-            [
-                'standings' => $this->standingRepository->standing()
-            ]
-        );
-    }
-
-    public function showPlayers() : View
-    {
-        return view('user.season.team',
-            [
-                'players' => $this->playerRepository->shortListPaginated(15)
-            ]
-        );
-    }
-
-    public function showPlayersStats() : View
-    {
-        return view('user.season.stats',
-            [
-               'playersStats' => $this->playerRepository->listPaginated(15)
             ]
         );
     }

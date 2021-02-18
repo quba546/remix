@@ -16572,6 +16572,9 @@ a:link {
   bottom: 25px;
   right: 25px;
   display: none;
+  background-color: #343a40;
+  color: #ffffff;
+  border: #000000;
 }
 
 .site-map-list {

@@ -20,6 +20,7 @@
                                 <th class="text-center align-middle">Imię</th>
                                 <th class="text-center align-middle">Nazwisko</th>
                                 <th class="text-center align-middle">Pozycja</th>
+                                <th class="text-center align-middle">Rozegrane mecze</th>
                                 <th class="text-center align-middle">Opcje</th>
                                 <th class="text-center align-middle">Ostatnia aktualizacja</th>
                             </tr>
@@ -30,7 +31,15 @@
                                 <td class="text-center align-middle">Jan</td>
                                 <td class="text-center align-middle">Kowalski</td>
                                 <td class="text-center align-middle">obrońca</td>
-                                <td class="text-center align-middle">Szczegóły</td>
+                                <td class="text-center align-middle">
+                                    <form action="" method="POST">
+                                        <input type="number" min="0">
+                                        <button type="submit">Zapisz</button>
+                                    </form>
+                                </td>
+                                <td class="text-center align-middle">
+                                    <a href="#">Szczegóły</a>
+                                </td>
                                 <td class="text-center align-middle">10-02-2021</td>
                             </tr>
                             </tbody>

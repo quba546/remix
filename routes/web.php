@@ -1,6 +1,9 @@
 <?php
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Main\HomeController;
+use App\Http\Controllers\Main\PlayerController;
+use App\Http\Controllers\Main\PlayerStatsController;
+use App\Http\Controllers\Main\StandingController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -21,7 +24,7 @@ Route::get('/', function () {
 });*/
 
 Route::group([], function () {
-    Route::get('/', [UserController::class, 'index'])
+    Route::get('/', [HomeController::class, 'index'])
         ->name('homePage');
 
     Route::get('/contact', function () {
@@ -40,13 +43,13 @@ Route::group([], function () {
             return view('user.season.timetable');
         })->name('timetable');
 
-        Route::get('standings', [UserController::class, 'showStandings'])
+        Route::get('standings', [StandingController::class, 'index'])
             ->name('standings');
 
-        Route::get('team', [UserController::class, 'showPlayers'])
+        Route::get('team', [PlayerController::class, 'index'])
             ->name('team');
 
-        Route::get('stats', [UserController::class, 'showPlayersStats'])
+        Route::get('stats', [PlayerStatsController::class, 'index'])
             ->name('stats');
     });
 
