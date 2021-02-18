@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -72,25 +74,18 @@ class PlayerController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) : View
+    public function edit(int $id) : View
     {
-        return view('admin.player-details', ['id' => $id]);
+        return view('admin.player-details',
+            [
+                'player' => $this->playerRepository->playerDetails($id)[0] ?? []
+            ]
+        );
     }
 
     /**
@@ -100,7 +95,7 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id) : RedirectResponse
+    public function update(Request $request, int $id) : RedirectResponse
     {
         $this->playerRepository->updatePlayer($id,
             [

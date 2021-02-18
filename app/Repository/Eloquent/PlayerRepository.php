@@ -40,7 +40,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         $this->player->save();
     }
 
-    public function updatePlayer(int $id, array $data)
+    public function updatePlayer(int $id, array $data) : void
     {
         $player = $this->player->find($id);
 
@@ -56,5 +56,10 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         if(isset($data['redCards'])) $player->red_cards = $data['redCards'];
 
         $player->save();
+    }
+
+    public function playerDetails(int $id) : Collection
+    {
+        return $this->player->where('id', $id)->get();
     }
 }

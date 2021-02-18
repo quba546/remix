@@ -12,4 +12,6 @@ interface PlayerRepositoryInterface
     public function listPaginated(int $limit, array $columns) : LengthAwarePaginator;
     public function bestScorers(int $limit) : Collection;
     public function savePlayer(array $data) : void;
+    public function updatePlayer(int $id, array $data) : void;
+    public function playerDetails(int $id) : Collection;
 }
