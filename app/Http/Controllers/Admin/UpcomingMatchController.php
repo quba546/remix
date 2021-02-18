@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Repository\MatchTypeRepositoryInterface;
 use App\Repository\UpcomingMatchRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -13,10 +14,15 @@ use Illuminate\Http\Request;
 class UpcomingMatchController extends Controller
 {
     private UpcomingMatchRepositoryInterface $upcomingMatchRepository;
+    private MatchTypeRepositoryInterface $matchTypeRepository;
 
-    public function __construct(UpcomingMatchRepositoryInterface $upcomingMatchRepository)
+    public function __construct(
+        UpcomingMatchRepositoryInterface $upcomingMatchRepository,
+        MatchTypeRepositoryInterface $matchTypeRepository
+    )
     {
         $this->upcomingMatchRepository = $upcomingMatchRepository;
+        $this->matchTypeRepository = $matchTypeRepository;
     }
 
     /**
@@ -28,7 +34,8 @@ class UpcomingMatchController extends Controller
     {
         return view('admin.upcoming-match',
             [
-                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0]
+                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0] ?? [],
+                'matchTypes' => $this->matchTypeRepository->getMatchTypes() ?? []
             ]
         );
     }

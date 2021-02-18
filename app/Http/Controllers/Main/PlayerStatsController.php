@@ -26,7 +26,7 @@ class PlayerStatsController extends Controller
     {
         return view('user.season.stats',
             [
-                'playersStats' => $this->playerRepository->listPaginated(15)
+                'playersStats' => $this->playerRepository->listPaginated(15) ?? []
             ]
         );
     }

@@ -28,7 +28,7 @@
                         <tbody class="table-light">
                         @foreach($players ?? [] as $player)
                             <tr>
-                                <td class="text-center align-middle">{{ ($players->currentpage()-1) * $players->perpage() + $loop->index + 1 }}</td>
+                                <td class="text-center align-middle">{{ ($players->currentpage() - 1) * $players->perpage() + $loop->index + 1 }}</td>
                                 <td class="text-center align-middle">{{ $player->nr }}</td>
                                 <td class="text-center align-middle text-uppercase">{{ $player->last_name }}</td>
                                 <td class="text-center align-middle">{{ $player->first_name }}</td>

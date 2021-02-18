@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Repository\LastMatchRepositoryInterface;
+use App\Repository\MatchTypeRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -13,10 +14,15 @@ use Illuminate\Http\Request;
 class LastMatchController extends Controller
 {
     private LastMatchRepositoryInterface $lastMatchRepository;
+    private MatchTypeRepositoryInterface $matchTypeRepository;
 
-    public function __construct(LastMatchRepositoryInterface $lastMatchRepository)
+    public function __construct(
+        LastMatchRepositoryInterface $lastMatchRepository,
+        MatchTypeRepositoryInterface $matchTypeRepository
+    )
     {
         $this->lastMatchRepository = $lastMatchRepository;
+        $this->matchTypeRepository = $matchTypeRepository;
     }
 
     /**
@@ -28,7 +34,8 @@ class LastMatchController extends Controller
     {
         return view('admin.last-match',
             [
-                'lastMatch' => $this->lastMatchRepository->getLastMatch()[0]
+                'lastMatch' => $this->lastMatchRepository->getLastMatch()[0] ?? [],
+                'matchTypes' => $this->matchTypeRepository->getMatchTypes() ?? []
             ]
         );
     }

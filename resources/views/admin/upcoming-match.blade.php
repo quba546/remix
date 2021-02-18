@@ -23,20 +23,20 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="host">Gospodarz</label>
-                                        <input type="text" name="host" value="{{ isset($upcomingMatch->host) ? $upcomingMatch->host : '' }}" class="form-control" id="host" placeholder="Gospodarze" size="50" required>
+                                        <input type="text" name="host" value="{{ $upcomingMatch->host ?? '' }}" class="form-control" id="host" placeholder="Gospodarze" size="50" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="guest">Gość</label>
-                                        <input type="text" name="guest" value="{{ isset($upcomingMatch->guest) ? $upcomingMatch->guest : '' }}" class="form-control" id="guest" placeholder="Goście" size="50" required>
+                                        <input type="text" name="guest" value="{{ $upcomingMatch->guest ?? '' }}" class="form-control" id="guest" placeholder="Goście" size="50" required>
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-12">
                                         <label for="match-type">Rodzaj meczu</label>
                                         <select class="custom-select" name="matchType" id="match-type" required>
-                                            <option selected value="1">ligowy</option>
-                                            <option value="2">sparing</option>
-                                            <option value="3">pucharowy</option>
+                                            @foreach($matchTypes ?? [] as $matchType)
+                                                <option value="{{ $matchType->id }}">{{ $matchType->id === 2 ? $matchType->type : $matchType->type . ' - ' . $matchType->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -45,17 +45,17 @@
                                         <div class="form-row">
                                             <div id="league-matches" class="form-group col-md-6">
                                                 <label for="round">Kolejka</label>
-                                                <input type="number" name="round" value="{{ isset($upcomingMatch->round) ? $upcomingMatch->round : 1 }}" class="form-control" id="round" placeholder="1" min="1" max="38" required>
+                                                <input type="number" name="round" value="{{ $upcomingMatch->round ?? '' }}" class="form-control" id="round" placeholder="1" min="1" max="38">
                                             </div>
                                             <div id="date-div-toggler" class="form-group col-md-6">
                                                 <label for="date">Data</label>
-                                                <input type="date" name="date" value="{{ isset($upcomingMatch->date) ? $upcomingMatch->date : '' }}" class="form-control" id="date" min="{{\Carbon\Carbon::today()->toDateString()}}" required>
+                                                <input type="date" name="date" value="{{ $upcomingMatch->date ?? '' }}" class="form-control" id="date" min="{{\Carbon\Carbon::today()->toDateString()}}" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="place">Lokalizacja</label>
-                                        <input type="text" name="place" value="{{ isset($upcomingMatch->place) ? $upcomingMatch->place : '' }}" class="form-control" id="place" placeholder="Lokalizacja" size="30" required>
+                                        <input type="text" name="place" value="{{ $upcomingMatch->place ?? '' }}" class="form-control" id="place" placeholder="Lokalizacja" size="30" required>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline-success mb-3">Zapisz</button>

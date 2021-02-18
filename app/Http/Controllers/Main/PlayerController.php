@@ -26,7 +26,7 @@ class PlayerController extends Controller
     {
         return view('user.season.team',
             [
-                'players' => $this->playerRepository->shortListPaginated(15)
+                'players' => $this->playerRepository->shortListPaginated(15) ?? []
             ]
         );
     }

@@ -23,20 +23,20 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="host">Gospodarz</label>
-                                        <input type="text" name="host" value="{{ isset($lastMatch->host) ? $lastMatch->host : '' }}" class="form-control" id="host" placeholder="Gospodarze" size="50" required>
+                                        <input type="text" name="host" value="{{ $lastMatch->host ?? '' }}" class="form-control" id="host" placeholder="Gospodarze" size="50" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="guest">Gość</label>
-                                        <input type="text" name="guest" value="{{ isset($lastMatch->guest) ? $lastMatch->guest : '' }}" class="form-control" id="guest" placeholder="Goście" size="50" required>
+                                        <input type="text" name="guest" value="{{ $lastMatch->guest ?? '' }}" class="form-control" id="guest" placeholder="Goście" size="50" required>
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-12">
                                         <label for="match-type">Rodzaj meczu</label>
                                         <select class="custom-select" name="matchType" id="match-type" required>
-                                            <option selected value="1">ligowy</option>
-                                            <option value="2">sparing</option>
-                                            <option value="3">pucharowy</option>
+                                            @foreach($matchTypes ?? [] as $matchType)
+                                                <option value="{{ $matchType->id }}">{{ $matchType->id === 2 ? $matchType->type : $matchType->type . ' - ' . $matchType->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
                                 </div>
@@ -45,17 +45,17 @@
                                         <div class="form-row">
                                             <div id="league-matches" class="form-group col-md-6">
                                                 <label for="round">Kolejka</label>
-                                                <input type="number" name="round" value="{{ isset($lastMatch->round) ? $lastMatch->round : 1 }}" class="form-control" id="round" placeholder="1" min="1" max="38" required>
+                                                <input type="number" name="round" value="{{ $lastMatch->round ?? '' }}" class="form-control" id="round" placeholder="1" min="1" max="38">
                                             </div>
                                             <div id="date-div-toggler" class="form-group col-md-6">
                                                 <label for="date">Data</label>
-                                                <input type="date" name="date" value="{{ isset($lastMatch->date) ? $lastMatch->date : '' }}" class="form-control" id="date" required>
+                                                <input type="date" name="date" value="{{ $lastMatch->date ?? '' }}" class="form-control" id="date" required>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="score">Wynik</label>
-                                        <input type="text" name="score" value="{{ isset($lastMatch->score) ? $lastMatch->score : '' }}" class="form-control" id="score" placeholder="0-0" size="5" required>
+                                        <input type="text" name="score" value="{{ $lastMatch->score ?? '' }}" class="form-control" id="score" placeholder="0-0" size="5" required>
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline-success mb-3">Zapisz</button>

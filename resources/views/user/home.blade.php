@@ -44,22 +44,23 @@
                     <tbody class="table-light">
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-futbol table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->matchType->type }}</td>
+                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->matchType->type ?? '' }}</td>
                     </tr>
                     <tr>
+                        @php $lastMatch->match_type_id ?? ''; $lastMatch->date ?? ''; $lastMatch->round ?? '' @endphp
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->match_type_id === 1 ? 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date : $lastMatch->date }}</td>
+                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->match_type_id === 2 ? $lastMatch->date : 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->host }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->host ?? '' }}</td>
                         <td class="text-center align-middle font-weight-bold">-</td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->guest }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-trophy table-icon"></i></td>
                         <td></td>
-                        <td class="text-center font-weight-bold table-score">{{ $lastMatch->score }}</td>
+                        <td class="text-center font-weight-bold table-score">{{ $lastMatch->score ?? '' }}</td>
                         <td></td>
                     </tr>
                     </tbody>
@@ -74,21 +75,22 @@
                     <tbody class="table-light">
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-futbol table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->matchType->type }}</td>
+                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->matchType->type ?? '' }}</td>
                     </tr>
                     <tr>
+                        @php $upcomingMatch->match_type_id ?? ''; $upcomingMatch->date ?? ''; $upcomingMatch->round ?? '' @endphp
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->match_type_id === 1 ? 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date : $upcomingMatch->date }}</td>
+                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->match_type_id === 2 ? $upcomingMatch->date : 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->host }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->host ?? '' }}</td>
                         <td class="text-center align-middle font-weight-bold">-</td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->guest }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-map-marked table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->place }}</td>
+                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->place ?? '' }}</td>
                     </tr>
                     </tbody>
                 </table>

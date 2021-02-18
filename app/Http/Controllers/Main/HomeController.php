@@ -41,10 +41,10 @@ class HomeController extends Controller
     {
         return view('user.home',
             [
-                'shortStanding' => $this->standingRepository->shortStanding(),
-                'bestScorers' => $this->playerRepository->bestScorers(3),
-                'lastMatch' => $this->lastMatchRepository->getLastMatch()[0],
-                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0]
+                'shortStanding' => $this->standingRepository->shortStanding() ?? [],
+                'bestScorers' => $this->playerRepository->bestScorers(3) ?? [],
+                'lastMatch' => $this->lastMatchRepository->getLastMatch()[0] ?? [],
+                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0] ?? []
             ]
         );
     }
