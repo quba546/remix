@@ -97,12 +97,12 @@ $(document).ready(function(){
 
 // logic for last and upcoming matches forms in admin panel
 window.onload = function() {
-    let gameType = document.getElementById('game-type');
-    if (gameType) {
-        gameType.onchange = function() {
+    let matchType = document.getElementById('match-type');
+    if (matchType) {
+        matchType.onchange = function() {
             let element = document.getElementById("date-div-toggler");
             // The code of your function
-            if (gameType.value === "league") {
+            if (matchType.value === "1") {
                 document.getElementById("league-matches").style.display = "block";
                 element.className = element.className.replace(/\bcol-md-12\b/g, "col-md-6");
             } else {

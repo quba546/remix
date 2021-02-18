@@ -11,15 +11,29 @@ use Illuminate\Support\Collection;
 
 class LastMatchRepository extends BaseRepository implements LastMatchRepositoryInterface
 {
-    private LastMatch $lastMatchModel;
+    private LastMatch $lastMatch;
 
     public function __construct(LastMatch $lastMatchModel)
     {
-        $this->lastMatchModel = $lastMatchModel;
+        $this->lastMatch = $lastMatchModel;
     }
 
     public function getLastMatch() : Collection
     {
-        return $this->lastMatchModel->with('matchType')->get();
+        return $this->lastMatch->with('matchType')->get();
+    }
+
+    public function saveLastMatch(array $data) : void
+    {
+        $this->lastMatch->truncate();
+
+        $this->lastMatch->match_type_id = $data['matchType'];
+        $this->lastMatch->date = $data['date'];
+        $this->lastMatch->host = $data['host'];
+        $this->lastMatch->guest = $data['guest'];
+        $this->lastMatch->score = $data['score'];
+        $this->lastMatch->round = $data['round'];
+
+        $this->lastMatch->save();
     }
 }

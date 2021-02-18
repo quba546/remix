@@ -18,7 +18,7 @@
 <div class="wrapper">
     <div>
         @switch(\Illuminate\Support\Facades\Route::current()->getName())
-            @case('homePage')
+            @case('index')
                 @yield('content')
                 @break
             @case('contact')
@@ -27,13 +27,13 @@
             @case('about-us')
                 @yield('content')
                 @break
-            @case('season.standings')
+            @case('season.standings.index')
                 @yield('content')
                 @break
-            @case('season.team')
+            @case('season.team.index')
                 @yield('content')
                 @break
-            @case('season.stats')
+            @case('season.stats.index')
                 @yield('content')
                 @break
             @case('season.timetable')
@@ -57,10 +57,10 @@
             @case('admin.standings')
                 @yield('content')
                 @break
-            @case('admin.match.last')
+            @case('admin.matches.last.edit')
                 @yield('content')
                 @break
-            @case('admin.match.upcoming')
+            @case('admin.matches.upcoming')
                 @yield('content')
                 @break
             @case('admin.player.list')

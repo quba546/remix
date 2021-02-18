@@ -48,7 +48,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->matchType->round ? 'Kolejka ' . $lastMatch->matchType->round . ' - ' . $lastMatch->date : $lastMatch->date }}</td>
+                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->match_type_id === 1 ? 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date : $lastMatch->date }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
@@ -78,7 +78,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->matchType->round ? 'Kolejka ' . $upcomingMatch->matchType->round . ' - ' . $upcomingMatch->date : $upcomingMatch->date }}</td>
+                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->match_type_id === 1 ? 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date : $upcomingMatch->date }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>

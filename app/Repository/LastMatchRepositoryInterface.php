@@ -10,4 +10,5 @@ use Illuminate\Support\Collection;
 interface LastMatchRepositoryInterface
 {
     public function getLastMatch() : Collection;
+    public function saveLastMatch(array $data) : void;
 }

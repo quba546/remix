@@ -4,6 +4,7 @@ use App\Http\Controllers\Main\HomeController;
 use App\Http\Controllers\Main\PlayerController;
 use App\Http\Controllers\Main\PlayerStatsController;
 use App\Http\Controllers\Main\StandingController;
+use App\Http\Controllers\Admin\LastMatchController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -25,7 +26,7 @@ Route::get('/', function () {
 
 Route::group([], function () {
     Route::get('/', [HomeController::class, 'index'])
-        ->name('homePage');
+        ->name('index');
 
     Route::get('/contact', function () {
         return view('user.contact');
@@ -44,13 +45,13 @@ Route::group([], function () {
         })->name('timetable');
 
         Route::get('standings', [StandingController::class, 'index'])
-            ->name('standings');
+            ->name('standings.index');
 
         Route::get('team', [PlayerController::class, 'index'])
-            ->name('team');
+            ->name('team.index');
 
         Route::get('stats', [PlayerStatsController::class, 'index'])
-            ->name('stats');
+            ->name('stats.index');
     });
 
     Route::group([
@@ -67,11 +68,13 @@ Route::group([], function () {
 
         Route::group([
             'prefix' => 'match/',
-            'as' => 'match.'
+            'as' => 'matches.'
         ], function () {
-            Route::get('last', function () {
-                return view('admin.last-match');
-            })->name('last');
+            Route::get('last/edit', [LastMatchController::class, 'edit'])
+                ->name('last.edit');
+
+            Route::put('last', [LastMatchController::class, 'update'])
+                ->name('last.update');
 
             Route::get('upcoming', function () {
                 return view('admin.upcoming-match');
