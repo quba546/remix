@@ -96,9 +96,11 @@ Route::group([], function () {
             Route::post('/', [AdminPlayerController::class, 'store'])
                 ->name('store');
 
-            Route::get('/details/{id}', function () {
-                return view('admin.player-details');
-            })->name('details');
+            Route::put('/{player}', [AdminPlayerController::class, 'update'])
+                ->name('update');
+
+            Route::get('/{player}/edit', [AdminPlayerController::class, 'edit'])
+                ->name('edit');
         });
     });
 });

@@ -66,7 +66,7 @@
             @case('admin.players.index')
                 @yield('content')
                 @break
-            @case('admin.player.details')
+            @case('admin.players.edit')
                 @yield('content')
                 @break
         @endswitch

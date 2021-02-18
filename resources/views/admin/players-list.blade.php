@@ -50,13 +50,15 @@
                                     <td class="text-center align-middle">{{ $player->first_name }}</td>
                                     <td class="text-center align-middle">{{ $player->position }}</td>
                                     <td class="text-center align-middle">
-                                        <form action="" method="POST">
+                                        <form action="{{ route('admin.players.update', ['player' => $player->id]) }}" method="POST">
+                                            @csrf
+                                            @method('PUT')
                                             <input type="number" name="playedMatches" value="{{ $player->played_matches }}" placeholder="0" min="0">
                                             <button type="submit">Zapisz</button>
                                         </form>
                                     </td>
                                     <td class="text-center align-middle">
-                                        <a href="#">Szczegóły</a>
+                                        <a href="{{ route('admin.players.edit', ['player' => $player->id]) }}">Szczegóły</a>
                                     </td>
                                     <td class="text-center align-middle">{{ $player->updated_at }}</td>
                                 </tr>

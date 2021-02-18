@@ -39,4 +39,22 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
 
         $this->player->save();
     }
+
+    public function updatePlayer(int $id, array $data)
+    {
+        $player = $this->player->find($id);
+
+        if(isset($data['firstName'])) $player->first_name = $data['firstName'];
+        if(isset($data['lastName'])) $player->last_name = $data['lastName'];
+        if(isset($data['nr'])) $player->nr = $data['nr'];
+        if(isset($data['position'])) $player->position = $data['position'];
+        if(isset($data['goals'])) $player->goals = $data['goals'];
+        if(isset($data['assists'])) $player->assists = $data['assists'];
+        if(isset($data['playedMatches'])) $player->played_matches = $data['playedMatches'];
+        if(isset($data['cleanSheets'])) $player->clean_sheets = $data['cleanSheets'];
+        if(isset($data['yellowCards'])) $player->yellow_cards = $data['yellowCards'];
+        if(isset($data['redCards'])) $player->red_cards = $data['redCards'];
+
+        $player->save();
+    }
 }

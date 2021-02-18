@@ -88,9 +88,9 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($id) : View
     {
-        //
+        return view('admin.player-details', ['id' => $id]);
     }
 
     /**
@@ -100,9 +100,24 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $id) : RedirectResponse
     {
-        //
+        $this->playerRepository->updatePlayer($id,
+            [
+                'firstName' => $request->get('firstName'),
+                'lastName' => $request->get('lastName'),
+                'nr' => $request->get('number'),
+                'position' => $request->get('position'),
+                'goals' => $request->get('goals'),
+                'assists' => $request->get('assists'),
+                'playedMatches' => $request->get('playedMatches'),
+                'cleanSheets' => $request->get('cleanSheets'),
+                'yellowCards' => $request->get('yellowCards'),
+                'redCards' => $request->get('redCards'),
+            ]
+        );
+
+        return redirect()->route('admin.players.index')->with('success', 'Poprawnie zaktualizowano dane zawodnika o id: ' . $id);
     }
 
     /**
