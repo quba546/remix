@@ -72,6 +72,9 @@ Route::group([], function () {
         Route::post('/standing', [AdminStandingController::class, 'store'])
             ->name('standing.store');
 
+        Route::delete('/standing', [AdminStandingController::class, 'destroy'])
+            ->name('standing.destroy');
+
         Route::group([
             'prefix' => '/matches/',
             'as' => 'matches.'

@@ -8,6 +8,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
             </nav>
+            @include('shared.messages')
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-1 col-lg-2"></div>

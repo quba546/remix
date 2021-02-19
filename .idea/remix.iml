@@ -123,7 +123,7 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/event-manager" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/doctrine/cache" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/kyslik/column-sortable" />
-      <excludeFolder url="file://$MODULE_DIR$/vendor/sunra/php-simple-html-dom-parser" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/kub-at/php-simple-html-dom-parser" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

@@ -47,8 +47,20 @@ class StandingController extends Controller
     {
         $standingUrl = $request->get('url');
 
-        $this->standingRepository->fillStanding($standingUrl);
+        return $this->standingRepository->fillStanding($standingUrl)
+            ? redirect()->route('admin.standing.create')->with('success', 'Poprawnie dodano dane tabeli ligowej')
+            : redirect()->route('admin.standing.create')->with('error', 'Wystąpił błąd podczas dodawania danych tabeli ligowej');
+    }
 
-        return redirect()->route('admin.standing.create')->with('success', 'Poprawnie dodano dane o tabeli');
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @return RedirectResponse
+     */
+    public function destroy() : RedirectResponse
+    {
+        $this->standingRepository->deleteStanding();
+
+        return redirect()->route('admin.standing.create')->with('warning', 'Poprawnie usunięto dane tabeli ligowej');
     }
 }
