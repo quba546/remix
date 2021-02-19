@@ -30,17 +30,17 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             ->take($limit);
     }
 
-    public function savePlayer(array $data) : void
+    public function savePlayer(array $data) : bool
     {
         $this->player->first_name = $data['firstName'];
         $this->player->last_name = $data['lastName'];
         $this->player->nr = $data['nr'];
         $this->player->position = $data['position'];
 
-        $this->player->save();
+        return $this->player->save();
     }
 
-    public function updatePlayer(int $id, array $data) : void
+    public function updatePlayer(int $id, array $data) : bool
     {
         $player = $this->player->find($id);
 
@@ -55,12 +55,12 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         if(isset($data['yellowCards'])) $player->yellow_cards = $data['yellowCards'];
         if(isset($data['redCards'])) $player->red_cards = $data['redCards'];
 
-        $player->save();
+        return $player->save();
     }
 
-    public function playerDetails(int $id) : Collection
+    public function playerDetails(int $id) : ?Player
     {
-        return $this->player->where('id', $id)->get();
+        return $this->player->where('id', $id)->get()->first();
     }
 
     public function deletePlayer(int $id) : bool

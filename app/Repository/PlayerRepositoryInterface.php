@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Models\Player;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
@@ -11,8 +12,8 @@ interface PlayerRepositoryInterface
 {
     public function listPaginated(int $limit, array $columns) : LengthAwarePaginator;
     public function bestScorers(int $limit) : Collection;
-    public function savePlayer(array $data) : void;
-    public function updatePlayer(int $id, array $data) : void;
-    public function playerDetails(int $id) : Collection;
+    public function savePlayer(array $data) : bool;
+    public function updatePlayer(int $id, array $data) : bool;
+    public function playerDetails(int $id) : ?Player;
     public function deletePlayer(int $id) : bool;
 }

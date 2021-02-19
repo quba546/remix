@@ -71,7 +71,9 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{ $players->appends(request()->query())->links() }}
+                        @if (isset($players))
+                            {{ $players->appends(request()->query())->links() }}
+                        @endif
                         <button type="button" id="add-player-btn" class="btn btn-outline-success mt-2 mb-4">Dodaj zawodnika</button>
                         <div id="add-player" class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Dodaj zawodnika</h5>

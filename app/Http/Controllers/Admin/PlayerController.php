@@ -51,7 +51,7 @@ class PlayerController extends Controller
      */
     public function store(Request $request) : RedirectResponse
     {
-        $this->playerRepository->savePlayer(
+        $success = $this->playerRepository->savePlayer(
             [
                 'firstName' => $request->get('firstName'),
                 'lastName' => $request->get('lastName'),
@@ -60,7 +60,9 @@ class PlayerController extends Controller
             ]
         );
 
-        return redirect()->route('admin.players.store')->with('success', 'Poprawnie dodano nowego zawodnika');
+        return $success
+            ? redirect()->route('admin.players.store')->with('success', 'Poprawnie dodano nowego zawodnika')
+            : redirect()->route('admin.players.store')->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
     }
 
     /**
@@ -69,13 +71,15 @@ class PlayerController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(int $id) : View
+    public function edit(int $id) : View | RedirectResponse
     {
-        return view('admin.player-details',
-            [
-                'player' => $this->playerRepository->playerDetails($id)[0] ?? []
-            ]
-        );
+      return $this->playerRepository->playerDetails($id)
+            ? view('admin.player-details',
+                [
+                    'player' => $this->playerRepository->playerDetails($id)
+                ]
+            )
+            : redirect()->route('admin.players.index')->with('error', 'Nie istnieje zawodnik o id: ' . $id);
     }
 
     /**
@@ -87,7 +91,7 @@ class PlayerController extends Controller
      */
     public function update(Request $request, int $id) : RedirectResponse
     {
-        $this->playerRepository->updatePlayer($id,
+        $success = $this->playerRepository->updatePlayer($id,
             [
                 'firstName' => $request->get('firstName'),
                 'lastName' => $request->get('lastName'),
@@ -102,7 +106,9 @@ class PlayerController extends Controller
             ]
         );
 
-        return redirect()->route('admin.players.index')->with('success', 'Poprawnie zaktualizowano dane zawodnika o id: ' . $id);
+        return $success
+            ? redirect()->route('admin.players.index')->with('success', 'Poprawnie zaktualizowano dane zawodnika o id: ' . $id)
+            : redirect()->route('admin.players.index')->with('error', 'Wystąpił błąd przy aktualizacji danych zawodnika o id: ' . $id);
     }
 
     /**
