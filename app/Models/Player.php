@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Storage;
 use Kyslik\ColumnSortable\Sortable;
 
 class Player extends Model
@@ -17,7 +18,7 @@ class Player extends Model
         'played_matches' => 0,
         'clean_sheets' => 0,
         'yellow_cards' => 0,
-        'red_cards' => 0
+        'red_cards' => 0,
     ];
 
     public $sortable = [

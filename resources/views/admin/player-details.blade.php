@@ -21,17 +21,25 @@
                                 @method('PUT')
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
-                                        <label for="firstName">Imię</label>
-                                        <input type="text" name="firstName" value="{{ $player->first_name ?? '' }}" class="form-control" id="firstName" placeholder="Imię" size="20" required>
+                                        <div class="player-img">
+                                            <img src="{{ $player->image ?? asset('storage/blank-profile-picture.png') }}" alt="Zdjęcie gracza">
+                                        </div>
+                                        <div class="custom-file">
+                                            <input type="file" class="custom-file-input" id="customFile">
+                                            <label class="custom-file-label" for="customFile">Wybierz zdjęcie</label>
+                                        </div>
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="lastName">Nazwisko</label>
+                                        <label for="id">ID</label>
+                                        <input readonly type="text" name="id" value="{{ $player->id ?? '' }}" class="form-control" id="id">
+
+                                        <label for="lastName" class="mt-2">Nazwisko</label>
                                         <input type="text" name="lastName" value="{{ $player->last_name ?? '' }}" class="form-control" id="lastName" placeholder="Nazwisko" size="30" required>
-                                    </div>
-                                </div>
-                                <div class="form-row ml-2 mr-2">
-                                    <div class="form-group col-md-6">
-                                        <label for="position">Pozycja</label>
+
+                                        <label for="firstName" class="mt-2">Imię</label>
+                                        <input type="text" name="firstName" value="{{ $player->first_name ?? '' }}" class="form-control" id="firstName" placeholder="Imię" size="20" required>
+
+                                        <label for="position" class="mt-2">Pozycja</label>
                                         <select name="position" class="custom-select" id="position" required>
                                             @php $position = $player->position ?? '' @endphp
                                             <option selected value="{{ $position }}">{{ $position }}</option>
@@ -40,9 +48,8 @@
                                             @if($position !== 'pomocnik') <option value="pomocnik">pomocnik</option> @endif
                                             @if($position !== 'napastnik') <option value="napastnik">napastnik</option> @endif
                                         </select>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="number">Numer</label>
+
+                                        <label for="number" class="mt-2">Numer</label>
                                         <input type="number" name="number" value="{{ $player->nr ?? '' }}" class="form-control" id="number" placeholder="99" step="1" min="1" max="99">
                                     </div>
                                 </div>

@@ -16589,3 +16589,12 @@ a.sort-icon {
   color: #ffffff;
   text-decoration: none;
 }
+
+.player-img {
+  width: 90%;
+  height: 90%;
+}
+
+.player-img > img {
+  max-width: 65%;
+}
