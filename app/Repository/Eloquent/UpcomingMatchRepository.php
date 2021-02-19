@@ -17,9 +17,9 @@ class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRep
         $this->upcomingMatch = $upcomingMatch;
     }
 
-    public function getUpcomingMatch() : Collection
+    public function getUpcomingMatch() : UpcomingMatch
     {
-        return $this->upcomingMatch->with('matchType')->get();
+        return $this->upcomingMatch->with('matchType')->get()->first();
     }
 
     public function saveUpcomingMatch(array $data) : void

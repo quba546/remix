@@ -20,7 +20,7 @@ class StandingController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index() : View
     {

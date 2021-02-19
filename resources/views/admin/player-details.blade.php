@@ -16,11 +16,7 @@
                         <div class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Edytuj dane zawodnika</h5>
                             <hr>
-                            @if (isset($player->id))
-                                <form action="{{ route('admin.players.update', ['player' => $player->id]) }}" method="POST">
-                            @else
-                                @php abort(404, 'Błąd'); @endphp
-                            @endif
+                            <form action="{{ route('admin.players.update', ['player' => $player->id]) }}" method="POST">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-row ml-2 mr-2">

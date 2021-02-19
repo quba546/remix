@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Repository;
 
 
-use Illuminate\Support\Collection;
+use App\Models\LastMatch;
 
 interface LastMatchRepositoryInterface
 {
-    public function getLastMatch() : Collection;
+    public function getLastMatch() : LastMatch;
     public function saveLastMatch(array $data) : void;
 }

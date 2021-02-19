@@ -35,7 +35,7 @@ class HomeController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index() : View
     {
@@ -43,8 +43,8 @@ class HomeController extends Controller
             [
                 'shortStanding' => $this->standingRepository->shortStanding() ?? [],
                 'bestScorers' => $this->playerRepository->bestScorers(3) ?? [],
-                'lastMatch' => $this->lastMatchRepository->getLastMatch()[0] ?? [],
-                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0] ?? []
+                'lastMatch' => $this->lastMatchRepository->getLastMatch() ?? [],
+                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch() ?? []
             ]
         );
     }

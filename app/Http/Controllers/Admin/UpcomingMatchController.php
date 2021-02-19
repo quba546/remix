@@ -28,13 +28,13 @@ class UpcomingMatchController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function edit() : View
     {
         return view('admin.upcoming-match',
             [
-                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch()[0] ?? [],
+                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch() ?? [],
                 'matchTypes' => $this->matchTypeRepository->getMatchTypes() ?? []
             ]
         );
@@ -43,8 +43,8 @@ class UpcomingMatchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return RedirectResponse
      */
     public function update(Request $request) : RedirectResponse
     {

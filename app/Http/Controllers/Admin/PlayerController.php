@@ -22,7 +22,7 @@ class PlayerController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function index() : View
     {
@@ -46,8 +46,8 @@ class PlayerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @return RedirectResponse
      */
     public function store(Request $request) : RedirectResponse
     {
@@ -68,11 +68,13 @@ class PlayerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int|string $id
+     * @return View|RedirectResponse
      */
-    public function edit(int $id) : View | RedirectResponse
+    public function edit(int|string $id) : View | RedirectResponse
     {
+      $id = (int) $id;
+
       return $this->playerRepository->playerDetails($id)
             ? view('admin.player-details',
                 [
@@ -85,12 +87,14 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  Request  $request
+     * @param  int|string  $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, int $id) : RedirectResponse
+    public function update(Request $request, int|string $id) : RedirectResponse
     {
+        $id = (int) $id;
+
         $success = $this->playerRepository->updatePlayer($id,
             [
                 'firstName' => $request->get('firstName'),
@@ -114,11 +118,13 @@ class PlayerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param  int|string  $id
+     * @return RedirectResponse
      */
-    public function destroy(int $id) : RedirectResponse
+    public function destroy(int|string $id) : RedirectResponse
     {
+        $id = (int) $id;
+
         return $this->playerRepository->deletePlayer($id)
             ? redirect()->route('admin.players.index')->with('warning', 'Poprawnie usunięto dane zawodnika o id: ' . $id)
             : redirect()->route('admin.players.index')->with('error', 'Wystąpił błąd przy usuwaniu danych zawodnika o id: ' . $id);
