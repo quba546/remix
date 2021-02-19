@@ -14,4 +14,5 @@ interface PlayerRepositoryInterface
     public function savePlayer(array $data) : void;
     public function updatePlayer(int $id, array $data) : void;
     public function playerDetails(int $id) : Collection;
+    public function deletePlayer(int $id) : bool;
 }

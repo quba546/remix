@@ -66,7 +66,7 @@
                                     <td class="text-center align-middle">
                                         <a href="{{ route('admin.players.edit', ['player' => $player->id]) }}">Szczegóły</a>
                                     </td>
-                                    <td class="text-center align-middle">{{ $player->updated_at }}</td>
+                                    <td class="text-center align-middle">{{ \Carbon\Carbon::parse($player->updated_at)->diffForHumans() }}</td>
                                 </tr>
                             @endforeach
                             </tbody>

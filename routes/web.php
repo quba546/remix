@@ -101,6 +101,9 @@ Route::group([], function () {
 
             Route::get('/{player}/edit', [AdminPlayerController::class, 'edit'])
                 ->name('edit');
+
+            Route::delete('/{player}', [AdminPlayerController::class, 'destroy'])
+                ->name('destroy');
         });
     });
 });

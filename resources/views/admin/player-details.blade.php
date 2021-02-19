@@ -26,7 +26,7 @@
                                         </div>
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="customFile">
-                                            <label class="custom-file-label" for="customFile">Wybierz zdjęcie</label>
+                                            <label class="custom-file-label text-left" for="customFile">Wybierz zdjęcie</label>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
@@ -65,25 +65,48 @@
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="assists">Asysty</label>
-                                        <input type="number" name="assists" value="{{ $player->assists ?? '' }}"class="form-control" id="assists" placeholder="0" step="1" min="0">
+                                        <input type="number" name="assists" value="{{ $player->assists ?? '' }}" class="form-control" id="assists" placeholder="0" step="1" min="0">
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-4">
                                         <label for="cleanSheets">Czyste konta</label>
-                                        <input type="number" name="cleanSheets" value="{{ $player->clean_sheets ?? '' }}"class="form-control" id="cleanSheets" placeholder="0" step="1" min="0">
+                                        <input type="number" name="cleanSheets" value="{{ $player->clean_sheets ?? '' }}" class="form-control" id="cleanSheets" placeholder="0" step="1" min="0">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="yellowCards">Żółte kartki</label>
-                                        <input type="number" name="yellowCards" value="{{ $player->yellow_cards ?? '' }}"class="form-control" id="yellowCards" placeholder="0" step="1" min="0">
+                                        <input type="number" name="yellowCards" value="{{ $player->yellow_cards ?? '' }}" class="form-control" id="yellowCards" placeholder="0" step="1" min="0">
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="redCards">Czerwone kartki</label>
-                                        <input type="number" name="redCards" value="{{ $player->red_cards ?? '' }}"class="form-control" id="redCards" placeholder="0" step="1" min="0">
+                                        <input type="number" name="redCards" value="{{ $player->red_cards ?? '' }}" class="form-control" id="redCards" placeholder="0" step="1" min="0">
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-outline-success mb-3">Zapisz</button>
+                                <div class="form-row ml-2 mr-2">
+                                    <div class="form-group col-md-6">
+                                        <label for="createdAt">Utworzono</label>
+                                        <input readonly type="text" name="createdAt" value="{{ \Carbon\Carbon::parse($player->created_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="createdAt">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="updatedAt">Ostatnio edytowano</label>
+                                        <input readonly type="text" name="updatedAt" value="{{ \Carbon\Carbon::parse($player->updated_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="updatedAt">
+                                    </div>
+                                </div>
+                                <div class="form-row ml-2 mr-2">
+                                    <div class="form-group col-12">
+                                        <button type="submit" class="btn btn-outline-success">Zapisz</button>
+                                    </div>
+                                </div>
                             </form>
+                            <div class="form-row ml-2 mr-2">
+                                <div class="form-group col-12 d-flex justify-content-end">
+                                    <form action="{{ route('admin.players.destroy', ['player' => $player->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Czy na pewno chccesz usunąć zawodnika?')" class="btn btn-outline-danger">Usuń</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-1 col-lg-2"></div>

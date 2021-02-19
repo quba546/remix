@@ -62,4 +62,9 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
     {
         return $this->player->where('id', $id)->get();
     }
+
+    public function deletePlayer(int $id) : bool
+    {
+        return $this->player->find($id)->delete();
+    }
 }

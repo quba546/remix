@@ -16598,3 +16598,9 @@ a.sort-icon {
 .player-img > img {
   max-width: 65%;
 }
+
+.page-item.active .page-link {
+  color: #fff !important;
+  background: #38c172 !important;
+  border: 1px solid #38c172 !important;
+}
