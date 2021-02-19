@@ -7,6 +7,7 @@ use App\Http\Controllers\Main\StandingController;
 use App\Http\Controllers\Admin\LastMatchController;
 use App\Http\Controllers\Admin\UpcomingMatchController;
 use App\Http\Controllers\Admin\PlayerController as AdminPlayerController;
+use App\Http\Controllers\Admin\StandingController as AdminStandingController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -65,9 +66,11 @@ Route::group([], function () {
             return view('admin.dashboard');
         })->name('dashboard');
 
-        Route::get('/standings', function () {
-            return view('admin.standings');
-        })->name('standings');
+        Route::get('/standing/create', [AdminStandingController::class, 'create'])
+            ->name('standing.create');
+
+        Route::post('/standing', [AdminStandingController::class, 'store'])
+            ->name('standing.store');
 
         Route::group([
             'prefix' => '/matches/',

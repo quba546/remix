@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface StandingRepositoryInterface
 {
-    public function shortStanding() : Collection;
-    public function standing() : Collection;
+    public function standing(array $columns) : Collection;
+    public function fillStanding(string $url);
 }

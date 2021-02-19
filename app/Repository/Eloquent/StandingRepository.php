@@ -7,27 +7,28 @@ namespace App\Repository\Eloquent;
 use App\Repository\StandingRepositoryInterface;
 use App\Models\Standing;
 use Illuminate\Database\Eloquent\Collection;
+use Sunra\PhpSimple\HtmlDomParser;
 
 class StandingRepository extends BaseRepository implements StandingRepositoryInterface
 {
-    private Standing $standingsModel;
+    private Standing $standing;
 
-    public function __construct(Standing $standingsModel)
+    public function __construct(Standing $standing)
     {
-        $this->standingsModel = $standingsModel;
+        $this->standing = $standing;
     }
 
-    public function shortStanding() : Collection
+    public function standing(array $columns) : Collection
     {
-        return $this->standingsModel
-            ->all('position', 'team', 'played_matches', 'points', 'league')
+        return $this->standing
+            ->all($columns)
             ->sortBy('position');
     }
 
-    public function standing() : Collection
+    public function fillStanding(string $url)
     {
-        return $this->standingsModel
-            ->all('position', 'team', 'played_matches', 'points', 'wins', 'draws', 'losses', 'goals_scored', 'goals_conceded', 'goals_difference', 'league')
-            ->sortBy('position');
+        //$dom = HtmlDomParser::str_get_html($url);
+        //$dom = HtmlDomParser::str_get_html($url);
+        //dd($dom);
     }
 }

@@ -8,6 +8,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
             </nav>
+            @include('shared.messages')
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-1 col-lg-2"></div>
@@ -16,12 +17,12 @@
                         <div class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Dane do tabeli</h5>
                             <hr>
-                            <form method="POST">
+                            <form action="{{ route('admin.standing.store') }}" method="POST">
+                                @csrf
                                 <div class="form-group ml-2 mr-2">
-                                    <label for="tableUrl">Adres URL do tabeli</label>
-                                    <input type="url" class="form-control" id="tableUrl" aria-describedby="urlHelp"
-                                           placeholder="https://example.com" pattern="https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)
-" size="200" required>
+                                    <label for="standingUrl">Adres URL do tabeli</label>
+                                    <input type="url" name="url" value="" class="form-control" id="standingUrl" aria-describedby="urlHelp"
+                                           placeholder="https://example.com" size="200" required>
                                     <small id="urlHelp" class="form-text text-muted">Wpisz powyżej poprawny adres URL z tabelą, z
                                         której chcesz pobrać dane.</small>
                                 </div>
