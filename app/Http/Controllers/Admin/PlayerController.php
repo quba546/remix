@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\CreatePlayerRequest;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -46,17 +47,19 @@ class PlayerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  CreatePlayerRequest  $request
      * @return RedirectResponse
      */
-    public function store(Request $request) : RedirectResponse
+    public function store(CreatePlayerRequest $request) : RedirectResponse
     {
+        $validated = $request->validated();
+
         $success = $this->playerRepository->savePlayer(
             [
-                'firstName' => $request->get('firstName'),
-                'lastName' => $request->get('lastName'),
-                'position' => $request->get('position'),
-                'nr' => $request->get('number'),
+                'firstName' => $validated['firstName'],
+                'lastName' => $validated['lastName'],
+                'position' => $validated['position'],
+                'nr' => $validated['number'],
             ]
         );
 

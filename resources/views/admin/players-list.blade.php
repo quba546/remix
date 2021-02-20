@@ -83,26 +83,39 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="firstName">Imię</label>
-                                        <input type="text" name="firstName" value="" class="form-control" id="firstName" placeholder="Imię" size="20" required>
+                                        <input type="text" name="firstName" value="{{ old('firstName') }}" class="form-control @error('firstName') is-invalid @enderror" id="Imi" placeholder="Imię">
+                                        @error('firstName')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="lastName">Nazwisko</label>
-                                        <input type="text" name="lastName" value="" class="form-control" id="lastName" placeholder="Nazwisko" size="30" required>
+                                        <input type="text" name="lastName" value="{{ old('lastName') }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko">
+                                        @error('lastName')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="position">Pozycja</label>
-                                        <select name="position" class="custom-select" id="position" required>
+                                        <select name="position" class="custom-select @error('position') is-invalid @enderror" id="position">
+                                            <option value="none">Wybierz pozycję...</option>
                                             <option value="bramkarz">bramkarz</option>
                                             <option value="obrońca">obrońca</option>
                                             <option value="pomocnik">pomocnik</option>
                                             <option value="napastnik">napastnik</option>
                                         </select>
+                                        @error('position')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="number">Numer</label>
-                                        <input type="number" name="number" value="" class="form-control" id="number" placeholder="99" step="1" min="1" max="99">
+                                        <input type="number" name="number" value="{{ old('number') }}" class="form-control @error('number') is-invalid @enderror" id="number">
+                                        @error('number')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline-success mb-3">Dodaj</button>

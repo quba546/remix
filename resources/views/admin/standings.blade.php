@@ -33,7 +33,7 @@
                                     <form action="{{ route('admin.standing.destroy') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Czy na pewno chccesz wyczyścić tabelę?')" class="btn btn-outline-danger">Wyczyść</button>
+                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz wyczyścić tabelę?')" class="btn btn-outline-danger">Wyczyść</button>
                                     </form>
                                 </div>
                             </div>
