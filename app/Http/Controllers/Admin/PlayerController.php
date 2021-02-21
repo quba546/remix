@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\CreatePlayerRequest;
+use App\Http\Requests\PlayerRequest;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -47,10 +47,10 @@ class PlayerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  CreatePlayerRequest  $request
+     * @param  PlayerRequest  $request
      * @return RedirectResponse
      */
-    public function store(CreatePlayerRequest $request) : RedirectResponse
+    public function store(PlayerRequest $request) : RedirectResponse
     {
         $validated = $request->validated();
 
@@ -90,26 +90,28 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  Request  $request
+     * @param  PlayerRequest  $request
      * @param  int|string  $id
      * @return RedirectResponse
      */
-    public function update(Request $request, int|string $id) : RedirectResponse
+    public function update(PlayerRequest $request, int|string $id) : RedirectResponse
     {
         $id = (int) $id;
 
+        $validated = $request->validated();
+
         $success = $this->playerRepository->updatePlayer($id,
             [
-                'firstName' => $request->get('firstName'),
-                'lastName' => $request->get('lastName'),
-                'nr' => $request->get('number'),
-                'position' => $request->get('position'),
-                'goals' => $request->get('goals'),
-                'assists' => $request->get('assists'),
-                'playedMatches' => $request->get('playedMatches'),
-                'cleanSheets' => $request->get('cleanSheets'),
-                'yellowCards' => $request->get('yellowCards'),
-                'redCards' => $request->get('redCards'),
+                'firstName' => $validated['firstName'],
+                'lastName' => $validated['lastName'],
+                'nr' => $validated['number'],
+                'position' => $validated['position'],
+                'goals' => $validated['goals'],
+                'assists' => $validated['assists'],
+                'playedMatches' => $validated['playedMatches'],
+                'cleanSheets' => $validated['cleanSheets'],
+                'yellowCards' => $validated['yellowCards'],
+                'redCards' => $validated['redCards'],
             ]
         );
 

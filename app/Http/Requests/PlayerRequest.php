@@ -1,0 +1,72 @@
+<?php
+
+namespace App\Http\Requests;
+
+use Illuminate\Foundation\Http\FormRequest;
+
+class PlayerRequest extends FormRequest
+{
+    /**
+     * Determine if the user is authorized to make this request.
+     *
+     * @return bool
+     */
+    public function authorize()
+    {
+        return true;
+    }
+
+    /**
+     * Get the validation rules that apply to the request.
+     *
+     * @return array
+     */
+    public function rules()
+    {
+        return [
+            'firstName' => ['required', 'regex:/^[\pL\s\-]+$/u', 'max:50'],
+            'lastName' => ['required', 'regex:/^[\pL\s\-]+$/u', 'max:50'],
+            'position' => ['required', 'in:bramkarz,obrońca,pomocnik,napastnik'],
+            'number' => ['nullable', 'numeric', 'min:1', 'max:99'],
+            'playedMatches' => ['numeric', 'min:0'],
+            'goals' => ['numeric', 'min:0'],
+            'assists' => ['numeric', 'min:0'],
+            'cleanSheets' => ['numeric', 'min:0'],
+            'yellowCards' => ['numeric', 'min:0'],
+            'redCards' => ['numeric', 'min:0'],
+            'image' => ['nullable', 'image', 'dimensions:min_width=100,min_height=200']
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'required' => 'Pole :attribute jest wymagane',
+            'regex' => 'Pole :attribute może zawierać tylko litery i spacje',
+            'max' => 'Pole :attribute może zawierać maksymalnie :max liter',
+            'position.in' => 'Pole :attribute może zawierać tylko podane pozycje',
+            'numeric' => 'Pole :attribute może zawierać tylko liczby',
+            'min' => 'Minimalna liczba to :min',
+            'number.max' => 'Maksymalna liczba to :max',
+            'image' => 'Dozwolone formaty: jpg, jpeg, png, bmp, gif, svg lub webp',
+            'dimensions' => 'Minimalna szerokość zdjęcia to :min_width a wysokość :min_height'
+        ];
+    }
+
+    public function attributes()
+    {
+        return [
+            'firstName' => 'imię',
+            'lastName' => 'nazwisko',
+            'position' => 'pozycja',
+            'number' => 'numer',
+            'playedMatches' => 'rozegrane mecze',
+            'goals' => 'bramki',
+            'assists' => 'asysty',
+            'cleanSheets' => 'czyste konta',
+            'yellowCards' => 'żółte kartki',
+            'redCards' => 'czerwone kartki',
+            'image' => 'zdjęcie'
+        ];
+    }
+}

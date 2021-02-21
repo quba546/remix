@@ -16595,8 +16595,13 @@ a.sort-icon {
   height: 90%;
 }
 
+.player-img {
+  position: relative;
+  width: 100%;
+}
+
 .player-img > img {
-  max-width: 65%;
+  max-width: 100%;
 }
 
 .page-item.active .page-link {

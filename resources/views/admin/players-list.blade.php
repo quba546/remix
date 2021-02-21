@@ -14,7 +14,7 @@
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Lista zawodników</h2>
-                        <table class="table table-sm table-responsive-lg table-striped table-hover table-bordered mt-4 table-home-font">
+                        <table class="table table-sm table-responsive-lg table-striped table-bordered mt-4 table-home-font">
                             <thead class="thead-dark">
                             <tr>
                                 <th class="text-center align-middle">Lp.</th>
@@ -55,7 +55,7 @@
                                             @method('PUT')
                                             <div class="form-row">
                                                 <div class="col-12 col-xl-8">
-                                                    <input type="number" name="playedMatches" value="{{ $player->played_matches }}" class="form-control" placeholder="0" min="0">
+                                                    <input type="number" name="playedMatches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0">
                                                 </div>
                                                 <div class="col-12 col-xl-4 mt-2 m-xl-0">
                                                     <button type="submit" class="btn btn-outline-success">Zapisz</button>
