@@ -23,11 +23,17 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="host">Gospodarz</label>
-                                        <input type="text" name="host" value="{{ $lastMatch->host ?? '' }}" class="form-control" id="host" placeholder="Gospodarze" size="50" required>
+                                        <input type="text" name="host" value="{{ old('lastName') ?? $lastMatch->host ?? '' }}" class="form-control @error('host') is-invalid @enderror" id="host" placeholder="Gospodarze" size="100" required>
+                                        @error('host')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="guest">Gość</label>
-                                        <input type="text" name="guest" value="{{ $lastMatch->guest ?? '' }}" class="form-control" id="guest" placeholder="Goście" size="50" required>
+                                        <input type="text" name="guest" value="{{ old('guest') ?? $lastMatch->guest ?? '' }}" class="form-control @error('guest') is-invalid @enderror" id="guest" placeholder="Goście" size="100" required>
+                                        @error('guest')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
@@ -38,6 +44,9 @@
                                                 <option value="{{ $matchType->id }}">{{ $matchType->id === 2 ? $matchType->type : $matchType->type . ' - ' . $matchType->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('matchType')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
@@ -45,17 +54,26 @@
                                         <div class="form-row">
                                             <div id="league-matches" class="form-group col-md-6">
                                                 <label for="round">Kolejka</label>
-                                                <input type="number" name="round" value="{{ $lastMatch->round ?? '' }}" class="form-control" id="round" placeholder="1" min="1" max="38">
+                                                <input type="number" name="round" value="{{ old('round') ?? $lastMatch->round ?? '' }}" class="form-control @error('round') is-invalid @enderror" id="round" placeholder="1" min="1" step="1" max="50" size="50">
+                                                @error('round')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div id="date-div-toggler" class="form-group col-md-6">
                                                 <label for="date">Data</label>
-                                                <input type="date" name="date" value="{{ $lastMatch->date ?? '' }}" class="form-control" id="date" required>
+                                                <input type="date" name="date" value="{{ old('date') ?? $lastMatch->date ?? '' }}" class="form-control @error('date') is-invalid @enderror" id="date" required>
+                                                @error('date')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="score">Wynik</label>
-                                        <input type="text" name="score" value="{{ $lastMatch->score ?? '' }}" class="form-control" id="score" placeholder="0-0" size="5" required>
+                                        <input type="text" name="score" value="{{ old('score') ?? $lastMatch->score ?? '' }}" class="form-control @error('score') is-invalid @enderror" id="score" placeholder="0-0" size="10" required>
+                                        @error('score')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline-success mb-3">Zapisz</button>

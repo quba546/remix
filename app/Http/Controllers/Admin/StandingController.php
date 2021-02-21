@@ -3,10 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StandingRequest;
 use App\Repository\StandingRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class StandingController extends Controller
 {
@@ -40,12 +40,14 @@ class StandingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  Request  $request
+     * @param  StandingRequest  $request
      * @return RedirectResponse
      */
-    public function store(Request $request) : RedirectResponse
+    public function store(StandingRequest $request) : RedirectResponse
     {
-        $standingUrl = $request->get('url');
+        $validated = $request->validated();
+
+        $standingUrl = $validated['url'];
 
         return $this->standingRepository->fillStanding($standingUrl)
             ? redirect()->route('admin.standing.create')->with('success', 'Poprawnie dodano dane tabeli ligowej')

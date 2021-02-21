@@ -23,11 +23,17 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="host">Gospodarz</label>
-                                        <input type="text" name="host" value="{{ $upcomingMatch->host ?? '' }}" class="form-control" id="host" placeholder="Gospodarze" size="50" required>
+                                        <input type="text" name="host" value="{{ old('host') ?? $upcomingMatch->host ?? '' }}" class="form-control @error('host') is-invalid @enderror" id="host" placeholder="Gospodarze" size="100" required>
+                                        @error('host')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="guest">Gość</label>
-                                        <input type="text" name="guest" value="{{ $upcomingMatch->guest ?? '' }}" class="form-control" id="guest" placeholder="Goście" size="50" required>
+                                        <input type="text" name="guest" value="{{ old('guest') ?? $upcomingMatch->guest ?? '' }}" class="form-control @error('guest') is-invalid @enderror" id="guest" placeholder="Goście" size="100" required>
+                                        @error('guest')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
@@ -38,6 +44,9 @@
                                                 <option value="{{ $matchType->id }}">{{ $matchType->id === 2 ? $matchType->type : $matchType->type . ' - ' . $matchType->name }}</option>
                                             @endforeach
                                         </select>
+                                        @error('matchType')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
@@ -45,17 +54,26 @@
                                         <div class="form-row">
                                             <div id="league-matches" class="form-group col-md-6">
                                                 <label for="round">Kolejka</label>
-                                                <input type="number" name="round" value="{{ $upcomingMatch->round ?? '' }}" class="form-control" id="round" placeholder="1" min="1" max="38">
+                                                <input type="number" name="round" value="{{ old('round') ?? $upcomingMatch->round ?? '' }}" class="form-control @error('round') is-invalid @enderror" id="round" placeholder="1" min="1" step="1" max="50" size="50">
+                                                @error('round')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                             <div id="date-div-toggler" class="form-group col-md-6">
                                                 <label for="date">Data</label>
-                                                <input type="date" name="date" value="{{ $upcomingMatch->date ?? '' }}" class="form-control" id="date" min="{{\Carbon\Carbon::today()->toDateString()}}" required>
+                                                <input type="date" name="date" value="{{ old('date') ?? $upcomingMatch->date ?? '' }}" class="form-control @error('date') is-invalid @enderror" id="date" min="{{\Carbon\Carbon::today()->toDateString()}}" required>
+                                                @error('date')
+                                                    <div class="alert alert-danger">{{ $message }}</div>
+                                                @enderror
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="place">Lokalizacja</label>
-                                        <input type="text" name="place" value="{{ $upcomingMatch->place ?? '' }}" class="form-control" id="place" placeholder="Lokalizacja" size="30" required>
+                                        <input type="text" name="place" value="{{ old('place') ?? $upcomingMatch->place ?? '' }}" class="form-control @error('place') is-invalid @enderror" id="place" placeholder="Lokalizacja" size="50" required>
+                                        @error('place')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
                                     </div>
                                 </div>
                                 <button type="submit" class="btn btn-outline-success mb-3">Zapisz</button>

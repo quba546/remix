@@ -21,10 +21,14 @@
                                 @csrf
                                 <div class="form-group ml-2 mr-2">
                                     <label for="standingUrl">Adres URL do tabeli</label>
-                                    <input type="url" name="url" value="" class="form-control" id="standingUrl" aria-describedby="urlHelp"
+                                    <input type="url" name="url" value="{{ old('date') }}" class="form-control @error('url') is-invalid @enderror" id="standingUrl" aria-describedby="urlHelp"
                                            placeholder="https://example.com" size="200" required>
                                     <small id="urlHelp" class="form-text text-muted">Wpisz powyżej poprawny adres URL z tabelą, z
-                                        której chcesz pobrać dane.</small>
+                                        której chcesz pobrać dane.
+                                    </small>
+                                    @error('url')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-outline-success mb-3">Pobierz dane</button>
                             </form>

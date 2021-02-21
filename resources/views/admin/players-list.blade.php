@@ -9,6 +9,9 @@
                 <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
             </nav>
             @include('shared.messages')
+            @error('playedMatches')
+                <div class="alert alert-danger m-3">{{ $message }}</div>
+            @enderror
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-1 col-lg-2"></div>
@@ -55,7 +58,7 @@
                                             @method('PUT')
                                             <div class="form-row">
                                                 <div class="col-12 col-xl-8">
-                                                    <input type="number" name="playedMatches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0">
+                                                    <input type="number" name="playedMatches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0" min="0" step="1" required>
                                                 </div>
                                                 <div class="col-12 col-xl-4 mt-2 m-xl-0">
                                                     <button type="submit" class="btn btn-outline-success">Zapisz</button>
@@ -83,14 +86,14 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="firstName">Imię</label>
-                                        <input type="text" name="firstName" value="{{ old('firstName') }}" class="form-control @error('firstName') is-invalid @enderror" id="Imi" placeholder="Imię">
+                                        <input type="text" name="firstName" value="{{ old('firstName') }}" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
                                         @error('firstName')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="lastName">Nazwisko</label>
-                                        <input type="text" name="lastName" value="{{ old('lastName') }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko">
+                                        <input type="text" name="lastName" value="{{ old('lastName') }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
                                         @error('lastName')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -99,7 +102,7 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="position">Pozycja</label>
-                                        <select name="position" class="custom-select @error('position') is-invalid @enderror" id="position">
+                                        <select name="position" class="custom-select @error('position') is-invalid @enderror" id="position" required>
                                             <option value="none">Wybierz pozycję...</option>
                                             <option value="bramkarz">bramkarz</option>
                                             <option value="obrońca">obrońca</option>
@@ -112,7 +115,7 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="number">Numer</label>
-                                        <input type="number" name="number" value="{{ old('number') }}" class="form-control @error('number') is-invalid @enderror" id="number">
+                                        <input type="number" name="number" value="{{ old('number') }}" class="form-control @error('number') is-invalid @enderror" id="number" min="1" step="1" max="99">
                                         @error('number')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

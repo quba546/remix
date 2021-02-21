@@ -44,19 +44,19 @@
                                         <input readonly type="text" name="id" value="{{ $player->id ?? '' }}" class="form-control" id="id">
 
                                         <label for="lastName" class="mt-2">Nazwisko</label>
-                                        <input type="text" name="lastName" value="{{ old('lastName') ?? $player->last_name ?? '' }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko">
+                                        <input type="text" name="lastName" value="{{ old('lastName') ?? $player->last_name ?? '' }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
                                         @error('lastName')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
                                         <label for="firstName" class="mt-2">Imię</label>
-                                        <input type="text" name="firstName" value="{{ old('firstName') ?? $player->first_name ?? '' }}" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="Imię">
+                                        <input type="text" name="firstName" value="{{ old('firstName') ?? $player->first_name ?? '' }}" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
                                         @error('firstName')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
                                         <label for="position" class="mt-2">Pozycja</label>
-                                        <select name="position" class="custom-select" id="position">
+                                        <select name="position" class="custom-select" id="position" required>
                                             @php $position = $player->position ?? '' @endphp
                                             <option selected value="{{ $position }}">{{ $position }}</option>
                                             <option value="none">Wybierz pozycję...</option>
@@ -70,7 +70,7 @@
                                         @enderror
 
                                         <label for="number" class="mt-2">Numer</label>
-                                        <input type="number" name="number" value="{{ old('number') ?? $player->nr ?? '' }}" class="form-control @error('number') is-invalid @enderror" id="number">
+                                        <input type="number" name="number" value="{{ old('number') ?? $player->nr ?? '' }}" class="form-control @error('number') is-invalid @enderror" id="number" min="1" step="1" max="99">
                                         @error('number')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -80,21 +80,21 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-4">
                                         <label for="playedMatches">Rozegrane mecze</label>
-                                        <input type="number" name="playedMatches" value="{{ old('playedMatches') ?? $player->played_matches ?? '' }}" class="form-control @error('playedMatches') is-invalid @enderror" id="playedMatches" placeholder="0">
+                                        <input type="number" name="playedMatches" value="{{ old('playedMatches') ?? $player->played_matches ?? '' }}" class="form-control @error('playedMatches') is-invalid @enderror" id="playedMatches" placeholder="0" min="0" step="1">
                                         @error('playedMatches')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="goals">Bramki</label>
-                                        <input type="number" name="goals" value="{{ old('goals') ?? $player->goals ?? '' }}" class="form-control @error('goals') is-invalid @enderror" id="goals" placeholder="0">
+                                        <input type="number" name="goals" value="{{ old('goals') ?? $player->goals ?? '' }}" class="form-control @error('goals') is-invalid @enderror" id="goals" placeholder="0" min="0" step="1">
                                         @error('goals')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="assists">Asysty</label>
-                                        <input type="number" name="assists" value="{{ old('assists') ?? $player->assists ?? '' }}" class="form-control @error('assists') is-invalid @enderror" id="assists" placeholder="0">
+                                        <input type="number" name="assists" value="{{ old('assists') ?? $player->assists ?? '' }}" class="form-control @error('assists') is-invalid @enderror" id="assists" placeholder="0" min="0" step="1">
                                         @error('assists')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -103,21 +103,21 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-4">
                                         <label for="cleanSheets">Czyste konta</label>
-                                        <input type="number" name="cleanSheets" value="{{ old('cleanSheets') ?? $player->clean_sheets ?? '' }}" class="form-control @error('cleanSheets') is-invalid @enderror" id="cleanSheets" placeholder="0">
+                                        <input type="number" name="cleanSheets" value="{{ old('cleanSheets') ?? $player->clean_sheets ?? '' }}" class="form-control @error('cleanSheets') is-invalid @enderror" id="cleanSheets" placeholder="0" min="0" step="1">
                                         @error('cleanSheets')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="yellowCards">Żółte kartki</label>
-                                        <input type="number" name="yellowCards" value="{{ old('yellowCards') ?? $player->yellow_cards ?? '' }}" class="form-control @error('yellowCards') is-invalid @enderror" id="yellowCards" placeholder="0">
+                                        <input type="number" name="yellowCards" value="{{ old('yellowCards') ?? $player->yellow_cards ?? '' }}" class="form-control @error('yellowCards') is-invalid @enderror" id="yellowCards" placeholder="0" min="0" step="1">
                                         @error('yellowCards')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="redCards">Czerwone kartki</label>
-                                        <input type="number" name="redCards" value="{{ old('redCards') ?? $player->red_cards ?? '' }}" class="form-control @error('redCards') is-invalid @enderror" id="redCards" placeholder="0">
+                                        <input type="number" name="redCards" value="{{ old('redCards') ?? $player->red_cards ?? '' }}" class="form-control @error('redCards') is-invalid @enderror" id="redCards" placeholder="0" min="0" step="1">
                                         @error('redCards')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
