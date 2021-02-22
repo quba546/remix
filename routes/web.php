@@ -99,6 +99,9 @@ Route::group([], function () {
             Route::get('/', [AdminPlayerController::class, 'index'])
                 ->name('index');
 
+            Route::put('/', [AdminPlayerController::class, 'updatePlayedMatches'])
+                ->name('update.playedMatches');
+
             Route::post('/', [AdminPlayerController::class, 'store'])
                 ->name('store');
 

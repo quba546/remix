@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlayerRequest;
+use App\Http\Requests\SimplePlayerRequest;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
@@ -143,6 +144,32 @@ class PlayerController extends Controller
                 ->with('success', "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
             : redirect()
                 ->route('admin.players.edit', ['player' => $id])
+                ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  SimplePlayerRequest  $request
+     * @param  int|string  $id
+     * @return RedirectResponse
+     */
+    public function updatePlayedMatches(SimplePlayerRequest $request) : RedirectResponse
+    {
+        $validated = $request->validated();
+
+        $playerId = (int) $validated['playerId'];
+
+        $data = $this->playerRepository->playerDetails($playerId);
+
+        $success = $this->playerRepository->updatePlayedMatches($playerId, (int) $validated['playedMatches']);
+
+        return $success
+            ? redirect()
+                ->route('admin.players.index')
+                ->with('success', "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
+            : redirect()
+                ->route('admin.players.index')
                 ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
     }
 

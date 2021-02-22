@@ -63,6 +63,13 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             );
     }
 
+    public function updatePlayedMatches(int $id, int $playedMatches) : bool
+    {
+        return (bool) $this->player
+            ->where('id', $id)
+            ->update(['played_matches' => $playedMatches]);
+    }
+
     public function deletePlayerImage(int $id) : bool
     {
         return (bool) $this->player

@@ -53,15 +53,16 @@
                                     <td class="text-center align-middle">{{ $player->first_name }}</td>
                                     <td class="text-center align-middle">{{ $player->position }}</td>
                                     <td class="text-center align-middle">
-                                        <form action="{{ route('admin.players.update', ['player' => $player->id]) }}" method="POST">
+                                        <form action="{{ route('admin.players.update.playedMatches') }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                             <div class="form-row">
                                                 <div class="col-12 col-xl-8">
                                                     <input type="number" name="playedMatches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0" min="0" step="1" required>
+                                                    <input type="hidden" name="playerId" value="{{ $player->id }}">
                                                 </div>
                                                 <div class="col-12 col-xl-4 mt-2 m-xl-0">
-                                                    <button type="submit" name="update-playedMatches" class="btn btn-outline-success">Zapisz</button>
+                                                    <button type="submit" class="btn btn-outline-success">Zapisz</button>
                                                 </div>
                                             </div>
                                         </form>
