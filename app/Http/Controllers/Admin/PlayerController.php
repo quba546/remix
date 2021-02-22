@@ -135,6 +135,28 @@ class PlayerController extends Controller
     }
 
     /**
+     * Remove image from the specified resource.
+     *
+     * @param  int|string  $id
+     * @return RedirectResponse
+     */
+    public function destroyImage(int|string $id) : RedirectResponse
+    {
+        $id = (int) $id;
+
+        $path = 'public/' . $this->playerRepository->playerDetails($id)->image;
+
+        if (Storage::delete($path)) {
+            $this->playerRepository->updatePlayer($id, ['image' => NULL]);
+
+            return redirect()->route('admin.players.index')->with('success', 'Poprawnie usunięto zdjęcie zawodnika o id: ' . $id);
+        } else {
+
+            return redirect()->route('admin.players.index')->with('error', 'Wystąpił błąd podczas usuwania zdjęcia zawodnika o id: ' . $id);
+        }
+    }
+
+    /**
      * Remove the specified resource from storage.
      *
      * @param  int|string  $id

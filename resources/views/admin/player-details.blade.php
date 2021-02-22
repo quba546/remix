@@ -29,33 +29,31 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="row mx-auto justify-content-center align-items-end mt-4 mt-lg-5">
-                                            <div class="col-12">
-                                                <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image" accept="image/*">
-                                                <label class="custom-file-label text-left" for="image">Wybierz zdjęcie</label>
-                                                @error('image')
-                                                    <div class="alert alert-danger">{{ $message }}</div>
-                                                @enderror
-                                            </div>
-                                        </div>
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="id">ID</label>
+                                    <div class="form-group d-flex col-12 d-xl-none mt-4">
+                                        <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-mobile" accept="image/*">
+                                        <label class="custom-file-label text-left" for="image">Wybierz zdjęcie</label>
+                                        @error('image')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-12 col-xl-6">
+                                        <label for="id" class="mb-0">ID</label>
                                         <input readonly type="text" name="id" value="{{ $player->id ?? '' }}" class="form-control" id="id">
 
-                                        <label for="lastName" class="mt-2">Nazwisko</label>
+                                        <label for="lastName" class="mb-0 mt-3">Nazwisko</label>
                                         <input type="text" name="lastName" value="{{ old('lastName') ?? $player->last_name ?? '' }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
                                         @error('lastName')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
-                                        <label for="firstName" class="mt-2">Imię</label>
+                                        <label for="firstName" class="mb-0 mt-3">Imię</label>
                                         <input type="text" name="firstName" value="{{ old('firstName') ?? $player->first_name ?? '' }}" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
                                         @error('firstName')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
-                                        <label for="position" class="mt-2">Pozycja</label>
+                                        <label for="position" class="mb-0 mt-3">Pozycja</label>
                                         <select name="position" class="custom-select" id="position" required>
                                             @php $position = $player->position ?? '' @endphp
                                             <option selected value="{{ $position }}">{{ $position }}</option>
@@ -68,32 +66,42 @@
                                         @error('position')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
-
-                                        <label for="number" class="mt-2">Numer</label>
+                                    </div>
+                                </div>
+                                <div class="form-row ml-2 mr-2">
+                                    <div class="form-group d-none d-xl-flex col-lg-6 mt-4">
+                                        <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-desktop" accept="image/*">
+                                        <label class="custom-file-label text-left" for="image">Wybierz zdjęcie</label>
+                                        @error('image')
+                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        @enderror
+                                    </div>
+                                    <div class="form-group col-12 col-xl-6">
+                                        <label for="number" class="mb-0">Numer</label>
                                         <input type="number" name="number" value="{{ old('number') ?? $player->nr ?? '' }}" class="form-control @error('number') is-invalid @enderror" id="number" min="1" step="1" max="99">
                                         @error('number')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
                                 <hr>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-4">
-                                        <label for="playedMatches">Rozegrane mecze</label>
+                                        <label for="playedMatches" class="mb-0">Rozegrane mecze</label>
                                         <input type="number" name="playedMatches" value="{{ old('playedMatches') ?? $player->played_matches ?? '' }}" class="form-control @error('playedMatches') is-invalid @enderror" id="playedMatches" placeholder="0" min="0" step="1">
                                         @error('playedMatches')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="goals">Bramki</label>
+                                        <label for="goals" class="mb-0">Bramki</label>
                                         <input type="number" name="goals" value="{{ old('goals') ?? $player->goals ?? '' }}" class="form-control @error('goals') is-invalid @enderror" id="goals" placeholder="0" min="0" step="1">
                                         @error('goals')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="assists">Asysty</label>
+                                        <label for="assists" class="mb-0">Asysty</label>
                                         <input type="number" name="assists" value="{{ old('assists') ?? $player->assists ?? '' }}" class="form-control @error('assists') is-invalid @enderror" id="assists" placeholder="0" min="0" step="1">
                                         @error('assists')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -102,21 +110,21 @@
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-4">
-                                        <label for="cleanSheets">Czyste konta</label>
+                                        <label for="cleanSheets" class="mb-0">Czyste konta</label>
                                         <input type="number" name="cleanSheets" value="{{ old('cleanSheets') ?? $player->clean_sheets ?? '' }}" class="form-control @error('cleanSheets') is-invalid @enderror" id="cleanSheets" placeholder="0" min="0" step="1">
                                         @error('cleanSheets')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="yellowCards">Żółte kartki</label>
+                                        <label for="yellowCards" class="mb-0">Żółte kartki</label>
                                         <input type="number" name="yellowCards" value="{{ old('yellowCards') ?? $player->yellow_cards ?? '' }}" class="form-control @error('yellowCards') is-invalid @enderror" id="yellowCards" placeholder="0" min="0" step="1">
                                         @error('yellowCards')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
-                                        <label for="redCards">Czerwone kartki</label>
+                                        <label for="redCards" class="mb-0">Czerwone kartki</label>
                                         <input type="number" name="redCards" value="{{ old('redCards') ?? $player->red_cards ?? '' }}" class="form-control @error('redCards') is-invalid @enderror" id="redCards" placeholder="0" min="0" step="1">
                                         @error('redCards')
                                             <div class="alert alert-danger">{{ $message }}</div>
@@ -125,11 +133,11 @@
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
-                                        <label for="createdAt">Utworzono</label>
+                                        <label for="createdAt" class="mb-0">Utworzono</label>
                                         <input readonly type="text" name="createdAt" value="{{ \Carbon\Carbon::parse($player->created_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="createdAt">
                                     </div>
                                     <div class="form-group col-md-6">
-                                        <label for="updatedAt">Ostatnio edytowano</label>
+                                        <label for="updatedAt" class="mb-0">Ostatnio edytowano</label>
                                         <input readonly type="text" name="updatedAt" value="{{ \Carbon\Carbon::parse($player->updated_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="updatedAt">
                                     </div>
                                 </div>
@@ -140,7 +148,14 @@
                                 </div>
                             </form>
                             <div class="form-row ml-2 mr-2">
-                                <div class="form-group col-12 d-flex justify-content-end">
+                                <div class="form-group col-6 d-flex justify-content-start">
+                                    <form action="{{ route('admin.players.destroy.image', ['player' => $player->id]) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć zdjęcie zawodnika?')" class="btn btn-outline-danger">Usuń zdjęcie</button>
+                                    </form>
+                                </div>
+                                <div class="form-group col-6 d-flex justify-content-end">
                                     <form action="{{ route('admin.players.destroy', ['player' => $player->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

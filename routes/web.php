@@ -110,6 +110,9 @@ Route::group([], function () {
 
             Route::delete('/{player}', [AdminPlayerController::class, 'destroy'])
                 ->name('destroy');
+
+            Route::delete('/image/{player}', [AdminPlayerController::class, 'destroyImage'])
+                ->name('destroy.image');
         });
     });
 });

@@ -44,17 +44,17 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
     {
         $player = $this->player->find($id);
 
-        if(isset($data['firstName'])) $player->first_name = $data['firstName'];
-        if(isset($data['lastName'])) $player->last_name = $data['lastName'];
-        if(isset($data['nr'])) $player->nr = $data['nr'];
-        if(isset($data['position'])) $player->position = $data['position'];
-        if(isset($data['goals'])) $player->goals = $data['goals'];
-        if(isset($data['assists'])) $player->assists = $data['assists'];
-        if(isset($data['playedMatches'])) $player->played_matches = $data['playedMatches'];
-        if(isset($data['cleanSheets'])) $player->clean_sheets = $data['cleanSheets'];
-        if(isset($data['yellowCards'])) $player->yellow_cards = $data['yellowCards'];
-        if(isset($data['redCards'])) $player->red_cards = $data['redCards'];
-        if(isset($data['image'])) $player->image = $data['image'];
+        $player->first_name = $data['firstName'];
+        $player->last_name = $data['lastName'];
+        $player->nr = $data['nr'];
+        $player->position = $data['position'];
+        $player->goals = $data['goals'];
+        $player->assists = $data['assists'];
+        $player->played_matches = $data['playedMatches'];
+        $player->clean_sheets = $data['cleanSheets'];
+        $player->yellow_cards = $data['yellowCards'];
+        $player->red_cards = $data['redCards'];
+        $player->image = $data['image'];
 
         return $player->save();
     }
