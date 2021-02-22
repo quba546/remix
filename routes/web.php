@@ -111,6 +111,7 @@ Route::group([], function () {
         });
     });
 
+    // route for static pages
     Route::get('/{page}', PageController::class)
         ->name('page')
         ->where('page', 'about|contact');

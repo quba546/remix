@@ -1,5 +1,13 @@
 require('./bootstrap');
 
+// add csrf-token to all request headers
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+
 // footer on bottom page
 $(document).ready(function () {
     setInterval(function () {
