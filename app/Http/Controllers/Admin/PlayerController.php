@@ -10,7 +10,6 @@ use App\Http\Requests\SimplePlayerRequest;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
@@ -50,7 +49,7 @@ class PlayerController extends Controller
      * Store a newly created resource in storage.
      *
      * @param  PlayerRequest  $request
-     * @return RedirectResponse
+     * @return ?RedirectResponse
      */
     public function store(PlayerRequest $request) : ?RedirectResponse
     {
@@ -151,7 +150,6 @@ class PlayerController extends Controller
      * Update the specified resource in storage.
      *
      * @param  SimplePlayerRequest  $request
-     * @param  int|string  $id
      * @return RedirectResponse
      */
     public function updatePlayedMatches(SimplePlayerRequest $request) : RedirectResponse
