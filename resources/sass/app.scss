@@ -26,6 +26,11 @@
     color: #ffffff;
 }
 
+.navbar-toggler-icon > i {
+    color:#ffffff;
+    font-size:28px;
+}
+
 .btn-custom {
     background-color: $primary-color;
     color: #ffffff;
@@ -76,6 +81,14 @@ a:link {
 
 .nav-link {
     font-size: 1.3rem;
+}
+
+#navbarNav > ul > li > a:hover {
+    color: $secondary-color;
+}
+
+.nav-link > i:hover {
+    color: $secondary-color;
 }
 
 .dropdown-item {
@@ -396,8 +409,6 @@ a:link {
         content: attr(data-content);
         position: relative;
         display: inline-block;
-        color: black;
-
         padding: 0 .5em;
         line-height: 1.5em;
         // this is really the only tricky part, you need to specify the background color of the container element...

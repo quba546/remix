@@ -14,7 +14,7 @@
                 </div>
                 <div class="col-4 d-flex">
                     <ul class="list-inline mx-auto justify-content-center site-map-list site-map-list">
-                        <li class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Klub w innych serwisach</li>
+                        <li class="text-uppercase font-weight-bold letter-spacing-1 word-spacing-2">Inne serwisy</li>
                     </ul>
                 </div>
             </div>
@@ -76,7 +76,7 @@
     <div class="col-12 col-xl-3 pt-3 pb-3 text-center vertical-center">
         <span class="text-uppercase letter-spacing-1 word-spacing-2">Wszelkie prawa zastrzeżone</span>
         <br>
-        <span class="text-uppercase letter-spacing-1 word-spacing-2">&copy;<script>document.write(new Date().getFullYear().toString());</script> Remix Niebieszczany</span>
+        <span class="text-uppercase letter-spacing-1 word-spacing-2">&copy<script>document.write(new Date().getFullYear().toString());</script> Remix Niebieszczany</span>
         <br><br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">Stronę wykonał Jakub Pałys</span>
     </div>
