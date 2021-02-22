@@ -20,7 +20,9 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
 
     public function listPaginated(int $limit, array $columns) : LengthAwarePaginator
     {
-        return $this->player->sortable()->paginate($limit, $columns);
+        return $this->player
+            ->sortable()
+            ->paginate($limit, $columns);
     }
 
     public function bestScorers(int $limit) : Collection
@@ -42,30 +44,44 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
 
     public function updatePlayer(int $id, array $data) : bool
     {
-        $player = $this->player->find($id);
+         return (bool) $this->player
+            ->where('id', $id)
+            ->update(
+                [
+                    'first_name' => $data['firstName'],
+                    'last_name' => $data['lastName'],
+                    'nr' => $data['nr'],
+                    'position' => $data['position'],
+                    'goals' => $data['goals'],
+                    'assists' => $data['assists'],
+                    'played_matches' => $data['playedMatches'],
+                    'clean_sheets' => $data['cleanSheets'],
+                    'yellow_cards' => $data['yellowCards'],
+                    'red_cards' => $data['redCards'],
+                    'image' => $data['image']
+                ]
+            );
+    }
 
-        $player->first_name = $data['firstName'];
-        $player->last_name = $data['lastName'];
-        $player->nr = $data['nr'];
-        $player->position = $data['position'];
-        $player->goals = $data['goals'];
-        $player->assists = $data['assists'];
-        $player->played_matches = $data['playedMatches'];
-        $player->clean_sheets = $data['cleanSheets'];
-        $player->yellow_cards = $data['yellowCards'];
-        $player->red_cards = $data['redCards'];
-        $player->image = $data['image'];
-
-        return $player->save();
+    public function deletePlayerImage(int $id) : bool
+    {
+        return (bool) $this->player
+            ->where('id', $id)
+            ->update(['image' => NULL]);
     }
 
     public function playerDetails(int $id) : ?Player
     {
-        return $this->player->where('id', $id)->get()->first();
+        return $this->player
+            ->where('id', $id)
+            ->get()
+            ->first();
     }
 
     public function deletePlayer(int $id) : bool
     {
-        return $this->player->find($id)->delete();
+        return $this->player
+            ->findOrFail($id)
+            ->delete();
     }
 }

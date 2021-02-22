@@ -22,6 +22,20 @@ class Player extends Model
         'red_cards' => 0,
     ];
 
+    protected $fillable = [
+        'first_name',
+        'last_name',
+        'nr',
+        'position',
+        'goals',
+        'assists',
+        'played_matches',
+        'clean_sheets',
+        'yellow_cards',
+        'red_cards',
+        'image',
+    ];
+
     public $sortable = [
         'last_name',
         'first_name',

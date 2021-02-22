@@ -65,8 +65,12 @@ class PlayerController extends Controller
             );
 
             return $success
-                ? redirect()->route('admin.players.store')->with('success', 'Poprawnie dodano nowego zawodnika')
-                : redirect()->route('admin.players.store')->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
+                ? redirect()
+                    ->route('admin.players.store')
+                    ->with('success', 'Poprawnie dodano nowego zawodnika')
+                : redirect()
+                    ->route('admin.players.store')
+                    ->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
         }
 
         return null;
@@ -88,7 +92,9 @@ class PlayerController extends Controller
                     'player' => $this->playerRepository->playerDetails($id)
                 ]
             )
-            : redirect()->route('admin.players.index')->with('error', 'Nie istnieje zawodnik o id: ' . $id);
+            : redirect()
+              ->route('admin.players.index')
+              ->with('error', 'Nie istnieje zawodnik o ID: ' . $id);
     }
 
     /**
@@ -102,14 +108,16 @@ class PlayerController extends Controller
     {
         $id = (int) $id;
 
+        $data = $this->playerRepository->playerDetails($id);
+
         $validated = $request->validated();
 
         if (!empty($validated['image'])) {
-            $originalPath = Storage::putFile('public/players-images', $validated['image']);
+            $originalPath = Storage::putFile('public/players-images', $validated['image']); // add new player image to storage
             $path = str_replace('public/', '', $originalPath);
 
             if ($originalPath) {
-                Storage::disk('public')->delete($this->playerRepository->playerDetails($id)->image);
+                Storage::disk('public')->delete($data['image']); // delete old player image from storage
             }
         }
 
@@ -125,13 +133,17 @@ class PlayerController extends Controller
                 'cleanSheets' => $validated['cleanSheets'],
                 'yellowCards' => $validated['yellowCards'],
                 'redCards' => $validated['redCards'],
-                'image' => $path ?? null
+                'image' => $path ?? $data['image']
             ]
         );
 
         return $success
-            ? redirect()->route('admin.players.index')->with('success', 'Poprawnie zaktualizowano dane zawodnika o id: ' . $id)
-            : redirect()->route('admin.players.index')->with('error', 'Wystąpił błąd przy aktualizacji danych zawodnika o id: ' . $id);
+            ? redirect()
+                ->route('admin.players.edit', ['player' => $id])
+                ->with('success', "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
+            : redirect()
+                ->route('admin.players.edit', ['player' => $id])
+                ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
     }
 
     /**
@@ -144,15 +156,21 @@ class PlayerController extends Controller
     {
         $id = (int) $id;
 
-        $path = 'public/' . $this->playerRepository->playerDetails($id)->image;
+        $data = $this->playerRepository->playerDetails($id);
+
+        $path = 'public/' . $data['image'];
 
         if (Storage::delete($path)) {
-            $this->playerRepository->updatePlayer($id, ['image' => NULL]);
+            $this->playerRepository->deletePlayerImage($id);
 
-            return redirect()->route('admin.players.index')->with('success', 'Poprawnie usunięto zdjęcie zawodnika o id: ' . $id);
+            return redirect()
+                ->route('admin.players.edit', ['player' => $id])
+                ->with('warning', "Poprawnie usunięto zdjęcie zawodnika  {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
         } else {
 
-            return redirect()->route('admin.players.index')->with('error', 'Wystąpił błąd podczas usuwania zdjęcia zawodnika o id: ' . $id);
+            return redirect()
+                ->route('admin.players.edit', ['player' => $id])
+                ->with('error', "Zawodnik {$data['first_name']} {$data['last_name']} (ID:{$data['id']}) nie ma przypisanego zdjęcia");
         }
     }
 
@@ -166,8 +184,14 @@ class PlayerController extends Controller
     {
         $id = (int) $id;
 
+        $data = $this->playerRepository->playerDetails($id);
+
         return $this->playerRepository->deletePlayer($id)
-            ? redirect()->route('admin.players.index')->with('warning', 'Poprawnie usunięto dane zawodnika o id: ' . $id)
-            : redirect()->route('admin.players.index')->with('error', 'Wystąpił błąd przy usuwaniu danych zawodnika o id: ' . $id);
+            ? redirect()
+                ->route('admin.players.index')
+                ->with('warning', "Poprawnie usunięto dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
+            : redirect()
+                ->route('admin.players.index')
+                ->with('error', "Wystąpił błąd przy usuwaniu danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']}");
     }
 }

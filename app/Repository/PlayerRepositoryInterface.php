@@ -14,6 +14,7 @@ interface PlayerRepositoryInterface
     public function bestScorers(int $limit) : Collection;
     public function savePlayer(array $data) : bool;
     public function updatePlayer(int $id, array $data) : bool;
+    public function deletePlayerImage(int $id) : bool;
     public function playerDetails(int $id) : ?Player;
     public function deletePlayer(int $id) : bool;
 }
