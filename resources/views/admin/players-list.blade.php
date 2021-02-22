@@ -61,7 +61,7 @@
                                                     <input type="number" name="playedMatches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0" min="0" step="1" required>
                                                 </div>
                                                 <div class="col-12 col-xl-4 mt-2 m-xl-0">
-                                                    <button type="submit" class="btn btn-outline-success">Zapisz</button>
+                                                    <button type="submit" name="update-playedMatches" class="btn btn-outline-success">Zapisz</button>
                                                 </div>
                                             </div>
                                         </form>
@@ -121,7 +121,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-outline-success mb-3">Dodaj</button>
+                                <button type="submit" name="form-create-player" class="btn btn-outline-success mb-3">Dodaj</button>
                             </form>
                         </div>
                     </div>

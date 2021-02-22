@@ -17,7 +17,7 @@
                         <div class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Edytuj dane zawodnika</h5>
                             <hr>
-                            <form action="{{ route('admin.players.update', ['player' => $player->id]) }}" method="POST">
+                            <form action="{{ route('admin.players.update', ['player' => $player->id]) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
                                 <div class="form-row ml-2 mr-2">
@@ -25,16 +25,16 @@
                                         <div class="row mx-auto justify-content-center align-items-start mt-4">
                                             <div class="col-12 col-lg-7">
                                                 <div class="player-img">
-                                                    <img src="{{ $player->image ?? asset('storage/blank-profile-picture.png') }}" alt="Zdjęcie gracza">
+                                                    <img src="{{ $player->image ? asset('storage/' . $player->image) : asset('storage/blank-profile-picture.png') }}" alt="Zdjęcie gracza">
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row mx-auto justify-content-center align-items-end mt-4 mt-lg-5">
                                             <div class="col-12">
-                                                <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image">
+                                                <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image" accept="image/*">
                                                 <label class="custom-file-label text-left" for="image">Wybierz zdjęcie</label>
                                                 @error('image')
-                                                <div class="alert alert-danger">{{ $message }}</div>
+                                                    <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
                                         </div>

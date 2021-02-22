@@ -10,6 +10,7 @@ use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
 {
@@ -29,7 +30,7 @@ class PlayerController extends Controller
     {
         return view('admin.players-list',
             [
-                'players' => $this->playerRepository->listPaginated(10,
+                'players' => $this->playerRepository->listPaginated(15,
                         [
                             'id',
                             'first_name',
@@ -50,22 +51,25 @@ class PlayerController extends Controller
      * @param  PlayerRequest  $request
      * @return RedirectResponse
      */
-    public function store(PlayerRequest $request) : RedirectResponse
+    public function store(PlayerRequest $request) : ?RedirectResponse
     {
-        $validated = $request->validated();
+        if ($request->has('form-create-player')) {
+            $validated = $request->validated();
+            $success = $this->playerRepository->savePlayer(
+                [
+                    'firstName' => $validated['firstName'],
+                    'lastName' => $validated['lastName'],
+                    'position' => $validated['position'],
+                    'nr' => $validated['number'],
+                ]
+            );
 
-        $success = $this->playerRepository->savePlayer(
-            [
-                'firstName' => $validated['firstName'],
-                'lastName' => $validated['lastName'],
-                'position' => $validated['position'],
-                'nr' => $validated['number'],
-            ]
-        );
+            return $success
+                ? redirect()->route('admin.players.store')->with('success', 'Poprawnie dodano nowego zawodnika')
+                : redirect()->route('admin.players.store')->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
+        }
 
-        return $success
-            ? redirect()->route('admin.players.store')->with('success', 'Poprawnie dodano nowego zawodnika')
-            : redirect()->route('admin.players.store')->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
+        return null;
     }
 
     /**
@@ -100,6 +104,15 @@ class PlayerController extends Controller
 
         $validated = $request->validated();
 
+        if (!empty($validated['image'])) {
+            $originalPath = Storage::putFile('public/players-images', $validated['image']);
+            $path = str_replace('public/', '', $originalPath);
+
+            if ($originalPath) {
+                Storage::disk('public')->delete($this->playerRepository->playerDetails($id)->image);
+            }
+        }
+
         $success = $this->playerRepository->updatePlayer($id,
             [
                 'firstName' => $validated['firstName'],
@@ -112,6 +125,7 @@ class PlayerController extends Controller
                 'cleanSheets' => $validated['cleanSheets'],
                 'yellowCards' => $validated['yellowCards'],
                 'redCards' => $validated['redCards'],
+                'image' => $path ?? null
             ]
         );
 

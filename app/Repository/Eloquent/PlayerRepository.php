@@ -54,6 +54,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         if(isset($data['cleanSheets'])) $player->clean_sheets = $data['cleanSheets'];
         if(isset($data['yellowCards'])) $player->yellow_cards = $data['yellowCards'];
         if(isset($data['redCards'])) $player->red_cards = $data['redCards'];
+        if(isset($data['image'])) $player->image = $data['image'];
 
         return $player->save();
     }
