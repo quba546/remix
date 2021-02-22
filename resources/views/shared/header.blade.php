@@ -21,7 +21,7 @@
     </button>
     <div class="collapse navbar-collapse ml-xl-5 pl-xl-5" id="navbarNav">
         <ul class="navbar-nav mx-auto">
-            <li class="nav-item @if(\Illuminate\Support\Facades\Route::current()->getName() === 'homePage') active @endif">
+            <li class="nav-item @if(\Illuminate\Support\Facades\Route::current()->getName() === 'index') active @endif">
                 <a class="nav-link" href="{{ route('index') }}"><i class="fas fa-home mr-3"></i>Strona główna</a>
             </li>
             <li class="nav-item dropdown ml-3 @if(in_array(\Illuminate\Support\Facades\Route::current()->getName(), ['season.timetable', 'season.standings.index', 'season.team.index', 'season.stats.index'])) active @endif">
@@ -35,11 +35,11 @@
             <li class="nav-item ml-3">
                 <a class="nav-link disabled" href="#"><i class="fas fa-child mr-3"></i>Sekcje młodzieżowe</a>
             </li>
-            <li class="nav-item ml-3 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'about-us') active @endif">
-                <a class="nav-link" href="{{ route('about-us') }}"><i class="fas fa-info-circle mr-3"></i>O klubie</a>
+            <li class="nav-item ml-3 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'about') active @endif">
+                <a class="nav-link" href="{{ route('page', 'about') }}"><i class="fas fa-info-circle mr-3"></i>O klubie</a>
             </li>
             <li class="nav-item ml-3 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'contact') active @endif">
-                <a class="nav-link" href="{{ route('contact') }}"><i class="far fa-address-book mr-3"></i>Kontakt</a>
+                <a class="nav-link" href="{{ route('page', 'contact') }}"><i class="far fa-address-book mr-3"></i>Kontakt</a>
             </li>
             @auth
                 <li class="nav-item ml-3 @if(\Illuminate\Support\Facades\Route::current()->getName() === 'admin.dashboard') active @endif">

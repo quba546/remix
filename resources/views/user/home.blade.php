@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layout.app')
 
 @section('content')
     <div class="row mx-auto pt-5 pb-5">

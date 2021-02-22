@@ -8,7 +8,7 @@ use App\Http\Controllers\Admin\LastMatchController;
 use App\Http\Controllers\Admin\UpcomingMatchController;
 use App\Http\Controllers\Admin\PlayerController as AdminPlayerController;
 use App\Http\Controllers\Admin\StandingController as AdminStandingController;
-
+use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -31,14 +31,6 @@ Route::get('/', function () {
 Route::group([], function () {
     Route::get('/', [HomeController::class, 'index'])
         ->name('index');
-
-    Route::get('/contact', function () {
-        return view('user.contact');
-    })->name('contact');
-
-    Route::get('/about-us', function () {
-        return view('user.about-us');
-    })->name('about-us');
 
     Route::group([
         'prefix' => '/season/',
@@ -118,6 +110,10 @@ Route::group([], function () {
                 ->name('destroy.image');
         });
     });
+
+    Route::get('/{page}', PageController::class)
+        ->name('page')
+        ->where('page', 'about|contact');
 });
 
 /* ====================== */

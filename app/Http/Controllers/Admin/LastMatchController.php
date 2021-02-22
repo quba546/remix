@@ -61,6 +61,8 @@ class LastMatchController extends Controller
             ]
         );
 
-        return redirect()->route('admin.matches.last.edit')->with('success', 'Poprawnie dodano dane o ostatnim meczu');
+        return redirect()
+            ->route('admin.matches.last.edit')
+            ->with('success', 'Poprawnie dodano dane o ostatnim meczu');
     }
 }

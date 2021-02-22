@@ -61,6 +61,8 @@ class UpcomingMatchController extends Controller
             ]
         );
 
-        return redirect()->route('admin.matches.upcoming.edit')->with('success', 'Poprawnie dodano dane o najbliższym meczu');
+        return redirect()
+            ->route('admin.matches.upcoming.edit')
+            ->with('success', 'Poprawnie dodano dane o najbliższym meczu');
     }
 }

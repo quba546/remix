@@ -50,8 +50,12 @@ class StandingController extends Controller
         $standingUrl = $validated['url'];
 
         return $this->standingRepository->fillStanding($standingUrl)
-            ? redirect()->route('admin.standing.create')->with('success', 'Poprawnie dodano dane tabeli ligowej')
-            : redirect()->route('admin.standing.create')->with('error', 'Wystąpił błąd podczas dodawania danych tabeli ligowej');
+            ? redirect()
+                ->route('admin.standing.create')
+                ->with('success', 'Poprawnie dodano dane tabeli ligowej')
+            : redirect()
+                ->route('admin.standing.create')
+                ->with('error', 'Wystąpił błąd podczas dodawania danych tabeli ligowej');
     }
 
     /**
@@ -63,6 +67,8 @@ class StandingController extends Controller
     {
         $this->standingRepository->deleteStanding();
 
-        return redirect()->route('admin.standing.create')->with('warning', 'Poprawnie usunięto dane tabeli ligowej');
+        return redirect()
+            ->route('admin.standing.create')
+            ->with('warning', 'Poprawnie usunięto dane tabeli ligowej');
     }
 }
