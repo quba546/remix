@@ -6,9 +6,20 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">Kontakt</h2>
-                    <p class="text-justify">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, debitis dolores eum ex, laboriosam libero magni natus obcaecati perspiciatis porro repellat, suscipit voluptatem. Accusamus cumque harum minima minus nobis odio officia, repellat voluptate. Alias amet at cum, deserunt dicta distinctio ea earum error est facilis impedit incidunt ipsam laborum, libero maiores minus modi nulla optio provident quam velit veniam veritatis. Adipisci aliquam consequatur impedit laudantium, magni molestiae natus nostrum officia optio quam sequi tempora, unde. Deserunt doloribus quas, qui soluta sunt totam vel vitae. Asperiores beatae cupiditate debitis delectus, dicta doloribus eligendi explicabo illo maxime, nemo nihil odio porro provident qui repudiandae sapiente, soluta. Distinctio error facere impedit incidunt laboriosam laudantium soluta totam voluptate. Animi architecto consequuntur dolorem eveniet, quibusdam reprehenderit tempora vitae. Ab alias aut debitis doloremque ea eaque harum, in laboriosam laudantium molestias odit officia optio quidem repellat sit! Aliquid aut beatae culpa doloribus ducimus fuga fugit illum inventore, laborum maxime modi necessitatibus nemo perspiciatis porro quae quibusdam reprehenderit sunt vel velit voluptates? Consequuntur eius enim ex exercitationem molestiae, necessitatibus nemo neque provident reprehenderit. Asperiores consequatur delectus eaque earum expedita maiores non vitae! Aliquam assumenda, atque est laborum nisi quae quam quo reiciendis repudiandae suscipit tempore, ullam velit.
-                    </p>
+                    <div class="text-justify mt-5">
+                        <img src="{{ url('/assets/herb_remix_niebieszczany.png') }}" alt="Herb Remix Niebieszczany" class="float-left mr-3 mb-3" width="30%">
+                        <div class="pt-3 pl-5">
+                            <h3>Zarząd klubu</h3>
+                            <p><b>Prezes</b> - Bobik Szymon</p>
+                            <p><b>Wiceprezes</b> - Sokół Władysław</p>
+                            <p><b>Skarbnik</b> - Kosar Kamil</p>
+                            <p><b>Sekretarz</b> - Janiszewski Marcin</p>
+                            <p><b>Członek zarządu</b> - Niemczyk Daniel</p>
+                            <h3>Dane kontaktowe</h3>
+                            <p><b>Tel.:</b><a href="tel:695780307"> 695-780-307</a></p>
+                            <p><b>E-mail:</b><a href="mailto:remix.niebieszczany@op.pl"> remix.niebieszczany@op.pl</a></p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -364,12 +364,17 @@ a:link {
 /* ======================================== */
 
 /* ============= Table styles ============= */
-.table-home-font {
+.table-font {
+    font-size: 18px;
+}
+
+.table-standing-font, .table-best-scorers-font {
     font-size: 16px;
 }
 
 .table-team-name {
-    font-size: 1.25rem;
+    font-size: 1.4rem;
+    width: 40%;
 }
 
 .table-icon {

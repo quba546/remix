@@ -17,7 +17,7 @@
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Lista zawodników</h2>
-                        <table class="table table-sm table-responsive-lg table-striped table-bordered mt-4 table-home-font">
+                        <table class="table table-sm table-responsive-lg table-striped table-bordered mt-4 table-font">
                             <thead class="thead-dark">
                             <tr>
                                 <th class="text-center align-middle">Lp.</th>
@@ -68,7 +68,7 @@
                                         </form>
                                     </td>
                                     <td class="text-center align-middle">
-                                        <a href="{{ route('admin.players.edit', ['player' => $player->id]) }}">Szczegóły</a>
+                                        <a href="{{ route('admin.players.edit', ['player' => $player->id]) }}" class="btn btn-outline-info">Szczegóły</a>
                                     </td>
                                     <td class="text-center align-middle">{{ \Carbon\Carbon::parse($player->updated_at)->diffForHumans() }}</td>
                                 </tr>

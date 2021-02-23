@@ -8,8 +8,8 @@
     <div class="col-12 col-lg-2 d-flex align-items-center justify-content-end">
         <div class="share-button d-none d-xl-flex">
             <span>Polub nas</span>
-            <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.facebook.com/niebieszczany.remix" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/rmx1994/" target="_blank"><i class="fab fa-instagram"></i></a>
         </div>
     </div>
 </div>
@@ -60,8 +60,8 @@
                 <div class="col-6 d-flex d-xl-none justify-content-end mt-3 mb-2">
                     <div class="share-button-mobile d-flex d-xl-none">
                         <span>Polub nas</span>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/niebieszczany.remix"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/rmx1994/"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </li>

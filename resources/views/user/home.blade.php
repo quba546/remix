@@ -4,7 +4,7 @@
     <div class="row mx-auto pt-5 pb-5">
         <div class="col-12 col-xl-4 pl-xl-5">
             <aside>
-                <table class="table table-sm table-striped table-bordered shadow-lg table-home-font">
+                <table class="table table-sm table-striped table-bordered shadow-lg table-standing-font">
                     <thead class="thead-dark">
                     <tr>
                         <th colspan="4" class="text-center align-middle text-uppercase">{{ $shortStanding[0]->league ?? '' }}</th>
@@ -34,7 +34,7 @@
         </div>
         <div class="col-12 col-xl-4 pr-xl-5">
             <aside>
-                <table class="table table-sm table-borderless shadow-lg table-home-font">
+                <table class="table table-sm table-borderless shadow-lg table-font">
                     <thead class="thead-dark">
                     <tr>
                         <th></th>
@@ -44,7 +44,7 @@
                     <tbody class="table-light">
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-futbol table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->matchType->type ?? '' }}</td>
+                        <td colspan="3" class="text-center align-middle font-weight-bold">{{ $lastMatch->matchType->type ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
@@ -62,7 +62,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <table class="table table-sm table-borderless shadow-lg mt-5 table-home-font">
+                <table class="table table-sm table-borderless shadow-lg mt-5 table-font">
                     <thead class="thead-dark">
                     <tr>
                         <th></th>
@@ -72,7 +72,7 @@
                     <tbody class="table-light">
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-futbol table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->matchType->type ?? '' }}</td>
+                        <td colspan="3" class="text-center align-middle font-weight-bold">{{ $upcomingMatch->matchType->type ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
@@ -90,7 +90,7 @@
                     </tr>
                     </tbody>
                 </table>
-                <table class="table table-sm table-striped table-bordered shadow-lg mt-5 table-home-font">
+                <table class="table table-sm table-striped table-bordered shadow-lg mt-5 table-best-scorers-font">
                     <thead class="thead-dark">
                     <tr>
                         <th colspan="3" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najlepsi strzelcy</th>

@@ -27,18 +27,19 @@
                 <div class="col-4 d-flex">
                     <ul class="list-inline mx-auto justify-content-center site-map-list site-map-list">
                         <li><a href="#" class="font-white">Sekcja młodzieżowa</a></li>
-                        <li><a href="#" class="font-white">O klubie</a></li>
-                        <li><a href="#" class="font-white">Kontakt</a></li>
-                        <li><a href="#" class="font-white">Terminarz</a></li>
-                        <li><a href="#" class="font-white">Tabela</a></li>
-                        <li><a href="#" class="font-white">Kadra</a></li>
-                        <li><a href="#" class="font-white">Statystyki</a></li>
+                        <li><a href="{{ route('page', 'about') }}" class="font-white">O klubie</a></li>
+                        <li><a href="{{ route('page', 'contact') }}" class="font-white">Kontakt</a></li>
+                        <li><a href="{{ route('season.timetable') }}" class="font-white">Terminarz</a></li>
+                        <li><a href="{{ route('season.standings.index') }}" class="font-white">Tabela</a></li>
+                        <li><a href="{{ route('season.team.index') }}" class="font-white">Kadra</a></li>
+                        <li><a href="{{ route('season.stats.index') }}" class="font-white">Statystyki</a></li>
                     </ul>
                 </div>
                 <div class="col-4 d-flex">
                     <ul class="list-inline mx-auto justify-content-center site-map-list site-map-list">
-                        <li><a href="#" target="_blank" class="font-white">90minut.pl</a></li>
-                        <li><a href="#" target="_blank" class="font-white">laczynaspilka.pl</a></li>
+                        <li><a href="http://www.90minut.pl/skarb.php?id_klub=6883&id_sezon=97" target="_blank" class="font-white">90minut.pl</a></li>
+                        <li><a href="https://www.laczynaspilka.pl/klub/niebieszczany-remix,6431.html" target="_blank" class="font-white">laczynaspilka.pl</a></li>
+                        <li><a href="https://www.ozpnkrosno.pl" target="_blank" class="font-white">OZPN Krosno</a></li>
                     </ul>
                 </div>
             </div>
@@ -52,18 +53,18 @@
         <span class="text-uppercase letter-spacing-1 word-spacing-2 font-weight-bold">Odwiedź nas w mediach społecznościowych</span>
         <br>
         <span class="social-icons">
-            <a href="#" target="_blank">
+            <a href="https://www.facebook.com/niebieszczany.remix" target="_blank">
                 <i class="fab fa-facebook mr-3"></i>
             </a>
-            <a href="#" target="_blank">
+            <a href="https://www.instagram.com/rmx1994/" target="_blank">
                 <i class="fab fa-instagram"></i>
             </a>
         </span>
         <br>
         <br>
-        <span class="text-uppercase letter-spacing-1 word-spacing-2">Tel:<a href="tel:123123123" target="_blank" class="font-white"> 123123123</a></span>
+        <span class="text-uppercase letter-spacing-1 word-spacing-2">Tel:<a href="tel:695780307" target="_blank" class="font-white"> 695-780-307</a></span>
         <br>
-        <span class="text-uppercase letter-spacing-1 word-spacing-2">E-mail:<a href="mailto:example@domain.com" target="_blank" class="font-white"> example@domain.com</a></span>
+        <span class="text-uppercase letter-spacing-1 word-spacing-2">E-mail:<a href="mailto:remix.niebieszczany@op.pl" target="_blank" class="font-white"> remix.niebieszczany@op.pl</a></span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">NIP: 6871791491</span>
         <br>
