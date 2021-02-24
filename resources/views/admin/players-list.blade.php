@@ -13,7 +13,7 @@
                 <div class="alert alert-danger m-3">{{ $message }}</div>
             @enderror
             <div class="container-fluid">
-                <div class="row mt-5">
+                <div class="row mt-5 mb-5">
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Lista zawodników</h2>

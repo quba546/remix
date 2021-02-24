@@ -46,89 +46,102 @@ Route::group([], function () {
             ->name('stats.index');
     });
 
-    Route::group([
-        'prefix' => '/admin/',
-        'as' => 'admin.'
-    ], function () {
-        Route::get('/', function () {
-            return view('admin.dashboard');
-        })->name('dashboard');
-
-        Route::get('/timetable/create', [AdminTimetableController::class, 'create'])
-            ->name('timetable.create');
-
-        Route::post('/timetable', [AdminTimetableController::class, 'store'])
-            ->name('timetable.store');
-
-        Route::get('/timetable/edit', [AdminTimetableController::class, 'edit'])
-            ->name('timetable.edit');
-
-        Route::delete('/timetable/one/', [AdminTimetableController::class, 'destroyOne'])
-            ->name('timetable.destroy.one');
-
-        Route::delete('/timetable', [AdminTimetableController::class, 'destroy'])
-            ->name('timetable.destroy');
-
-        Route::get('/standing/create', [AdminStandingController::class, 'create'])
-            ->name('standing.create');
-
-        Route::post('/standing', [AdminStandingController::class, 'store'])
-            ->name('standing.store');
-
-        Route::delete('/standing', [AdminStandingController::class, 'destroy'])
-            ->name('standing.destroy');
-
+    /* AUTH FOR ADMIN ROUTES */
+    Route::middleware(['auth'])->group(function () {
+        /* ADMIN ROUTES */
         Route::group([
-            'prefix' => '/matches/',
-            'as' => 'matches.'
+            'prefix' => '/admin/',
+            'as' => 'admin.'
         ], function () {
-            Route::get('/last/edit', [LastMatchController::class, 'edit'])
-                ->name('last.edit');
+            /* DASHBOARD */
+            Route::get('/', function () {
+                return view('admin.dashboard');
+            })->name('dashboard');
 
-            Route::put('/last', [LastMatchController::class, 'update'])
-                ->name('last.update');
+            /* TIMETABLE */
+            Route::get('/timetable/create', [AdminTimetableController::class, 'create'])
+                ->name('timetable.create');
 
-            Route::get('/upcoming/edit', [UpcomingMatchController::class, 'edit'])
-                ->name('upcoming.edit');
+            Route::post('/timetable', [AdminTimetableController::class, 'store'])
+                ->name('timetable.store');
 
-            Route::put('/upcoming', [UpcomingMatchController::class, 'update'])
-                ->name('upcoming.update');
-        });
+            Route::get('/timetable/edit', [AdminTimetableController::class, 'edit'])
+                ->name('timetable.edit');
 
-        Route::group([
-            'prefix' => '/players',
-            'as' => 'players.'
-        ], function () {
-            Route::get('/', [AdminPlayerController::class, 'index'])
-                ->name('index');
+            Route::delete('/timetable/one/', [AdminTimetableController::class, 'destroyOne'])
+                ->name('timetable.destroy.one');
 
-            Route::put('/', [AdminPlayerController::class, 'updatePlayedMatches'])
-                ->name('update.playedMatches');
+            Route::delete('/timetable', [AdminTimetableController::class, 'destroy'])
+                ->name('timetable.destroy');
 
-            Route::post('/', [AdminPlayerController::class, 'store'])
-                ->name('store');
+            /* STANDING */
+            Route::get('/standing/create', [AdminStandingController::class, 'create'])
+                ->name('standing.create');
 
-            Route::put('/{player}', [AdminPlayerController::class, 'update'])
-                ->name('update');
+            Route::post('/standing', [AdminStandingController::class, 'store'])
+                ->name('standing.store');
 
-            Route::get('/{player}/edit', [AdminPlayerController::class, 'edit'])
-                ->name('edit');
+            Route::delete('/standing', [AdminStandingController::class, 'destroy'])
+                ->name('standing.destroy');
 
-            Route::delete('/{player}', [AdminPlayerController::class, 'destroy'])
-                ->name('destroy');
+            /* MATCHES */
+            Route::group([
+                'prefix' => '/matches/',
+                'as' => 'matches.'
+            ], function () {
+                Route::get('/last/edit', [LastMatchController::class, 'edit'])
+                    ->name('last.edit');
 
-            Route::delete('/image/{player}', [AdminPlayerController::class, 'destroyImage'])
-                ->name('destroy.image');
+                Route::put('/last', [LastMatchController::class, 'update'])
+                    ->name('last.update');
+
+                Route::get('/upcoming/edit', [UpcomingMatchController::class, 'edit'])
+                    ->name('upcoming.edit');
+
+                Route::put('/upcoming', [UpcomingMatchController::class, 'update'])
+                    ->name('upcoming.update');
+            });
+
+            /* PLAYERS */
+            Route::group([
+                'prefix' => '/players',
+                'as' => 'players.'
+            ], function () {
+                Route::get('/', [AdminPlayerController::class, 'index'])
+                    ->name('index');
+
+                Route::put('/', [AdminPlayerController::class, 'updatePlayedMatches'])
+                    ->name('update.playedMatches');
+
+                Route::post('/', [AdminPlayerController::class, 'store'])
+                    ->name('store');
+
+                Route::put('/{player}', [AdminPlayerController::class, 'update'])
+                    ->name('update');
+
+                Route::get('/{player}/edit', [AdminPlayerController::class, 'edit'])
+                    ->name('edit');
+
+                Route::delete('/{player}', [AdminPlayerController::class, 'destroy'])
+                    ->name('destroy');
+
+                Route::delete('/image/{player}', [AdminPlayerController::class, 'destroyImage'])
+                    ->name('destroy.image');
+            });
         });
     });
 
-    // routes for static pages
+    /* STATIC PAGES */
     Route::get('/{page}', PageController::class)
         ->name('page')
         ->where('page', 'about|contact');
 });
 
-/* ====================== */
+/* AUTH */
 Auth::routes();
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Auth::routes([
+//     'register' => false,   // disable registration for new users
+//     'reset' => false,  // disable password reset
+//     'verify' => false, // disable email verification
+//]);

@@ -43,7 +43,7 @@
             </li>
             @auth
                 <li class="nav-item ml-3">
-                    <a class="nav-link" href="#"><i class="far fa-address-book mr-3"></i>Panel administratora</a>
+                    <a class="nav-link" href="{{ route('admin.dashboard') }}"><i class="far fa-address-book mr-3"></i>Panel administratora</a>
                 </li>
             @endauth
             <li>
