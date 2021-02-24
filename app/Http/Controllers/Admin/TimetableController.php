@@ -11,21 +11,21 @@ use Illuminate\Http\Request;
 
 class TimetableController extends Controller
 {
-    private TimetableRepositoryInterface $matchRoundRepository;
+    private TimetableRepositoryInterface $timetableRepository;
 
-    public function __construct(TimetableRepositoryInterface $matchRoundRepository)
+    public function __construct(TimetableRepositoryInterface $timetableRepository)
     {
-        $this->matchRoundRepository = $matchRoundRepository;
+        $this->timetableRepository = $timetableRepository;
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create() : View
     {
-        return view('admin.timetable');
+        return view('admin.add-timetable');
     }
 
     /**
@@ -38,7 +38,7 @@ class TimetableController extends Controller
     {
         $validated = $request->validated();
 
-        $success = $this->matchRoundRepository->addRound(
+        $success = $this->timetableRepository->addRound(
             [
                 'round' => $validated['round'],
                 'date' => $validated['date'],
@@ -66,16 +66,19 @@ class TimetableController extends Controller
 //        //
 //    }
 //
-//    /**
-//     * Show the form for editing the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function edit($id)
-//    {
-//        //
-//    }
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @return View
+     */
+    public function edit() : View
+    {
+        return view('admin.delete-timetable',
+            [
+                'rounds' => $this->timetableRepository->getRounds()
+            ]
+        );
+    }
 //
 //    /**
 //     * Update the specified resource in storage.
@@ -88,15 +91,38 @@ class TimetableController extends Controller
 //    {
 //        //
 //    }
-//
-//    /**
-//     * Remove the specified resource from storage.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function destroy($id)
-//    {
-//        //
-//    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  Request $request
+     * @return RedirectResponse
+     */
+    public function destroyOne(Request $request) : RedirectResponse
+    {
+        $success = $this->timetableRepository->deleteRound((int) $request->round);
+
+        return $success
+            ? redirect()
+                ->route('admin.timetable.edit')
+                ->with('success', "Poprawnie usunięto {$request->round} kolejkę z termianarza")
+            : redirect()
+                ->route('admin.timetable.edit')
+                ->with('error', "Wystąpił błąd podczas usuwania {$request->round} z terminarza!");
+    }
+
+
+    /**
+     * Remove the all resources from storage.
+     *
+     * @return RedirectResponse
+     */
+    public function destroy() : RedirectResponse
+    {
+        $this->timetableRepository->deleteAll();
+
+        return redirect()
+            ->route('admin.dashboard')
+            ->with('info', "Poprawnie usunięto cały terminarz");
+    }
 }

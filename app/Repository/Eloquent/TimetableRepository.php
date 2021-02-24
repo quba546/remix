@@ -7,6 +7,7 @@ namespace App\Repository\Eloquent;
 
 use App\Models\Timetable;
 use App\Repository\TimetableRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 
 class TimetableRepository extends BaseRepository implements TimetableRepositoryInterface
 {
@@ -59,5 +60,20 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
         }
 
         return $result;
+    }
+
+    public function getRounds() : Collection
+    {
+        return $this->timetable->all('round', 'date');
+    }
+
+    public function deleteRound(int $round) : bool
+    {
+        return (bool) $this->timetable->where('round', $round)->delete();
+    }
+
+    public function deleteAll() : void
+    {
+        $this->timetable->truncate();
     }
 }

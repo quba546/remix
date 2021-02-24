@@ -32,7 +32,7 @@
                                     </div>
                                     <div class="form-group d-flex col-12 d-xl-none mt-4">
                                         <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-mobile" accept="image/*">
-                                        <label class="custom-file-label text-left" for="image">Wybierz zdjęcie</label>
+                                        <label class="custom-file-label text-left" for="image" data-browse="Przeglądaj">Wybierz zdjęcie</label>
                                         @error('image')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
@@ -71,7 +71,7 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group d-none d-xl-flex col-lg-6 mt-4">
                                         <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-desktop" accept="image/*">
-                                        <label class="custom-file-label text-left" for="image">Wybierz zdjęcie</label>
+                                        <label class="custom-file-label text-left" for="image" data-browse="Przeglądaj">Wybierz zdjęcie</label>
                                         @error('image')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror

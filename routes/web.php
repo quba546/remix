@@ -60,6 +60,15 @@ Route::group([], function () {
         Route::post('/timetable', [AdminTimetableController::class, 'store'])
             ->name('timetable.store');
 
+        Route::get('/timetable/edit', [AdminTimetableController::class, 'edit'])
+            ->name('timetable.edit');
+
+        Route::delete('/timetable/one/', [AdminTimetableController::class, 'destroyOne'])
+            ->name('timetable.destroy.one');
+
+        Route::delete('/timetable', [AdminTimetableController::class, 'destroy'])
+            ->name('timetable.destroy');
+
         Route::get('/standing/create', [AdminStandingController::class, 'create'])
             ->name('standing.create');
 

@@ -7,7 +7,8 @@
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">O nas</h2>
                     <div class="text-justify mt-5">
-                        <img src="{{ url('/assets/remix_stare.jpg') }}" alt="Stare zdjęcie grupowe drużyny" class="float-left mr-3 mb-3 shadow-lg" width="60%">
+                        <img src="{{ url('/assets/remix_stare.jpg') }}" alt="Stare zdjęcie grupowe drużyny"
+                             class="float-left mr-3 mb-3 border border-success shadow-lg" width="60%">
                         <p>
                             Ludowy Klub Sportowy REMIX Niebieszczany został założony w 1994 roku. Powstanie drużyny
                             piłkarskiej, która będzie reprezentować Naszą miejscowość w lokalnych rozgrywkach sportowych
@@ -30,7 +31,8 @@
                             2006/2007. Występy te jednak Remix kończył już na pierwszej rundzie.
                         </p>
                         <h3>Powtórny awans do A klasy</h3>
-                        <img src="{{ url('/assets/baraze_mecz.jfif') }}" alt="Mecz barażowy pomiędzy Remixem a Płowcami, sezon 2017/2018" class="float-right ml-3 mb-3 shadow-lg" width="55%">
+                        <img src="{{ url('/assets/baraze_mecz.jfif') }}" alt="Mecz barażowy pomiędzy Remixem a Płowcami, sezon 2017/2018"
+                             class="float-right ml-3 mb-3 border border-success shadow-lg" width="55%">
                         <p>
                             W tym czasie nasza drużyna prowadziła rozgrywki ligowe na szczeblu B klasy grupy
                             krośnieńskiej. Trwało to aż do sezonu 2016/2017, kiedy z powodu braków kadrowych Remix
@@ -47,7 +49,8 @@
                             klasy grupy krośnieńskiej. W ostatnich sezonach głównie walczyliśmy o utrzymanie się w tej
                             klasie.
                         </p>
-                        <img src="{{ url('/assets/puchar_wojta_2018.jpg') }}" alt="Mecz barażowy pomiędzy Remixem a Płowcami, sezon 2017/2018" class="float-left mr-3 mb-3 shadow-lg" width="55%">
+                        <img src="{{ url('/assets/puchar_wojta_2018.jpg') }}" alt="Mecz barażowy pomiędzy Remixem a Płowcami, sezon 2017/2018"
+                             class="float-left mr-3 mb-3 border border-success shadow-lg" width="55%">
                         <h3>Obecnie</h3>
                         <p>
                             W 2016 roku dzięki inicjatywie rodziców oraz wielu pasjonatów futbolu z naszej miejscowości
