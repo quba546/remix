@@ -6,8 +6,10 @@ use App\Http\Controllers\Main\PlayerStatsController;
 use App\Http\Controllers\Main\StandingController;
 use App\Http\Controllers\Admin\LastMatchController;
 use App\Http\Controllers\Admin\UpcomingMatchController;
+use App\Http\Controllers\Main\TimetableController;
 use App\Http\Controllers\Admin\PlayerController as AdminPlayerController;
 use App\Http\Controllers\Admin\StandingController as AdminStandingController;
+use App\Http\Controllers\Admin\TimetableController as AdminTimetableController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -31,9 +33,8 @@ Route::group([], function () {
         'prefix' => '/season/',
         'as' => 'season.'
     ], function () {
-        Route::get('/timetable', function () {
-            return view('user.season.timetable');
-        })->name('timetable');
+        Route::get('/timetable', [TimetableController::class, 'index'])
+            ->name('timetable.index');
 
         Route::get('/standings', [StandingController::class, 'index'])
             ->name('standings.index');
@@ -52,6 +53,12 @@ Route::group([], function () {
         Route::get('/', function () {
             return view('admin.dashboard');
         })->name('dashboard');
+
+        Route::get('/timetable/create', [AdminTimetableController::class, 'create'])
+            ->name('timetable.create');
+
+        Route::post('/timetable', [AdminTimetableController::class, 'store'])
+            ->name('timetable.store');
 
         Route::get('/standing/create', [AdminStandingController::class, 'create'])
             ->name('standing.create');

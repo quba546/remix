@@ -29,7 +29,7 @@
                         <li><a href="#" class="font-white">Sekcja młodzieżowa</a></li>
                         <li><a href="{{ route('page', 'about') }}" class="font-white">O klubie</a></li>
                         <li><a href="{{ route('page', 'contact') }}" class="font-white">Kontakt</a></li>
-                        <li><a href="{{ route('season.timetable') }}" class="font-white">Terminarz</a></li>
+                        <li><a href="{{ route('season.timetable.index') }}" class="font-white">Terminarz</a></li>
                         <li><a href="{{ route('season.standings.index') }}" class="font-white">Tabela</a></li>
                         <li><a href="{{ route('season.team.index') }}" class="font-white">Kadra</a></li>
                         <li><a href="{{ route('season.stats.index') }}" class="font-white">Statystyki</a></li>

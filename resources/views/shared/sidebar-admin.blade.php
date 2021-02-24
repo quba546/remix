@@ -3,6 +3,7 @@
     <div class="sidebar-heading font-weight-bold">Menu administratora</div>
     <div class="list-group list-group-flush">
         <a href="{{route('admin.dashboard')}}" class="list-group-item list-group-item-action bg-light">Dashboard</a>
+        <a href="{{route('admin.timetable.create')}}" class="list-group-item list-group-item-action bg-light">Terminarz</a>
         <a href="{{route('admin.matches.last.edit')}}" class="list-group-item list-group-item-action bg-light">Ostatni mecz</a>
         <a href="{{route('admin.matches.upcoming.edit')}}" class="list-group-item list-group-item-action bg-light">Najbliższy mecz</a>
         <a href="{{route('admin.standing.create')}}" class="list-group-item list-group-item-action bg-light">Tabela</a>

@@ -4,12 +4,14 @@ namespace App\Providers;
 
 use App\Repository\Eloquent\BaseRepository;
 use App\Repository\Eloquent\LastMatchRepository;
+use App\Repository\Eloquent\TimetableRepository;
 use App\Repository\Eloquent\MatchTypeRepository;
 use App\Repository\Eloquent\PlayerRepository;
 use App\Repository\Eloquent\StandingRepository;
 use App\Repository\Eloquent\UpcomingMatchRepository;
 use App\Repository\EloquentRepositoryInterface;
 use App\Repository\LastMatchRepositoryInterface;
+use App\Repository\TimetableRepositoryInterface;
 use App\Repository\MatchTypeRepositoryInterface;
 use App\Repository\PlayerRepositoryInterface;
 use App\Repository\StandingRepositoryInterface;
@@ -31,6 +33,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(LastMatchRepositoryInterface::class, LastMatchRepository::class);
         $this->app->bind(UpcomingMatchRepositoryInterface::class, UpcomingMatchRepository::class);
         $this->app->bind(MatchTypeRepositoryInterface::class, MatchTypeRepository::class);
+        $this->app->bind(TimetableRepositoryInterface::class, TimetableRepository::class);
     }
 
     /**

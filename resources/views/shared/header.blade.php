@@ -27,7 +27,7 @@
             <li class="nav-item dropdown ml-3">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-male mr-3"></i>Sezon</a>
                 <div class="dropdown-menu shadow p-3 mb-5 bg-white rounded" aria-labelledby="navbarDropdownMenuLink">
-                    <a class="dropdown-item" href="{{ route('season.timetable') }}">Terminarz</a>
+                    <a class="dropdown-item" href="{{ route('season.timetable.index') }}">Terminarz</a>
                     <a class="dropdown-item" href="{{ route('season.standings.index') }}">Tabela</a>
                     <a class="dropdown-item" href="{{ route('season.team.index') }}">Kadra</a>
                     <a class="dropdown-item" href="{{ route('season.stats.index') }}">Statystyki</a>
