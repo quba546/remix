@@ -39,7 +39,7 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-12">
                                         <label for="match-type">Rodzaj meczu</label>
-                                        <select class="custom-select" name="matchType" id="match-type" required>
+                                        <select class="form-control" name="matchType" id="match-type" required>
                                             @foreach($matchTypes ?? [] as $matchType)
                                                 <option value="{{ $matchType->id }}">{{ $matchType->id === 2 ? $matchType->type : $matchType->type . ' - ' . $matchType->name }}</option>
                                             @endforeach

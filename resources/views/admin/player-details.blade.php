@@ -31,6 +31,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group d-flex col-12 d-xl-none mt-4">
+                                        {{--for mobile devices--}}
                                         <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-mobile" accept="image/*">
                                         <label class="custom-file-label text-left" for="image" data-browse="Przeglądaj">Wybierz zdjęcie</label>
                                         @error('image')
@@ -54,10 +55,10 @@
                                         @enderror
 
                                         <label for="position" class="mb-0 mt-3">Pozycja</label>
-                                        <select name="position" class="custom-select" id="position" required>
+                                        <select name="position" class="form-control" id="position" required>
                                             @php $position = $player->position ?? '' @endphp
                                             <option selected value="{{ $position }}">{{ $position }}</option>
-                                            <option value="none">Wybierz pozycję...</option>
+                                            <option disabled value="">Wybierz...</option>
                                             @if($position !== 'bramkarz') <option value="bramkarz">bramkarz</option> @endif
                                             @if($position !== 'obrońca') <option value="obrońca">obrońca</option> @endif
                                             @if($position !== 'pomocnik') <option value="pomocnik">pomocnik</option> @endif
@@ -70,6 +71,7 @@
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group d-none d-xl-flex col-lg-6 mt-4">
+                                        {{--for desktop--}}
                                         <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-desktop" accept="image/*">
                                         <label class="custom-file-label text-left" for="image" data-browse="Przeglądaj">Wybierz zdjęcie</label>
                                         @error('image')

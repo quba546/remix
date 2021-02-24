@@ -23,7 +23,7 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="col-12 mb-3">
                                         <label for="round">Wybierz kolejkę do usunięcia</label>
-                                        <select class="custom-select" name="round" id="round" required>
+                                        <select class="form-control" name="round" id="round" required>
                                             <option selected disabled value="">Wybierz...</option>
                                             @foreach($rounds as $row)
                                             <option value="{{ $row->round }}">{{ 'Kolejka ' . $row->round . ' - ' . $row->date }}</option>

@@ -103,8 +103,8 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="position">Pozycja</label>
-                                        <select name="position" class="custom-select @error('position') is-invalid @enderror" id="position" required>
-                                            <option value="none">Wybierz pozycję...</option>
+                                        <select name="position" class="form-control @error('position') is-invalid @enderror" id="position" required>
+                                            <option selected disabled value="">Wybierz...</option>
                                             <option value="bramkarz">bramkarz</option>
                                             <option value="obrońca">obrońca</option>
                                             <option value="pomocnik">pomocnik</option>
