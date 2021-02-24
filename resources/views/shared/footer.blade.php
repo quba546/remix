@@ -1,4 +1,4 @@
-<div class="row mx-auto custom-footer">
+<div id="footer" class="row mx-auto custom-footer">
     <div class="col-12 col-xl-3 pt-3 pb-3 text-center">
         <div class="container">
             <div class="row">
