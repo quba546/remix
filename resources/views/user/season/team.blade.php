@@ -31,7 +31,7 @@
                         <tbody class="table-light">
                         @foreach($players ?? [] as $player)
                             <tr>
-                                <td class="text-center align-middle">{{ ($players->currentpage() - 1) * $players->perpage() + $loop->index + 1 }}</td>
+                                <td class="text-center align-middle">{{ ($players->currentPage() - 1) * $players->perPage() + $loop->index + 1 }}</td>
                                 <td class="text-center align-middle">{{ $player->nr }}</td>
                                 <td class="text-center align-middle text-uppercase">{{ $player->last_name }}</td>
                                 <td class="text-center align-middle">{{ $player->first_name }}</td>
@@ -43,7 +43,16 @@
                         @endforeach
                         </tbody>
                     </table>
-                    {{ $players->appends(request()->query())->links() }}
+                    <div class="row">
+                        <div class="col-2 text-center pt-3">
+                            {{ $players->appends(request()->query())->links() }}
+                        </div>
+                        <div class="col-10 text-left d-flex align-items-center">
+                            @if (isset($players))
+                                <span>Wyświetlono {{ ($players->currentPage() - 1) * $players->perPage() + 1 }} - @if ($players->currentPage() === $players->lastPage()) {{ $players->total() }} @else {{ $players->currentPage() * $players->perPage() }} @endif z {{ $players->total() }}</span>
+                            @endif
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>

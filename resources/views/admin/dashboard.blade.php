@@ -14,7 +14,10 @@
                     <div class="col-10 col-lg-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Panel administratora</h2>
                         <div class="border border-success rounded m-4">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam consequuntur culpa dicta illo neque recusandae voluptate. Animi consequatur dolorem impedit ipsam molestias mollitia non officia quaerat, quas quidem, sequi voluptates voluptatum! Adipisci at dolorem eos, explicabo fugiat harum inventore minus possimus rerum sint? Amet aperiam aspernatur aut dolorem ipsum numquam odio quas quisquam? Fugiat hic inventore nam nemo obcaecati qui rem repellat repudiandae tempora. Amet asperiores corporis, culpa dolor dolorum, error est magnam maxime nihil optio qui sed totam, voluptatum. Accusamus alias aliquam aliquid aspernatur cumque earum ex fugiat inventore ipsum itaque, iure laboriosam possimus quisquam sequi soluta vel veniam.
+                            <h4>Witaj (imię)</h4>
+                            <p>
+                                Z poziomu panelu administratora możesz zarządzać zawartością całego serwisu.
+                            </p>
                         </div>
                     </div>
                     <div class="col-1 col-lg-2"></div>

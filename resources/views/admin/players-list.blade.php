@@ -75,9 +75,16 @@
                             @endforeach
                             </tbody>
                         </table>
-                        @if (isset($players))
-                            {{ $players->appends(request()->query())->links() }}
-                        @endif
+                        <div class="row">
+                            <div class="col-2 text-center pt-3">
+                                {{ $players->appends(request()->query())->links() }}
+                            </div>
+                            <div class="col-10 text-left d-flex align-items-center">
+                                @if (isset($players))
+                                    <span>Wyświetlono {{ ($players->currentPage() - 1) * $players->perPage() + 1 }} - @if ($players->currentPage() === $players->lastPage()) {{ $players->total() }} @else {{ $players->currentPage() * $players->perPage() }} @endif z {{ $players->total() }}</span>
+                                @endif
+                            </div>
+                        </div>
                         <button type="button" id="add-player-btn" class="btn btn-outline-success mt-2 mb-4">Dodaj zawodnika</button>
                         <div id="add-player" class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Dodaj zawodnika</h5>
