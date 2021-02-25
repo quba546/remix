@@ -69,10 +69,10 @@
                         </tbody>
                     </table>
                     <div class="row">
-                        <div class="col-2 text-center pt-3">
+                        <div class="col-12 col-lg-2 text-center pt-3">
                             {{ $playersStats->appends(request()->query())->links() }}
                         </div>
-                        <div class="col-10 text-left d-flex align-items-center">
+                        <div class="col-12 col-lg-10 text-left d-flex align-items-center">
                             @if (isset($playersStats))
                                 <span>Wyświetlono {{ ($playersStats->currentPage() - 1) * $playersStats->perPage() + 1 }} - @if ($playersStats->currentPage() === $playersStats->lastPage()) {{ $playersStats->total() }} @else {{ $playersStats->currentPage() * $playersStats->perPage() }} @endif z {{ $playersStats->total() }}</span>
                             @endif

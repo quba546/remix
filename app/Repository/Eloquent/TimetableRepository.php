@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Collection;
 
 class TimetableRepository extends BaseRepository implements TimetableRepositoryInterface
 {
+    const INVALID_MATCHES_NUMBER = 4;
+
     private Timetable $timetable;
 
     public function __construct(Timetable $timetable)
@@ -53,7 +55,7 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
         }
 
         foreach ($result as $value) {
-            if (count($value) < 9) {
+            if (count($value) < self::INVALID_MATCHES_NUMBER) {
                 $result = [];
                 break;
             }

@@ -53,7 +53,7 @@
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
                         <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->host ?? '' }}</td>
-                        <td class="text-center align-middle font-weight-bold">-</td>
+                        <td class="text-center align-middle font-weight-bold">━</td>
                         <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
@@ -81,7 +81,7 @@
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
                         <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->host ?? '' }}</td>
-                        <td class="text-center align-middle font-weight-bold">-</td>
+                        <td class="text-center align-middle font-weight-bold">━</td>
                         <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
@@ -118,7 +118,7 @@
         <div class="col-12 text-center">
             <h2>Główny sponsor klubu</h2>
             <hr class="hr-text" data-content="DRUCZEK SANOK">
-            <a href="#" target="_blank"><img src="{{ url('/assets/druczek-logo.png') }}" alt="Druczek Sanok logo" height="100px"></a>
+            <a href="https://pl-pl.facebook.com/druczekleskoo/" target="_blank"><img src="{{ url('/assets/druczek-logo.png') }}" alt="Druczek Sanok logo" height="100px"></a>
             <br>
             <hr class="hr-text">
         </div>

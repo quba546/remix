@@ -21,7 +21,7 @@
             <div class="row">
                 <div class="col-4 d-flex">
                     <ul class="list-inline mx-auto justify-content-center site-map-list site-map-list">
-                        <li><a href="#" class="font-white">Polityka prywatności</a></li>
+                        <li><a href="{{ route('page', 'privacy-policy') }}" class="font-white">Polityka prywatności</a></li>
                     </ul>
                 </div>
                 <div class="col-4 d-flex">

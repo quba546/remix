@@ -134,7 +134,7 @@ Route::group([], function () {
     /* STATIC PAGES */
     Route::get('/{page}', PageController::class)
         ->name('page')
-        ->where('page', 'about|contact');
+        ->where('page', 'about|contact|privacy-policy');
 });
 
 /* AUTH */

@@ -77,10 +77,10 @@
                             </tbody>
                         </table>
                         <div class="row">
-                            <div class="col-2 text-center pt-3">
+                            <div class="col-12 col-lg-2 text-center pt-3">
                                 {{ $players->appends(request()->query())->links() }}
                             </div>
-                            <div class="col-10 text-left d-flex align-items-center">
+                            <div class="col-12 col-lg-10 text-left d-flex align-items-center">
                                 @if (isset($players))
                                     <span>Wyświetlono {{ ($players->currentPage() - 1) * $players->perPage() + 1 }} - @if ($players->currentPage() === $players->lastPage()) {{ $players->total() }} @else {{ $players->currentPage() * $players->perPage() }} @endif z {{ $players->total() }}</span>
                                 @endif
