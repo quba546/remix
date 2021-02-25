@@ -16628,6 +16628,10 @@ a.sort-icon {
   max-width: 100%;
 }
 
+.player-profile-img > img {
+  max-width: 60%;
+}
+
 .page-item.active .page-link {
   color: #fff !important;
   background: #38c172 !important;
@@ -16645,4 +16649,8 @@ h2 {
   width: 100%;
   font-family: "Lato", sans-serif;
   color: #777010;
+}
+
+.font-16 {
+  font-size: 16px;
 }
