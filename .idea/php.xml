@@ -117,6 +117,7 @@
       <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
       <path value="$PROJECT_DIR$/vendor/kyslik/column-sortable" />
       <path value="$PROJECT_DIR$/vendor/kub-at/php-simple-html-dom-parser" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-cookie-consent" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.0" />

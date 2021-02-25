@@ -28,6 +28,7 @@ class PlayerController extends Controller
             [
                 'players' => $this->playerRepository->listPaginated(15,
                         [
+                            'id',
                             'last_name',
                             'first_name',
                             'nr' , 'position',
@@ -38,14 +39,18 @@ class PlayerController extends Controller
         );
     }
 
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show($id)
-//    {
-//        //
-//    }
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return View
+     */
+    public function show(int $id) : View
+    {
+        return view('user.season.player-details',
+            [
+               'player' => $this->playerRepository->playerDetails($id)
+            ]
+        );
+    }
 }

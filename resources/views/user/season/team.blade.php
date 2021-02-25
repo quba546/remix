@@ -38,7 +38,7 @@
                                 <td class="text-center align-middle">{{ $player->first_name }}</td>
                                 <td class="text-center align-middle">{{ $player->position }}</td>
                                 <td class="text-center align-middle">
-                                    <a href="#" class="btn btn-outline-success">Szczegóły</a>
+                                    <a href="{{ route('season.players.show', ['player' => $player->id]) }}" class="btn btn-outline-success">Szczegóły</a>
                                 </td>
                             </tr>
                         @endforeach

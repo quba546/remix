@@ -42,6 +42,9 @@ Route::group([], function () {
         Route::get('/team', [PlayerController::class, 'index'])
             ->name('team.index');
 
+        Route::get('/players/{player}', [PlayerController::class, 'show'])
+            ->name('players.show');
+
         Route::get('/stats', [PlayerStatsController::class, 'index'])
             ->name('stats.index');
     });

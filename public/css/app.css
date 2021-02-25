@@ -16637,3 +16637,12 @@ a.sort-icon {
 h2 {
   font-family: "Lato", sans-serif;
 }
+
+#cookie-window {
+  position: fixed;
+  bottom: 0;
+  z-index: 100;
+  width: 100%;
+  font-family: "Lato", sans-serif;
+  color: #777010;
+}

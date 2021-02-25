@@ -15,8 +15,8 @@
                             przyszłości także nie będziemy przetwarzać, udostępniać ani wykorzystywać waszych danych w
                             jakichkolwiek innych celach, niż zwykłe zbieranie statystyk.
                         </p>
-                        <h3>Jakie dane osobiste gromadzimy?</h3>
                         <br>
+                        <h3>Jakie dane osobiste gromadzimy?</h3>
                         <h4>Cookies</h4>
                         <p>
                             Na portalu remixniebieszczany.pl używane są pliki cookies, tzw. ciasteczka – są to małe
