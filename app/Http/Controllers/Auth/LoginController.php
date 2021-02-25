@@ -40,8 +40,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    function authenticated(Request $request, $user)
+    public function authenticated(Request $request, $user)
     {
+        $request->session()->flash('flash_notification.success', 'Zalogowano poprawnie!');
+
         $user->update([
             'last_login_at' => Carbon::now()->toDateTimeString(),
             'last_login_ip' => \Illuminate\Support\Facades\Request::ip()

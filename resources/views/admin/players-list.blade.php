@@ -17,6 +17,7 @@
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Lista zawodników</h2>
+                        <hr>
                         <table class="table table-sm table-responsive-lg table-striped table-bordered mt-4 table-font">
                             <thead class="thead-dark">
                             <tr>

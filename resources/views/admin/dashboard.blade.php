@@ -8,11 +8,18 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
             </nav>
+            @if (session()->has('flash_notification.success'))
+                <div class="alert alert-success alert-block text-center mt-3 mb-3 ml-5 mr-5">
+                    <button type="button" class="close" data-dismiss="alert">✕</button>
+                    <strong>{{ session('flash_notification.success') }}</strong>
+                </div>
+            @endif
             <div class="container-fluid">
                 <div class="row mt-5">
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-10 col-lg-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Panel administratora</h2>
+                        <hr>
                         <div class="border border-success rounded m-4">
                             <div class="container">
                                 <div class="row mt-3">

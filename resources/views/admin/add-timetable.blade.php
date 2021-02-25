@@ -13,7 +13,8 @@
                 <div class="row mt-5">
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-10 col-lg-8 bg-white shadow-lg text-center">
-                        <h2 class="text-uppercase font-weight-bold mt-3">Dodawanie terminarza</h2>
+                        <h2 class="text-uppercase font-weight-bold mt-3">Dodawanie kolejki do terminarza</h2>
+                        <hr>
                         <div class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Edytuj dane</h5>
                             <hr>

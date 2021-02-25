@@ -14,6 +14,7 @@
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-10 col-lg-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Tabela ligowa</h2>
+                        <hr>
                         <div class="border border-success rounded m-4">
                             <h5 class="mt-2 font-weight-bold">Dane do tabeli</h5>
                             <hr>
