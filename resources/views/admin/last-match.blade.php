@@ -55,7 +55,7 @@
                                         <div class="form-row">
                                             <div id="league-matches" class="form-group col-md-6">
                                                 <label for="round">Kolejka</label>
-                                                <input type="number" name="round" value="{{ old('round') ?? $lastMatch->round ?? '' }}" class="form-control @error('round') is-invalid @enderror" id="round" placeholder="1" min="1" step="1" max="50" size="50">
+                                                <input type="number" name="round" value="{{ old('round') ?? $lastMatch->round ?? '' }}" class="form-control @error('round') is-invalid @enderror" id="round" min="1" step="1" max="50" size="50">
                                                 @error('round')
                                                     <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror

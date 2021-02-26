@@ -19,5 +19,6 @@ class DatabaseSeeder extends Seeder
         $this->call(MatchTypesSeeder::class);
         $this->call(LastMatchSeeder::class);
         $this->call(UpcomingMatchSeeder::class);
+        $this->call(TimetableSeeder::class);
     }
 }

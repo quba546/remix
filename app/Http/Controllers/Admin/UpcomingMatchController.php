@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\MatchRequest;
+use App\Http\Requests\UpcomingMatchRequest;
 use App\Repository\MatchTypeRepositoryInterface;
 use App\Repository\UpcomingMatchRepositoryInterface;
 use Illuminate\Contracts\View\View;
@@ -43,10 +43,10 @@ class UpcomingMatchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param MatchRequest $request
+     * @param UpcomingMatchRequest $request
      * @return RedirectResponse
      */
-    public function update(MatchRequest $request): RedirectResponse
+    public function update(UpcomingMatchRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -55,7 +55,7 @@ class UpcomingMatchController extends Controller
                 'host' => $validated['host'],
                 'guest' => $validated['guest'],
                 'matchType' => $validated['matchType'],
-                'round' => $validated['round'] ?? null,
+                'round' => $validated['round'],
                 'date' => $validated['date'],
                 'place' => $validated['place'],
             ]

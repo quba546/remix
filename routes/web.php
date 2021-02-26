@@ -46,7 +46,8 @@ Route::group([], function () {
             ->name('players.index');
 
         Route::get('/players/{player}', [PlayerController::class, 'show'])
-            ->name('players.show');
+            ->name('players.show')
+            ->where('player', '[0-9]+');
     });
 
     /* AUTH FOR ADMIN ROUTES */
@@ -120,16 +121,20 @@ Route::group([], function () {
                     ->name('store');
 
                 Route::put('/{player}', [AdminPlayerController::class, 'update'])
-                    ->name('update');
+                    ->name('update')
+                    ->where('player', '[0-9]+');
 
                 Route::get('/{player}/edit', [AdminPlayerController::class, 'edit'])
-                    ->name('edit');
+                    ->name('edit')
+                    ->where('player', '[0-9]+');
 
                 Route::delete('/{player}', [AdminPlayerController::class, 'destroy'])
-                    ->name('destroy');
+                    ->name('destroy')
+                    ->where('player', '[0-9]+');
 
                 Route::delete('/image/{player}', [AdminPlayerController::class, 'destroyImage'])
-                    ->name('destroy.image');
+                    ->name('destroy.image')
+                    ->where('player', '[0-9]+');
             });
         });
     });

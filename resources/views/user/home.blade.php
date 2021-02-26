@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('content')
+    @include('shared.messages')
     <div class="row mx-auto pt-5 pb-5">
         <div class="col-12 col-xl-4 pl-xl-5">
             <aside>
@@ -48,7 +49,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $lastMatch->match_type_id === 2 ? $lastMatch->date : 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date }} @endif</td>
+                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $lastMatch->match_type_id === 1 ? 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date : $lastMatch->date }} @endif</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
@@ -76,7 +77,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $upcomingMatch->match_type_id === 2 ? $upcomingMatch->date : 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date }} @endif</td>
+                        <td colspan="3" class="text-center align-middle">@if (isset($upcomingMatch->match_type_id)) {{ $upcomingMatch->match_type_id === 1 ? 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date : $upcomingMatch->date }} @endif</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
@@ -93,7 +94,7 @@
             </aside>
         </div>
     </div>
-    @if (isset($bestScorers[0]))
+    @if (isset($bestScorers[2]))
     <div class="row mx-auto bg-white mt-3">
         <div class="col-12 text-center mt-5">
             <h2 class="text-uppercase">Najlepsi strzelcy klubu</h2>

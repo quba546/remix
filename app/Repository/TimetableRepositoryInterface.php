@@ -14,7 +14,7 @@ interface TimetableRepositoryInterface
 
     public function getRounds(): Collection;
 
-    public function deleteRound(int $round): ?bool;
+    public function deleteRound(int $round): null|bool|int;
 
     public function deleteAll(): void;
 }

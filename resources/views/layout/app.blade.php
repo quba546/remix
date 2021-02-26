@@ -23,7 +23,6 @@
     <header>
         @include('shared.header')
     </header>
-    @include('shared.messages')
     <div class="wrapper">
         <main>
             @yield('content')

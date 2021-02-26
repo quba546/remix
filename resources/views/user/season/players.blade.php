@@ -1,6 +1,7 @@
 @extends('layout.app')
 
 @section('content')
+    @include('shared.messages')
     <div class="container">
         <div class="row mx-auto">
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">

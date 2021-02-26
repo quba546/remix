@@ -15,11 +15,11 @@ interface PlayerRepositoryInterface
 
     public function savePlayer(array $data): bool;
 
-    public function updatePlayer(int $id, array $data): bool;
+    public function updatePlayer(int $id, array $data): bool|int;
 
     public function updatePlayedMatches(int $id, int $playedMatches): bool;
 
-    public function deletePlayerImage(int $id): bool;
+    public function deletePlayerImage(int $id): bool|int;
 
     public function playerDetails(int $id): ?Player;
 

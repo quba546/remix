@@ -49,7 +49,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         return $this->player->save();
     }
 
-    public function updatePlayer(int $id, array $data): bool
+    public function updatePlayer(int $id, array $data): bool|int
     {
         return $this->player
             ->where('id', $id)
@@ -77,7 +77,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             ->update(['played_matches' => $playedMatches]);
     }
 
-    public function deletePlayerImage(int $id): bool
+    public function deletePlayerImage(int $id): bool|int
     {
         return $this->player
             ->where('id', $id)

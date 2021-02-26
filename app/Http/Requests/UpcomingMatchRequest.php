@@ -6,7 +6,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MatchRequest extends FormRequest
+class UpcomingMatchRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,7 @@ class MatchRequest extends FormRequest
         return [
             'host' => ['required', 'max:100'],
             'guest' => ['required', 'max:100'],
-            'score' => ['required', 'max:10'],
-            'matchType' => ['required', 'integer', 'min:1'],
+            'matchType' => ['required', 'min:1'],
             'date' => ['required', 'date'],
             'place' => ['required', 'alpha', 'max:50'],
             'round' => ['nullable', 'max:50']
@@ -53,7 +52,6 @@ class MatchRequest extends FormRequest
         return [
             'host' => 'gospodarz',
             'guest' => 'gość',
-            'score' => 'wynik',
             'matchType' => 'rodzaj meczu',
             'date' => 'data',
             'place' => 'miejsce',
