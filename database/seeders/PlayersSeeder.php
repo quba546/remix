@@ -19,20 +19,22 @@ class PlayersSeeder extends Seeder
         $faker = Factory::create();
 
         for ($i = 0; $i < $faker->numberBetween(20, 30); $i++) {
-            DB::table('players')->insert([
-                'first_name' => $faker->firstName,
-                'last_name' => $faker->lastName,
-                'nr' => $faker->numberBetween(1, 99),
-                'position' => $faker->randomElement(['bramkarz', 'obrońca', 'pomocnik', 'napastnik']),
-                'goals' => $faker->numberBetween(0, 30),
-                'assists' => $faker->numberBetween(0, 20),
-                'played_matches' => $faker->numberBetween(0, 38),
-                'clean_sheets' => $faker->numberBetween(0, 38),
-                'yellow_cards' => $faker->numberBetween(0, 10),
-                'red_cards' => $faker->numberBetween(0, 4),
-                'created_at' => Carbon::now()->subDays($faker->numberBetween(100, 200)),
-                'updated_at' => Carbon::now()->subDays($faker->numberBetween(0, 99))
-            ]);
+            DB::table('players')->insert(
+                [
+                    'first_name' => $faker->firstName,
+                    'last_name' => $faker->lastName,
+                    'nr' => $faker->numberBetween(1, 99),
+                    'position' => $faker->randomElement(['bramkarz', 'obrońca', 'pomocnik', 'napastnik']),
+                    'goals' => $faker->numberBetween(0, 30),
+                    'assists' => $faker->numberBetween(0, 20),
+                    'played_matches' => $faker->numberBetween(0, 38),
+                    'clean_sheets' => $faker->numberBetween(0, 38),
+                    'yellow_cards' => $faker->numberBetween(0, 10),
+                    'red_cards' => $faker->numberBetween(0, 4),
+                    'created_at' => Carbon::now()->subDays($faker->numberBetween(100, 200)),
+                    'updated_at' => Carbon::now()->subDays($faker->numberBetween(0, 99))
+                ]
+            );
         }
     }
 }

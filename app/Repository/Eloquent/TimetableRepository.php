@@ -74,8 +74,8 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
         return (bool) $this->timetable->where('round', $round)->delete();
     }
 
-    public function deleteAll() : void
+    public function deleteAll() : bool
     {
-        $this->timetable->truncate();
+        return (bool) $this->timetable->truncate();
     }
 }

@@ -8,6 +8,7 @@
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
                 <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
             </nav>
+            @include('shared.messages')
             @if (session()->has('flash_notification.success'))
                 <div class="alert alert-success alert-block text-center mt-3 mb-3 ml-5 mr-5">
                     <button type="button" class="close" data-dismiss="alert">✕</button>

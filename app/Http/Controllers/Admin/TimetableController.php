@@ -55,17 +55,6 @@ class TimetableController extends Controller
                 ->with('error', "Kolejka {$validated['round']} już istnieje w terminarzu!");
     }
 
-//    /**
-//     * Display the specified resource.
-//     *
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function show($id)
-//    {
-//        //
-//    }
-//
     /**
      * Show the form for editing the specified resource.
      *
@@ -79,18 +68,6 @@ class TimetableController extends Controller
             ]
         );
     }
-//
-//    /**
-//     * Update the specified resource in storage.
-//     *
-//     * @param  \Illuminate\Http\Request  $request
-//     * @param  int  $id
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function update(Request $request, $id)
-//    {
-//        //
-//    }
 
     /**
      * Remove the specified resource from storage.
@@ -119,10 +96,14 @@ class TimetableController extends Controller
      */
     public function destroy() : RedirectResponse
     {
-        $this->timetableRepository->deleteAll();
+        $success = $this->timetableRepository->deleteAll();
 
-        return redirect()
-            ->route('admin.dashboard')
-            ->with('info', "Poprawnie usunięto cały terminarz");
+        return $success
+            ? redirect()
+                ->route('admin.dashboard')
+                ->with('info', "Poprawnie usunięto cały terminarz")
+            : redirect()
+                ->route('admin.dashboard')
+                ->with('error', "Wystąpił błąd podczas usuwania całego terminarza");
     }
 }
