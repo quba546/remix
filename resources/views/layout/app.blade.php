@@ -13,7 +13,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Remix Niebieszczany') }}</title>
+    <title>{{ config('app.name', 'Remix Niebieszczany') }} | Oficjalna strona klubu</title>
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
@@ -25,6 +25,7 @@
     <header>
         @include('shared.header')
     </header>
+    @include('shared.messages')
     <div class="wrapper">
         <main>
             @yield('content')

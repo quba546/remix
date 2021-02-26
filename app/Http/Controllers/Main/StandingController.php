@@ -22,11 +22,23 @@ class StandingController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
         return view('user.season.standings',
             [
-                'standings' => $this->standingRepository->standing(['position', 'team', 'played_matches', 'points', 'wins', 'draws', 'losses', 'goals_scored', 'goals_conceded', 'goals_difference', 'league']) ?? []
+                'standings' => $this->standingRepository->standing(
+                        [
+                            'position',
+                            'team',
+                            'played_matches',
+                            'points', 'wins',
+                            'draws', 'losses',
+                            'goals_scored',
+                            'goals_conceded',
+                            'goals_difference',
+                            'league'
+                        ]
+                    ) ?? []
             ]
         );
     }

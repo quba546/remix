@@ -6,9 +6,7 @@ namespace App\Repository\Eloquent;
 
 use App\Models\Player;
 use App\Repository\PlayerRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
-use PhpParser\Node\Expr\Array_;
 
 class PlayerRepository extends BaseRepository implements PlayerRepositoryInterface
 {
@@ -19,18 +17,19 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         $this->player = $playersModel;
     }
 
-    public function listPaginated(int $limit, array $columns) : LengthAwarePaginator
+    public function listPaginated(int $limit, array $columns): LengthAwarePaginator
     {
         return $this->player
             ->sortable()
             ->paginate($limit, $columns);
     }
 
-    public function bestScorers(int $limit) : array
+    public function bestScorers(int $limit): array
     {
         $bestScorers = $this->player->all('first_name', 'last_name', 'goals', 'image')
             ->sortByDesc('goals')
-            ->take($limit)->toArray();
+            ->take($limit)
+            ->toArray();
 
         $result = [];
         foreach ($bestScorers as $bestScorer) {
@@ -40,7 +39,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         return $result;
     }
 
-    public function savePlayer(array $data) : bool
+    public function savePlayer(array $data): bool
     {
         $this->player->first_name = $data['firstName'];
         $this->player->last_name = $data['lastName'];
@@ -50,9 +49,9 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         return $this->player->save();
     }
 
-    public function updatePlayer(int $id, array $data) : bool
+    public function updatePlayer(int $id, array $data): bool
     {
-         return (bool) $this->player
+        return $this->player
             ->where('id', $id)
             ->update(
                 [
@@ -71,21 +70,21 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             );
     }
 
-    public function updatePlayedMatches(int $id, int $playedMatches) : bool
+    public function updatePlayedMatches(int $id, int $playedMatches): bool
     {
-        return (bool) $this->player
+        return $this->player
             ->where('id', $id)
             ->update(['played_matches' => $playedMatches]);
     }
 
-    public function deletePlayerImage(int $id) : bool
+    public function deletePlayerImage(int $id): bool
     {
-        return (bool) $this->player
+        return $this->player
             ->where('id', $id)
             ->update(['image' => NULL]);
     }
 
-    public function playerDetails(int $id) : ?Player
+    public function playerDetails(int $id): ?Player
     {
         return $this->player
             ->where('id', $id)
@@ -93,8 +92,9 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             ->first();
     }
 
-    public function deletePlayer(int $id) : bool
+    public function deletePlayer(int $id): ?bool
     {
+        /** @noinspection PhpUnhandledExceptionInspection */
         return $this->player
             ->findOrFail($id)
             ->delete();

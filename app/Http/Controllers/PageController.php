@@ -8,7 +8,7 @@ use Illuminate\Contracts\View\View;
 
 class PageController extends Controller
 {
-    public function __invoke(string $page) : View
+    public function __invoke(string $page): View
     {
         return view('user.' . $page);
     }

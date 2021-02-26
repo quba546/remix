@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -12,7 +14,7 @@ class MatchTypesSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::table('match_types')->insert([
             [
@@ -20,13 +22,12 @@ class MatchTypesSeeder extends Seeder
                 'type' => 'Mecz ligowy',
                 'name' => 'Klasa B 2020/2021, Grupa: Krosno I',
                 'round' => '10'
-            ],
-            [
+            ], [
                 'id' => 2,
                 'type' => 'Sparing',
                 'name' => null,
                 'round' => null
-            ],            [
+            ], [
                 'id' => 3,
                 'type' => 'Mecz pucharowy',
                 'name' => 'Puchar Polski',

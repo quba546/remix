@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -17,22 +19,12 @@ class StandingController extends Controller
         $this->standingRepository = $standingRepository;
     }
 
-//    /**
-//     * Display a listing of the resource.
-//     *
-//     * @return \Illuminate\Http\Response
-//     */
-//    public function index()
-//    {
-//        //
-//    }
-
     /**
      * Show the form for creating a new resource.
      *
      * @return View
      */
-    public function create() : View
+    public function create(): View
     {
         return view('admin.standings');
     }
@@ -40,10 +32,10 @@ class StandingController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  StandingRequest  $request
+     * @param StandingRequest $request
      * @return RedirectResponse
      */
-    public function store(StandingRequest $request) : RedirectResponse
+    public function store(StandingRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -63,7 +55,7 @@ class StandingController extends Controller
      *
      * @return RedirectResponse
      */
-    public function destroy() : RedirectResponse
+    public function destroy(): RedirectResponse
     {
         $this->standingRepository->deleteStanding();
 

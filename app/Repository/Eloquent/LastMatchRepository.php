@@ -7,7 +7,6 @@ namespace App\Repository\Eloquent;
 
 use App\Models\LastMatch;
 use App\Repository\LastMatchRepositoryInterface;
-use Illuminate\Support\Collection;
 
 class LastMatchRepository extends BaseRepository implements LastMatchRepositoryInterface
 {
@@ -18,12 +17,15 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
         $this->lastMatch = $lastMatch;
     }
 
-    public function getLastMatch() : LastMatch
+    public function getLastMatch(): LastMatch
     {
-        return $this->lastMatch->with('matchType')->get()->first();
+        return $this->lastMatch
+            ->with('matchType')
+            ->get()
+            ->first();
     }
 
-    public function saveLastMatch(array $data) : void
+    public function saveLastMatch(array $data): bool
     {
         $this->lastMatch->truncate();
 
@@ -34,6 +36,6 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
         $this->lastMatch->score = $data['score'];
         $this->lastMatch->round = $data['round'];
 
-        $this->lastMatch->save();
+        return $this->lastMatch->save();
     }
 }

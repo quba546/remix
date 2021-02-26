@@ -8,6 +8,7 @@ use App\Models\LastMatch;
 
 interface LastMatchRepositoryInterface
 {
-    public function getLastMatch() : LastMatch;
-    public function saveLastMatch(array $data) : void;
+    public function getLastMatch(): LastMatch;
+
+    public function saveLastMatch(array $data): bool;
 }

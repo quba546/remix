@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -11,7 +13,7 @@ class SimplePlayerRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,7 +23,7 @@ class SimplePlayerRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'playerId' => ['integer', 'min:0'],
@@ -29,7 +31,7 @@ class SimplePlayerRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'integer' => 'Pole :attribute może zawierać tylko liczby całkowite',
@@ -37,7 +39,7 @@ class SimplePlayerRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return [
             'playerId' => 'ID zawodnika',

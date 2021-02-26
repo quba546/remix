@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface MatchTypeRepositoryInterface
 {
-    public function getMatchTypes() : Collection;
+    public function getMatchTypes(): Collection;
 }

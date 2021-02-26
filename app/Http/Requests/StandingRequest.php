@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
@@ -11,7 +13,7 @@ class StandingRequest extends FormRequest
      *
      * @return bool
      */
-    public function authorize()
+    public function authorize(): bool
     {
         return true;
     }
@@ -21,14 +23,14 @@ class StandingRequest extends FormRequest
      *
      * @return array
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'url' => ['required', 'url', 'active_url', 'max:200']
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'required' => 'Pole :attribute jest wymagane',
@@ -38,7 +40,7 @@ class StandingRequest extends FormRequest
         ];
     }
 
-    public function attributes()
+    public function attributes(): array
     {
         return ['url' => 'URL'];
     }

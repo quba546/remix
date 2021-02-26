@@ -77,21 +77,21 @@ jQuery(window).on('resize', function () {
 });
 
 // toggler for admin sidebar nav
-$("#menu-toggle").click(function(e) {
+$("#menu-toggle").click(function (e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
 });
 
 // scroll to top page button
-$(document).ready(function(){
+$(document).ready(function () {
     let body = document.body,
         html = document.documentElement;
 
-    let height = Math.max( body.scrollHeight, body.offsetHeight,
-        html.clientHeight, html.scrollHeight, html.offsetHeight );
+    let height = Math.max(body.scrollHeight, body.offsetHeight,
+        html.clientHeight, html.scrollHeight, html.offsetHeight);
 
     $(window).scroll(function () {
-        if ($(this).scrollTop() > height/2) {
+        if ($(this).scrollTop() > height / 2) {
             $('#back-to-top').fadeIn();
         } else {
             $('#back-to-top').fadeOut();
@@ -107,10 +107,10 @@ $(document).ready(function(){
 });
 
 // logic for last and upcoming matches forms in admin panel
-window.onload = function() {
+window.onload = function () {
     let matchType = document.getElementById('match-type');
     if (matchType) {
-        matchType.onchange = function() {
+        matchType.onchange = function () {
             let element = document.getElementById("date-div-toggler");
             // The code of your function
             if (matchType.value === "1") {
@@ -125,9 +125,8 @@ window.onload = function() {
 }
 
 // logic for toggler button on admin player list button
-$(document).ready(function() {
-    $("#add-player-btn").click(function() {
+$(document).ready(function () {
+    $("#add-player-btn").click(function () {
         $("#add-player").toggle();
     });
 });
-

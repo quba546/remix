@@ -6,7 +6,6 @@ namespace App\Repository\Eloquent;
 
 use App\Models\UpcomingMatch;
 use App\Repository\UpcomingMatchRepositoryInterface;
-use Illuminate\Support\Collection;
 
 class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRepositoryInterface
 {
@@ -17,12 +16,15 @@ class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRep
         $this->upcomingMatch = $upcomingMatch;
     }
 
-    public function getUpcomingMatch() : UpcomingMatch
+    public function getUpcomingMatch(): UpcomingMatch
     {
-        return $this->upcomingMatch->with('matchType')->get()->first();
+        return $this->upcomingMatch
+            ->with('matchType')
+            ->get()
+            ->first();
     }
 
-    public function saveUpcomingMatch(array $data) : void
+    public function saveUpcomingMatch(array $data): bool
     {
         $this->upcomingMatch->truncate();
 
@@ -33,6 +35,6 @@ class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRep
         $this->upcomingMatch->place = $data['place'];
         $this->upcomingMatch->round = $data['round'];
 
-        $this->upcomingMatch->save();
+        return $this->upcomingMatch->save();
     }
 }

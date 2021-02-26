@@ -7,6 +7,7 @@ namespace App\Http\Controllers\Main;
 use App\Http\Controllers\Controller;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class PlayerController extends Controller
 {
@@ -22,16 +23,16 @@ class PlayerController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
-        return view('user.season.team',
+        return view('user.season.players',
             [
                 'players' => $this->playerRepository->listPaginated(15,
                         [
                             'id',
                             'last_name',
                             'first_name',
-                            'nr' , 'position',
+                            'nr', 'position',
                             'played_matches'
                         ]
                     ) ?? []
@@ -42,15 +43,21 @@ class PlayerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string  $id
+     * @param string $id
      * @return View
      */
-    public function show(string $id) : View
+    public function show(string $id): View|RedirectResponse
     {
-        return view('user.season.player-details',
-            [
-               'player' => $this->playerRepository->playerDetails((int) $id)
-            ]
-        );
+        $id = (int)$id;
+
+        return $this->playerRepository->playerDetails($id)
+            ? view('user.season.player-details',
+                [
+                    'player' => $this->playerRepository->playerDetails($id)
+                ]
+            )
+            : redirect()
+                ->route('season.players.index')
+                ->with('error', 'Nie istnieje taki zawodnik');
     }
 }

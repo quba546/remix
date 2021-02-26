@@ -18,7 +18,7 @@ class MatchTypeRepository extends BaseRepository implements MatchTypeRepositoryI
         $this->matchType = $matchType;
     }
 
-    public function getMatchTypes() : Collection
+    public function getMatchTypes(): Collection
     {
         return $this->matchType->all();
     }

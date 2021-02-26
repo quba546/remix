@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Providers;
 
 use App\Repository\Eloquent\BaseRepository;
@@ -25,7 +27,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function register()
+    public function register() : void
     {
         $this->app->bind(EloquentRepositoryInterface::class, BaseRepository::class);
         $this->app->bind(StandingRepositoryInterface::class, StandingRepository::class);
@@ -41,7 +43,7 @@ class RepositoryServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function boot()
+    public function boot() : void
     {
         //
     }

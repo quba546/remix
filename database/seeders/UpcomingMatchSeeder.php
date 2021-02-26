@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Carbon\Carbon;
@@ -14,7 +16,7 @@ class UpcomingMatchSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         $faker = Factory::create();
 

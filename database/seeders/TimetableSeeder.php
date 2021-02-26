@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
@@ -12,7 +14,7 @@ class TimetableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         for ($i = 0; $i < 30; $i++) {
             DB::table('timetable')->insert(

@@ -26,9 +26,9 @@ class PlayerController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
-        return view('admin.players-list',
+        return view('admin.players',
             [
                 'players' => $this->playerRepository->listPaginated(15,
                         [
@@ -48,10 +48,10 @@ class PlayerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  PlayerRequest  $request
-     * @return ?RedirectResponse
+     * @param PlayerRequest $request
+     * @return RedirectResponse
      */
-    public function store(PlayerRequest $request) : ?RedirectResponse
+    public function store(PlayerRequest $request): RedirectResponse
     {
         if ($request->has('form-create-player')) {
             $validated = $request->validated();
@@ -73,40 +73,42 @@ class PlayerController extends Controller
                     ->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
         }
 
-        return null;
+        return redirect()
+            ->route('admin.players.store')
+            ->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int|string $id
+     * @param string $id
      * @return View|RedirectResponse
      */
-    public function edit(int|string $id) : View | RedirectResponse
+    public function edit(string $id): View|RedirectResponse
     {
-      $id = (int) $id;
+        $id = (int)$id;
 
-      return $this->playerRepository->playerDetails($id)
+        return $this->playerRepository->playerDetails($id)
             ? view('admin.player-details',
                 [
                     'player' => $this->playerRepository->playerDetails($id)
                 ]
             )
             : redirect()
-              ->route('admin.players.index')
-              ->with('error', 'Nie istnieje zawodnik o ID: ' . $id);
+                ->route('admin.players.index')
+                ->with('error', 'Nie istnieje zawodnik o ID: ' . $id);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  PlayerRequest  $request
-     * @param  int|string  $id
+     * @param PlayerRequest $request
+     * @param string $id
      * @return RedirectResponse
      */
-    public function update(PlayerRequest $request, int|string $id) : RedirectResponse
+    public function update(PlayerRequest $request, string $id): RedirectResponse
     {
-        $id = (int) $id;
+        $id = (int)$id;
 
         $data = $this->playerRepository->playerDetails($id);
 
@@ -149,18 +151,18 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  SimplePlayerRequest  $request
+     * @param SimplePlayerRequest $request
      * @return RedirectResponse
      */
-    public function updatePlayedMatches(SimplePlayerRequest $request) : RedirectResponse
+    public function updatePlayedMatches(SimplePlayerRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
-        $playerId = (int) $validated['playerId'];
+        $playerId = (int)$validated['playerId'];
 
         $data = $this->playerRepository->playerDetails($playerId);
 
-        $success = $this->playerRepository->updatePlayedMatches($playerId, (int) $validated['playedMatches']);
+        $success = $this->playerRepository->updatePlayedMatches($playerId, (int)$validated['playedMatches']);
 
         return $success
             ? redirect()
@@ -174,12 +176,12 @@ class PlayerController extends Controller
     /**
      * Remove image from the specified resource.
      *
-     * @param  int|string  $id
+     * @param string $id
      * @return RedirectResponse
      */
-    public function destroyImage(int|string $id) : RedirectResponse
+    public function destroyImage(string $id): RedirectResponse
     {
-        $id = (int) $id;
+        $id = (int)$id;
 
         $data = $this->playerRepository->playerDetails($id);
 
@@ -202,12 +204,12 @@ class PlayerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int|string  $id
+     * @param string $id
      * @return RedirectResponse
      */
-    public function destroy(int|string $id) : RedirectResponse
+    public function destroy(string $id): RedirectResponse
     {
-        $id = (int) $id;
+        $id = (int)$id;
 
         $data = $this->playerRepository->playerDetails($id);
 

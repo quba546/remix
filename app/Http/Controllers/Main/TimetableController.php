@@ -20,11 +20,11 @@ class TimetableController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
         return view('user.season.timetable',
             [
-                'matches' => $this->matchRoundRepository->getTimetable()
+                'matches' => $this->matchRoundRepository->getTimetable() ?? []
             ]
         );
     }

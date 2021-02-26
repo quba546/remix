@@ -37,7 +37,7 @@ class HomeController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
         return view('user.home',
             [

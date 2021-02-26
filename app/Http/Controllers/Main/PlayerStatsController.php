@@ -22,7 +22,7 @@ class PlayerStatsController extends Controller
      *
      * @return View
      */
-    public function index() : View
+    public function index(): View
     {
         return view('user.season.stats',
             [
@@ -30,8 +30,10 @@ class PlayerStatsController extends Controller
                         [
                             'first_name',
                             'last_name',
-                            'nr', 'position',
-                            'goals', 'assists',
+                            'nr',
+                            'position',
+                            'goals',
+                            'assists',
                             'played_matches',
                             'clean_sheets',
                             'yellow_cards',

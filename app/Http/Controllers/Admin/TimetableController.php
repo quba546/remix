@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -23,7 +25,7 @@ class TimetableController extends Controller
      *
      * @return View
      */
-    public function create() : View
+    public function create(): View
     {
         return view('admin.add-timetable');
     }
@@ -31,10 +33,10 @@ class TimetableController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  TimetableRequest  $request
+     * @param TimetableRequest $request
      * @return RedirectResponse
      */
-    public function store(TimetableRequest $request) : RedirectResponse
+    public function store(TimetableRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
@@ -60,11 +62,11 @@ class TimetableController extends Controller
      *
      * @return View
      */
-    public function edit() : View
+    public function edit(): View
     {
         return view('admin.delete-timetable',
             [
-                'rounds' => $this->timetableRepository->getRounds()
+                'rounds' => $this->timetableRepository->getRounds() ?? []
             ]
         );
     }
@@ -72,12 +74,12 @@ class TimetableController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  Request $request
+     * @param Request $request
      * @return RedirectResponse
      */
-    public function destroyOne(Request $request) : RedirectResponse
+    public function destroyOne(Request $request): RedirectResponse
     {
-        $success = $this->timetableRepository->deleteRound((int) $request->round);
+        $success = $this->timetableRepository->deleteRound((int)$request->round);
 
         return $success
             ? redirect()
@@ -88,22 +90,17 @@ class TimetableController extends Controller
                 ->with('error', "Wystąpił błąd podczas usuwania {$request->round} z terminarza!");
     }
 
-
     /**
      * Remove the all resources from storage.
      *
      * @return RedirectResponse
      */
-    public function destroy() : RedirectResponse
+    public function destroy(): RedirectResponse
     {
-        $success = $this->timetableRepository->deleteAll();
+        $this->timetableRepository->deleteAll();
 
-        return $success
-            ? redirect()
-                ->route('admin.dashboard')
-                ->with('info', "Poprawnie usunięto cały terminarz")
-            : redirect()
-                ->route('admin.dashboard')
-                ->with('error', "Wystąpił błąd podczas usuwania całego terminarza");
+        return redirect()
+            ->route('admin.dashboard')
+            ->with('info', "Poprawnie usunięto cały terminarz");
     }
 }

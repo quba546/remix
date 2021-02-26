@@ -20,7 +20,7 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
         $this->timetable = $timetable;
     }
 
-    public function addRound(array $data) : bool
+    public function addRound(array $data): bool
     {
         // check if that round exists yet in table
         if (!$this->timetable->where('round', $data['round'])->exists()) {
@@ -35,7 +35,7 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
         }
     }
 
-    public function getTimetable() : array
+    public function getTimetable(): array
     {
         $data = $this->timetable->all();
 
@@ -64,18 +64,19 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
         return $result;
     }
 
-    public function getRounds() : Collection
+    public function getRounds(): Collection
     {
         return $this->timetable->all('round', 'date');
     }
 
-    public function deleteRound(int $round) : bool
+    public function deleteRound(int $round): ?bool
     {
-        return (bool) $this->timetable->where('round', $round)->delete();
+        /** @noinspection PhpUnhandledExceptionInspection */
+        return $this->timetable->where('round', $round)->delete();
     }
 
-    public function deleteAll() : bool
+    public function deleteAll(): void
     {
-        return (bool) $this->timetable->truncate();
+        $this->timetable->truncate();
     }
 }

@@ -30,7 +30,7 @@ class LastMatchController extends Controller
      *
      * @return View
      */
-    public function edit() : View
+    public function edit(): View
     {
         return view('admin.last-match',
             [
@@ -43,26 +43,30 @@ class LastMatchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  MatchRequest  $request
+     * @param MatchRequest $request
      * @return RedirectResponse
      */
-    public function update(MatchRequest $request) : RedirectResponse
+    public function update(MatchRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
-        $this->lastMatchRepository->saveLastMatch(
+        $success = $this->lastMatchRepository->saveLastMatch(
             [
                 'host' => $validated['host'],
                 'guest' => $validated['guest'],
                 'matchType' => $validated['matchType'],
                 'round' => $validated['round'] ?? null,
                 'date' => $validated['date'],
-                'score' => $validated['score'],
+                'score' => $validated['score']
             ]
         );
 
-        return redirect()
-            ->route('admin.matches.last.edit')
-            ->with('success', 'Poprawnie dodano dane o ostatnim meczu');
+        return $success
+            ? redirect()
+                ->route('admin.matches.last.edit')
+                ->with('success', 'Poprawnie dodano dane o ostatnim meczu')
+            : redirect()
+                ->route('admin.matches.last.edit')
+                ->with('error', 'Wystąpił błąd podczas dodawania danych o ostatnim meczu');
     }
 }

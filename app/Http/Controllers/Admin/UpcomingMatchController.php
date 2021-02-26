@@ -30,7 +30,7 @@ class UpcomingMatchController extends Controller
      *
      * @return View
      */
-    public function edit() : View
+    public function edit(): View
     {
         return view('admin.upcoming-match',
             [
@@ -43,14 +43,14 @@ class UpcomingMatchController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  MatchRequest  $request
+     * @param MatchRequest $request
      * @return RedirectResponse
      */
-    public function update(MatchRequest $request) : RedirectResponse
+    public function update(MatchRequest $request): RedirectResponse
     {
         $validated = $request->validated();
 
-        $this->upcomingMatchRepository->saveUpcomingMatch(
+        $success = $this->upcomingMatchRepository->saveUpcomingMatch(
             [
                 'host' => $validated['host'],
                 'guest' => $validated['guest'],
@@ -61,8 +61,12 @@ class UpcomingMatchController extends Controller
             ]
         );
 
-        return redirect()
-            ->route('admin.matches.upcoming.edit')
-            ->with('success', 'Poprawnie dodano dane o najbliższym meczu');
+        return $success
+            ? redirect()
+                ->route('admin.matches.upcoming.edit')
+                ->with('success', 'Poprawnie dodano dane o najbliższym meczu')
+            : redirect()
+                ->route('admin.matches.upcoming.edit')
+                ->with('error', 'Wystąpił błąd podczas dodawania danych o najbliższym meczu');
     }
 }
