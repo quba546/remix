@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
 use App\Repository\LastMatchRepositoryInterface;
 use App\Repository\PlayerRepositoryInterface;
@@ -39,6 +40,10 @@ class HomeController extends Controller
      */
     public function index(): View
     {
+        SEOMeta::setTitle('Remix Niebieszczany');
+        SEOMeta::setDescription('Oficjalna strona klubu piłkarskiego LKS Remix Niebieszczany');
+        SEOMeta::setCanonical(env('APP_URL'));
+
         return view('user.home',
             [
                 'shortStanding' => $this->standingRepository->standing(['position', 'team', 'played_matches', 'points', 'league']) ?? [],

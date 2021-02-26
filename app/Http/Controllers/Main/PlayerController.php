@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Repository\PlayerRepositoryInterface;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 
@@ -25,6 +26,8 @@ class PlayerController extends Controller
      */
     public function index(): View
     {
+        SEOMeta::setTitle('Kadra');
+
         return view('user.season.players',
             [
                 'players' => $this->playerRepository->listPaginated(15,
@@ -49,6 +52,8 @@ class PlayerController extends Controller
     public function show(string $id): View|RedirectResponse
     {
         $id = (int)$id;
+
+        SEOMeta::setTitle('Profil zawodnika');
 
         return $this->playerRepository->playerDetails($id)
             ? view('user.season.player-details',

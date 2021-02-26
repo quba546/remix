@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Repository\StandingRepositoryInterface;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
 
 class StandingController extends Controller
@@ -24,6 +25,8 @@ class StandingController extends Controller
      */
     public function index(): View
     {
+        SEOMeta::setTitle('Tabela');
+
         return view('user.season.standings',
             [
                 'standings' => $this->standingRepository->standing(

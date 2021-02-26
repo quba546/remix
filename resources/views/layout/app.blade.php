@@ -6,9 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
-    <meta name="description" content="Oficjalna strona klubu piłkarskiego LKS Remix Niebieszczany występującego w podokręgu krośnieńskim">
-    <meta name="author" content="Jakub Pałys">
-    <meta name="keywords" content="piłka nożna, remix, niebieszczany, lks,  lks remix niebieszczany, ozpn krosno">
+    {!! SEOMeta::generate() !!}
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">

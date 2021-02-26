@@ -6,6 +6,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Repository\PlayerRepositoryInterface;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
 
 class PlayerStatsController extends Controller
@@ -24,6 +25,8 @@ class PlayerStatsController extends Controller
      */
     public function index(): View
     {
+        SEOMeta::setTitle('Statystyki zawodników');
+
         return view('user.season.stats',
             [
                 'playersStats' => $this->playerRepository->listPaginated(15,

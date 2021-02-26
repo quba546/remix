@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Repository\TimetableRepositoryInterface;
+use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
 
 class TimetableController extends Controller
@@ -22,6 +23,8 @@ class TimetableController extends Controller
      */
     public function index(): View
     {
+        SEOMeta::setTitle('Terminarz');
+
         return view('user.season.timetable',
             [
                 'matches' => $this->matchRoundRepository->getTimetable() ?? []
