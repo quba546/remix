@@ -11,6 +11,9 @@
 // Variables
 @import 'variables';
 
+// override bootstrap's success color by own (must declare before import bootstrap)
+$success: $primary-color;
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
@@ -550,11 +553,17 @@ a.sort-icon {
     max-width: 60%;
 }
 
+/* ==== pagination custom style ==== */
 .page-item.active .page-link {
     color: #fff !important;
-    background: #38c172 !important;
-    border: 1px solid #38c172 !important;
+    background: $primary-color !important;
+    border: 1px solid $primary-color !important;
 }
+
+.page-item a.page-link {
+    color: $secondary-color;
+}
+/* ================================= */
 
 h2 {
     font-family: 'Lato', sans-serif;
