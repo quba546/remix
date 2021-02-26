@@ -6,7 +6,7 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">O nas</h2>
-                    <hr>
+                    <hr class="hr-text">
                     <div class="text-justify mt-5">
                         <img src="{{ url('/assets/remix_stare.jpg') }}" alt="Stare zdjęcie grupowe drużyny"
                              class="float-left mr-3 mb-3 border border-success shadow-lg" width="60%">

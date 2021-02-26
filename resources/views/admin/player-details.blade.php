@@ -23,10 +23,10 @@
                                 @method('PUT')
                                 <div class="form-row ml-2 mr-2">
                                     <div class="container form-group col-md-6">
-                                        <div class="row mx-auto justify-content-center align-items-start mt-4">
-                                            <div class="col-12 col-lg-7">
-                                                <div class="player-img">
-                                                    <img src="{{ isset($player->image) ? asset('storage/' . $player->image) : asset('storage/blank-profile-picture.png') }}" alt="Zdjęcie gracza">
+                                        <div class="row mx-auto">
+                                            <div class="col-12">
+                                                <div class="circular--portrait">
+                                                    <img src="{{ isset($player->image) ? asset('storage/' . $player->image) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
                                                 </div>
                                             </div>
                                         </div>
@@ -76,14 +76,14 @@
                                         <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-desktop" accept="image/*">
                                         <label class="custom-file-label text-left" for="image" data-browse="Przeglądaj">Wybierz zdjęcie</label>
                                         @error('image')
-                                            <div class="alert alert-danger">{{ $message }}</div>
+                                            <div class="alert alert-danger mt-4">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-12 col-xl-6">
                                         <label for="number" class="mb-0">Numer</label>
                                         <input type="number" name="number" value="{{ old('number') ?? $player->nr ?? '' }}" class="form-control @error('number') is-invalid @enderror" id="number" min="1" step="1" max="99">
                                         @error('number')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                            <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>

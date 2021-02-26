@@ -6,7 +6,7 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">Tabela</h2>
-                    <hr>
+                    <hr class="hr-text">
                     <table class="table table-sm table-responsive-lg table-striped table-bordered table-font mt-5">
                         <thead class="thead-dark">
                             <tr>

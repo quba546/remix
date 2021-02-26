@@ -95,7 +95,7 @@
     </div>
     <div class="row mx-auto bg-white mt-3">
         <div class="col-12 text-center mt-5">
-            <h3 class="text-uppercase">Najlepsi strzelcy klubu</h3>
+            <h2 class="text-uppercase">Najlepsi strzelcy klubu</h2>
             <hr class="hr-text">
         </div>
         <div class="col-12 col-lg-4 order-2 order-lg-1 text-center mt-5 mt-lg-0">
@@ -146,9 +146,9 @@
             </div>
         </div>
     </div>
-    <div class="row mx-auto bg-light pt-3 pb-3">
+    <div class="row mx-auto bg-light pt-5 pb-5">
         <div class="col-12 text-center">
-            <h2>Główny sponsor klubu</h2>
+            <h2 class="text-uppercase">Główny sponsor klubu</h2>
             <hr class="hr-text" data-content="DRUCZEK SANOK">
             <a href="https://pl-pl.facebook.com/druczekleskoo/" target="_blank"><img src="{{ url('/assets/druczek-logo.png') }}" alt="Druczek Sanok logo" height="100px"></a>
             <br>

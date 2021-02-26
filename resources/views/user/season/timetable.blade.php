@@ -6,7 +6,7 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">Terminarz</h2>
-                    <hr>
+                    <hr class="hr-text">
                     <div class="mt-5">
                         <div>
                             <div class="container">

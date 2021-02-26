@@ -6,12 +6,12 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">Profil gracza</h2>
-                    <hr>
+                    <hr class="hr-text">
                     <div class="text-justify mt-5">
                         <div class="row">
                             <div class="col-12 col-lg-6 text-center">
-                                <div class="player-profile-img">
-                                    <img src="{{ isset($player->image)? asset('storage/' . $player->image) : asset('/storage/blank-profile-picture.png') }}" class=" border border-success" alt="Zdjęcie gracza">
+                                <div class="circular--portrait">
+                                    <img src="{{ isset($player->image)? asset('storage/' . $player->image) : asset('/storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-6 mt-4 mt-lg-0 border border-success rounded p-4">

@@ -34,7 +34,7 @@ class PlayerRequest extends FormRequest
             'cleanSheets' => ['integer', 'min:0'],
             'yellowCards' => ['integer', 'min:0'],
             'redCards' => ['integer', 'min:0'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:104']
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:4096']
         ];
     }
 

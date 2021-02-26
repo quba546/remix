@@ -6,7 +6,7 @@
             <div class="col-12 mt-5 mb-5 bg-white shadow-lg">
                 <div class="text-center p-3" >
                     <h2 class="text-uppercase font-weight-bold mt-3">Kadra</h2>
-                    <hr>
+                    <hr class="hr-text">
                     <img src="{{ url('/assets/zdjecie_druzyny_2017_2018.jpg') }}" alt="Zdjęcie drużyny z sezonu 2017/2018"
                          class="align-items-center mt-5 mb-4 border border-success shadow-lg" width="90%">
                     <table class="table table-sm table-striped table-responsive-md table-bordered table-font">
