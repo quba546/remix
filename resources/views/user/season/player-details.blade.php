@@ -11,7 +11,7 @@
                         <div class="row">
                             <div class="col-12 col-lg-6 text-center">
                                 <div class="player-profile-img">
-                                    <img src="{{ $player->image ? asset('storage/' . $player->image) : asset('/storage/blank-profile-picture.png') }}" class=" border border-success" alt="Zdjęcie gracza">
+                                    <img src="{{ isset($player->image)? asset('storage/' . $player->image) : asset('/storage/blank-profile-picture.png') }}" class=" border border-success" alt="Zdjęcie gracza">
                                 </div>
                             </div>
                             <div class="col-12 col-lg-6 mt-4 mt-lg-0 border border-success rounded p-4">
@@ -53,6 +53,11 @@
                                         <td class="font-16"><strong>{{ $player->red_cards ?? '' }}</strong></td>
                                     </tr>
                                 </table>
+                            </div>
+                        </div>
+                        <div class="row mx-auto mt-3">
+                            <div class="col-12 text-right">
+                                <a href="{{ route('season.players.index') }}" class="btn btn-outline-info">Powrót do listy zawodników</a>
                             </div>
                         </div>
                     </div>

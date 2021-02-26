@@ -26,7 +26,7 @@
                                         <div class="row mx-auto justify-content-center align-items-start mt-4">
                                             <div class="col-12 col-lg-7">
                                                 <div class="player-img">
-                                                    <img src="{{ $player->image ? asset('storage/' . $player->image) : asset('storage/blank-profile-picture.png') }}" alt="Zdjęcie gracza">
+                                                    <img src="{{ isset($player->image) ? asset('storage/' . $player->image) : asset('storage/blank-profile-picture.png') }}" alt="Zdjęcie gracza">
                                                 </div>
                                             </div>
                                         </div>
@@ -71,7 +71,7 @@
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">
-                                    <div class="form-group d-none d-xl-flex col-lg-6 mt-4">
+                                    <div class="form-group d-none d-xl-flex col-xl-6 mt-4">
                                         {{--for desktop--}}
                                         <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image-add-desktop" accept="image/*">
                                         <label class="custom-file-label text-left" for="image" data-browse="Przeglądaj">Wybierz zdjęcie</label>

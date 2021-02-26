@@ -39,14 +39,14 @@ Route::group([], function () {
         Route::get('/standings', [StandingController::class, 'index'])
             ->name('standings.index');
 
-        Route::get('/team', [PlayerController::class, 'index'])
-            ->name('team.index');
+        Route::get('/players/stats', [PlayerStatsController::class, 'index'])
+            ->name('stats.index');
+
+        Route::get('/players', [PlayerController::class, 'index'])
+            ->name('players.index');
 
         Route::get('/players/{player}', [PlayerController::class, 'show'])
             ->name('players.show');
-
-        Route::get('/stats', [PlayerStatsController::class, 'index'])
-            ->name('stats.index');
     });
 
     /* AUTH FOR ADMIN ROUTES */

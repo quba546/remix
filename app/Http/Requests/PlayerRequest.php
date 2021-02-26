@@ -34,7 +34,7 @@ class PlayerRequest extends FormRequest
             'cleanSheets' => ['integer', 'min:0'],
             'yellowCards' => ['integer', 'min:0'],
             'redCards' => ['integer', 'min:0'],
-            'image' => ['nullable', 'image', 'dimensions:min_width=100,min_height=200']
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:104']
         ];
     }
 
@@ -49,7 +49,8 @@ class PlayerRequest extends FormRequest
             'min' => 'Minimalna liczba to :min',
             'number.max' => 'Maksymalna liczba to :max',
             'image' => 'Dozwolone formaty: jpg, jpeg, png, bmp, gif, svg lub webp',
-            'dimensions' => 'Minimalna szerokość zdjęcia to :min_width a wysokość :min_height'
+            'mimes' => 'Wymagane formaty obrazu to jpeg, png, jpg, gif, svg',
+            'image.max' => 'Maksymalny rozmiar obrazu to :max'
         ];
     }
 

@@ -1,5 +1,6 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
 @import url(https://fonts.googleapis.com/css2?family=Lato:wght@100;300;400;700;900&display=swap);
+@import url(https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap);
 @charset "UTF-8";
 /*!
  * Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com
@@ -16653,4 +16654,69 @@ h2 {
 
 .font-16 {
   font-size: 16px;
+}
+
+.bg-green {
+  background-color: #86e796;
+}
+
+.bg-red {
+  background-color: #ff8a8a;
+}
+
+@media screen and (min-width: 992px) {
+  .second-place {
+    height: 100px;
+  }
+
+  .third-place {
+    height: 200px;
+  }
+}
+.img-scorer {
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.circular--portrait {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.circular--portrait img {
+  width: 100%;
+  height: auto;
+}
+
+.best-scorer-details {
+  display: block;
+}
+
+.best-scorer-place {
+  font-family: "Dancing Script", cursive;
+  font-size: 32px;
+}
+
+i.best-scorer-icon-1, i.best-scorer-icon-2, i.best-scorer-icon-3 {
+  font-size: 32px;
+}
+
+i.best-scorer-icon-1 {
+  color: gold;
+}
+
+i.best-scorer-icon-2 {
+  color: silver;
+}
+
+i.best-scorer-icon-3 {
+  color: saddlebrown;
+}
+
+.best-scorer-stats {
+  font-size: 24px;
 }

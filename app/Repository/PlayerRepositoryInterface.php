@@ -11,7 +11,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 interface PlayerRepositoryInterface
 {
     public function listPaginated(int $limit, array $columns) : LengthAwarePaginator;
-    public function bestScorers(int $limit) : Collection;
+    public function bestScorers(int $limit) : array;
     public function savePlayer(array $data) : bool;
     public function updatePlayer(int $id, array $data) : bool;
     public function updatePlayedMatches(int $id, int $playedMatches) : bool;

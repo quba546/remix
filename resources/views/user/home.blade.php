@@ -19,10 +19,10 @@
                     <tbody class="table-light">
                     @foreach($shortStanding ?? [] as $row)
                         <tr>
-                            <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->position }}</td>
-                            <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->team }}</td>
-                            <td class="text-center align-middle {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->played_matches }}</td>
-                            <td class="text-center align-middle font-weight-bold {{ $loop->first ? 'bg-success' : '' }} {{ $loop->last ? 'bg-danger' : '' }}">{{ $row->points }}</td>
+                            <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->position }}</td>
+                            <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->team }}</td>
+                            <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->played_matches }}</td>
+                            <td class="text-center align-middle font-weight-bold {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->points }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -52,9 +52,9 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->host ?? '' }}</td>
+                        <td class="text-center text-md-right align-middle font-weight-bold table-team-name">{{ $lastMatch->host ?? '' }}</td>
                         <td class="text-center align-middle font-weight-bold">━</td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->guest ?? '' }}</td>
+                        <td class="text-center text-md-left align-middle font-weight-bold table-team-name">{{ $lastMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-trophy table-icon"></i></td>
@@ -80,9 +80,9 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->host ?? '' }}</td>
+                        <td class="text-center text-md-right align-middle font-weight-bold table-team-name">{{ $upcomingMatch->host ?? '' }}</td>
                         <td class="text-center align-middle font-weight-bold">━</td>
-                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->guest ?? '' }}</td>
+                        <td class="text-center text-md-left align-middle font-weight-bold table-team-name">{{ $upcomingMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-map-marked table-icon"></i></td>
@@ -90,31 +90,63 @@
                     </tr>
                     </tbody>
                 </table>
-                <table class="table table-sm table-striped table-bordered shadow-lg mt-5 table-best-scorers-font">
-                    <thead class="thead-dark">
-                    <tr>
-                        <th colspan="3" scope="col" class="text-center align-middle text-uppercase letter-spacing-1">Najlepsi strzelcy</th>
-                    </tr>
-                    <tr>
-                        <th scope="col" class="text-center align-middle">Bramki</th>
-                        <th scope="col" class="text-center align-middle">Nazwisko</th>
-                        <th scope="col" class="text-center align-middle">Imię</th>
-                    </tr>
-                    </thead>
-                    <tbody class="table-light">
-                    @foreach($bestScorers ?? [] as $bestScorer)
-                        <tr>
-                            <td class="text-center align-middle">{{ $bestScorer->goals }}</td>
-                            <td class="text-center align-middle text-uppercase">{{ $bestScorer->last_name }}</td>
-                            <td class="text-center align-middle">{{ $bestScorer->first_name }}</td>
-                        </tr>
-                    @endforeach
-                    </tbody>
-                </table>
             </aside>
         </div>
     </div>
-    <div class="row mx-auto bg-white pt-3 pb-3">
+    <div class="row mx-auto bg-white mt-3">
+        <div class="col-12 text-center mt-5">
+            <h3 class="text-uppercase">Najlepsi strzelcy klubu</h3>
+            <hr class="hr-text">
+        </div>
+        <div class="col-12 col-lg-4 order-2 order-lg-1 text-center mt-5 mt-lg-0">
+            <div class="second-place"></div>
+            <div class="best-scorer-details mb-2">
+                <span class="best-scorer-place font-weight-bold">2nd</span>
+                <br>
+                <i class="fas fa-medal best-scorer-icon-2"></i>
+            </div>
+            <div class="circular--portrait">
+                <img src="{{ isset($bestScorers[1]['image']) ? asset('storage/' . $bestScorers[1]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
+            </div>
+            <div class="best-scorer-stats mt-4">
+                <span class="text-uppercase">{{ $bestScorers[1]['last_name'] }} </span><span>{{ $bestScorers[1]['first_name'] }}</span>
+                <br>
+                <span>{{ $bestScorers[1]['goals'] }} <i class="fas fa-futbol"></i></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 order-1 order-lg-2 text-center">
+            <div class="best-scorer-details mb-2">
+                <span class="best-scorer-place font-weight-bold">1st</span>
+                <br>
+                <i class="fas fa-medal best-scorer-icon-1"></i>
+            </div>
+            <div class="circular--portrait">
+                <img src="{{ isset($bestScorers[0]['image']) ? asset('storage/' . $bestScorers[0]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
+            </div>
+            <div class="best-scorer-stats mt-4">
+                <span class="text-uppercase">{{ $bestScorers[0]['last_name'] }} </span><span>{{ $bestScorers[0]['first_name'] }}</span>
+                <br>
+                <span>{{ $bestScorers[0]['goals'] }}  <i class="fas fa-futbol"></i></span>
+            </div>
+        </div>
+        <div class="col-12 col-lg-4 order-3 order-lg-3 text-center mt-5 mt-lg-0 mb-5">
+            <div class="third-place"></div>
+            <div class="best-scorer-details mb-2">
+                <span class="best-scorer-place font-weight-bold">3rd</span>
+                <br>
+                <i class="fas fa-medal best-scorer-icon-3"></i>
+            </div>
+            <div class="circular--portrait">
+                <img src="{{ isset($bestScorers[2]['image']) ? asset('storage/' . $bestScorers[2]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
+            </div>
+            <div class="best-scorer-stats mt-4">
+                <span class="text-uppercase">{{ $bestScorers[2]['last_name'] }} </span><span>{{ $bestScorers[2]['first_name'] }} </span>
+                <br>
+                <span>{{ $bestScorers[2]['goals'] }}  <i class="fas fa-futbol"></i></span>
+            </div>
+        </div>
+    </div>
+    <div class="row mx-auto bg-light pt-3 pb-3">
         <div class="col-12 text-center">
             <h2>Główny sponsor klubu</h2>
             <hr class="hr-text" data-content="DRUCZEK SANOK">

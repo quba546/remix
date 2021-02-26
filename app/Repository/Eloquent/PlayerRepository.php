@@ -8,6 +8,7 @@ use App\Models\Player;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use PhpParser\Node\Expr\Array_;
 
 class PlayerRepository extends BaseRepository implements PlayerRepositoryInterface
 {
@@ -25,11 +26,18 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             ->paginate($limit, $columns);
     }
 
-    public function bestScorers(int $limit) : Collection
+    public function bestScorers(int $limit) : array
     {
-        return $this->player->all('first_name', 'last_name', 'goals')
+        $bestScorers = $this->player->all('first_name', 'last_name', 'goals', 'image')
             ->sortByDesc('goals')
-            ->take($limit);
+            ->take($limit)->toArray();
+
+        $result = [];
+        foreach ($bestScorers as $bestScorer) {
+            $result[] = $bestScorer;
+        }
+
+        return $result;
     }
 
     public function savePlayer(array $data) : bool

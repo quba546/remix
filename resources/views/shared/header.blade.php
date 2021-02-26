@@ -29,7 +29,7 @@
                 <div class="dropdown-menu shadow p-3 mb-5 bg-white rounded" aria-labelledby="navbarDropdownMenuLink">
                     <a class="dropdown-item" href="{{ route('season.timetable.index') }}">Terminarz</a>
                     <a class="dropdown-item" href="{{ route('season.standings.index') }}">Tabela</a>
-                    <a class="dropdown-item" href="{{ route('season.team.index') }}">Kadra</a>
+                    <a class="dropdown-item" href="{{ route('season.players.index') }}">Kadra</a>
                     <a class="dropdown-item" href="{{ route('season.stats.index') }}">Statystyki</a>
                 </div>
             <li class="nav-item ml-3">

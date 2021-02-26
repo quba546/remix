@@ -42,14 +42,14 @@ class PlayerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  string  $id
      * @return View
      */
-    public function show(int $id) : View
+    public function show(string $id) : View
     {
         return view('user.season.player-details',
             [
-               'player' => $this->playerRepository->playerDetails($id)
+               'player' => $this->playerRepository->playerDetails((int) $id)
             ]
         );
     }

@@ -164,10 +164,10 @@ class PlayerController extends Controller
 
         return $success
             ? redirect()
-                ->route('admin.players.index')
+                ->back()
                 ->with('success', "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
             : redirect()
-                ->route('admin.players.index')
+                ->back()
                 ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
     }
 
