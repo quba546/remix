@@ -1,5 +1,9 @@
 require('./bootstrap');
 
+// AOS library for animation
+window.AOS = require('AOS');
+AOS.init();
+
 // add csrf-token to all request headers
 $.ajaxSetup({
     headers: {

@@ -105,7 +105,7 @@
                 <br>
                 <i class="fas fa-medal best-scorer-icon-2"></i>
             </div>
-            <div class="circular--portrait">
+            <div class="circular--portrait" data-aos="fade-right" data-aos-duration="2500">
                 <img src="{{ isset($bestScorers[1]['image']) ? asset('storage/' . $bestScorers[1]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
@@ -120,7 +120,7 @@
                 <br>
                 <i class="fas fa-medal best-scorer-icon-1"></i>
             </div>
-            <div class="circular--portrait">
+            <div class="circular--portrait" data-aos="fade-down" data-aos-duration="2500">
                 <img src="{{ isset($bestScorers[0]['image']) ? asset('storage/' . $bestScorers[0]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
@@ -136,7 +136,7 @@
                 <br>
                 <i class="fas fa-medal best-scorer-icon-3"></i>
             </div>
-            <div class="circular--portrait">
+            <div class="circular--portrait" data-aos="fade-left" data-aos-duration="2500">
                 <img src="{{ isset($bestScorers[2]['image']) ? asset('storage/' . $bestScorers[2]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
@@ -150,7 +150,9 @@
         <div class="col-12 text-center">
             <h2 class="text-uppercase">Główny sponsor klubu</h2>
             <hr class="hr-text" data-content="DRUCZEK SANOK">
-            <a href="https://pl-pl.facebook.com/druczekleskoo/" target="_blank"><img src="{{ url('/assets/druczek-logo.png') }}" alt="Druczek Sanok logo" height="100px"></a>
+            <a href="https://pl-pl.facebook.com/druczekleskoo/" target="_blank">
+                <img src="{{ url('/assets/druczek-logo.png') }}" alt="Druczek Sanok logo" data-aos="flip-right" data-aos-duration="1000" height="100px">
+            </a>
             <br>
             <hr class="hr-text">
         </div>

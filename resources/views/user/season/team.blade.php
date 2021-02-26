@@ -8,7 +8,7 @@
                     <h2 class="text-uppercase font-weight-bold mt-3">Kadra</h2>
                     <hr class="hr-text">
                     <img src="{{ url('/assets/zdjecie_druzyny_2017_2018.jpg') }}" alt="Zdjęcie drużyny z sezonu 2017/2018"
-                         class="align-items-center mt-5 mb-4 border border-success shadow-lg" width="90%">
+                         class="align-items-center mt-5 mb-4 border border-success shadow-lg" width="80%">
                     <table class="table table-sm table-striped table-responsive-md table-bordered table-font">
                         <thead class="thead-dark">
                         <tr>
@@ -26,7 +26,7 @@
                                 Pozycja
                                 @sortablelink('position' , '')
                             </th>
-                            <th class="text-center align-middle">Opcje</th>
+                            <th class="text-center align-middle">Szczegóły</th>
                         </tr>
                         </thead>
                         <tbody class="table-light">
@@ -38,7 +38,7 @@
                                 <td class="text-center align-middle">{{ $player->first_name }}</td>
                                 <td class="text-center align-middle">{{ $player->position }}</td>
                                 <td class="text-center align-middle">
-                                    <a href="{{ route('season.players.show', ['player' => $player->id]) }}" class="btn btn-outline-success">Szczegóły</a>
+                                    <a href="{{ route('season.players.show', ['player' => $player->id]) }}" class="btn btn-outline-success">Profil</a>
                                 </td>
                             </tr>
                         @endforeach
