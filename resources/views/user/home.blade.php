@@ -106,7 +106,7 @@
                 <i class="fas fa-medal best-scorer-icon-2"></i>
             </div>
             <div class="circular--portrait" data-aos="fade-right" data-aos-duration="2500">
-                <img src="{{ isset($bestScorers[1]['image']) ? asset('storage/' . $bestScorers[1]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
+                <img src="{{ isset($bestScorers[1]['image']) ? asset('storage/' . $bestScorers[1]['image']) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
                 <span class="text-uppercase">{{ $bestScorers[1]['last_name'] }} </span><span>{{ $bestScorers[1]['first_name'] }}</span>
@@ -121,7 +121,7 @@
                 <i class="fas fa-medal best-scorer-icon-1"></i>
             </div>
             <div class="circular--portrait" data-aos="fade-down" data-aos-duration="2500">
-                <img src="{{ isset($bestScorers[0]['image']) ? asset('storage/' . $bestScorers[0]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
+                <img src="{{ isset($bestScorers[0]['image']) ? asset('storage/' . $bestScorers[0]['image']) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
                 <span class="text-uppercase">{{ $bestScorers[0]['last_name'] }} </span><span>{{ $bestScorers[0]['first_name'] }}</span>
@@ -137,7 +137,7 @@
                 <i class="fas fa-medal best-scorer-icon-3"></i>
             </div>
             <div class="circular--portrait" data-aos="fade-left" data-aos-duration="2500">
-                <img src="{{ isset($bestScorers[2]['image']) ? asset('storage/' . $bestScorers[2]['image']) : asset('storage/blank-profile-picture.png') }}" class="border border-dark img-scorer" alt="Zdjęcie gracza">
+                <img src="{{ isset($bestScorers[2]['image']) ? asset('storage/' . $bestScorers[2]['image']) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
                 <span class="text-uppercase">{{ $bestScorers[2]['last_name'] }} </span><span>{{ $bestScorers[2]['first_name'] }} </span>

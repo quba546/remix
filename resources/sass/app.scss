@@ -30,6 +30,10 @@
     color: #ffffff;
 }
 
+.font-black {
+    color: #000000;
+}
+
 .navbar-toggler-icon > i {
     color:#ffffff;
     font-size:28px;
@@ -286,11 +290,6 @@ a:link {
 /* ================ */
 
 .wrapper {
-    //background: rgb(255, 255, 255);
-    //background: -moz-linear-gradient(350deg, rgba(255, 255, 255, 1) 0%, rgba(209, 250, 216, 1) 100%);
-    //background: -webkit-linear-gradient(350deg, rgba(255, 255, 255, 1) 0%, rgba(209, 250, 216, 1) 100%);
-    //background: linear-gradient(350deg, rgba(255, 255, 255, 1) 0%, rgba(209, 250, 216, 1) 100%);
-    //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#d1fad8", GradientType=1);
     background-color: $third-color;
 }
 
@@ -614,5 +613,9 @@ i.best-scorer-icon-3 {
 
 .best-scorer-stats {
     font-size: 24px;
+}
+
+.contact-img {
+    max-height: 85%;
 }
 

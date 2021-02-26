@@ -16149,6 +16149,10 @@ h3 {
   color: #ffffff;
 }
 
+.font-black {
+  color: #000000;
+}
+
 .navbar-toggler-icon > i {
   color: #ffffff;
   font-size: 28px;
@@ -16720,4 +16724,8 @@ i.best-scorer-icon-3 {
 
 .best-scorer-stats {
   font-size: 24px;
+}
+
+.contact-img {
+  max-height: 85%;
 }

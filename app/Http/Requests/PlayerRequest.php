@@ -50,7 +50,7 @@ class PlayerRequest extends FormRequest
             'number.max' => 'Maksymalna liczba to :max',
             'image' => 'Dozwolone formaty: jpg, jpeg, png, bmp, gif, svg lub webp',
             'mimes' => 'Wymagane formaty obrazu to jpeg, png, jpg, gif, svg',
-            'image.max' => 'Maksymalny rozmiar obrazu to :max'
+            'image.max' => 'Maksymalny rozmiar obrazu to :max kB'
         ];
     }
 

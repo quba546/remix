@@ -33,7 +33,7 @@
     <footer class="footer mt-auto">
         @include('shared.footer')
     </footer>
-    <a id="back-to-top" href="#" class="btn btn-light btn-lg back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
+    <a id="back-to-top" href="#" class="btn btn-light btn back-to-top" role="button"><i class="fas fa-chevron-up"></i></a>
 
     <!-- Scripts -->
     <script src="{{ mix('/js/app.js') }}"></script>

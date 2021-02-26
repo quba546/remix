@@ -9,10 +9,10 @@
                     <hr class="hr-text">
                     <div class="container">
                         <div class="row mx-auto mt-5">
-                            <div class="col-12 col-lg-6 d-flex justify-content-center">
-                                <img src="{{ url('/assets/herb_remix_niebieszczany.png') }}" alt="Herb Remix Niebieszczany" class="img-fluid p-5">
+                            <div class="col-12 col-lg-7 d-flex justify-content-center">
+                                <img src="{{ url('/assets/herb_remix_niebieszczany.png') }}" alt="Herb Remix Niebieszczany" class="img-fluid contact-img">
                             </div>
-                            <div class="col-12 col-lg-6 text-center text-lg-left p-4">
+                            <div class="col-12 col-lg-5 text-center text-lg-left font-16">
                                 <h3 class="font-weight-bold">Zarząd klubu</h3>
                                 <br>
                                 <p><b>Prezes</b><span class="text-uppercase"> - Bobik Szymon</span></p>
@@ -26,8 +26,8 @@
                                 <p>
                                     Preferowany kontakt telefoniczny.
                                 </p>
-                                <p><b class="mr-2">Tel.:</b><a href="tel:695780307"> 695-780-307</a></p>
-                                <p><b class="mr-2">E-mail:</b><a href="mailto:remix.niebieszczany@op.pl"> remix.niebieszczany@op.pl</a></p>
+                                <p><b class="mr-2"><i class="fas fa-phone-alt"></i> </b><a href="tel:695780307" class="font-black"> 695-780-307</a></p>
+                                <p><b class="mr-2"><i class="fas fa-at"></i></b><a href="mailto:remix.niebieszczany@op.pl" class="font-black"> remix.niebieszczany@op.pl</a></p>
                             </div>
                         </div>
                     </div>
