@@ -48,7 +48,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $lastMatch->match_type_id === 2 ? $lastMatch->date : 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date }}</td>
+                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $lastMatch->match_type_id === 2 ? $lastMatch->date : 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date }} @endif</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
@@ -76,7 +76,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">{{ $upcomingMatch->match_type_id === 2 ? $upcomingMatch->date : 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date }}</td>
+                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $upcomingMatch->match_type_id === 2 ? $upcomingMatch->date : 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date }} @endif</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
@@ -93,6 +93,7 @@
             </aside>
         </div>
     </div>
+    @if (isset($bestScorers[0]))
     <div class="row mx-auto bg-white mt-3">
         <div class="col-12 text-center mt-5">
             <h2 class="text-uppercase">Najlepsi strzelcy klubu</h2>
@@ -109,9 +110,9 @@
                 <img src="{{ isset($bestScorers[1]['image']) ? asset('storage/' . $bestScorers[1]['image']) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
-                <span class="text-uppercase">{{ $bestScorers[1]['last_name'] }} </span><span>{{ $bestScorers[1]['first_name'] }}</span>
+                <span class="text-uppercase">{{ $bestScorers[1]['last_name'] ?? '' }} </span><span>{{ $bestScorers[1]['first_name'] ?? '' }}</span>
                 <br>
-                <span>{{ $bestScorers[1]['goals'] }} <i class="fas fa-futbol"></i></span>
+                <span>{{ $bestScorers[1]['goals'] ?? '' }} <i class="fas fa-futbol"></i></span>
             </div>
         </div>
         <div class="col-12 col-lg-4 order-1 order-lg-2 text-center">
@@ -124,9 +125,9 @@
                 <img src="{{ isset($bestScorers[0]['image']) ? asset('storage/' . $bestScorers[0]['image']) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
-                <span class="text-uppercase">{{ $bestScorers[0]['last_name'] }} </span><span>{{ $bestScorers[0]['first_name'] }}</span>
+                <span class="text-uppercase">{{ $bestScorers[0]['last_name'] ?? '' }} </span><span>{{ $bestScorers[0]['first_name'] ?? '' }}</span>
                 <br>
-                <span>{{ $bestScorers[0]['goals'] }}  <i class="fas fa-futbol"></i></span>
+                <span>{{ $bestScorers[0]['goals'] ?? '' }}  <i class="fas fa-futbol"></i></span>
             </div>
         </div>
         <div class="col-12 col-lg-4 order-3 order-lg-3 text-center mt-5 mt-lg-0 mb-5">
@@ -140,12 +141,13 @@
                 <img src="{{ isset($bestScorers[2]['image']) ? asset('storage/' . $bestScorers[2]['image']) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">
             </div>
             <div class="best-scorer-stats mt-4">
-                <span class="text-uppercase">{{ $bestScorers[2]['last_name'] }} </span><span>{{ $bestScorers[2]['first_name'] }} </span>
+                <span class="text-uppercase">{{ $bestScorers[2]['last_name'] ?? '' }} </span><span>{{ $bestScorers[2]['first_name'] ?? '' }} </span>
                 <br>
-                <span>{{ $bestScorers[2]['goals'] }}  <i class="fas fa-futbol"></i></span>
+                <span>{{ $bestScorers[2]['goals'] ?? '' }}  <i class="fas fa-futbol"></i></span>
             </div>
         </div>
     </div>
+    @endif
     <div class="row mx-auto bg-light pt-5 pb-5">
         <div class="col-12 text-center">
             <h2 class="text-uppercase">Główny sponsor klubu</h2>

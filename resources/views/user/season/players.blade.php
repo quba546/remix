@@ -49,7 +49,7 @@
                             {{ $players->appends(request()->query())->links() }}
                         </div>
                         <div class="col-12 col-lg-10 text-left d-flex align-items-center">
-                            @if (isset($players))
+                            @if ($players->total() !== 0)
                                 <span>Wyświetlono {{ ($players->currentPage() - 1) * $players->perPage() + 1 }} - @if ($players->currentPage() === $players->lastPage()) {{ $players->total() }} @else {{ $players->currentPage() * $players->perPage() }} @endif z {{ $players->total() }}</span>
                             @endif
                         </div>
