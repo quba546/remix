@@ -6,6 +6,7 @@ namespace App\Repository\Eloquent;
 
 use App\Models\Player;
 use App\Repository\PlayerRepositoryInterface;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class PlayerRepository extends BaseRepository implements PlayerRepositoryInterface
@@ -22,6 +23,14 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         return $this->player
             ->sortable()
             ->paginate($limit, $columns);
+    }
+
+    public function playersList(array $columns, string $position) : Collection
+    {
+        return $this->player
+            ->where('position', '=', $position)
+            ->get($columns)
+            ->sortBy('last_name');
     }
 
     public function bestScorers(int $limit): array

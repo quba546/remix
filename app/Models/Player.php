@@ -20,6 +20,7 @@ class Player extends Model
     use SoftDeletes;
 
     protected $attributes = [
+        'nr' => null,
         'goals' => 0,
         'assists' => 0,
         'played_matches' => 0,

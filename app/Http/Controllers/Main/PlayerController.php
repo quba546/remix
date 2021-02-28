@@ -28,17 +28,14 @@ class PlayerController extends Controller
     {
         SEOMeta::setTitle('Kadra');
 
+        $columns = ['id', 'first_name', 'last_name', 'nr', 'played_matches', 'image'];
+
         return view('user.season.players',
             [
-                'players' => $this->playerRepository->listPaginated(15,
-                        [
-                            'id',
-                            'last_name',
-                            'first_name',
-                            'nr', 'position',
-                            'played_matches'
-                        ]
-                    ) ?? []
+                'goalkeepers' => $this->playerRepository->playersList($columns, 'bramkarz') ?? [],
+                'defenders' => $this->playerRepository->playersList($columns, 'obrońca') ?? [],
+                'midfielders' => $this->playerRepository->playersList($columns, 'pomocnik') ?? [],
+                'strikers' => $this->playerRepository->playersList($columns, 'napastnik') ?? []
             ]
         );
     }
