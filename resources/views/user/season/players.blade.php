@@ -8,11 +8,6 @@
                 <div class="text-center p-3" >
                     <h2 class="text-uppercase font-weight-bold mt-3">Kadra</h2>
                     <hr class="hr-text">
-                    <div class="row">
-                        <div class="col-12">
-                            <img src="{{ url('/assets/zdjecie_druzyny_2017_2018.jpg') }}" class="w-100 border border-success" alt="Zdjęcie drużyny z baraży w sezonie 2017/2018">
-                        </div>
-                    </div>
                     <div class="row mt-5 mb-5">
                         <div class="col-12 mb-2">
                             <div class="player-list-text mt-2 mb-5 ">
@@ -48,7 +43,7 @@
                             <hr class="hr-text">
                         </div>
 {{--                    defenders--}}
-                        <div class="col-12 mt-4 mb-2">
+                        <div class="col-12 mb-4">
                             <h3><strong>Obrońcy</strong></h3>
                         </div>
                         @foreach ($defenders as $defender)
@@ -74,7 +69,7 @@
                             <hr class="hr-text">
                         </div>
 {{--                    midfielders--}}
-                        <div class="col-12 mt-4 mb-2">
+                        <div class="col-12 mb-4">
                             <h3><strong>Pomocnicy</strong></h3>
                         </div>
                         @foreach ($midfielders as $midfielder)
@@ -100,7 +95,7 @@
                             <hr class="hr-text">
                         </div>
 {{--                    strikers--}}
-                        <div class="col-12 mt-4 mb-2">
+                        <div class="col-12 mb-4">
                             <h3><strong>Napastnicy</strong></h3>
                         </div>
                         @foreach ($strikers as $striker)

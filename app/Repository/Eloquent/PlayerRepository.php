@@ -79,7 +79,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             );
     }
 
-    public function updatePlayedMatches(int $id, int $playedMatches): bool
+    public function updatePlayedMatches(int $id, int $playedMatches): bool|int
     {
         return $this->player
             ->where('id', $id)

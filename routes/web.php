@@ -42,12 +42,9 @@ Route::group([], function () {
         Route::get('/players/stats', [PlayerStatsController::class, 'index'])
             ->name('stats.index');
 
-        Route::get('/players', [PlayerController::class, 'index'])
-            ->name('players.index');
-
-        Route::get('/players/{player}', [PlayerController::class, 'show'])
-            ->name('players.show')
-            ->where('player', '[0-9]+');
+        Route::resource('players', PlayerController::class)
+            ->only(['index', 'show'])
+            ->where(['player', '[0-9]+']);
     });
 
     /* AUTH FOR ADMIN ROUTES */
@@ -72,11 +69,12 @@ Route::group([], function () {
             Route::get('/timetable/edit', [AdminTimetableController::class, 'edit'])
                 ->name('timetable.edit');
 
+            Route::delete('/timetable', [AdminTimetableController::class, 'destroy'])
+                ->name('timetable.destroy');
+
             Route::delete('/timetable/one/', [AdminTimetableController::class, 'destroyOne'])
                 ->name('timetable.destroy.one');
 
-            Route::delete('/timetable', [AdminTimetableController::class, 'destroy'])
-                ->name('timetable.destroy');
 
             /* STANDING */
             Route::get('/standing/create', [AdminStandingController::class, 'create'])
@@ -107,30 +105,17 @@ Route::group([], function () {
             });
 
             /* PLAYERS */
+            Route::resource('players', AdminPlayerController::class)
+                ->only('index', 'store', 'update', 'edit', 'destroy')
+                ->where(['player', '[0-9]+']);
+
             Route::group([
                 'prefix' => '/players',
                 'as' => 'players.'
             ], function () {
-                Route::get('/', [AdminPlayerController::class, 'index'])
-                    ->name('index');
 
                 Route::put('/', [AdminPlayerController::class, 'updatePlayedMatches'])
                     ->name('update.playedMatches');
-
-                Route::post('/', [AdminPlayerController::class, 'store'])
-                    ->name('store');
-
-                Route::put('/{player}', [AdminPlayerController::class, 'update'])
-                    ->name('update')
-                    ->where('player', '[0-9]+');
-
-                Route::get('/{player}/edit', [AdminPlayerController::class, 'edit'])
-                    ->name('edit')
-                    ->where('player', '[0-9]+');
-
-                Route::delete('/{player}', [AdminPlayerController::class, 'destroy'])
-                    ->name('destroy')
-                    ->where('player', '[0-9]+');
 
                 Route::delete('/image/{player}', [AdminPlayerController::class, 'destroyImage'])
                     ->name('destroy.image')

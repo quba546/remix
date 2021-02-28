@@ -20,7 +20,7 @@ interface PlayerRepositoryInterface
 
     public function updatePlayer(int $id, array $data): bool|int;
 
-    public function updatePlayedMatches(int $id, int $playedMatches): bool;
+    public function updatePlayedMatches(int $id, int $playedMatches): bool|int;
 
     public function deletePlayerImage(int $id): bool|int;
 
