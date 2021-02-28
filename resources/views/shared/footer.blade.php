@@ -26,7 +26,6 @@
                 </div>
                 <div class="col-4 d-flex">
                     <ul class="list-inline mx-auto justify-content-center site-map-list site-map-list">
-                        <li><a href="#" class="font-white">Sekcja młodzieżowa</a></li>
                         <li><a href="{{ route('page', 'about') }}" class="font-white">O klubie</a></li>
                         <li><a href="{{ route('page', 'contact') }}" class="font-white">Kontakt</a></li>
                         <li><a href="{{ route('season.timetable.index') }}" class="font-white">Terminarz</a></li>

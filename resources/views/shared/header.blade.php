@@ -33,9 +33,6 @@
                     <a class="dropdown-item" href="{{ route('season.stats.index') }}">Statystyki</a>
                 </div>
             <li class="nav-item ml-3">
-                <a class="nav-link disabled" href="#"><i class="fas fa-child mr-3"></i>Sekcje młodzieżowe</a>
-            </li>
-            <li class="nav-item ml-3">
                 <a class="nav-link" href="{{ route('page', 'about') }}"><i class="fas fa-info-circle mr-3"></i>O klubie</a>
             </li>
             <li class="nav-item ml-3">
