@@ -58,7 +58,7 @@
                         </div>
                         <div class="row mx-auto mt-3">
                             <div class="col-12 text-right">
-                                <a href="{{ route('season.players.index') }}" class="btn btn-outline-info">Powrót do listy zawodników</a>
+                                <a href="{{ route('season.players.index') }}" class="btn btn-outline-info mt-3 mb-3">Powrót do listy zawodników</a>
                             </div>
                         </div>
                     </div>

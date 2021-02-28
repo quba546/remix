@@ -147,6 +147,9 @@
                 <span>{{ $bestScorers[2]['goals'] ?? '' }}  <i class="fas fa-futbol"></i></span>
             </div>
         </div>
+        <div class="col-12 order-4 text-center mt-lg-0 mb-5">
+            <a href="{{ route('season.players.index') }}" class="button-home">Zobacz więcej</a>
+        </div>
     </div>
     @endif
     <div class="row mx-auto bg-light pt-5 pb-5">
