@@ -143,15 +143,22 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="form-row ml-2 mr-2">
-                                <div class="form-group col-6 d-flex justify-content-start">
+                            <div class="form-row ml-2 mr-2 mt-5">
+                                <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-start mb-5 mb-lg-0">
                                     <form action="{{ route('admin.players.destroy.image', ['player' => $player->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć zdjęcie zawodnika?')" class="btn btn-outline-danger">Usuń zdjęcie</button>
+                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć zdjęcie zawodnika?')" class="btn btn-outline-dark">Usuń zdjęcie</button>
                                     </form>
                                 </div>
-                                <div class="form-group col-6 d-flex justify-content-end">
+                                <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-center mb-5 mb-lg-0">
+                                    <form action="{{ route('admin.players.restore', ['player' => $player->id]) }}" method="POST">
+                                        @csrf
+                                        @method('PUT')
+                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz zresetować dane zawodnika?')" class="btn btn-outline-info">Zresetuj dane</button>
+                                    </form>
+                                </div>
+                                <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-end">
                                     <form action="{{ route('admin.players.destroy', ['player' => $player->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')

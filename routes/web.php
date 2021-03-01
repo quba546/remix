@@ -113,6 +113,9 @@ Route::group([], function () {
                 'prefix' => '/players',
                 'as' => 'players.'
             ], function () {
+                Route::put('/{player}/restore', [AdminPlayerController::class, 'restoreDefaults'])
+                    ->name('restore')
+                    ->where('player', '[0-9]+');
 
                 Route::put('/', [AdminPlayerController::class, 'updatePlayedMatches'])
                     ->name('update.playedMatches');

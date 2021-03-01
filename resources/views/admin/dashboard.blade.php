@@ -44,8 +44,8 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-12">
-                                        <p class="text-uppercase">Ostatnie logowanie: {{ Auth::user()->last_login_at ?? '' }}</p>
-                                        <p class="text-uppercase">IP: {{ Auth::user()->last_login_ip ?? '' }}</p>
+                                        <p>Ostatnie logowanie: <strong>{{ Auth::user()->last_login_at ?? '' }}</strong></p>
+                                        <p>IP: <strong>{{ Auth::user()->last_login_ip ?? '' }}</strong></p>
                                     </div>
                                 </div>
                             </div>

@@ -148,6 +148,21 @@ class PlayerController extends Controller
                 ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
     }
 
+    public function restoreDefaults(string $id) : RedirectResponse
+    {
+        $id = (int) $id;
+
+        $success = $this->playerRepository->updatePlayerDefaults($id);
+
+        return $success
+            ? redirect()
+                ->route('admin.players.edit', ['player' => $id])
+                ->with('info', "Poprawnie zresetowano dane zawodnika o ID:{$id}")
+            : redirect()
+                ->route('admin.players.edit', ['player' => $id])
+                ->with('error', "Wystąpił błąd przy resetowaniu danych zawodnika o ID:{$id}");
+    }
+
     /**
      * Update the specified resource in storage.
      *

@@ -79,6 +79,22 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
             );
     }
 
+    public function updatePlayerDefaults(int $id): bool|int
+    {
+        return $this->player
+            ->where('id', $id)
+            ->update(
+                [
+                    'goals' => 0,
+                    'assists' => 0,
+                    'played_matches' => 0,
+                    'clean_sheets' => 0,
+                    'yellow_cards' => 0,
+                    'red_cards' => 0,
+                ]
+            );
+    }
+
     public function updatePlayedMatches(int $id, int $playedMatches): bool|int
     {
         return $this->player
