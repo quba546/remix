@@ -10,6 +10,7 @@ use App\Http\Requests\SimplePlayerRequest;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
 class PlayerController extends Controller
@@ -82,21 +83,33 @@ class PlayerController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param string $id
-     * @return View|RedirectResponse
+     * @return View
      */
-    public function edit(string $id): View|RedirectResponse
+    public function edit(string $id) : View
     {
         $id = (int)$id;
 
-        return $this->playerRepository->playerDetails($id)
-            ? view('admin.player-details',
+        if ($this->playerRepository->playerDetails($id)) {
+            return view('admin.player-details', ['player' => $this->playerRepository->playerDetails($id)]);
+        } else {
+            Session::flash('error', 'Nie istnieje zawodnik o ID: ' . $id);
+
+            return view('admin.players',
                 [
-                    'player' => $this->playerRepository->playerDetails($id)
+                    'players' => $this->playerRepository->listPaginated(15,
+                            [
+                                'id',
+                                'first_name',
+                                'last_name',
+                                'nr',
+                                'position',
+                                'played_matches',
+                                'updated_at'
+                            ]
+                        ) ?? []
                 ]
-            )
-            : redirect()
-                ->route('admin.players.index')
-                ->with('error', 'Nie istnieje zawodnik o ID: ' . $id);
+            );
+        }
     }
 
     /**

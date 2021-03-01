@@ -69,7 +69,7 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
         return $this->timetable->all('round', 'date');
     }
 
-    public function deleteRound(int $round): null|bool|int
+    public function deleteRound(int $round): ?bool
     {
         /** @noinspection PhpUnhandledExceptionInspection */
         return $this->timetable->where('round', $round)->delete();

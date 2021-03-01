@@ -8,7 +8,8 @@ use App\Http\Controllers\Controller;
 use App\Repository\PlayerRepositoryInterface;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
-use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Session;
+
 
 class PlayerController extends Controller
 {
@@ -46,20 +47,26 @@ class PlayerController extends Controller
      * @param string $id
      * @return View
      */
-    public function show(string $id): View|RedirectResponse
+    public function show(string $id): View
     {
         $id = (int)$id;
 
         SEOMeta::setTitle('Profil zawodnika');
 
-        return $this->playerRepository->playerDetails($id)
-            ? view('user.season.player-details',
+        if ($this->playerRepository->playerDetails($id)) {
+            return view('user.season.player-details', ['player' => $this->playerRepository->playerDetails($id)]);
+        } else {
+            $columns = ['id', 'first_name', 'last_name', 'nr', 'played_matches', 'image'];
+            Session::flash('error', 'Nie istnieje taki zawodnik');
+
+            return view('user.season.players',
                 [
-                    'player' => $this->playerRepository->playerDetails($id)
+                    'goalkeepers' => $this->playerRepository->playersList($columns, 'bramkarz') ?? [],
+                    'defenders' => $this->playerRepository->playersList($columns, 'obrońca') ?? [],
+                    'midfielders' => $this->playerRepository->playersList($columns, 'pomocnik') ?? [],
+                    'strikers' => $this->playerRepository->playersList($columns, 'napastnik') ?? []
                 ]
-            )
-            : redirect()
-                ->route('season.players.index')
-                ->with('error', 'Nie istnieje taki zawodnik');
+            );
+        }
     }
 }

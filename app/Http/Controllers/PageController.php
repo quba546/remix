@@ -11,12 +11,20 @@ class PageController extends Controller
 {
     public function __invoke(string $page): View
     {
-        $title = match ($page) {
-            'about' => 'O nas',
-            'contact' => 'Kontakt',
-            'privacy-policy' => 'Polityka prywatności',
-            default => 'Remix Niebieszczany',
-        };
+        switch($page) {
+            case 'about':
+                $title = 'O nas';
+                break;
+            case 'contact':
+                $title = 'Kontakt';
+                break;
+            case 'privacy-policy':
+                $title = 'Polityka prywatności';
+                break;
+            default:
+                $title = 'Remix Niebieszczany';
+                break;
+        }
 
         SEOMeta::setTitle($title);
 
