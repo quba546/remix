@@ -123,6 +123,7 @@ a:link {
     position: relative;
     cursor: pointer;
     transition: .3s linear;
+    z-index: 1;
 }
 
 .share-button:hover {
@@ -517,11 +518,26 @@ a:link {
     position: fixed;
     z-index: 999;
     bottom: 25px;
-    right: 25px;
+    right: 40px;
     display: none;
     background-color: $secondary-color;
     color: #ffffff;
-    border: #000000;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    height: 40px;
+    width: 40px;
+    padding: 7px 0;
+    text-align: center;
+}
+
+.back-to-top:hover i {
+    transform: scale(1.5);
+    transition-duration: 0.5s;
+}
+
+a#back-to-top {
+    text-decoration: none;
+    color: #ffffff;
 }
 
 .site-map-list {
@@ -650,7 +666,7 @@ i.best-scorer-icon-3 {
 }
 
 .contact-img {
-    max-height: 85%;
+    max-width: 75%;
 }
 
 .button-home {
