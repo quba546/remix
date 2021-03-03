@@ -63,7 +63,7 @@
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2"><i class="fas fa-phone-alt"></i><a href="tel:695780307" target="_blank" class="font-white"> 695-780-307</a></span>
         <br>
-        <span class="text-uppercase letter-spacing-1 word-spacing-2"><i class="far fa-envelope-open"></i><a href="mailto:remix.niebieszczany@op.pl" target="_blank" class="font-white"> remix.niebieszczany@op.pl</a></span>
+        <span class="text-uppercase letter-spacing-1 word-spacing-2"><i class="far fa-envelope-open"></i><a href="mailto:kontakt@remixniebieszczany.pl" target="_blank" class="font-white"> kontakt@remixniebieszczany.pl</a></span>
         <br>
         <span class="text-uppercase letter-spacing-1 word-spacing-2">NIP: 6871791491</span>
         <br>

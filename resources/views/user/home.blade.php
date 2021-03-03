@@ -3,7 +3,7 @@
 @section('content')
     @include('shared.messages')
     <div class="row mx-auto pt-5 pb-5">
-        <div class="col-12 col-xl-4 pl-xl-5">
+        <div class="col-12 col-xl-4 pl-xl-5 order-3 order-xl-2">
             <aside>
                 <table class="table table-sm table-striped table-bordered shadow-lg table-standing-font">
                     <thead class="thead-dark">
@@ -30,10 +30,10 @@
                 </table>
             </aside>
         </div>
-        <div class="col-12 col-xl-4 text-center mb-4 mt-4 mb-xl-0 mt-xl-0">
+        <div class="col-12 col-xl-4 text-center mb-4 mt-4 mb-xl-0 mt-xl-0 order-2">
             <div id="fb-widget"></div>
         </div>
-        <div class="col-12 col-xl-4 pr-xl-5">
+        <div class="col-12 col-xl-4 pr-xl-5  order-1 order-xl-3">
             <aside>
                 <table class="table table-sm table-borderless shadow-lg table-font">
                     <thead class="thead-dark">
@@ -53,9 +53,9 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
-                        <td class="text-center text-md-right align-middle font-weight-bold table-team-name">{{ $lastMatch->host ?? '' }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->host ?? '' }}</td>
                         <td class="text-center align-middle font-weight-bold">━</td>
-                        <td class="text-center text-md-left align-middle font-weight-bold table-team-name">{{ $lastMatch->guest ?? '' }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $lastMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-trophy table-icon"></i></td>
@@ -81,9 +81,9 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
-                        <td class="text-center text-md-right align-middle font-weight-bold table-team-name">{{ $upcomingMatch->host ?? '' }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->host ?? '' }}</td>
                         <td class="text-center align-middle font-weight-bold">━</td>
-                        <td class="text-center text-md-left align-middle font-weight-bold table-team-name">{{ $upcomingMatch->guest ?? '' }}</td>
+                        <td class="text-center align-middle font-weight-bold table-team-name">{{ $upcomingMatch->guest ?? '' }}</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="fas fa-map-marked table-icon"></i></td>

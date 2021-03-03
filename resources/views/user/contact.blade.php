@@ -26,7 +26,7 @@
                                 Preferowany kontakt telefoniczny.
                             </p>
                             <p><b class="mr-2"><i class="fas fa-phone-alt"></i> </b><a href="tel:695780307" class="font-black"> 695-780-307</a></p>
-                            <p><b class="mr-2"><i class="fas fa-at"></i></b><a href="mailto:remix.niebieszczany@op.pl" class="font-black"> remix.niebieszczany@op.pl</a></p>
+                            <p><b class="mr-2"><i class="fas fa-at"></i></b><a href="mailto:kontakt@remixniebieszczany.pl" class="font-black"> kontakt@remixniebieszczany.pl</a></p>
                         </div>
                     </div>
                 </div>
