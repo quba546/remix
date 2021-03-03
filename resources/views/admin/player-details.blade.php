@@ -23,7 +23,7 @@
                                 @method('PUT')
                                 <div class="form-row ml-2 mr-2">
                                     <div class="container form-group col-md-6">
-                                        <div class="row mx-auto">
+                                        <div class="row">
                                             <div class="col-12">
                                                 <div class="circular--portrait">
                                                     <img src="{{ isset($player->image) ? asset('storage/' . $player->image) : asset('storage/blank-profile-picture.png') }}" class="img-scorer" alt="Zdjęcie gracza">

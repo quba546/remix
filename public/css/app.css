@@ -16252,7 +16252,6 @@ a:link {
   color: #ffffff;
   text-align: center;
   line-height: 45px;
-  z-index: 999;
   transition: 0.6s linear;
   border-radius: 40px;
   text-transform: uppercase;
@@ -16307,6 +16306,7 @@ a:link {
   position: relative;
   cursor: pointer;
   transition: 0.3s linear;
+  z-index: 1;
 }
 
 .share-button-mobile:hover {
@@ -16709,8 +16709,8 @@ h2 {
 
 .circular--portrait {
   position: relative;
-  width: 300px;
-  height: 300px;
+  max-width: 300px;
+  max-height: 300px;
   overflow: hidden;
   border-radius: 50%;
   margin: 0 auto;
