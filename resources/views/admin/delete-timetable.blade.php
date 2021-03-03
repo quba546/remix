@@ -40,11 +40,13 @@
                             </form>
                             <div class="form-row mt-5 mt-lg-0 ml-2 mr-2">
                                 <div class="col-12 mb-3 d-flex justify-content-end">
+                                    @can('admin-level')
                                     <form action="{{ route('admin.timetable.destroy') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć CAŁY terminarz?')" class="btn btn-outline-danger">Wyczyść terminarz</button>
                                     </form>
+                                    @endcan
                                 </div>
                             </div>
                         </div>

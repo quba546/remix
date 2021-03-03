@@ -19,7 +19,7 @@
                 <div class="row mt-5">
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-10 col-lg-8 bg-white shadow-lg text-center">
-                        <h2 class="text-uppercase font-weight-bold mt-3">Panel administratora</h2>
+                        <h2 class="text-uppercase font-weight-bold mt-3">Panel moderatora serwisu</h2>
                         <hr>
                         <div class="border border-success rounded m-4">
                             <div class="container">
@@ -34,18 +34,11 @@
                                         <img src="{{ url('/assets/admin_panel.png') }}" alt="Panel administratora" width="30%">
                                     </div>
                                 </div>
-                                <div class="row">
-                                    <div class="col-12">
-                                        <p>
-                                            Z poziomu panelu administratora możesz zarządzać zawartością całego serwisu.
-                                        </p>
-                                    </div>
-                                </div>
                                 <hr>
                                 <div class="row">
                                     <div class="col-12">
                                         <p>Ostatnie logowanie: <strong>{{ Auth::user()->last_login_at ?? '' }}</strong></p>
-                                        <p>IP: <strong>{{ Auth::user()->last_login_ip ?? '' }}</strong></p>
+                                        @can('admin-level')<p>IP: <strong>{{ Auth::user()->last_login_ip ?? '' }}</strong></p>@endcan
                                     </div>
                                 </div>
                             </div>

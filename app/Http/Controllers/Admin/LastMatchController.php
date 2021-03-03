@@ -10,6 +10,7 @@ use App\Repository\LastMatchRepositoryInterface;
 use App\Repository\MatchTypeRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 class LastMatchController extends Controller
 {
@@ -32,6 +33,8 @@ class LastMatchController extends Controller
      */
     public function edit(): View
     {
+        Gate::authorize('moderator-level');
+
         return view('admin.last-match',
             [
                 'lastMatch' => $this->lastMatchRepository->getLastMatch() ?? [],
@@ -48,6 +51,8 @@ class LastMatchController extends Controller
      */
     public function update(LastMatchRequest $request): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $validated = $request->validated();
 
         $success = $this->lastMatchRepository->saveLastMatch(

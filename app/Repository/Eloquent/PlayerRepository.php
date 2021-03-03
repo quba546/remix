@@ -60,7 +60,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
 
     public function updatePlayer(int $id, array $data): bool
     {
-        return $this->player
+        return (bool) $this->player
             ->where('id', $id)
             ->update(
                 [
@@ -81,7 +81,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
 
     public function updatePlayerDefaults(int $id): bool
     {
-        return $this->player
+        return (bool) $this->player
             ->where('id', $id)
             ->update(
                 [
@@ -97,14 +97,14 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
 
     public function updatePlayedMatches(int $id, int $playedMatches): bool
     {
-        return $this->player
+        return (bool) $this->player
             ->where('id', $id)
             ->update(['played_matches' => $playedMatches]);
     }
 
     public function deletePlayerImage(int $id): bool
     {
-        return $this->player
+        return (bool) $this->player
             ->where('id', $id)
             ->update(['image' => NULL]);
     }

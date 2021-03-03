@@ -10,6 +10,7 @@ use App\Repository\TimetableRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 
 class TimetableController extends Controller
 {
@@ -27,6 +28,8 @@ class TimetableController extends Controller
      */
     public function create(): View
     {
+        Gate::authorize('moderator-level');
+
         return view('admin.add-timetable');
     }
 
@@ -38,6 +41,8 @@ class TimetableController extends Controller
      */
     public function store(TimetableRequest $request): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $validated = $request->validated();
 
         $success = $this->timetableRepository->addRound(
@@ -64,6 +69,8 @@ class TimetableController extends Controller
      */
     public function edit(): View
     {
+        Gate::authorize('moderator-level');
+
         return view('admin.delete-timetable',
             [
                 'rounds' => $this->timetableRepository->getRounds() ?? []
@@ -79,6 +86,8 @@ class TimetableController extends Controller
      */
     public function destroyOne(Request $request): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $success = $this->timetableRepository->deleteRound((int)$request->round);
 
         return $success
@@ -97,6 +106,8 @@ class TimetableController extends Controller
      */
     public function destroy(): RedirectResponse
     {
+        Gate::authorize('admin-level');
+
         $this->timetableRepository->deleteAll();
 
         return redirect()

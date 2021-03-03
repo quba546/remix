@@ -10,6 +10,7 @@ use App\Repository\MatchTypeRepositoryInterface;
 use App\Repository\UpcomingMatchRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 class UpcomingMatchController extends Controller
 {
@@ -32,6 +33,8 @@ class UpcomingMatchController extends Controller
      */
     public function edit(): View
     {
+        Gate::authorize('moderator-level');
+
         return view('admin.upcoming-match',
             [
                 'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch() ?? [],
@@ -48,6 +51,8 @@ class UpcomingMatchController extends Controller
      */
     public function update(UpcomingMatchRequest $request): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $validated = $request->validated();
 
         $success = $this->upcomingMatchRepository->saveUpcomingMatch(

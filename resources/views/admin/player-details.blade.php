@@ -9,7 +9,7 @@
                 <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
             </nav>
             @include('shared.messages')
-            <div class="container-fluid">
+            <div class="container-fluid mb-5">
                 <div class="row mt-5">
                     <div class="col-1 col-lg-2"></div>
                     <div class="col-10 col-lg-8 bg-white shadow-lg text-center">
@@ -143,7 +143,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="form-row ml-2 mr-2 mt-5">
+                            <div class="form-row ml-2 mr-2 mt-5 mb-2">
                                 <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-start mb-5 mb-lg-0">
                                     <form action="{{ route('admin.players.destroy.image', ['player' => $player->id]) }}" method="POST">
                                         @csrf
@@ -159,11 +159,13 @@
                                     </form>
                                 </div>
                                 <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-end">
+                                    @can('admin-level')
                                     <form action="{{ route('admin.players.destroy', ['player' => $player->id]) }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć zawodnika?')" class="btn btn-outline-danger">Usuń</button>
                                     </form>
+                                    @endcan
                                 </div>
                             </div>
                         </div>

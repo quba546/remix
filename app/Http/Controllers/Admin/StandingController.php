@@ -9,6 +9,7 @@ use App\Http\Requests\StandingRequest;
 use App\Repository\StandingRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 
 class StandingController extends Controller
 {
@@ -26,6 +27,8 @@ class StandingController extends Controller
      */
     public function create(): View
     {
+        Gate::authorize('moderator-level');
+
         return view('admin.standings');
     }
 
@@ -37,6 +40,8 @@ class StandingController extends Controller
      */
     public function store(StandingRequest $request): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $validated = $request->validated();
 
         $standingUrl = $validated['url'];
@@ -57,6 +62,8 @@ class StandingController extends Controller
      */
     public function destroy(): RedirectResponse
     {
+        Gate::authorize('admin-level');
+
         $this->standingRepository->deleteStanding();
 
         return redirect()

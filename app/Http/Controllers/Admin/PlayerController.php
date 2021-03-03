@@ -10,6 +10,7 @@ use App\Http\Requests\SimplePlayerRequest;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
 
@@ -29,6 +30,8 @@ class PlayerController extends Controller
      */
     public function index(): View
     {
+        Gate::authorize('moderator-level');
+
         return view('admin.players',
             [
                 'players' => $this->playerRepository->listPaginated(15,
@@ -54,6 +57,8 @@ class PlayerController extends Controller
      */
     public function store(PlayerRequest $request): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         if ($request->has('form-create-player')) {
             $validated = $request->validated();
             $success = $this->playerRepository->savePlayer(
@@ -87,6 +92,8 @@ class PlayerController extends Controller
      */
     public function edit(string $id) : View
     {
+        Gate::authorize('moderator-level');
+
         $id = (int)$id;
 
         if ($this->playerRepository->playerDetails($id)) {
@@ -121,6 +128,8 @@ class PlayerController extends Controller
      */
     public function update(PlayerRequest $request, string $id): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $id = (int)$id;
 
         $data = $this->playerRepository->playerDetails($id);
@@ -163,6 +172,8 @@ class PlayerController extends Controller
 
     public function restoreDefaults(string $id) : RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $id = (int) $id;
 
         $success = $this->playerRepository->updatePlayerDefaults($id);
@@ -184,6 +195,8 @@ class PlayerController extends Controller
      */
     public function updatePlayedMatches(SimplePlayerRequest $request): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $validated = $request->validated();
 
         $playerId = (int)$validated['playerId'];
@@ -209,6 +222,8 @@ class PlayerController extends Controller
      */
     public function destroyImage(string $id): RedirectResponse
     {
+        Gate::authorize('moderator-level');
+
         $id = (int)$id;
 
         $data = $this->playerRepository->playerDetails($id);
@@ -237,6 +252,8 @@ class PlayerController extends Controller
      */
     public function destroy(string $id): RedirectResponse
     {
+        Gate::authorize('admin-level');
+
         $id = (int)$id;
 
         $data = $this->playerRepository->playerDetails($id);

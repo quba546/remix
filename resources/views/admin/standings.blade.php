@@ -35,11 +35,13 @@
                             </form>
                             <div class="form-row ml-2 mr-2">
                                 <div class="form-group col-12 d-flex justify-content-end">
+                                    @can('admin-level')
                                     <form action="{{ route('admin.standing.destroy') }}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" onclick="return confirm('Czy na pewno chcesz wyczyścić tabelę?')" class="btn btn-outline-danger">Wyczyść</button>
                                     </form>
+                                    @endcan
                                 </div>
                             </div>
                         </div>
