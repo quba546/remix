@@ -1,6 +1,6 @@
 ## Laravel based website project
 
-Independently, hobbyist created project for local amateur football team. The website includes an admin panel to manage the content of the site. From the admin panel you can
+My first independently, hobbyist created project for local amateur football team. The website includes an admin panel to manage the content of the site. From the admin panel you can
 
 - add players and edit their season statistics.
 - import the league table.
