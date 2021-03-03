@@ -16709,13 +16709,23 @@ h2 {
 
 .circular--portrait {
   position: relative;
-  max-width: 300px;
-  max-height: 300px;
+  width: 175px;
+  height: 175px;
   overflow: hidden;
   border-radius: 50%;
   margin: 0 auto;
 }
 
+@media screen and (min-width: 576px) {
+  .circular--portrait {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+}
 .circular--portrait img {
   width: 100%;
   height: auto;

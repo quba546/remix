@@ -30,7 +30,7 @@
                 </table>
             </aside>
         </div>
-        <div class="col-12 col-xl-4 text-center">
+        <div class="col-12 col-xl-4 text-center mb-4 mt-4 mb-xl-0 mt-xl-0">
             <div id="fb-widget"></div>
         </div>
         <div class="col-12 col-xl-4 pr-xl-5">
