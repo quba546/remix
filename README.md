@@ -1,11 +1,11 @@
-## Projekt strony klubowej oprty na Laravel
+## Laravel based website project
 
-Projekt stworzony hobbistycznie dla lokalnej amatorskiej drużyny piłkarskiej. Strona internetowa zawiera panel admnistratora to zarządzania treścią witryny. Z poziomu panelu administratora można:
+Independently, hobbyist created project for local amateur football team. The website includes an admin panel to manage the content of the site. From the admin panel you can
 
-- dodawać zawodników oraz edytować ich statystyki sezonowe.
-- importować tabelę ligową.
-- dodawać terminarz ligowy.
-- dodawać informacje o ostatnim rozegranym meczu.
-- dodawać informajce o najbliższym rozgrywanym meczu.
+- add players and edit their season statistics.
+- import the league table.
+- add a league schedule.
+- add information about the last match played.
+- add information about the next match to be played.
 
-Projekt w miarę możliwości będzie rozwijany.
+The project will be developed as much as possible.
