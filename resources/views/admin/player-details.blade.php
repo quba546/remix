@@ -64,13 +64,8 @@
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group order-1 order-xl-0 col-12 col-xl-6 mt-4">
-                                        <div class="custom-file">
-                                            <input type="file" name="image" class="custom-file-input @error('image') is-invalid @enderror" id="image" accept="image/*">
-                                            <label class="custom-file-label text-left" for="image" data-browse="Przeglądaj">Wybierz zdjęcie...</label>
-                                            <small id="imageHelp" class="form-text text-muted">Zdjęcie powinno mieć tryb portretowy (pionowy), aby dawało najlepszy efekt.</small>
-                                            @error('image')
-                                                <div class="alert alert-danger d-block">{{ $message }}</div>
-                                            @enderror
+                                        <div class="custom-file-upload">
+                                            <input type="file" name="playerImage" id="playerImage"/>
                                         </div>
                                     </div>
                                     <div class="form-group col-12 col-xl-6">
@@ -81,7 +76,7 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="form-row ml-2 mr-2 mt-5 pt-2">
+                                <div class="form-row ml-2 mr-2 pt-2">
                                     <div class="form-group col-md-4">
                                         <label for="playedMatches" class="mb-0">Rozegrane mecze</label>
                                         <input type="number" name="playedMatches" value="{{ old('playedMatches') ?? $player->played_matches ?? '' }}" class="form-control @error('playedMatches') is-invalid @enderror" id="playedMatches" placeholder="0" min="0" step="1">

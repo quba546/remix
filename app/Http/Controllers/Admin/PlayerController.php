@@ -7,9 +7,12 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlayerRequest;
 use App\Http\Requests\SimplePlayerRequest;
+use App\Models\Player;
+use App\Models\TemporaryFile;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
@@ -126,22 +129,30 @@ class PlayerController extends Controller
      * @param string $id
      * @return RedirectResponse
      */
-    public function update(PlayerRequest $request, string $id): RedirectResponse
+    public function update(Request $request, PlayerRequest $playerRequest, string $id): RedirectResponse
     {
         Gate::authorize('moderator-level');
+
 
         $id = (int)$id;
 
         $data = $this->playerRepository->playerDetails($id);
 
-        $validated = $request->validated();
+        $validated = $playerRequest->validated();
+        if (isset($request->playerImage)) {
+            $folder = substr($request->playerImage, 0, strpos($request->playerImage, '<')); // delete garbage form request
+            $temporaryFile = TemporaryFile::where('folder', '=', $folder)->first();
 
-        if (!empty($validated['image'])) {
-            $originalPath = Storage::putFile('public/players-images', $validated['image']); // add new player image to storage
-            $path = str_replace('public/', '', $originalPath);
+            if ($temporaryFile) {
+                Storage::move('public/tmp/' . $folder . '/' . $temporaryFile->filename, 'public/players-images/' . $temporaryFile->filename);
+                Storage::deleteDirectory('public/tmp/' . $folder);
+                $temporaryFile->delete();
 
-            if ($originalPath) {
-                Storage::disk('public')->delete($data['image']); // delete old player image from storage
+                if (isset($data->image)) {
+                    $oldPlayerImagePath = $data->image;
+                    $oldPlayerImage = str_replace('players-images/', '', $oldPlayerImagePath);
+                    Storage::delete('public/players-images/' . $oldPlayerImage); // delete old player image from storage
+                }
             }
         }
 
@@ -157,7 +168,7 @@ class PlayerController extends Controller
                 'cleanSheets' => $validated['cleanSheets'],
                 'yellowCards' => $validated['yellowCards'],
                 'redCards' => $validated['redCards'],
-                'image' => $path ?? $data['image']
+                'image' => isset($temporaryFile->filename) ? 'players-images/' . $temporaryFile->filename : $data->image
             ]
         );
 

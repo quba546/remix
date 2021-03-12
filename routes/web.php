@@ -13,6 +13,7 @@ use App\Http\Controllers\Admin\TimetableController as AdminTimetableController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\UploadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,8 @@ Route::group([], function () {
             });
 
             /* PLAYERS */
+            Route::post('players/upload', [UploadController::class, 'store']);
+
             Route::resource('players', AdminPlayerController::class)
                 ->only('index', 'store', 'update', 'edit', 'destroy')
                 ->where(['player', '[0-9]+']);

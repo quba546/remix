@@ -20,6 +20,10 @@ $success: $primary-color;
 // AOS
 @import "~aos/dist/aos.css";
 
+// FilePond
+@import "~filepond/dist/filepond.min.css";
+@import '~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
+
 .t {
     border-style: solid;
     box-sizing: border-box;
@@ -314,6 +318,10 @@ a:link {
 
 .wrapper {
     background-color: $third-color;
+}
+
+.custom-file-upload {
+    position: relative;
 }
 
 .custom-footer {
