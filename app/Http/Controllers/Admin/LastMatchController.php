@@ -37,7 +37,7 @@ class LastMatchController extends Controller
 
         return view('admin.last-match',
             [
-                'lastMatch' => $this->lastMatchRepository->getLastMatch() ?? [],
+                'lastMatch' => $this->lastMatchRepository->get() ?? [],
                 'matchTypes' => $this->matchTypeRepository->getMatchTypes() ?? []
             ]
         );
@@ -55,7 +55,7 @@ class LastMatchController extends Controller
 
         $validated = $request->validated();
 
-        $success = $this->lastMatchRepository->saveLastMatch(
+        $success = $this->lastMatchRepository->save(
             [
                 'host' => $validated['host'],
                 'guest' => $validated['guest'],

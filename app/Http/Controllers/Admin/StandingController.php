@@ -64,7 +64,7 @@ class StandingController extends Controller
     {
         Gate::authorize('admin-level');
 
-        $this->standingRepository->deleteStanding();
+        $this->standingRepository->delete();
 
         return redirect()
             ->route('admin.standing.create')

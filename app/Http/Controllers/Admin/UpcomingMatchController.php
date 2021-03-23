@@ -37,7 +37,7 @@ class UpcomingMatchController extends Controller
 
         return view('admin.upcoming-match',
             [
-                'upcomingMatch' => $this->upcomingMatchRepository->getUpcomingMatch() ?? [],
+                'upcomingMatch' => $this->upcomingMatchRepository->get() ?? [],
                 'matchTypes' => $this->matchTypeRepository->getMatchTypes() ?? []
             ]
         );
@@ -55,7 +55,7 @@ class UpcomingMatchController extends Controller
 
         $validated = $request->validated();
 
-        $success = $this->upcomingMatchRepository->saveUpcomingMatch(
+        $success = $this->upcomingMatchRepository->save(
             [
                 'host' => $validated['host'],
                 'guest' => $validated['guest'],

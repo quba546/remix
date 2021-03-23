@@ -8,7 +8,7 @@ use App\Models\UpcomingMatch;
 
 interface UpcomingMatchRepositoryInterface
 {
-    public function getUpcomingMatch(): ?UpcomingMatch;
+    public function get(): ?UpcomingMatch;
 
-    public function saveUpcomingMatch(array $data): bool;
+    public function save(array $data): bool;
 }

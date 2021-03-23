@@ -18,6 +18,15 @@ class UpcomingMatch extends Model
 
     protected $table = 'upcoming_match';
 
+    protected $fillable = [
+        'match_type_id',
+        'date',
+        'host',
+        'guest',
+        'place',
+        'round'
+    ];
+
     public function matchType(): HasOne
     {
         return $this->hasOne(MatchType::class, 'id', 'match_type_id');

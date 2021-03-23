@@ -8,6 +8,7 @@ use App\Models\Player;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use \Exception;
 
 class PlayerRepository extends BaseRepository implements PlayerRepositoryInterface
 {
@@ -20,108 +21,155 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
 
     public function listPaginated(int $limit, array $columns): LengthAwarePaginator
     {
-        return $this->player
-            ->sortable()
-            ->paginate($limit, $columns);
+        try {
+            return $this->player
+                ->sortable()
+                ->paginate($limit, $columns);
+        } catch (Exception $e) {
+
+            return LengthAwarePaginator::empty();
+        }
     }
 
     public function playersList(array $columns, string $position) : Collection
     {
-        return $this->player
-            ->where('position', '=', $position)
-            ->get($columns)
-            ->sortBy('last_name');
+        try {
+            return $this->player
+                ->where('position', $position)
+                ->get($columns)
+                ->sortBy('last_name');
+        } catch (Exception $e) {
+
+            return Collection::empty();
+        }
     }
 
-    public function bestScorers(int $limit): array
+    public function bestScorers(int $limit): Collection
     {
-        $bestScorers = $this->player->all('first_name', 'last_name', 'goals', 'image')
-            ->sortByDesc('goals')
-            ->take($limit)
-            ->toArray();
+        try {
+            return $this->player
+                ->orderByDesc('goals')
+                ->take(3)
+                ->get(['first_name', 'last_name', 'goals', 'image']);
+        } catch (Exception $e) {
 
-        $result = [];
-        foreach ($bestScorers as $bestScorer) {
-            $result[] = $bestScorer;
+            return Collection::empty();
         }
-
-        return $result;
     }
 
     public function savePlayer(array $data): bool
     {
-        $this->player->first_name = $data['firstName'];
-        $this->player->last_name = $data['lastName'];
-        $this->player->nr = $data['nr'];
-        $this->player->position = $data['position'];
+        try {
+            $this->player->create([
+                'first_name' => $data['firstName'],
+                'last_name' => $data['lastName'],
+                'nr' => $data['nr'],
+                'position' => $data['position']
+            ]);
 
-        return $this->player->save();
+            return true;
+        } catch (Exception $e) {
+
+            return false;
+        }
     }
 
     public function updatePlayer(int $id, array $data): bool
     {
-        return (bool) $this->player
-            ->where('id', $id)
-            ->update(
-                [
-                    'first_name' => $data['firstName'],
-                    'last_name' => $data['lastName'],
-                    'nr' => $data['nr'],
-                    'position' => $data['position'],
-                    'goals' => $data['goals'],
-                    'assists' => $data['assists'],
-                    'played_matches' => $data['playedMatches'],
-                    'clean_sheets' => $data['cleanSheets'],
-                    'yellow_cards' => $data['yellowCards'],
-                    'red_cards' => $data['redCards'],
-                    'image' => $data['image']
-                ]
-            );
+        try {
+            $this->player
+                ->where('id', $id)
+                ->update(
+                    [
+                        'first_name' => $data['firstName'],
+                        'last_name' => $data['lastName'],
+                        'nr' => $data['nr'],
+                        'position' => $data['position'],
+                        'goals' => $data['goals'],
+                        'assists' => $data['assists'],
+                        'played_matches' => $data['playedMatches'],
+                        'clean_sheets' => $data['cleanSheets'],
+                        'yellow_cards' => $data['yellowCards'],
+                        'red_cards' => $data['redCards'],
+                        'image' => $data['image']
+                    ]
+                );
+
+            return true;
+        } catch (Exception $e) {
+
+            return false;
+        }
     }
 
     public function updatePlayerDefaults(int $id): bool
     {
-        return (bool) $this->player
-            ->where('id', $id)
-            ->update(
-                [
-                    'goals' => 0,
-                    'assists' => 0,
-                    'played_matches' => 0,
-                    'clean_sheets' => 0,
-                    'yellow_cards' => 0,
-                    'red_cards' => 0,
-                ]
-            );
+        try {
+            $this->player
+                ->where('id', $id)
+                ->update(
+                    [
+                        'goals' => 0,
+                        'assists' => 0,
+                        'played_matches' => 0,
+                        'clean_sheets' => 0,
+                        'yellow_cards' => 0,
+                        'red_cards' => 0,
+                    ]
+                );
+
+            return true;
+        } catch (Exception $e) {
+
+            return false;
+        }
     }
 
     public function updatePlayedMatches(int $id, int $playedMatches): bool
     {
-        return (bool) $this->player
-            ->where('id', $id)
-            ->update(['played_matches' => $playedMatches]);
+        try {
+            $this->player
+                ->where('id', $id)
+                ->update(['played_matches' => $playedMatches]);
+
+            return true;
+        } catch (Exception $e) {
+
+            return false;
+        }
     }
 
     public function deletePlayerImage(int $id): bool
     {
-        return (bool) $this->player
-            ->where('id', $id)
-            ->update(['image' => NULL]);
+        try {
+            $this->player
+                ->where('id', $id)
+                ->update(['image' => null]);
+
+            return true;
+        } catch (Exception $e) {
+
+            return false;
+        }
     }
 
     public function playerDetails(int $id): ?Player
     {
         return $this->player
             ->where('id', $id)
-            ->get()
-            ->first();
+            ->firstOrFail();
     }
 
-    public function deletePlayer(int $id): ?bool
+    public function deletePlayer(int $id): bool
     {
-        /** @noinspection PhpUnhandledExceptionInspection */
-        return $this->player
-            ->findOrFail($id)
-            ->delete();
+        $playerToDelete = $this->player->findOrFail($id);
+
+        try {
+            $playerToDelete->delete();
+
+            return true;
+        } catch (Exception $e) {
+            return false;
+        }
     }
 }

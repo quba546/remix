@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repository\Eloquent;
 
-
 use App\Models\LastMatch;
 use App\Repository\LastMatchRepositoryInterface;
+use \Exception;
 
 class LastMatchRepository extends BaseRepository implements LastMatchRepositoryInterface
 {
@@ -17,25 +17,37 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
         $this->lastMatch = $lastMatch;
     }
 
-    public function getLastMatch(): ?LastMatch
+    public function get(): ?LastMatch
     {
-        return $this->lastMatch
-            ->with('matchType')
-            ->get()
-            ->first();
+        try {
+            return $this->lastMatch
+                ->with('matchType')
+                ->get()
+                ->first();
+        } catch (Exception $e) {
+
+            return null;
+        }
     }
 
-    public function saveLastMatch(array $data): bool
+    public function save(array $data): bool
     {
-        $this->lastMatch->truncate();
+        try {
+            $this->lastMatch->truncate();
 
-        $this->lastMatch->match_type_id = $data['matchType'];
-        $this->lastMatch->date = $data['date'];
-        $this->lastMatch->host = $data['host'];
-        $this->lastMatch->guest = $data['guest'];
-        $this->lastMatch->score = $data['score'];
-        $this->lastMatch->round = $data['round'];
+            $this->lastMatch->create([
+                'match_type_id' => $data['matchType'],
+                'date' => $data['date'],
+                'host' => $data['host'],
+                'guest' => $data['guest'],
+                'score' => $data['score'],
+                'round' => $data['round']
+            ]);
 
-        return $this->lastMatch->save();
+            return true;
+        } catch (Exception $e) {
+
+            return false;
+        }
     }
 }

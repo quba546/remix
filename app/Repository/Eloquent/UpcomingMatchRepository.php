@@ -6,6 +6,7 @@ namespace App\Repository\Eloquent;
 
 use App\Models\UpcomingMatch;
 use App\Repository\UpcomingMatchRepositoryInterface;
+use \Exception;
 
 class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRepositoryInterface
 {
@@ -16,25 +17,36 @@ class UpcomingMatchRepository extends BaseRepository implements UpcomingMatchRep
         $this->upcomingMatch = $upcomingMatch;
     }
 
-    public function getUpcomingMatch(): ?UpcomingMatch
+    public function get(): ?UpcomingMatch
     {
-        return $this->upcomingMatch
-            ->with('matchType')
-            ->get()
-            ->first();
+        try {
+            return $this->upcomingMatch
+                ->with('matchType')
+                ->get()
+                ->first();
+        } catch (Exception $e) {
+            return null;
+        }
     }
 
-    public function saveUpcomingMatch(array $data): bool
+    public function save(array $data): bool
     {
-        $this->upcomingMatch->truncate();
+        try {
+            $this->upcomingMatch->truncate();
 
-        $this->upcomingMatch->match_type_id = $data['matchType'];
-        $this->upcomingMatch->date = $data['date'];
-        $this->upcomingMatch->host = $data['host'];
-        $this->upcomingMatch->guest = $data['guest'];
-        $this->upcomingMatch->place = $data['place'];
-        $this->upcomingMatch->round = $data['round'];
+            $this->upcomingMatch->create([
+                'match_type_id' => $data['matchType'],
+                'date' => $data['date'],
+                'host' => $data['host'],
+                'guest' => $data['guest'],
+                'place' => $data['place'],
+                'round' => $data['round']
+            ]);
 
-        return $this->upcomingMatch->save();
+            return true;
+        } catch (Exception $e) {
+
+            return false;
+        }
     }
 }

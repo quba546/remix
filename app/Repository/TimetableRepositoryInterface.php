@@ -8,13 +8,15 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface TimetableRepositoryInterface
 {
+    const INVALID_MATCHES_NUMBER = 4;
+
     public function addRound(array $data): bool;
 
-    public function getTimetable(): array;
+    public function getTimetable(): Collection;
 
     public function getRounds(): Collection;
 
-    public function deleteRound(int $round): ?bool;
+    public function deleteRound(int $round): bool;
 
     public function deleteAll(): void;
 }

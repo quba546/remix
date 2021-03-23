@@ -7,7 +7,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlayerRequest;
 use App\Http\Requests\SimplePlayerRequest;
-use App\Models\Player;
 use App\Models\TemporaryFile;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;

@@ -8,6 +8,7 @@ namespace App\Repository\Eloquent;
 use App\Models\MatchType;
 use App\Repository\MatchTypeRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
+use \Exception;
 
 class MatchTypeRepository extends BaseRepository implements MatchTypeRepositoryInterface
 {
@@ -20,6 +21,11 @@ class MatchTypeRepository extends BaseRepository implements MatchTypeRepositoryI
 
     public function getMatchTypes(): Collection
     {
-        return $this->matchType->all();
+        try {
+            return $this->matchType->all();
+        } catch (Exception $e) {
+
+            return Collection::empty();
+        }
     }
 }

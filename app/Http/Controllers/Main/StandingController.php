@@ -29,7 +29,7 @@ class StandingController extends Controller
 
         return view('user.season.standings',
             [
-                'standings' => $this->standingRepository->standing(
+                'standings' => $this->standingRepository->get(
                         [
                             'position',
                             'team',

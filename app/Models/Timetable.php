@@ -16,4 +16,10 @@ class Timetable extends Model
     use HasFactory;
 
     protected $table = 'timetable';
+
+    protected $fillable = [
+        'round',
+        'date',
+        'details'
+    ];
 }

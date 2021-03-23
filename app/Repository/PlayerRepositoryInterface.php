@@ -14,7 +14,7 @@ interface PlayerRepositoryInterface
 
     public function playersList(array $columns, string $position) : Collection;
 
-    public function bestScorers(int $limit): array;
+    public function bestScorers(int $limit): Collection;
 
     public function savePlayer(array $data): bool;
 

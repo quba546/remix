@@ -27,15 +27,11 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        // $schedule->command('inspire')->hourly();
-
         $schedule->call(function () {
-            //$out = new \Symfony\Component\Console\Output\ConsoleOutput();
             $temporaryFiles = TemporaryFile::where('created_at', '<', Carbon::now()->subMinutes(15))->get();
             foreach ($temporaryFiles as $temporaryFile) {
                 if (Storage::deleteDirectory('public/tmp/' . $temporaryFile->folder)) {
                     $temporaryFile->delete();
-                    //$out->writeln('Deleted: ' . $temporaryFile->folder . ' | Time: ' . Carbon::now());
                 }
             }
         })->daily();

@@ -8,9 +8,9 @@ use Illuminate\Database\Eloquent\Collection;
 
 interface StandingRepositoryInterface
 {
-    public function standing(array $columns): Collection;
+    public function get(array $columns): Collection;
 
     public function fillStanding(string $url): bool;
 
-    public function deleteStanding(): void;
+    public function delete(): void;
 }

@@ -8,6 +8,7 @@ use App\Repository\StandingRepositoryInterface;
 use App\Models\Standing;
 use Illuminate\Database\Eloquent\Collection;
 use KubAT\PhpSimple\HtmlDomParser;
+use \Exception;
 
 class StandingRepository extends BaseRepository implements StandingRepositoryInterface
 {
@@ -18,11 +19,15 @@ class StandingRepository extends BaseRepository implements StandingRepositoryInt
         $this->standing = $standing;
     }
 
-    public function standing(array $columns): Collection
+    public function get(array $columns): Collection
     {
-        return $this->standing
-            ->all($columns)
-            ->sortBy('position');
+        try {
+            return $this->standing
+                ->all($columns)
+                ->sortBy('position');
+        } catch (Exception $e) {
+            return Collection::empty();
+        }
     }
 
     public function fillStanding(string $url): bool
@@ -93,8 +98,12 @@ class StandingRepository extends BaseRepository implements StandingRepositoryInt
         return $this->standing->insert($data);
     }
 
-    public function deleteStanding(): void
+    public function delete(): void
     {
-        $this->standing->truncate();
+        try {
+            $this->standing->truncate();
+        } catch (Exception $e) {
+            //
+        }
     }
 }
