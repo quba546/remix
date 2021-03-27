@@ -9,7 +9,7 @@
                 <i class="fas fa-bars toggle-admin-icon" id="menu-toggle"></i>
             </nav>
             @include('shared.messages')
-            @error('playedMatches')
+            @error('played_matches')
                 <div class="alert alert-danger m-3">{{ $message }}</div>
             @enderror
             <div class="container-fluid">
@@ -59,7 +59,7 @@
                                             @method('PUT')
                                             <div class="form-row">
                                                 <div class="col-12 col-xl-8">
-                                                    <input type="number" name="playedMatches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0" min="0" step="1" required>
+                                                    <input type="number" name="played_matches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0" min="0" step="1" required>
                                                     <input type="hidden" name="playerId" value="{{ $player->id }}">
                                                 </div>
                                                 <div class="col-12 col-xl-4 mt-2 m-xl-0">
@@ -95,15 +95,15 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="firstName">Imię</label>
-                                        <input type="text" name="firstName" value="{{ old('firstName') }}" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
-                                        @error('firstName')
+                                        <input type="text" name="first_name" value="{{ old('first_name') }}" class="form-control @error('first_name') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
+                                        @error('first_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="lastName">Nazwisko</label>
-                                        <input type="text" name="lastName" value="{{ old('lastName') }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
-                                        @error('lastName')
+                                        <input type="text" name="last_name" value="{{ old('last_name') }}" class="form-control @error('last_name') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
+                                        @error('last_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -124,13 +124,13 @@
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="number">Numer</label>
-                                        <input type="number" name="number" value="{{ old('number') }}" class="form-control @error('number') is-invalid @enderror" id="number" min="1" step="1" max="99">
-                                        @error('number')
+                                        <input type="number" name="nr" value="{{ old('nr') }}" class="form-control @error('nr') is-invalid @enderror" id="number" min="1" step="1" max="99">
+                                        @error('nr')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                 </div>
-                                <button type="submit" name="form-create-player" class="btn btn-outline-success mb-3">Dodaj</button>
+                                <button type="submit" class="btn btn-outline-success mb-3">Dodaj</button>
                             </form>
                         </div>
                     </div>

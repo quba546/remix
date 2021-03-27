@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
+use App\Models\LastMatch;
 use Carbon\Carbon;
-use Faker\Factory;
+use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
 
 class LastMatchSeeder extends Seeder
 {
@@ -18,16 +18,12 @@ class LastMatchSeeder extends Seeder
      */
     public function run(): void
     {
-        $faker = Factory::create();
+        $faker = Faker::create();
+        $updatedAt = Carbon::now()->subMinutes($faker->numberBetween(0, 365 * 24 * 60));
 
-        DB::table('last_match')->insert([
-            'match_type_id' => $faker->numberBetween(1, 3),
-            'date' => Carbon::today(),
-            'host' => 'Remix Niebieszczany',
-            'guest' => 'Górnik Strachocina',
-            'score' => '2-1',
-            'created_at' => Carbon::now()->subDays(Factory::create()->numberBetween(100, 200)),
-            'updated_at' => Carbon::now()->subDays(Factory::create()->numberBetween(0, 99))
+        LastMatch::factory()->create([
+            'created_at' => $updatedAt->subMinutes($faker->numberBetween(1, 2 * 365 * 24 * 60)),
+            'updated_at' => $updatedAt
         ]);
     }
 }

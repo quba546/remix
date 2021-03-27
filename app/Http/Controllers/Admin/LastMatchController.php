@@ -59,7 +59,7 @@ class LastMatchController extends Controller
             [
                 'host' => $validated['host'],
                 'guest' => $validated['guest'],
-                'matchType' => $validated['matchType'],
+                'match_type_id' => $validated['match_type_id'],
                 'round' => $validated['round'],
                 'date' => $validated['date'],
                 'score' => $validated['score']

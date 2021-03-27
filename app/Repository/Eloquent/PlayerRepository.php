@@ -61,8 +61,8 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
     {
         try {
             $this->player->create([
-                'first_name' => $data['firstName'],
-                'last_name' => $data['lastName'],
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
                 'nr' => $data['nr'],
                 'position' => $data['position']
             ]);
@@ -81,23 +81,22 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
                 ->where('id', $id)
                 ->update(
                     [
-                        'first_name' => $data['firstName'],
-                        'last_name' => $data['lastName'],
+                        'first_name' => $data['first_name'],
+                        'last_name' => $data['last_name'],
                         'nr' => $data['nr'],
                         'position' => $data['position'],
                         'goals' => $data['goals'],
                         'assists' => $data['assists'],
-                        'played_matches' => $data['playedMatches'],
-                        'clean_sheets' => $data['cleanSheets'],
-                        'yellow_cards' => $data['yellowCards'],
-                        'red_cards' => $data['redCards'],
+                        'played_matches' => $data['played_matches'],
+                        'clean_sheets' => $data['clean_sheets'],
+                        'yellow_cards' => $data['yellow_cards'],
+                        'red_cards' => $data['red_cards'],
                         'image' => $data['image']
                     ]
                 );
 
             return true;
         } catch (Exception $e) {
-
             return false;
         }
     }

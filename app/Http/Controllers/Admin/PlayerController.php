@@ -61,29 +61,24 @@ class PlayerController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        if ($request->has('form-create-player')) {
-            $validated = $request->validated();
-            $success = $this->playerRepository->savePlayer(
-                [
-                    'firstName' => $validated['firstName'],
-                    'lastName' => $validated['lastName'],
-                    'position' => $validated['position'],
-                    'nr' => $validated['number'],
-                ]
-            );
+        $validated = $request->validated();
+        $success = $this->playerRepository->savePlayer(
+            [
+                'first_name' => $validated['first_name'],
+                'last_name' => $validated['last_name'],
+                'position' => $validated['position'],
+                'nr' => $validated['nr'],
+            ]
+        );
 
-            return $success
-                ? redirect()
-                    ->route('admin.players.store')
-                    ->with('success', 'Poprawnie dodano nowego zawodnika')
-                : redirect()
-                    ->route('admin.players.store')
-                    ->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
-        }
+        return $success
+            ? redirect()
+                ->route('admin.players.store')
+                ->with('success', 'Poprawnie dodano nowego zawodnika')
+            : redirect()
+                ->route('admin.players.store')
+                ->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
 
-        return redirect()
-            ->route('admin.players.store')
-            ->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
     }
 
     /**
@@ -124,14 +119,15 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param PlayerRequest $request
+     * @param Request $request
+     * @param PlayerRequest $playerRequest
      * @param string $id
      * @return RedirectResponse
+     * @throws \Exception
      */
     public function update(Request $request, PlayerRequest $playerRequest, string $id): RedirectResponse
     {
         Gate::authorize('moderator-level');
-
 
         $id = (int)$id;
 
@@ -157,16 +153,16 @@ class PlayerController extends Controller
 
         $success = $this->playerRepository->updatePlayer($id,
             [
-                'firstName' => $validated['firstName'],
-                'lastName' => $validated['lastName'],
-                'nr' => $validated['number'],
+                'first_name' => $validated['first_name'],
+                'last_name' => $validated['last_name'],
+                'nr' => $validated['nr'],
                 'position' => $validated['position'],
                 'goals' => $validated['goals'],
                 'assists' => $validated['assists'],
-                'playedMatches' => $validated['playedMatches'],
-                'cleanSheets' => $validated['cleanSheets'],
-                'yellowCards' => $validated['yellowCards'],
-                'redCards' => $validated['redCards'],
+                'played_matches' => $validated['played_matches'],
+                'clean_sheets' => $validated['clean_sheets'],
+                'yellow_cards' => $validated['yellow_cards'],
+                'red_cards' => $validated['red_cards'],
                 'image' => isset($temporaryFile->filename) ? 'players-images/' . $temporaryFile->filename : $data->image
             ]
         );
@@ -207,20 +203,20 @@ class PlayerController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        $validated = $request->validated();
 
+        $validated = $request->validated();
         $playerId = (int)$validated['playerId'];
 
         $data = $this->playerRepository->playerDetails($playerId);
 
-        $success = $this->playerRepository->updatePlayedMatches($playerId, (int)$validated['playedMatches']);
+        $success = $this->playerRepository->updatePlayedMatches($playerId, (int)$validated['played_matches']);
 
         return $success
             ? redirect()
-                ->back()
+                ->route('admin.players.store')
                 ->with('success', "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
             : redirect()
-                ->back()
+                ->route('admin.players.store')
                 ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
     }
 
@@ -245,7 +241,7 @@ class PlayerController extends Controller
 
             return redirect()
                 ->route('admin.players.edit', ['player' => $id])
-                ->with('warning', "Poprawnie usunięto zdjęcie zawodnika  {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
+                ->with('success', "Poprawnie usunięto zdjęcie zawodnika  {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
         } else {
 
             return redirect()

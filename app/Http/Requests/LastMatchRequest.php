@@ -29,7 +29,7 @@ class LastMatchRequest extends FormRequest
             'host' => ['required', 'max:100'],
             'guest' => ['required', 'max:100'],
             'score' => ['required', 'max:10'],
-            'matchType' => ['required', 'min:1'],
+            'match_type_id' => ['required', 'integer', 'min:1'],
             'date' => ['required', 'date'],
             'round' => ['nullable']
         ];
@@ -53,7 +53,7 @@ class LastMatchRequest extends FormRequest
             'host' => 'gospodarz',
             'guest' => 'gość',
             'score' => 'wynik',
-            'matchType' => 'rodzaj meczu',
+            'match_type_id' => 'rodzaj meczu',
             'date' => 'data',
             'round' => 'runda'
         ];

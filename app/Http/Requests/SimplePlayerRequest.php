@@ -27,7 +27,7 @@ class SimplePlayerRequest extends FormRequest
     {
         return [
             'playerId' => ['integer', 'min:0'],
-            'playedMatches' => ['integer', 'min:0'],
+            'played_matches' => ['integer', 'min:0'],
         ];
     }
 
@@ -43,7 +43,7 @@ class SimplePlayerRequest extends FormRequest
     {
         return [
             'playerId' => 'ID zawodnika',
-            'playedMatches' => 'rozegrane mecze',
+            'played_matches' => 'rozegrane mecze',
         ];
     }
 }

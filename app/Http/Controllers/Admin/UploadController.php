@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\TemporaryFile;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
@@ -13,6 +14,8 @@ class UploadController extends Controller
 
     public function store(Request $request) : string
     {
+        Gate::authorize('moderator-level');
+
         if ($request->hasFile('playerImage')) {
             $file = $request->file('playerImage');
             $folder = uniqid() . '-' . now()->timestamp;

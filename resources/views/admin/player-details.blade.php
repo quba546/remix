@@ -36,14 +36,14 @@
                                         <input readonly type="text" name="id" value="{{ $player->id ?? '' }}" class="form-control" id="id">
 
                                         <label for="lastName" class="mb-0 mt-3">Nazwisko</label>
-                                        <input type="text" name="lastName" value="{{ old('lastName') ?? $player->last_name ?? '' }}" class="form-control @error('lastName') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
-                                        @error('lastName')
+                                        <input type="text" name="last_name" value="{{ old('last_name') ?? $player->last_name ?? '' }}" class="form-control @error('last_name') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
+                                        @error('last_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
                                         <label for="firstName" class="mb-0 mt-3">Imię</label>
-                                        <input type="text" name="firstName" value="{{ old('firstName') ?? $player->first_name ?? '' }}" class="form-control @error('firstName') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
-                                        @error('firstName')
+                                        <input type="text" name="first_name" value="{{ old('first_name') ?? $player->first_name ?? '' }}" class="form-control @error('first_name') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
+                                        @error('first_name')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
 
@@ -70,8 +70,8 @@
                                     </div>
                                     <div class="form-group col-12 col-xl-6">
                                         <label for="number" class="mb-0">Numer</label>
-                                        <input type="number" name="number" value="{{ old('number') ?? $player->nr ?? '' }}" class="form-control @error('number') is-invalid @enderror" id="number" min="1" step="1" max="99">
-                                        @error('number')
+                                        <input type="number" name="nr" value="{{ old('nr') ?? $player->nr ?? '' }}" class="form-control @error('nr') is-invalid @enderror" id="number" min="1" step="1" max="99">
+                                        @error('nr')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -79,8 +79,8 @@
                                 <div class="form-row ml-2 mr-2 pt-2">
                                     <div class="form-group col-md-4">
                                         <label for="playedMatches" class="mb-0">Rozegrane mecze</label>
-                                        <input type="number" name="playedMatches" value="{{ old('playedMatches') ?? $player->played_matches ?? '' }}" class="form-control @error('playedMatches') is-invalid @enderror" id="playedMatches" placeholder="0" min="0" step="1">
-                                        @error('playedMatches')
+                                        <input type="number" name="played_matches" value="{{ old('played_matches') ?? $player->played_matches ?? '' }}" class="form-control @error('played_matches') is-invalid @enderror" id="playedMatches" placeholder="0" min="0" step="1">
+                                        @error('played_matches')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -102,22 +102,22 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-4">
                                         <label for="cleanSheets" class="mb-0">Czyste konta</label>
-                                        <input type="number" name="cleanSheets" value="{{ old('cleanSheets') ?? $player->clean_sheets ?? '' }}" class="form-control @error('cleanSheets') is-invalid @enderror" id="cleanSheets" placeholder="0" min="0" step="1">
-                                        @error('cleanSheets')
+                                        <input type="number" name="clean_sheets" value="{{ old('clean_sheets') ?? $player->clean_sheets ?? '' }}" class="form-control @error('clean_sheets') is-invalid @enderror" id="cleanSheets" placeholder="0" min="0" step="1">
+                                        @error('clean_sheets')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="yellowCards" class="mb-0">Żółte kartki</label>
-                                        <input type="number" name="yellowCards" value="{{ old('yellowCards') ?? $player->yellow_cards ?? '' }}" class="form-control @error('yellowCards') is-invalid @enderror" id="yellowCards" placeholder="0" min="0" step="1">
-                                        @error('yellowCards')
+                                        <input type="number" name="yellow_cards" value="{{ old('yellow_cards') ?? $player->yellow_cards ?? '' }}" class="form-control @error('yellow_cards') is-invalid @enderror" id="yellowCards" placeholder="0" min="0" step="1">
+                                        @error('yellow_cards')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
                                     <div class="form-group col-md-4">
                                         <label for="redCards" class="mb-0">Czerwone kartki</label>
-                                        <input type="number" name="redCards" value="{{ old('redCards') ?? $player->red_cards ?? '' }}" class="form-control @error('redCards') is-invalid @enderror" id="redCards" placeholder="0" min="0" step="1">
-                                        @error('redCards')
+                                        <input type="number" name="red_cards" value="{{ old('red_cards') ?? $player->red_cards ?? '' }}" class="form-control @error('red_cards') is-invalid @enderror" id="redCards" placeholder="0" min="0" step="1">
+                                        @error('red_cards')
                                             <div class="alert alert-danger">{{ $message }}</div>
                                         @enderror
                                     </div>
@@ -125,11 +125,11 @@
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group col-md-6">
                                         <label for="createdAt" class="mb-0">Utworzono</label>
-                                        <input readonly type="text" name="createdAt" value="{{ \Carbon\Carbon::parse($player->created_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="createdAt">
+                                        <input readonly type="text" name="created_at" value="{{ \Carbon\Carbon::parse($player->created_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="createdAt">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="updatedAt" class="mb-0">Ostatnio edytowano</label>
-                                        <input readonly type="text" name="updatedAt" value="{{ \Carbon\Carbon::parse($player->updated_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="updatedAt">
+                                        <input readonly type="text" name="updated_at" value="{{ \Carbon\Carbon::parse($player->updated_at ?? '')->format('d-m-Y G:i:s') }}" class="form-control" id="updatedAt">
                                     </div>
                                 </div>
                                 <div class="form-row ml-2 mr-2">

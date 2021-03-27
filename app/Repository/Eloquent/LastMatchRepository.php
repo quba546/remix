@@ -36,7 +36,7 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
             $this->lastMatch->truncate();
 
             $this->lastMatch->create([
-                'match_type_id' => $data['matchType'],
+                'match_type_id' => $data['match_type_id'],
                 'date' => $data['date'],
                 'host' => $data['host'],
                 'guest' => $data['guest'],
