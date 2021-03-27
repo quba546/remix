@@ -10,6 +10,7 @@ use App\Repository\StandingRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use \Exception;
 
 class StandingController extends Controller
 {
@@ -44,15 +45,22 @@ class StandingController extends Controller
 
         $validated = $request->validated();
 
-        $standingUrl = $validated['url'];
+        try {
+            $this->standingRepository->fillStanding($validated['url']);
+            $message = [
+                'status' => 'success',
+                'message' => 'Poprawnie dodano dane tabeli ligowej'
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => 'Wystąpił błąd podczas dodawania danych tabeli ligowej'
+            ];
+        }
 
-        return $this->standingRepository->fillStanding($standingUrl)
-            ? redirect()
-                ->route('admin.standing.create')
-                ->with('success', 'Poprawnie dodano dane tabeli ligowej')
-            : redirect()
-                ->route('admin.standing.create')
-                ->with('error', 'Wystąpił błąd podczas dodawania danych tabeli ligowej');
+        return redirect()
+            ->route('admin.standing.create')
+            ->with($message['status'], $message['message']);
     }
 
     /**
@@ -64,7 +72,7 @@ class StandingController extends Controller
     {
         Gate::authorize('admin-level');
 
-        $this->standingRepository->delete();
+        $this->standingRepository->clearStanding();
 
         return redirect()
             ->route('admin.standing.create')

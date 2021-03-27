@@ -27,7 +27,7 @@ class TimetableController extends Controller
 
         return view('user.season.timetable',
             [
-                'matches' => $this->matchRoundRepository->getTimetable() ?? []
+                'matches' => $this->matchRoundRepository->getTimetable(['round', 'date', 'matches'])
             ]
         );
     }

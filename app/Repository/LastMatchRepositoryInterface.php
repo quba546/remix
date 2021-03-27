@@ -10,5 +10,5 @@ interface LastMatchRepositoryInterface
 {
     public function get(): ?LastMatch;
 
-    public function save(array $data): bool;
+    public function save(array $data): void;
 }

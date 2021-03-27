@@ -10,23 +10,23 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface PlayerRepositoryInterface
 {
-    public function listPaginated(int $limit, array $columns): LengthAwarePaginator;
+    public function playersListPaginated(int $limit, array $columns): LengthAwarePaginator;
 
     public function playersList(array $columns, string $position) : Collection;
 
-    public function bestScorers(int $limit): Collection;
+    public function getBestScorers(int $limit): Collection;
 
-    public function savePlayer(array $data): bool;
+    public function savePlayer(array $data): void;
 
-    public function updatePlayer(int $id, array $data): bool;
+    public function updatePlayerDetails(int $id, array $data): void;
 
-    public function updatePlayerDefaults(int $id): bool;
+    public function updatePlayerDefaults(int $id): void;
 
-    public function updatePlayedMatches(int $id, int $playedMatches): bool;
+    public function updatePlayedMatches(int $id, int $playedMatches): void;
 
-    public function deletePlayerImage(int $id): bool;
+    public function deletePlayerImage(int $id): void;
 
-    public function playerDetails(int $id): ?Player;
+    public function playerDetails(int $id): Player;
 
-    public function deletePlayer(int $id): ?bool;
+    public function deletePlayer(int $id): void;
 }

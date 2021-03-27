@@ -6,7 +6,6 @@ namespace App\Repository\Eloquent;
 
 use App\Models\LastMatch;
 use App\Repository\LastMatchRepositoryInterface;
-use \Exception;
 
 class LastMatchRepository extends BaseRepository implements LastMatchRepositoryInterface
 {
@@ -19,35 +18,25 @@ class LastMatchRepository extends BaseRepository implements LastMatchRepositoryI
 
     public function get(): ?LastMatch
     {
-        try {
-            return $this->lastMatch
-                ->with('matchType')
-                ->get()
-                ->first();
-        } catch (Exception $e) {
-
-            return null;
-        }
+        return $this->lastMatch
+            ->with('matchType')
+            ->get()
+            ->first();
     }
 
-    public function save(array $data): bool
+    public function save(array $data): void
     {
-        try {
-            $this->lastMatch->truncate();
+        $this->lastMatch->truncate();
 
-            $this->lastMatch->create([
+        $this->lastMatch->create(
+            [
                 'match_type_id' => $data['match_type_id'],
                 'date' => $data['date'],
                 'host' => $data['host'],
                 'guest' => $data['guest'],
                 'score' => $data['score'],
                 'round' => $data['round']
-            ]);
-
-            return true;
-        } catch (Exception $e) {
-
-            return false;
-        }
+            ]
+        );
     }
 }

@@ -12,6 +12,7 @@ use Kyslik\ColumnSortable\Sortable;
 
 /**
  * @mixin Builder
+ * @method sortable()
  */
 class Player extends Model
 {

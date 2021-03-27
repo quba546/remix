@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\Custom\SavePlayerImage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlayerRequest;
 use App\Http\Requests\SimplePlayerRequest;
-use App\Models\TemporaryFile;
 use App\Repository\PlayerRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Storage;
+use \Exception;
 
 class PlayerController extends Controller
 {
@@ -36,7 +36,7 @@ class PlayerController extends Controller
 
         return view('admin.players',
             [
-                'players' => $this->playerRepository->listPaginated(15,
+                'players' => $this->playerRepository->playersListPaginated(15,
                         [
                             'id',
                             'first_name',
@@ -46,7 +46,7 @@ class PlayerController extends Controller
                             'played_matches',
                             'updated_at'
                         ]
-                    ) ?? []
+                    )
             ]
         );
     }
@@ -62,23 +62,30 @@ class PlayerController extends Controller
         Gate::authorize('moderator-level');
 
         $validated = $request->validated();
-        $success = $this->playerRepository->savePlayer(
-            [
-                'first_name' => $validated['first_name'],
-                'last_name' => $validated['last_name'],
-                'position' => $validated['position'],
-                'nr' => $validated['nr'],
-            ]
-        );
 
-        return $success
-            ? redirect()
-                ->route('admin.players.store')
-                ->with('success', 'Poprawnie dodano nowego zawodnika')
-            : redirect()
-                ->route('admin.players.store')
-                ->with('error', 'Wystąpił błąd przy dodawaniu nowego zawodnika');
+        try {
+            $this->playerRepository->savePlayer(
+                [
+                    'first_name' => $validated['first_name'],
+                    'last_name' => $validated['last_name'],
+                    'position' => $validated['position'],
+                    'nr' => $validated['nr'],
+                ]
+            );
+            $message = [
+                'status' => 'success',
+                'message' => 'Poprawnie dodano nowego zawodnika'
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => 'Wystąpił błąd przy dodawaniu nowego zawodnika'
+            ];
+        }
 
+        return redirect()
+                ->route('admin.players.store')
+                ->with($message['status'], $message['message']);
     }
 
     /**
@@ -93,27 +100,7 @@ class PlayerController extends Controller
 
         $id = (int)$id;
 
-        if ($this->playerRepository->playerDetails($id)) {
-            return view('admin.player-details', ['player' => $this->playerRepository->playerDetails($id)]);
-        } else {
-            Session::flash('error', 'Nie istnieje zawodnik o ID: ' . $id);
-
-            return view('admin.players',
-                [
-                    'players' => $this->playerRepository->listPaginated(15,
-                            [
-                                'id',
-                                'first_name',
-                                'last_name',
-                                'nr',
-                                'position',
-                                'played_matches',
-                                'updated_at'
-                            ]
-                        ) ?? []
-                ]
-            );
-        }
+        return view('admin.player-details', ['player' => $this->playerRepository->playerDetails($id)]);
     }
 
     /**
@@ -123,7 +110,7 @@ class PlayerController extends Controller
      * @param PlayerRequest $playerRequest
      * @param string $id
      * @return RedirectResponse
-     * @throws \Exception
+     * @throws Exception
      */
     public function update(Request $request, PlayerRequest $playerRequest, string $id): RedirectResponse
     {
@@ -135,45 +122,40 @@ class PlayerController extends Controller
 
         $validated = $playerRequest->validated();
         if (isset($request->playerImage)) {
-            $folder = substr($request->playerImage, 0, strpos($request->playerImage, '<')); // delete garbage form request
-            $temporaryFile = TemporaryFile::where('folder', '=', $folder)->first();
-
-            if ($temporaryFile) {
-                Storage::move('public/tmp/' . $folder . '/' . $temporaryFile->filename, 'public/players-images/' . $temporaryFile->filename);
-                Storage::deleteDirectory('public/tmp/' . $folder);
-                $temporaryFile->delete();
-
-                if (isset($data->image)) {
-                    $oldPlayerImagePath = $data->image;
-                    $oldPlayerImage = str_replace('players-images/', '', $oldPlayerImagePath);
-                    Storage::delete('public/players-images/' . $oldPlayerImage); // delete old player image from storage
-                }
-            }
+            $savePlayerImage = new SavePlayerImage();
+            $fileName = $savePlayerImage->saveImage($request->playerImage, $data->image);
         }
 
-        $success = $this->playerRepository->updatePlayer($id,
-            [
-                'first_name' => $validated['first_name'],
-                'last_name' => $validated['last_name'],
-                'nr' => $validated['nr'],
-                'position' => $validated['position'],
-                'goals' => $validated['goals'],
-                'assists' => $validated['assists'],
-                'played_matches' => $validated['played_matches'],
-                'clean_sheets' => $validated['clean_sheets'],
-                'yellow_cards' => $validated['yellow_cards'],
-                'red_cards' => $validated['red_cards'],
-                'image' => isset($temporaryFile->filename) ? 'players-images/' . $temporaryFile->filename : $data->image
-            ]
-        );
+        try {
+            $this->playerRepository->updatePlayerDetails($id,
+                [
+                    'first_name' => $validated['first_name'],
+                    'last_name' => $validated['last_name'],
+                    'nr' => $validated['nr'],
+                    'position' => $validated['position'],
+                    'goals' => $validated['goals'],
+                    'assists' => $validated['assists'],
+                    'played_matches' => $validated['played_matches'],
+                    'clean_sheets' => $validated['clean_sheets'],
+                    'yellow_cards' => $validated['yellow_cards'],
+                    'red_cards' => $validated['red_cards'],
+                    'image' => isset($fileName) ? 'players-images/' . $fileName : $data->image
+                ]
+            );
+            $message = [
+                'status' => 'success',
+                'message' => "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})"
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})"
+            ];
+        }
 
-        return $success
-            ? redirect()
+        return redirect()
                 ->route('admin.players.edit', ['player' => $id])
-                ->with('success', "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
-            : redirect()
-                ->route('admin.players.edit', ['player' => $id])
-                ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
+                ->with($message['status'], $message['message']);
     }
 
     public function restoreDefaults(string $id) : RedirectResponse
@@ -181,16 +163,22 @@ class PlayerController extends Controller
         Gate::authorize('moderator-level');
 
         $id = (int) $id;
+        try {
+            $this->playerRepository->updatePlayerDefaults($id);
+            $message = [
+                'status' => 'success',
+                'message' => "Poprawnie zresetowano dane zawodnika o ID:{$id}"
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => "Wystąpił błąd przy resetowaniu danych zawodnika o ID:{$id}"
+            ];
+        }
 
-        $success = $this->playerRepository->updatePlayerDefaults($id);
-
-        return $success
-            ? redirect()
+        return redirect()
                 ->route('admin.players.edit', ['player' => $id])
-                ->with('info', "Poprawnie zresetowano dane zawodnika o ID:{$id}")
-            : redirect()
-                ->route('admin.players.edit', ['player' => $id])
-                ->with('error', "Wystąpił błąd przy resetowaniu danych zawodnika o ID:{$id}");
+                ->with($message['status'], $message['message']);
     }
 
     /**
@@ -203,21 +191,27 @@ class PlayerController extends Controller
     {
         Gate::authorize('moderator-level');
 
-
         $validated = $request->validated();
         $playerId = (int)$validated['playerId'];
 
         $data = $this->playerRepository->playerDetails($playerId);
 
-        $success = $this->playerRepository->updatePlayedMatches($playerId, (int)$validated['played_matches']);
+        try {
+            $this->playerRepository->updatePlayedMatches($playerId, (int)$validated['played_matches']);
+            $message = [
+                'status' => 'success',
+                'message' => "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})"
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})"
+            ];
+        }
 
-        return $success
-            ? redirect()
+        return redirect()
                 ->route('admin.players.store')
-                ->with('success', "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
-            : redirect()
-                ->route('admin.players.store')
-                ->with('error', "Wystąpił błąd przy aktualizacji danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
+                ->with($message['status'], $message['message']);
     }
 
     /**
@@ -238,16 +232,20 @@ class PlayerController extends Controller
 
         if (Storage::delete($path)) {
             $this->playerRepository->deletePlayerImage($id);
-
-            return redirect()
-                ->route('admin.players.edit', ['player' => $id])
-                ->with('success', "Poprawnie usunięto zdjęcie zawodnika  {$data['first_name']} {$data['last_name']} (ID:{$data['id']})");
+            $message = [
+                'status' => 'success',
+                'message' => 'Poprawnie usunięto zdjęcie zawodnika'
+            ];
         } else {
-
-            return redirect()
-                ->route('admin.players.edit', ['player' => $id])
-                ->with('error', "Zawodnik {$data['first_name']} {$data['last_name']} (ID:{$data['id']}) nie ma przypisanego zdjęcia");
+            $message = [
+                'status' => 'info',
+                'message' => 'Ten zawodnik nie ma przypisanego zdjęcia'
+            ];
         }
+
+        return redirect()
+            ->route('admin.players.edit', ['player' => $id])
+            ->with($message['status'], $message['message']);
     }
 
     /**
@@ -262,14 +260,22 @@ class PlayerController extends Controller
 
         $id = (int)$id;
 
-        $data = $this->playerRepository->playerDetails($id);
+        try {
+            $data = $this->playerRepository->playerDetails($id);
+            $this->playerRepository->deletePlayer($id);
+            $message = [
+                'status' => 'success',
+                'message' => "Poprawnie usunięto dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})"
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => 'Wystąpił błąd przy usuwaniu danych zawodnika'
+            ];
+        }
 
-        return $this->playerRepository->deletePlayer($id)
-            ? redirect()
+        return redirect()
                 ->route('admin.players.index')
-                ->with('warning', "Poprawnie usunięto dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})")
-            : redirect()
-                ->route('admin.players.index')
-                ->with('error', "Wystąpił błąd przy usuwaniu danych zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']}");
+                ->with($message['status'], $message['message']);
     }
 }

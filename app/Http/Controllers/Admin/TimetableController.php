@@ -11,6 +11,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
+use Mockery\Exception;
 
 class TimetableController extends Controller
 {
@@ -45,7 +46,7 @@ class TimetableController extends Controller
 
         $validated = $request->validated();
 
-        $success = $this->timetableRepository->addRound(
+        $success = $this->timetableRepository->saveRound(
             [
                 'round' => $validated['round'],
                 'date' => $validated['date'],
@@ -53,13 +54,21 @@ class TimetableController extends Controller
             ]
         );
 
-        return $success
-            ? redirect()
-                ->route('admin.timetable.create')
-                ->with('success', 'Poprawnie dodano nową kolejkę do termianarza')
-            : redirect()
-                ->route('admin.timetable.create')
-                ->with('error', "Kolejka {$validated['round']} już istnieje w terminarzu!");
+        if ($success) {
+          $message = [
+              'status' => 'success',
+              'message' => 'Poprawnie dodano nową kolejkę do termianarza'
+          ];
+        } else {
+            $message = [
+                'status' => 'error',
+                'message' => "Kolejka {$validated['round']} już istnieje w terminarzu!"
+            ];
+        }
+
+        return redirect()
+            ->route('admin.timetable.create')
+            ->with($message['status'], $message['message']);
     }
 
     /**
@@ -73,7 +82,7 @@ class TimetableController extends Controller
 
         return view('admin.delete-timetable',
             [
-                'rounds' => $this->timetableRepository->getRounds() ?? []
+                'rounds' => $this->timetableRepository->getTimetable(['round', 'date'])
             ]
         );
     }
@@ -88,15 +97,22 @@ class TimetableController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        $success = $this->timetableRepository->deleteRound((int)$request->round);
+        try {
+            $this->timetableRepository->deleteRound((int)$request->round);
+            $message = [
+                'status' => 'success',
+                'message' => "Poprawnie usunięto {$request->round} kolejkę z termianarza"
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => "Wystąpił błąd podczas usuwania {$request->round} z terminarza!"
+            ];
+        }
 
-        return $success
-            ? redirect()
-                ->route('admin.timetable.edit')
-                ->with('success', "Poprawnie usunięto {$request->round} kolejkę z termianarza")
-            : redirect()
-                ->route('admin.timetable.edit')
-                ->with('error', "Wystąpił błąd podczas usuwania {$request->round} z terminarza!");
+        return redirect()
+            ->route('admin.timetable.edit')
+            ->with($message['status'], $message['message']);
     }
 
     /**
@@ -108,10 +124,10 @@ class TimetableController extends Controller
     {
         Gate::authorize('admin-level');
 
-        $this->timetableRepository->deleteAll();
+        $this->timetableRepository->clearTimetable();
 
         return redirect()
             ->route('admin.dashboard')
-            ->with('info', "Poprawnie usunięto cały terminarz");
+            ->with('success', "Poprawnie usunięto cały terminarz");
     }
 }

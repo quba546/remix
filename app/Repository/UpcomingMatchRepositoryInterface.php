@@ -10,5 +10,5 @@ interface UpcomingMatchRepositoryInterface
 {
     public function get(): ?UpcomingMatch;
 
-    public function save(array $data): bool;
+    public function save(array $data): void;
 }

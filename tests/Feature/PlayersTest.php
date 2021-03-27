@@ -674,7 +674,7 @@ class PlayersTest extends TestCase
                     'yellow_cards' => 0,
                     'red_cards' => 0
                 ])->toArray())
-            ->assertSessionHas('info')
+            ->assertSessionHas('success')
             ->assertRedirect('admin/players/' . $id . '/edit');
 
         $this->assertDatabaseHas(
@@ -742,7 +742,7 @@ class PlayersTest extends TestCase
 
         $this->delete('/admin/players/' . $id, Player::factory()->make(['id' => $id])->toArray())
             ->assertRedirect('/admin/players')
-            ->assertSessionHas('warning');
+            ->assertSessionHas('success');
 
         $this->assertCount(0, Player::all());
     }

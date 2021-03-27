@@ -29,7 +29,7 @@ class PlayerStatsController extends Controller
 
         return view('user.season.stats',
             [
-                'playersStats' => $this->playerRepository->listPaginated(15,
+                'playersStats' => $this->playerRepository->playersListPaginated(15,
                         [
                             'first_name',
                             'last_name',
