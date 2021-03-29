@@ -64,9 +64,12 @@
                                 </div>
                                 <div class="form-row ml-2 mr-2">
                                     <div class="form-group order-1 order-xl-0 col-12 col-xl-6 mt-4">
+
+{{--                                    uploading new photo to gallery--}}
                                         <div class="custom-file-upload">
-                                            <input type="file" name="playerImage" id="playerImage"/>
+                                            <input type="file" name="uploadedPhoto" id="uploadPhoto"/>
                                         </div>
+
                                     </div>
                                     <div class="form-group col-12 col-xl-6">
                                         <label for="number" class="mb-0">Numer</label>

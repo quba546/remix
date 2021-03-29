@@ -149,12 +149,12 @@ FilePond.registerPlugin(
     FilePondPluginImageExifOrientation,
 );
 
-const inputElement = document.querySelector('input[id="playerImage"]');
+const inputElement = document.querySelector('input[id="uploadPhoto"]');
 FilePond.create(inputElement);
 
 FilePond.setOptions({
     server: {
-        url: '/admin/players/upload',
+        url: '/admin/upload',
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }

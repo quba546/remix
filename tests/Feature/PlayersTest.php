@@ -6,8 +6,6 @@ use App\Models\Player;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Http\UploadedFile;
-use Illuminate\Support\Facades\Storage;
 use Tests\TestCase;
 use Faker\Factory as Faker;
 
@@ -650,7 +648,7 @@ class PlayersTest extends TestCase
         $faker = Faker::create();
         $this->actingAs(User::factory()->create(['role_id' => 1]));
 
-        $this->post('/admin/players/upload', ['playerImage' => $faker->image()])->assertOk();
+        $this->post('/admin/upload', ['uploadedPhoto' => $faker->image()])->assertOk();
     }
 
     /**

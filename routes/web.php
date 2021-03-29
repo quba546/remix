@@ -14,6 +14,8 @@ use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UploadController;
+use App\Http\Controllers\Main\GalleryController;
+use App\Http\Controllers\Admin\GalleryController as AdminGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +31,9 @@ use App\Http\Controllers\Admin\UploadController;
 Route::group([], function () {
     Route::get('/', [HomeController::class, 'index'])
         ->name('index');
+
+    Route::get('/gallery', GalleryController::class)
+        ->name('gallery');
 
     Route::group([
         'prefix' => '/season/',
@@ -52,13 +57,15 @@ Route::group([], function () {
     Route::middleware(['auth'])->group(function () {
         /* ADMIN ROUTES */
         Route::group([
-            'prefix' => '/admin/',
+            'prefix' => '/admin',
             'as' => 'admin.'
         ], function () {
             /* DASHBOARD */
             Route::get('/', function () {
                 return view('admin.dashboard');
             })->name('dashboard');
+
+            Route::post('/upload', [UploadController::class, 'store']);
 
             /* TIMETABLE */
             Route::get('/timetable/create', [AdminTimetableController::class, 'create'])
@@ -106,8 +113,6 @@ Route::group([], function () {
             });
 
             /* PLAYERS */
-            Route::post('players/upload', [UploadController::class, 'store']);
-
             Route::resource('players', AdminPlayerController::class)
                 ->only('index', 'store', 'update', 'edit', 'destroy')
                 ->where(['player', '[0-9]+']);
@@ -126,6 +131,19 @@ Route::group([], function () {
                 Route::delete('/image/{player}', [AdminPlayerController::class, 'destroyImage'])
                     ->name('destroy.image')
                     ->where('player', '[0-9]+');
+            });
+
+            /* GALLERY */
+            Route::group([
+                'prefix' => '/photos',
+                'as' => 'photos.'
+            ], function () {
+                Route::get('/create', [AdminGalleryController::class, 'create'])
+                    ->name('create');
+                Route::post('/', [AdminGalleryController::class, 'store'])
+                    ->name('store');
+                Route::delete('/{photo}', [AdminGalleryController::class, 'destroy'])
+                    ->name('destroy');
             });
         });
     });

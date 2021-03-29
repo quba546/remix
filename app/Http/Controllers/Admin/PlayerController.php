@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
-use App\CustomClasses\UploadPlayerImage;
+use App\CustomClasses\UploadPhoto;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlayerRequest;
 use App\Http\Requests\SimplePlayerRequest;
@@ -116,14 +116,14 @@ class PlayerController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        $id = (int)$id;
+        $id = (int) $id;
 
         $data = $this->playerRepository->playerDetails($id);
 
         $validated = $playerRequest->validated();
-        if (isset($request->playerImage)) {
-            $savePlayerImage = new UploadPlayerImage();
-            $fileName = $savePlayerImage->savePlayerImage($request->playerImage, $data->image);
+        if (isset($request->uploadedPhoto)) {
+            $savePlayerImage = new UploadPhoto();
+            $fileName = $savePlayerImage->savePlayerImage($request->uploadedPhoto, $data->image);
         }
 
         try {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Providers;
 
 use App\Repository\Eloquent\BaseRepository;
+use App\Repository\Eloquent\GalleryRepositoryRepository;
 use App\Repository\Eloquent\LastMatchRepository;
 use App\Repository\Eloquent\TimetableRepository;
 use App\Repository\Eloquent\MatchTypeRepository;
@@ -12,6 +13,7 @@ use App\Repository\Eloquent\PlayerRepository;
 use App\Repository\Eloquent\StandingRepository;
 use App\Repository\Eloquent\UpcomingMatchRepository;
 use App\Repository\EloquentRepositoryInterface;
+use App\Repository\GalleryRepositoryInterface;
 use App\Repository\LastMatchRepositoryInterface;
 use App\Repository\TimetableRepositoryInterface;
 use App\Repository\MatchTypeRepositoryInterface;
@@ -36,6 +38,7 @@ class RepositoryServiceProvider extends ServiceProvider
         $this->app->bind(UpcomingMatchRepositoryInterface::class, UpcomingMatchRepository::class);
         $this->app->bind(MatchTypeRepositoryInterface::class, MatchTypeRepository::class);
         $this->app->bind(TimetableRepositoryInterface::class, TimetableRepository::class);
+        $this->app->bind(GalleryRepositoryInterface::class, GalleryRepositoryRepository::class);
     }
 
     /**
