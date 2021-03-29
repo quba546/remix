@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Eloquent;
 
-use App\Custom\GetStandingFromUrl;
+use App\CustomClasses\GetStandingFromUrl;
 use App\Repository\StandingRepositoryInterface;
 use App\Models\Standing;
 use Illuminate\Database\Eloquent\Collection;

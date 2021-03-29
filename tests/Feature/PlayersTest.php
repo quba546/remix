@@ -694,29 +694,6 @@ class PlayersTest extends TestCase
     /**
      * @test
      */
-    // TODO complicated test
-//    public function can_moderator_remove_player_image_from_player_details()
-//    {
-//        $faker = Faker::create();
-//        $this->actingAs(User::factory()->create(['role_id' => 1]));
-//        Storage::fake('public');
-//
-//        $id = 2;
-//        $image = null;
-//        $imagePath = 'players-images/' . UploadedFile::fake()->image('image1.png');
-//        Player::factory()->create(['id' => $id, 'image' => $imageUrl]);
-//
-//        $this->put('/admin/players/' . $id, Player::factory()->make(['id' => $id, 'image' => $image])->toArray())
-//            ->assertSessionHas('success')
-//            ->assertRedirect('admin/players/' . $id . '/edit');
-//
-////        $this->assertDatabaseHas('players', ['id' => $id, 'image' => $image])
-////            ->assertCount(1, Player::all());
-//    }
-
-    /**
-     * @test
-     */
     public function cannot_moderator_remove_player_from_database()
     {
         $this->actingAs(User::factory()->create(['role_id' => 1]));

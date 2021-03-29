@@ -42,15 +42,15 @@ class TimetableFactory extends Factory
                         'grudzień'
                     ]
                 ),
-                'matches' => "Orzeł Bażanówka\t3-0\tVictoria Pakoszówka\t15 sierpnia, 18:00\r\n
-(wo)\r\n
-na boisku 0-2\r\n
-Sanovia Lesko\t10-0\tSzarotka Nowosielce\t15 sierpnia, 16:30\r\n
-LKS Długie\t3-1\tLKS Płowce/Stróże Małe\t16 sierpnia, 17:00\r\n
-Górnik Strachocina\t4-0\tLotniarz Bezmiechowa\t16 sierpnia, 15:00\r\n
-Zgoda Zarszyn\t3-0\tRemix Niebieszczany\t16 sierpnia, 17:00\r\n
-Bukowianka Bukowsko\t6-1\tBieszczady Jankowce\t16 sierpnia, 15:00\r\n
-Osława Zagórz\t5-1\tWiki Sanok\t16 sierpnia, 14:00"
+                'matches' => "Orzeł Bażanówka|3-0|Victoria Pakoszówka|15 sierpnia, 18:00\n
+                                (wo)\n
+                                na boisku 0-2\n
+                                Sanovia Lesko|10-0|Szarotka Nowosielce|15 sierpnia, 16:30\n
+                                LKS Długie|3-1|LKS Płowce/Stróże Małe|16 sierpnia, 17:00\n
+                                Górnik Strachocina|4-0|Lotniarz Bezmiechowa|16 sierpnia, 15:00\n
+                                Zgoda Zarszyn|3-0|Remix Niebieszczany|16 sierpnia, 17:00\n
+                                Bukowianka Bukowsko|6-1|Bieszczady Jankowce|16 sierpnia, 15:00\n
+                                Osława Zagórz|5-1|Wiki Sanok|16 sierpnia, 14:00\n"
         ];
     }
 }

@@ -86,7 +86,7 @@ class RemoveRoundTest extends TestCase
 //        Timetable::factory()->create();
 //
 //        $this->delete('/admin/timetable')
-//            ->assertSessionHas('info')
+//            ->assertSessionHas('success')
 //            ->assertRedirect('/admin');
 //
 //        $this->assertCount(0, Timetable::all());

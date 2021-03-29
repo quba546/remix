@@ -20,6 +20,6 @@ class Timetable extends Model
     protected $fillable = [
         'round',
         'date',
-        'details'
+        'matches'
     ];
 }

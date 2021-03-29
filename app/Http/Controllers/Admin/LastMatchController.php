@@ -11,6 +11,7 @@ use App\Repository\MatchTypeRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use \Exception;
 
 class LastMatchController extends Controller
 {
@@ -55,23 +56,30 @@ class LastMatchController extends Controller
 
         $validated = $request->validated();
 
-        $success = $this->lastMatchRepository->save(
-            [
-                'host' => $validated['host'],
-                'guest' => $validated['guest'],
-                'match_type_id' => $validated['match_type_id'],
-                'round' => $validated['round'],
-                'date' => $validated['date'],
-                'score' => $validated['score']
-            ]
-        );
+        try {
+            $this->lastMatchRepository->save(
+                [
+                    'host' => $validated['host'],
+                    'guest' => $validated['guest'],
+                    'match_type_id' => $validated['match_type_id'],
+                    'round' => $validated['round'],
+                    'date' => $validated['date'],
+                    'score' => $validated['score']
+                ]
+            );
+            $message = [
+                'status' => 'success',
+                'message' => 'Poprawnie dodano dane o ostatnim meczu'
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => 'Wystąpił błąd podczas dodawania danych o ostatnim meczu'
+            ];
+        }
 
-        return $success
-            ? redirect()
-                ->route('admin.matches.last.edit')
-                ->with('success', 'Poprawnie dodano dane o ostatnim meczu')
-            : redirect()
-                ->route('admin.matches.last.edit')
-                ->with('error', 'Wystąpił błąd podczas dodawania danych o ostatnim meczu');
+        return redirect()
+            ->route('admin.matches.last.edit')
+            ->with($message['status'], $message['message']);
     }
 }

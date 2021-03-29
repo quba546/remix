@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
-use App\Custom\SavePlayerImage;
+use App\CustomClasses\UploadPlayerImage;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PlayerRequest;
 use App\Http\Requests\SimplePlayerRequest;
@@ -84,8 +84,8 @@ class PlayerController extends Controller
         }
 
         return redirect()
-                ->route('admin.players.store')
-                ->with($message['status'], $message['message']);
+            ->route('admin.players.store')
+            ->with($message['status'], $message['message']);
     }
 
     /**
@@ -122,8 +122,8 @@ class PlayerController extends Controller
 
         $validated = $playerRequest->validated();
         if (isset($request->playerImage)) {
-            $savePlayerImage = new SavePlayerImage();
-            $fileName = $savePlayerImage->saveImage($request->playerImage, $data->image);
+            $savePlayerImage = new UploadPlayerImage();
+            $fileName = $savePlayerImage->savePlayerImage($request->playerImage, $data->image);
         }
 
         try {
@@ -154,8 +154,8 @@ class PlayerController extends Controller
         }
 
         return redirect()
-                ->route('admin.players.edit', ['player' => $id])
-                ->with($message['status'], $message['message']);
+            ->route('admin.players.edit', ['player' => $id])
+            ->with($message['status'], $message['message']);
     }
 
     public function restoreDefaults(string $id) : RedirectResponse
@@ -167,18 +167,18 @@ class PlayerController extends Controller
             $this->playerRepository->updatePlayerDefaults($id);
             $message = [
                 'status' => 'success',
-                'message' => "Poprawnie zresetowano dane zawodnika o ID:{$id}"
+                'message' => "Poprawnie zresetowano dane zawodnika"
             ];
         } catch (Exception $e) {
             $message = [
                 'status' => 'error',
-                'message' => "Wystąpił błąd przy resetowaniu danych zawodnika o ID:{$id}"
+                'message' => "Wystąpił błąd przy resetowaniu danych zawodnika"
             ];
         }
 
         return redirect()
-                ->route('admin.players.edit', ['player' => $id])
-                ->with($message['status'], $message['message']);
+            ->route('admin.players.edit', ['player' => $id])
+            ->with($message['status'], $message['message']);
     }
 
     /**
@@ -192,12 +192,12 @@ class PlayerController extends Controller
         Gate::authorize('moderator-level');
 
         $validated = $request->validated();
-        $playerId = (int)$validated['playerId'];
+        $playerId = (int) $validated['playerId'];
 
         $data = $this->playerRepository->playerDetails($playerId);
 
         try {
-            $this->playerRepository->updatePlayedMatches($playerId, (int)$validated['played_matches']);
+            $this->playerRepository->updatePlayedMatches($playerId, (int) $validated['played_matches']);
             $message = [
                 'status' => 'success',
                 'message' => "Poprawnie zaktualizowano dane zawodnika {$data['first_name']} {$data['last_name']} (ID:{$data['id']})"
@@ -210,8 +210,8 @@ class PlayerController extends Controller
         }
 
         return redirect()
-                ->route('admin.players.store')
-                ->with($message['status'], $message['message']);
+            ->route('admin.players.store')
+            ->with($message['status'], $message['message']);
     }
 
     /**
@@ -224,7 +224,7 @@ class PlayerController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        $id = (int)$id;
+        $id = (int) $id;
 
         $data = $this->playerRepository->playerDetails($id);
 
@@ -275,7 +275,7 @@ class PlayerController extends Controller
         }
 
         return redirect()
-                ->route('admin.players.index')
-                ->with($message['status'], $message['message']);
+            ->route('admin.players.index')
+            ->with($message['status'], $message['message']);
     }
 }

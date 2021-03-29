@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Custom;
+namespace App\CustomClasses;
 
 use KubAT\PhpSimple\HtmlDomParser;
 

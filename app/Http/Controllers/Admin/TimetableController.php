@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\CustomClasses\ParseTimetable;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\TimetableRequest;
 use App\Repository\TimetableRepositoryInterface;
@@ -11,7 +12,7 @@ use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Gate;
-use Mockery\Exception;
+use \Exception;
 
 class TimetableController extends Controller
 {
@@ -46,11 +47,19 @@ class TimetableController extends Controller
 
         $validated = $request->validated();
 
+        try {
+            $matches = (new ParseTimetable())->parseMatchesFromUrl($validated['matches']);
+        } catch (Exception $e) {
+            return redirect()
+                ->route('admin.timetable.create')
+                ->with('error', 'Format meczy podanych w tej kolejce jest nieprawidłowy. Spróbuj jeszcze raz.');
+        }
+
         $success = $this->timetableRepository->saveRound(
             [
                 'round' => $validated['round'],
                 'date' => $validated['date'],
-                'matches' => $validated['matches']
+                'matches' => $matches
             ]
         );
 

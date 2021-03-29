@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository\Eloquent;
 
-use App\Custom\ParseTimetable;
+use App\CustomClasses\ParseTimetable;
 use App\Models\Timetable;
 use App\Repository\TimetableRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
@@ -37,14 +37,13 @@ class TimetableRepository extends BaseRepository implements TimetableRepositoryI
 
     public function getTimetable(array $columns): Collection
     {
+        $results = $this->timetable->all($columns);
+
         if (in_array('matches', $columns)) {
-            $parser = new ParseTimetable();
-            $result = $parser->parseText($this->timetable->all($columns));
-        } else {
-            $result = $this->timetable->all($columns);
+            $results = (new ParseTimetable())->parseMatchesFromDatabase($results);
         }
 
-        return $result ?? Collection::empty();
+        return $results ?? Collection::empty();
     }
 
     /** @noinspection PhpUnhandledExceptionInspection */

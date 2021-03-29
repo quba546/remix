@@ -11,6 +11,7 @@ use App\Repository\UpcomingMatchRepositoryInterface;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Gate;
+use \Exception;
 
 class UpcomingMatchController extends Controller
 {
@@ -38,7 +39,7 @@ class UpcomingMatchController extends Controller
         return view('admin.upcoming-match',
             [
                 'upcomingMatch' => $this->upcomingMatchRepository->get() ?? [],
-                'matchTypes' => $this->matchTypeRepository->getMatchTypes() ?? []
+                'matchTypes' => $this->matchTypeRepository->getMatchTypes()
             ]
         );
     }
@@ -55,23 +56,30 @@ class UpcomingMatchController extends Controller
 
         $validated = $request->validated();
 
-        $success = $this->upcomingMatchRepository->save(
-            [
-                'host' => $validated['host'],
-                'guest' => $validated['guest'],
-                'matchType' => $validated['matchType'],
-                'round' => $validated['round'],
-                'date' => $validated['date'],
-                'place' => $validated['place'],
-            ]
-        );
+        try {
+            $this->upcomingMatchRepository->save(
+                [
+                    'host' => $validated['host'],
+                    'guest' => $validated['guest'],
+                    'matchType' => $validated['matchType'],
+                    'round' => $validated['round'],
+                    'date' => $validated['date'],
+                    'place' => $validated['place'],
+                ]
+            );
+            $message = [
+                'status' => 'success',
+                'message' => 'Poprawnie dodano dane o najbliższym meczu'
+            ];
+        } catch (Exception $e) {
+            $message = [
+                'status' => 'error',
+                'message' => 'Wystąpił błąd podczas dodawania danych o najbliższym meczu'
+            ];
+        }
 
-        return $success
-            ? redirect()
-                ->route('admin.matches.upcoming.edit')
-                ->with('success', 'Poprawnie dodano dane o najbliższym meczu')
-            : redirect()
-                ->route('admin.matches.upcoming.edit')
-                ->with('error', 'Wystąpił błąd podczas dodawania danych o najbliższym meczu');
+        return redirect()
+            ->route('admin.matches.upcoming.edit')
+            ->with($message['status'], $message['message']);
     }
 }
