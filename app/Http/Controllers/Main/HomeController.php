@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Main;
 
+use App\CustomClasses\ReadWriteFileService;
 use App\Http\Controllers\Controller;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Illuminate\Contracts\View\View;
@@ -44,12 +45,19 @@ class HomeController extends Controller
         SEOMeta::setDescription('Oficjalna strona klubu piłkarskiego LKS Remix Niebieszczany');
         SEOMeta::setCanonical(env('APP_URL'));
 
+        // read standing data from file
+        $json = new ReadWriteFileService();
+        $data = $json->read();
+
         return view('user.home',
             [
-                'shortStanding' => $this->standingRepository->get(['position', 'team', 'played_matches', 'points', 'league']) ?? [],
-                'bestScorers' => $this->playerRepository->getBestScorers(3) ?? [],
-                'lastMatch' => $this->lastMatchRepository->get() ?? [],
-                'upcomingMatch' => $this->upcomingMatchRepository->get() ?? []
+                'shortStanding' => $this->standingRepository->get(['position', 'team', 'played_matches', 'points']),
+                'league' => $data['league'],
+                'numberOfPromotionTeams' => $data['numberOfPromotionTeams'],
+                'numberOfRelegationTeams' => $data['numberOfRelegationTeams'],
+                'bestScorers' => $this->playerRepository->getBestScorers(3),
+                'lastMatch' => $this->lastMatchRepository->get(),
+                'upcomingMatch' => $this->upcomingMatchRepository->get()
             ]
         );
     }

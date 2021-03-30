@@ -43,7 +43,6 @@ class StandingFactory extends Factory
             'goals_scored' => $goalsScored,
             'goals_conceded' => $goalsConceded,
             'goals_difference' => $goalsScored - $goalsConceded,
-            'league' => 'Klasa A 2020/2021, Grupa: Krosno I',
             'updated_at' => $updatedAt,
             'created_at' => $updatedAt->subMinutes($faker->numberBetween(1, 2 * 365 * 24 * 60))
         ];

@@ -10,7 +10,7 @@ interface StandingRepositoryInterface
 {
     public function get(array $columns): Collection;
 
-    public function fillStanding(string $url): void;
+    public function fillStanding(string $url, int $numberOfPromotionTeams, int $numberOfRelegationTeams): void;
 
     public function clearStanding(): void;
 }

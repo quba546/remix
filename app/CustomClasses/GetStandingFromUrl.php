@@ -8,7 +8,7 @@ use KubAT\PhpSimple\HtmlDomParser;
 
 class GetStandingFromUrl
 {
-    public function getStanding(string $url): array
+    public function getStanding(string $url, int $numberOfPromotionTeams, int $numberOfRelegationTeams): array
     {
         $dom = HtmlDomParser::str_get_html(file_get_contents($url));
 
@@ -55,7 +55,6 @@ class GetStandingFromUrl
             $goalsConceded = explode('-', $result[$i + 7])[1];
 
             $data[] = [
-                'league' => $result[0],
                 'position' => (int)$result[$i],
                 'team' => $result[$i + 1],
                 'played_matches' => (int)$result[$i + 2],
@@ -70,6 +69,10 @@ class GetStandingFromUrl
 
             $i = $i + 21;
         }
+
+        // save league name, number of promotion teams and number of relegation teams to json file instead to database
+        $json = new ReadWriteFileService();
+        $json->write($result[0], $numberOfPromotionTeams, $numberOfRelegationTeams);
 
         return $data;
     }

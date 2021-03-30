@@ -2,13 +2,14 @@
 
 @section('content')
     @include('shared.messages')
+    @php setlocale(LC_TIME, 'pl.UTF-8'); \Carbon\Carbon::setLocale('pl') @endphp
     <div class="row mx-auto pt-5 pb-5">
         <div class="col-12 col-xl-4 pl-xl-5 order-3 order-xl-2">
             <aside>
                 <table class="table table-sm table-striped table-bordered shadow-lg table-standing-font">
                     <thead class="thead-dark">
                     <tr>
-                        <th colspan="4" class="text-center align-middle text-uppercase">{{ $shortStanding[0]->league ?? '' }}</th>
+                        <th colspan="4" class="text-center align-middle text-uppercase">{{ $league ?? '' }}</th>
                     </tr>
                     <tr>
                         <th class="text-center align-middle">Pozycja</th>
@@ -19,11 +20,15 @@
                     </thead>
                     <tbody class="table-light">
                     @foreach($shortStanding ?? [] as $row)
+                        @if ($loop->iteration <= $numberOfPromotionTeams) @php $background = 'bg-green'; @endphp
+                        @elseif ($loop->iteration >= $loop->count - $numberOfRelegationTeams + 1) @php $background = 'bg-red'; @endphp
+                        @else @php $background = ''; @endphp
+                        @endif
                         <tr>
-                            <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->position }}</td>
-                            <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->team }}</td>
-                            <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->played_matches }}</td>
-                            <td class="text-center align-middle font-weight-bold {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->points }}</td>
+                            <td class="text-center align-middle {{ $background }}">{{ $row->position }}</td>
+                            <td class="text-center align-middle {{ $background }}">{{ $row->team }}</td>
+                            <td class="text-center align-middle {{ $background }}">{{ $row->played_matches }}</td>
+                            <td class="text-center align-middle font-weight-bold {{ $background }}">{{ $row->points }}</td>
                         </tr>
                     @endforeach
                     </tbody>
@@ -49,7 +54,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $lastMatch->match_type_id === 1 ? 'Kolejka ' . $lastMatch->round . ' - ' . $lastMatch->date : $lastMatch->date }} @endif</td>
+                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $lastMatch->match_type_id === 1 ? 'Kolejka ' . $lastMatch->round . ' - ' . \Carbon\Carbon::parse($lastMatch->date)->formatLocalized('%A, %d %B %Y') : \Carbon\Carbon::parse($lastMatch->date)->formatLocalized('%A, %d %B %Y') }} @endif</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
@@ -77,7 +82,7 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">@if (isset($upcomingMatch->match_type_id)) {{ $upcomingMatch->match_type_id === 1 ? 'Kolejka ' . $upcomingMatch->round . ' - ' . $upcomingMatch->date : $upcomingMatch->date }} @endif</td>
+                        <td colspan="3" class="text-center align-middle">@if (isset($upcomingMatch->match_type_id)) {{ $upcomingMatch->match_type_id === 1 ? 'Kolejka ' . $upcomingMatch->round . ' - ' . \Carbon\Carbon::parse($upcomingMatch->date)->formatLocalized('%A, %d %B %Y') : \Carbon\Carbon::parse($upcomingMatch->date)->formatLocalized('%A, %d %B %Y') }} @endif</td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>

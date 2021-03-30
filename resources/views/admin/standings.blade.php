@@ -36,6 +36,22 @@
                                                 <div class="alert alert-danger">{{ $message }}</div>
                                                 @enderror
                                             </div>
+                                            <div class="form-row ml-1 mr-1">
+                                                <div class="form-group col-12 col-lg-6">
+                                                    <label for="numberOfPromotionTeams">Liczba drużyn, które awansują do wyższej ligi</label>
+                                                    <input type="number" id="numberOfPromotionTeams" name="numberOfPromotionTeams" value="{{ old('numberOfPromotionTeams') ?? $numberOfPromotionTeams }}" class="form-control @error('numberOfPromotionTeams') is-invalid @enderror" min="1" step="1" max="10" required>
+                                                    @error('numberOfPromotionTeams')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group col-12 col-lg-6">
+                                                    <label for="numberOfRelegationTeams">Liczba drużyn, które spadną do niższej ligi</label>
+                                                    <input type="number" id="numberOfRelegationTeams" name="numberOfRelegationTeams" value="{{ old('numberOfRelegationTeams') ?? $numberOfRelegationTeams }}" class="form-control @error('numberOfRelegationTeams') is-invalid @enderror" min="0" step="1" max="10" required>
+                                                    @error('numberOfRelegationTeams')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                             <button type="submit" class="btn btn-outline-success mb-3">Pobierz dane
                                             </button>
                                         </form>

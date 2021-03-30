@@ -10,7 +10,7 @@
                     <table class="table table-sm table-responsive-lg table-striped table-bordered table-font mt-5">
                         <thead class="thead-dark">
                             <tr>
-                                <th colspan="10" class="text-center align-middle text-uppercase">{{ $standings[0]->league ?? '' }}</th>
+                                <th colspan="10" class="text-center align-middle text-uppercase">{{ $league ?? '' }}</th>
                             </tr>
                             <tr>
                                 <th class="text-center align-middle">Pozycja</th>
@@ -27,17 +27,21 @@
                         </thead>
                         <tbody class="table-light">
                         @foreach($standings ?? [] as $row)
+                            @if ($loop->iteration <= $numberOfPromotionTeams) @php $background = 'bg-green'; @endphp
+                            @elseif ($loop->iteration >= $loop->count - $numberOfRelegationTeams + 1) @php $background = 'bg-red'; @endphp
+                            @else @php $background = ''; @endphp
+                            @endif
                             <tr>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->position }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->team }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->played_matches }}</td>
-                                <td class="text-center align-middle font-weight-bold {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->points }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->wins }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->draws }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->losses }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->goals_scored }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->goals_conceded }}</td>
-                                <td class="text-center align-middle {{ $loop->first ? 'bg-green' : '' }} {{ $loop->last ? 'bg-red' : '' }}">{{ $row->goals_difference }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->position }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->team }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->played_matches }}</td>
+                                <td class="text-center align-middle font-weight-bold {{ $background }}">{{ $row->points }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->wins }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->draws }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->losses }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->goals_scored }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->goals_conceded }}</td>
+                                <td class="text-center align-middle {{ $background }}">{{ $row->goals_difference }}</td>
                             </tr>
                         @endforeach
                         </tbody>

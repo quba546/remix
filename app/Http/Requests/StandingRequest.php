@@ -26,7 +26,9 @@ class StandingRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'url' => ['required', 'url', 'active_url', 'max:200']
+            'url' => ['required', 'url', 'active_url', 'max:200'],
+            'numberOfPromotionTeams' => ['required', 'integer', 'min:1', 'max:10'],
+            'numberOfRelegationTeams' => ['required', 'integer', 'min:0', 'max:10'],
         ];
     }
 
@@ -36,12 +38,19 @@ class StandingRequest extends FormRequest
             'required' => 'Pole :attribute jest wymagane',
             'url' => 'Pole :attribute musi być adresem URL',
             'active_url' => 'Pole :attribute musi być aktywnym adresem URL',
-            'max' => 'Pole :attribute może zawierać maksymalnie :max znaków'
+            'size' => 'Pole :attribute może zawierać maksymalnie :max znaków',
+            'min' => 'Minimalna liczba to :min',
+            'max' => 'Maksymalna liczba to :max',
+            'integer' => 'Pole :attribute przyjmuje tylko liczby całkowite'
         ];
     }
 
     public function attributes(): array
     {
-        return ['url' => 'URL'];
+        return [
+            'url' => 'URL',
+            'numberOfPromotionTeams' => 'liczba drużyn, które awansują z ligi',
+            'numberOfRelegationTeams' => 'liczba drużyn, które spadną z ligi'
+        ];
     }
 }

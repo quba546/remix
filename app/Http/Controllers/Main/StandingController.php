@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Main;
 
+use App\CustomClasses\ReadWriteFileService;
 use App\Http\Controllers\Controller;
 use App\Repository\StandingRepositoryInterface;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -27,6 +28,10 @@ class StandingController extends Controller
     {
         SEOMeta::setTitle('Tabela');
 
+        // read standing data from file
+        $json = new ReadWriteFileService();
+        $data = $json->read();
+
         return view('user.season.standings',
             [
                 'standings' => $this->standingRepository->get(
@@ -39,9 +44,11 @@ class StandingController extends Controller
                             'goals_scored',
                             'goals_conceded',
                             'goals_difference',
-                            'league'
                         ]
-                    ) ?? []
+                    ),
+                'league' => $data['league'],
+                'numberOfPromotionTeams' => $data['numberOfPromotionTeams'],
+                'numberOfRelegationTeams' => $data['numberOfRelegationTeams']
             ]
         );
     }

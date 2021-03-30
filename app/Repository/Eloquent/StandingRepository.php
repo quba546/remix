@@ -26,10 +26,10 @@ class StandingRepository extends BaseRepository implements StandingRepositoryInt
             ?? Collection::empty();
     }
 
-    public function fillStanding(string $url): void
+    public function fillStanding(string $url, int $numberOfPromotionTeams, int $numberOfRelegationTeams): void
     {
         $getStandingFromUrl = new GetStandingFromUrl();
-        $result = $getStandingFromUrl->getStanding($url);
+        $result = $getStandingFromUrl->getStanding($url, $numberOfPromotionTeams, $numberOfRelegationTeams);
 
         $this->standing->truncate();    // truncate table before save data
 

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\CustomClasses\ReadWriteFileService;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StandingRequest;
 use App\Repository\StandingRepositoryInterface;
@@ -30,7 +31,14 @@ class StandingController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        return view('admin.standings');
+        // read standing data from file
+        $json = new ReadWriteFileService();
+        $data = $json->read();
+
+        return view('admin.standings', [
+            'numberOfPromotionTeams' => $data['numberOfPromotionTeams'],
+            'numberOfRelegationTeams' => $data['numberOfRelegationTeams'],
+        ]);
     }
 
     /**
@@ -46,7 +54,12 @@ class StandingController extends Controller
         $validated = $request->validated();
 
         try {
-            $this->standingRepository->fillStanding($validated['url']);
+            $this->standingRepository->fillStanding(
+                $validated['url'],
+                (int) $validated['numberOfPromotionTeams'],
+                (int) $validated['numberOfRelegationTeams']
+            );
+
             $message = [
                 'status' => 'success',
                 'message' => 'Poprawnie dodano dane tabeli ligowej'

@@ -26,7 +26,6 @@ class Standing extends Model
         'goals_scored',
         'goals_conceded',
         'goals_difference',
-        'league'
     ];
 
     protected $attributes = [
@@ -36,6 +35,5 @@ class Standing extends Model
         'goals_scored' => 0,
         'goals_conceded' => 0,
         'goals_difference' => 0,
-        'league' => ''
     ];
 }
