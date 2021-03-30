@@ -33,6 +33,9 @@
                     <a class="dropdown-item" href="{{ route('season.stats.index') }}">Statystyki</a>
                 </div>
             <li class="nav-item ml-3">
+                <a class="nav-link" href="{{ route('gallery') }}"><i class="fas fa-images mr-3"></i>Galeria</a>
+            </li>
+            <li class="nav-item ml-3">
                 <a class="nav-link" href="{{ route('page', 'about') }}"><i class="fas fa-info-circle mr-3"></i>O klubie</a>
             </li>
             <li class="nav-item ml-3">

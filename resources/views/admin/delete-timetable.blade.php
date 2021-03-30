@@ -41,11 +41,34 @@
                             <div class="form-row mt-5 mt-lg-0 ml-2 mr-2">
                                 <div class="col-12 mb-3 d-flex justify-content-end">
                                     @can('admin-level')
-                                    <form action="{{ route('admin.timetable.destroy') }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć CAŁY terminarz?')" class="btn btn-outline-danger">Wyczyść terminarz</button>
-                                    </form>
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#staticBackdropDeletePlayer">Wyczyść terminarz</button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdropDeletePlayer" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Wyczyść terminarz</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Czy na pewno chcesz wyczyścić terminarz?</p>
+                                                        <form action="{{ route('admin.timetable.destroy') }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</button>
+                                                                <button type="submit" class="btn btn-outline-danger">Wyczyść</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endcan
                                 </div>
                             </div>

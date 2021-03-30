@@ -145,6 +145,16 @@ class PagesTest extends TestCase
     /**
      * @test
      */
+    public function can_anonymous_user_get_gallery_page()
+    {
+        $response = $this->get('/gallery');
+
+        $response->assertOk();
+    }
+
+    /**
+     * @test
+     */
     public function redirect_anonymous_user_to_login_page_when_gets_dashboard_page()
     {
         $response = $this->get('/admin');
@@ -442,6 +452,7 @@ class PagesTest extends TestCase
         $this->actingAs(User::factory()->create(['role_id' => 1]));
 
         $response = $this->get('/admin/photos/create');
+
         $response->assertOk();
     }
 }

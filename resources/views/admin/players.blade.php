@@ -15,7 +15,7 @@
             <div class="container-fluid">
                 <div class="row mt-5 mb-5">
                     <div class="col-1 col-lg-2"></div>
-                    <div class="col-8 bg-white shadow-lg text-center">
+                    <div class="col-10 col-xl-8 bg-white shadow-lg text-center">
                         <h2 class="text-uppercase font-weight-bold mt-3">Lista zawodników</h2>
                         <hr>
                         <table class="table table-sm table-responsive-lg table-striped table-bordered mt-4 table-font">

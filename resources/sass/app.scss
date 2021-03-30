@@ -24,6 +24,9 @@ $success: $primary-color;
 @import "~filepond/dist/filepond.min.css";
 @import '~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
 
+// SimpleLightbox
+@import "~simple-lightbox/dist/simpleLightbox";
+
 .t {
     border-style: solid;
     box-sizing: border-box;

@@ -9,8 +9,10 @@
                     <hr class="hr-text">
                     <div class="row mt-5 d-flex align-items-center">
                         @foreach ($photos as $photo)
-                            <div class="col-12 col-xl-4 mb-4">
-                                <img src="{{ asset('storage/photos/' . $photo->filename) }}" class="img-thumbnail" alt="Fotografia">
+                            <div class="col-12 col-xl-4 mb-4" data-aos="fade-up" data-aos-duration="1000">
+                                <div class="imageGallery1">
+                                    <a href="{{ asset('storage/photos/' . $photo->filename) }}"><img src="{{ asset('storage/photos/' . $photo->filename) }}" class="img-thumbnail" alt="Zdjęcie w galerii"/></a>
+                                </div>
                             </div>
                         @endforeach
                     </div>

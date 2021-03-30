@@ -188,3 +188,8 @@ FilePond.setOptions({
     labelFileTypeNotAllowed: 'Plik ma nieprawidłowy typ',
     fileValidateTypeLabelExpectedTypes: 'Oczekuje {allButLastType} lub {lastType}',
 });
+
+require('simple-lightbox');
+
+// simple lightbox
+$('.imageGallery1 a').simpleLightbox();

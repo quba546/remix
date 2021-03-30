@@ -141,28 +141,96 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="form-row ml-2 mr-2 mt-5 mb-2">
+                            <div class="row m-2">
                                 <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-start mb-5 mb-lg-0">
-                                    <form action="{{ route('admin.players.destroy.image', ['player' => $player->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć zdjęcie zawodnika?')" class="btn btn-outline-dark">Usuń zdjęcie</button>
-                                    </form>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-outline-dark" data-toggle="modal" data-target="#staticBackdropDeletePhoto">Usuń zdjęcie</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdropDeletePhoto" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Potwierdzenie usunięcia zdjęcia zawodnika</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Czy na pewno chcesz usunąć zdjęcie tego zawodnika?</p>
+                                                    <form action="{{ route('admin.players.destroy.image', ['player' => $player->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</button>
+                                                            <button type="submit" class="btn btn-outline-danger">Usuń zdjęcie</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                                 <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-center mb-5 mb-lg-0">
-                                    <form action="{{ route('admin.players.restore', ['player' => $player->id]) }}" method="POST">
-                                        @csrf
-                                        @method('PUT')
-                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz zresetować dane zawodnika?')" class="btn btn-outline-info">Zresetuj dane</button>
-                                    </form>
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#staticBackdropRestoreDefaults">Zresetuj dane</button>
+
+                                    <!-- Modal -->
+                                    <div class="modal fade" id="staticBackdropRestoreDefaults" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                        <div class="modal-dialog modal-dialog-centered">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="staticBackdropLabel">Zresetowanie danych</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <p>Czy na pewno chcesz przywrócić domyślne wartości danych tego zawodnika?</p>
+                                                    <form action="{{ route('admin.players.restore', ['player' => $player->id]) }}" method="POST">
+                                                        @csrf
+                                                        @method('PUT')
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</button>
+                                                            <button type="submit" class="btn btn-outline-primary">Zresetuj dane</button>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-end">
                                     @can('admin-level')
-                                    <form action="{{ route('admin.players.destroy', ['player' => $player->id]) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" onclick="return confirm('Czy na pewno chcesz usunąć zawodnika?')" class="btn btn-outline-danger">Usuń</button>
-                                    </form>
+
+                                        <!-- Button trigger modal -->
+                                        <button type="button" class="btn btn-outline-danger" data-toggle="modal" data-target="#staticBackdropDeletePlayer">Usuń zawodnika</button>
+
+                                        <!-- Modal -->
+                                        <div class="modal fade" id="staticBackdropDeletePlayer" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="staticBackdropLabel">Usuwanie zawodnika</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p>Czy na pewno chcesz usunąć tego zawodnika?</p>
+                                                        <form action="{{ route('admin.players.destroy', ['player' => $player->id]) }}" method="POST">
+                                                            @csrf
+                                                            @method('DELETE')
+                                                            <div class="modal-footer">
+                                                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</button>
+                                                                <button type="submit" class="btn btn-outline-danger">Usuń</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endcan
                                 </div>
                             </div>

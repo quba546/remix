@@ -51,49 +51,52 @@
                         <div class="card border-success m-4">
                             <h5 class="card-header">Lista zdjęć</h5>
                             <div class="card-body">
-                                <div class="row ">
+                                <div class="row">
 
 {{--                                one card with photo--}}
                                     @foreach ($photos as $photo)
                                         <div class="col-6 col-xl-3 mb-3 d-flex align-items-stretch justify-content-center">
                                             <div class="card" style="width: 14rem;">
-                                                <img src="{{ asset('storage/photos/' . $photo->filename) }}" class="card-img-top" alt="Fotografia">
-                                                <div class="card-body">
-                                                    <span>Utworzono:</span>
-                                                    <br>
-                                                    <span class="d-block mb-2">{{ $photo->created_at }}</span>
+                                                <div class="imageGallery1">
+                                                    <a href="{{ asset('storage/photos/' . $photo->filename) }}"><img src="{{ asset('storage/photos/' . $photo->filename) }}" class="card-img-top" alt="Zdjęcie"/></a>
+                                                </div>
+                                                <div class="card-body d-flex align-items-end justify-content-center">
+                                                    <div>
+                                                        <span class="d-flex justify-content-center">Utworzono:</span>
+                                                        <span class="d-flex justify-content-center mb-2">{{ $photo->created_at }}</span>
 
-                                                    <!-- Button trigger modal -->
-                                                    <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#staticBackdropDelete">Usuń</button>
+                                                        <!-- Button trigger modal -->
+                                                        <button type="button" class="btn btn-outline-danger btn-sm" data-toggle="modal" data-target="#staticBackdropDelete">Usuń</button>
+
+                                                        <!-- Modal -->
+                                                        <div class="modal fade" id="staticBackdropDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                                                            <div class="modal-dialog modal-dialog-centered">
+                                                                <div class="modal-content">
+                                                                    <div class="modal-header">
+                                                                        <h5 class="modal-title" id="staticBackdropLabel">Potwierdzenie usunięcia zdjęcia</h5>
+                                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                            <span aria-hidden="true">&times;</span>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="modal-body">
+                                                                        <p>Czy na pewno chcesz usunąć to zdjęcie?</p>
+                                                                        <form action="{{ route('admin.photos.destroy', ['photo' => $photo->id]) }}" method="POST">
+                                                                            @csrf
+                                                                            @method('DELETE')
+                                                                            <div class="modal-footer">
+                                                                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</button>
+                                                                                <button type="submit" class="btn btn-outline-danger">Usuń</button>
+                                                                            </div>
+                                                                        </form>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
                                     @endforeach
-
-                                    <!-- Modal -->
-                                    <div class="modal fade" id="staticBackdropDelete" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered">
-                                            <div class="modal-content">
-                                                <div class="modal-header">
-                                                    <h5 class="modal-title" id="staticBackdropLabel">Potwierdzenie usunięcia zdjęcia</h5>
-                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                        <span aria-hidden="true">&times;</span>
-                                                    </button>
-                                                </div>
-                                                <div class="modal-body">
-                                                    <p>Czy na pewno chcesz usunąć to zdjęcie?</p>
-                                                    <form action="{{ route('admin.photos.destroy', ['photo' => $photo->id]) }}" method="POST">
-                                                        @csrf
-                                                        @method('DELETE')
-                                                        <div class="modal-footer">
-                                                            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Zamknij</button>
-                                                            <button type="submit" class="btn btn-outline-danger">Usuń</button>
-                                                        </div>
-                                                    </form>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
 
                                 </div>
                             </div>
