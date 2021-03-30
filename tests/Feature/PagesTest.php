@@ -348,9 +348,9 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function can_admin_get_add_round_page()
+    public function can_moderator_get_add_round_page()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
         $response = $this->get('/admin/timetable/create');
         $response->assertOk();
     }
@@ -358,9 +358,9 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function can_admin_get_remove_round_page()
+    public function can_moderator_get_remove_round_page()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
         $response = $this->get('/admin/timetable/edit');
         $response->assertOk();
     }
@@ -368,9 +368,9 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function can_admin_get_last_match_page()
+    public function can_moderator_get_last_match_page()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
         $response = $this->get('/admin/matches/last/edit');
         $response->assertOk();
     }
@@ -378,9 +378,9 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function can_admin_get_upcoming_match_page()
+    public function can_moderator_get_upcoming_match_page()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
         $response = $this->get('/admin/matches/upcoming/edit');
         $response->assertOk();
     }
@@ -388,9 +388,9 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function can_admin_get_add_standings_page()
+    public function can_moderator_get_add_standings_page()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
         $response = $this->get('/admin/standing/create');
         $response->assertOk();
     }
@@ -398,9 +398,9 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function can_admin_get_admin_players_list_page()
+    public function can_moderator_get_admin_players_list_page()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
         $response = $this->get('/admin/players');
         $response->assertOk();
     }
@@ -408,9 +408,9 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function can_admin_get_admin_player_details_page_if_player_exists()
+    public function can_moderator_get_admin_player_details_page_if_player_exists()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
 
         $id = 1;
 
@@ -425,13 +425,23 @@ class PagesTest extends TestCase
     /**
      * @test
      */
-    public function cannot_admin_get_admin_player_details_page_if_player_doesnt_exist()
+    public function cannot_moderator_get_admin_player_details_page_if_player_doesnt_exist()
     {
-        $this->actingAs(User::factory()->create(['role_id' => 0]));
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
         $id = 1;
 
         $response = $this->get('/admin/players/' . $id . '/edit');
         $response->assertNotFound();
     }
 
+    /**
+     * @test
+     */
+    public function can_moderator_get_admin_player_gallery_page()
+    {
+        $this->actingAs(User::factory()->create(['role_id' => 1]));
+
+        $response = $this->get('/admin/photos/create');
+        $response->assertOk();
+    }
 }

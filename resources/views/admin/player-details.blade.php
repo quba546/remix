@@ -67,7 +67,7 @@
 
 {{--                                    uploading new photo to gallery--}}
                                         <div class="custom-file-upload">
-                                            <input type="file" name="uploadedPhoto" id="uploadPhoto"/>
+                                            <input type="file" name="uploadedPhoto" id="uploadPhoto" data-max-files="1" required/>
                                         </div>
 
                                     </div>

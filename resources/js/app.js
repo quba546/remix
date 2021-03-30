@@ -155,6 +155,8 @@ FilePond.create(inputElement);
 FilePond.setOptions({
     server: {
         url: '/admin/upload',
+        fetch: null,
+        restore: null,
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }

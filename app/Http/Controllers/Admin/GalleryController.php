@@ -9,6 +9,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Facades\Storage;
 
 class GalleryController extends Controller
 {
@@ -28,7 +29,14 @@ class GalleryController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        return view('admin.photos');
+        return view('admin.photos',
+            ['photos' => $this->galleryRepository->getPhotos(
+                [
+                    'id',
+                    'filename',
+                    'created_at'
+                ])
+            ]);
     }
 
     /**
@@ -64,11 +72,29 @@ class GalleryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
-        //
+        Gate::authorize('moderator-level');
+
+        $path = 'public/photos/' . $this->galleryRepository->getPhoto($id, ['filename'])->filename;
+
+        if (Storage::delete($path)) {
+            $this->galleryRepository->deletePhoto($id);
+            $message = [
+                'status' => 'success',
+                'message' => 'Poprawnie usunięto zdjęcie z galerii'
+            ];
+        } else {
+            $message = [
+                'status' => 'error',
+                'message' => 'Wystąpił błąd podczas usuwania zdjęcia'
+            ];
+        }
+        return redirect()
+            ->route('admin.photos.create')
+            ->with($message['status'], $message['message']);
     }
 }
