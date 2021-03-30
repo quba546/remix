@@ -10,7 +10,7 @@
             </nav>
             @include('shared.messages')
             @error('played_matches')
-                <div class="alert alert-danger m-3">{{ $message }}</div>
+            <div class="alert alert-danger m-3">{{ $message }}</div>
             @enderror
             <div class="container-fluid">
                 <div class="row mt-5 mb-5">
@@ -29,7 +29,8 @@
                                 </th>
                                 <th class="text-center align-middle">
                                     Imię
-                                    @sortablelink('first_name' , '')</th>
+                                    @sortablelink('first_name' , '')
+                                </th>
                                 <th class="text-center align-middle">
                                     Pozycja
                                     @sortablelink('position' , '')
@@ -59,17 +60,22 @@
                                             @method('PUT')
                                             <div class="form-row">
                                                 <div class="col-12 col-xl-8">
-                                                    <input type="number" name="played_matches" value="{{ $player->played_matches ?? 0 }}" class="form-control" placeholder="0" min="0" step="1" required>
+                                                    <input type="number" name="played_matches"
+                                                           value="{{ $player->played_matches ?? 0 }}"
+                                                           class="form-control" placeholder="0" min="0" step="1"
+                                                           required>
                                                     <input type="hidden" name="playerId" value="{{ $player->id }}">
                                                 </div>
                                                 <div class="col-12 col-xl-4 mt-2 m-xl-0">
-                                                    <button type="submit" class="btn btn-outline-success">Zapisz</button>
+                                                    <button type="submit" class="btn btn-outline-success">Zapisz
+                                                    </button>
                                                 </div>
                                             </div>
                                         </form>
                                     </td>
                                     <td class="text-center align-middle">
-                                        <a href="{{ route('admin.players.edit', ['player' => $player->id]) }}" class="btn btn-outline-info">Szczegóły</a>
+                                        <a href="{{ route('admin.players.edit', ['player' => $player->id]) }}"
+                                           class="btn btn-outline-info">Szczegóły</a>
                                     </td>
                                     <td class="text-center align-middle">{{ \Carbon\Carbon::parse($player->updated_at)->diffForHumans() }}</td>
                                 </tr>
@@ -86,59 +92,80 @@
                                 @endif
                             </div>
                         </div>
-                        <button type="button" id="add-player-btn" class="btn btn-outline-success mt-2 mb-4">Dodaj zawodnika</button>
-                        <div id="add-player" class="border border-success rounded m-4">
+                        <button type="button" id="add-player-btn" class="btn btn-outline-success mt-2 mb-4">Dodaj
+                            zawodnika
+                        </button>
+                        <div id="add-player">
                             <h5 class="mt-2 font-weight-bold">Dodaj zawodnika</h5>
                             <hr>
-                            <form action="{{ route('admin.players.store') }}" method="POST">
-                                @csrf
-                                <div class="form-row ml-2 mr-2">
-                                    <div class="form-group col-md-6">
-                                        <label for="firstName">Imię</label>
-                                        <input type="text" name="first_name" value="{{ old('first_name') }}" class="form-control @error('first_name') is-invalid @enderror" id="firstName" placeholder="Imię" size="50" required>
-                                        @error('first_name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="lastName">Nazwisko</label>
-                                        <input type="text" name="last_name" value="{{ old('last_name') }}" class="form-control @error('last_name') is-invalid @enderror" id="lastName" placeholder="Nazwisko" size="50" required>
-                                        @error('last_name')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
+                            <div class="card border-success m-4">
+                                <h5 class="card-header">Edytuj dane</h5>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <form action="{{ route('admin.players.store') }}" method="POST">
+                                                @csrf
+                                                <div class="form-row ml-2 mr-2">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="firstName">Imię</label>
+                                                        <input type="text" name="first_name"
+                                                               value="{{ old('first_name') }}"
+                                                               class="form-control @error('first_name') is-invalid @enderror"
+                                                               id="firstName" placeholder="Imię" size="50" required>
+                                                        @error('first_name')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="lastName">Nazwisko</label>
+                                                        <input type="text" name="last_name"
+                                                               value="{{ old('last_name') }}"
+                                                               class="form-control @error('last_name') is-invalid @enderror"
+                                                               id="lastName" placeholder="Nazwisko" size="50" required>
+                                                        @error('last_name')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <div class="form-row ml-2 mr-2">
+                                                    <div class="form-group col-md-6">
+                                                        <label for="position">Pozycja</label>
+                                                        <select name="position"
+                                                                class="form-control @error('position') is-invalid @enderror"
+                                                                id="position" required>
+                                                            <option selected disabled value="">Wybierz...</option>
+                                                            <option value="bramkarz">bramkarz</option>
+                                                            <option value="obrońca">obrońca</option>
+                                                            <option value="pomocnik">pomocnik</option>
+                                                            <option value="napastnik">napastnik</option>
+                                                        </select>
+                                                        @error('position')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                    <div class="form-group col-md-6">
+                                                        <label for="number">Numer</label>
+                                                        <input type="number" name="nr" value="{{ old('nr') }}"
+                                                               class="form-control @error('nr') is-invalid @enderror"
+                                                               id="number" min="1" step="1" max="99">
+                                                        @error('nr')
+                                                        <div class="alert alert-danger">{{ $message }}</div>
+                                                        @enderror
+                                                    </div>
+                                                </div>
+                                                <button type="submit" class="btn btn-outline-success">Dodaj
+                                                </button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="form-row ml-2 mr-2">
-                                    <div class="form-group col-md-6">
-                                        <label for="position">Pozycja</label>
-                                        <select name="position" class="form-control @error('position') is-invalid @enderror" id="position" required>
-                                            <option selected disabled value="">Wybierz...</option>
-                                            <option value="bramkarz">bramkarz</option>
-                                            <option value="obrońca">obrońca</option>
-                                            <option value="pomocnik">pomocnik</option>
-                                            <option value="napastnik">napastnik</option>
-                                        </select>
-                                        @error('position')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="number">Numer</label>
-                                        <input type="number" name="nr" value="{{ old('nr') }}" class="form-control @error('nr') is-invalid @enderror" id="number" min="1" step="1" max="99">
-                                        @error('nr')
-                                            <div class="alert alert-danger">{{ $message }}</div>
-                                        @enderror
-                                    </div>
-                                </div>
-                                <button type="submit" class="btn btn-outline-success mb-3">Dodaj</button>
-                            </form>
+                            </div>
                         </div>
+                        <div class="col-1 col-lg-2"></div>
                     </div>
-                    <div class="col-1 col-lg-2"></div>
                 </div>
             </div>
+            <!-- /#page-content-wrapper -->
         </div>
-        <!-- /#page-content-wrapper -->
-    </div>
-    <!-- /#wrapper -->
+        <!-- /#wrapper -->
 @endsection

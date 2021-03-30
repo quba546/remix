@@ -12,7 +12,8 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     protected $attributes = [
-        'role_id' => 5
+        'role_id' => 5,
+        'is_active' => 0,
     ];
 
     /**
@@ -26,6 +27,9 @@ class User extends Authenticatable
         'password',
         'last_login_at',
         'last_login_ip',
+        'is_active',
+        'user_agent',
+        'online_time'
     ];
 
     /**
