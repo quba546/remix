@@ -27,6 +27,8 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
+        // 0 0 * * *
+        // php74 /path/to/app/artisan schedule:run >> /dev/null 2>&1
         $schedule->call(function () {
             $temporaryFiles = TemporaryFile::where('created_at', '<', Carbon::now()->subMinutes(15))->get();
             foreach ($temporaryFiles as $temporaryFile) {
