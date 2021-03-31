@@ -7,6 +7,7 @@
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">Tabela</h2>
                     <hr class="hr-text">
+                    @if ($standings->count() !== 0)
                     <table class="table table-sm table-responsive-lg table-striped table-bordered table-font mt-5">
                         <thead class="thead-dark">
                             <tr>
@@ -26,7 +27,7 @@
                             </tr>
                         </thead>
                         <tbody class="table-light">
-                        @foreach($standings ?? [] as $row)
+                        @foreach($standings as $row)
                             @if ($loop->iteration <= $numberOfPromotionTeams) @php $background = 'bg-green'; @endphp
                             @elseif ($loop->iteration >= $loop->count - $numberOfRelegationTeams + 1) @php $background = 'bg-red'; @endphp
                             @else @php $background = ''; @endphp
@@ -46,6 +47,11 @@
                         @endforeach
                         </tbody>
                     </table>
+                    @else
+                        <div class="col-12 mb-5">
+                            <span class="font-16">Brak tabeli do wyświetlenia.</span>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

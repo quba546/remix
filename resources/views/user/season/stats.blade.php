@@ -7,6 +7,7 @@
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">Statystyki zawodników</h2>
                     <hr class="hr-text">
+                    @if ($playersStats->count() !== 0)
                     <table class="table table-sm table-responsive-lg table-striped table-bordered table-font mt-5">
                         <thead class="thead-dark">
                         <tr>
@@ -51,7 +52,7 @@
                         </tr>
                         </thead>
                         <tbody class="table-light">
-                        @foreach($playersStats ?? [] as $playerStats)
+                        @foreach($playersStats as $playerStats)
                             <tr>
                                 <td class="text-center align-middle">{{ ($playersStats->currentpage()-1) * $playersStats->perpage() + $loop->index + 1 }}</td>
                                 <td class="text-center align-middle">{{ $playerStats->nr }}</td>
@@ -78,6 +79,11 @@
                             @endif
                         </div>
                     </div>
+                    @else
+                        <div class="col-12 mb-5">
+                            <span class="font-16">Brak zawodników do wyświetlenia.</span>
+                        </div>
+                    @endif
                 </div>
             </div>
         </div>

@@ -5,6 +5,7 @@
     @php setlocale(LC_TIME, 'pl.UTF-8'); \Carbon\Carbon::setLocale('pl') @endphp
     <div class="row mx-auto pt-5 pb-5">
         <div class="col-12 col-xl-4 pl-xl-5 order-3 order-xl-2">
+            @if ($shortStanding->count() !== 0)
             <aside>
                 <table class="table table-sm table-striped table-bordered shadow-lg table-standing-font">
                     <thead class="thead-dark">
@@ -19,7 +20,7 @@
                     </tr>
                     </thead>
                     <tbody class="table-light">
-                    @foreach($shortStanding ?? [] as $row)
+                    @foreach($shortStanding as $row)
                         @if ($loop->iteration <= $numberOfPromotionTeams) @php $background = 'bg-green'; @endphp
                         @elseif ($loop->iteration >= $loop->count - $numberOfRelegationTeams + 1) @php $background = 'bg-red'; @endphp
                         @else @php $background = ''; @endphp
@@ -34,12 +35,14 @@
                     </tbody>
                 </table>
             </aside>
+            @endif
         </div>
         <div class="col-12 col-xl-4 text-center mb-4 mt-4 mb-xl-0 mt-xl-0 order-2">
             <div id="fb-widget"></div>
         </div>
         <div class="col-12 col-xl-4 pr-xl-5  order-1 order-xl-3">
             <aside>
+                @if ($lastMatch->count() !== 0)
                 <table class="table table-sm table-borderless shadow-lg table-font">
                     <thead class="thead-dark">
                     <tr>
@@ -68,6 +71,8 @@
                     </tr>
                     </tbody>
                 </table>
+                @endif
+                @if ($upcomingMatch->count() !== 0)
                 <table class="table table-sm table-borderless shadow-lg mt-5 table-font">
                     <thead class="thead-dark">
                     <tr>
@@ -96,10 +101,11 @@
                     </tr>
                     </tbody>
                 </table>
+                @endif
             </aside>
         </div>
     </div>
-    @if (isset($bestScorers[2]))
+    @if ($bestScorers->count() > 2)
     <div class="row mx-auto bg-white mt-3">
         <div class="col-12 text-center mt-5">
             <h2 class="text-uppercase">Najlepsi strzelcy klubu</h2>

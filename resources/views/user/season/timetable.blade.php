@@ -8,6 +8,7 @@
                     <h2 class="text-uppercase font-weight-bold mt-3">Terminarz</h2>
                     <hr class="hr-text">
                     <div class="mt-5">
+                        @if ($rounds->count() !== 0)
                         @foreach ($rounds as $round)
                             @once <h3 class="text-center">A klasa grupa krośnieńska I - sezon 2020/2021</h3> @endonce
                             <div class="border border-success shadow-lg mt-4 pb-4">
@@ -44,6 +45,11 @@
                                 @endforeach
                             </div>
                         @endforeach
+                        @else
+                            <div class="col-12 mb-5">
+                                <span class="font-16">Brak terminarza do wyświetlenia.</span>
+                            </div>
+                        @endif
                     </div>
                 </div>
             </div>
