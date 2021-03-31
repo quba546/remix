@@ -42,7 +42,7 @@
         </div>
         <div class="col-12 col-xl-4 pr-xl-5  order-1 order-xl-3">
             <aside>
-                @if ($lastMatch->count() !== 0)
+                @if (isset($lastMatch))
                 <table class="table table-sm table-borderless shadow-lg table-font">
                     <thead class="thead-dark">
                     <tr>
@@ -72,7 +72,7 @@
                     </tbody>
                 </table>
                 @endif
-                @if ($upcomingMatch->count() !== 0)
+                @if (isset($upcomingMatch))
                 <table class="table table-sm table-borderless shadow-lg mt-5 table-font">
                     <thead class="thead-dark">
                     <tr>

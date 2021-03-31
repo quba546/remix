@@ -36,7 +36,7 @@ class PlayerController extends Controller
 
         return view('admin.players',
             [
-                'players' => $this->playerRepository->playersListPaginated(15,
+                'players' => $this->playerRepository->playersListPaginated(
                         [
                             'id',
                             'first_name',

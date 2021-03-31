@@ -187,7 +187,7 @@
                                         </form>
                                         <div class="row m-2">
                                             <div
-                                                class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-start mb-5 mb-lg-0">
+                                                class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-start">
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-outline-dark" data-toggle="modal"
                                                         data-target="#staticBackdropDeletePhoto">Usuń zdjęcie
@@ -233,7 +233,7 @@
 
                                             </div>
                                             <div
-                                                class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-center mb-5 mb-lg-0">
+                                                class="form-group col-12 col-lg-4 d-flex justify-content-center justify-content-lg-center">
                                                 <!-- Button trigger modal -->
                                                 <button type="button" class="btn btn-outline-primary"
                                                         data-toggle="modal"

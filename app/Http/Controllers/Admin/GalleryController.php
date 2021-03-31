@@ -30,7 +30,7 @@ class GalleryController extends Controller
         Gate::authorize('moderator-level');
 
         return view('admin.photos',
-            ['photos' => $this->galleryRepository->getPhotos(
+            ['photos' => $this->galleryRepository->getPhotosPaginated(
                 [
                     'id',
                     'filename',

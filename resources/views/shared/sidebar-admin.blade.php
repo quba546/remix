@@ -1,6 +1,6 @@
 <!-- Sidebar -->
 <div class="bg-light border-right" id="sidebar-wrapper">
-    <div class="sidebar-heading font-weight-bold">Menu administratora</div>
+    <div class="sidebar-heading font-weight-bold">Menu</div>
     <div class="list-group list-group-flush">
         <a href="{{route('admin.dashboard')}}" class="list-group-item list-group-item-action bg-light sidebar-icon"><i class="fas fa-home"></i> Dashboard</a>
         @can('moderator-level')

@@ -18,7 +18,7 @@ class PlayerRepository extends BaseRepository implements PlayerRepositoryInterfa
         $this->player = $playersModel;
     }
 
-    public function playersListPaginated(int $limit, array $columns): LengthAwarePaginator
+    public function playersListPaginated(array $columns, int $limit = 15): LengthAwarePaginator
     {
         return $this->player
             ->sortable()

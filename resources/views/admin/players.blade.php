@@ -82,16 +82,18 @@
                             @endforeach
                             </tbody>
                         </table>
-                        <div class="row">
-                            <div class="col-12 col-lg-2 text-center pt-3">
-                                {{ $players->appends(request()->query())->links() }}
-                            </div>
-                            <div class="col-12 col-lg-10 text-left d-flex align-items-center">
-                                @if ($players->total() !== 0)
-                                    <span>Wyświetlono {{ ($players->currentPage() - 1) * $players->perPage() + 1 }} - @if ($players->currentPage() === $players->lastPage()) {{ $players->total() }} @else {{ $players->currentPage() * $players->perPage() }} @endif z {{ $players->total() }}</span>
+                        @if ($players->total() !== 0)
+                            <div class="row">
+                                @if ($players->total() >= $players->perPage())
+                                    <div class="col-12 col-lg-2 text-center pt-3">
+                                        {{ $players->appends(request()->query())->links() }}
+                                    </div>
                                 @endif
+                                <div class="col-12 col-lg-10 text-left d-flex align-items-center">
+                                    <span>Wyświetlono {{ ($players->currentPage() - 1) * $players->perPage() + 1 }} - @if ($players->currentPage() === $players->lastPage()) {{ $players->total() }} @else {{ $players->currentPage() * $players->perPage() }} @endif z {{ $players->total() }}</span>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                         <button type="button" id="add-player-btn" class="btn btn-outline-success mt-2 mb-4">Dodaj
                             zawodnika
                         </button>

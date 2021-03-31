@@ -29,7 +29,7 @@ class PlayerStatsController extends Controller
 
         return view('user.season.stats',
             [
-                'playersStats' => $this->playerRepository->playersListPaginated(15,
+                'playersStats' => $this->playerRepository->playersListPaginated(
                         [
                             'first_name',
                             'last_name',
@@ -42,7 +42,7 @@ class PlayerStatsController extends Controller
                             'yellow_cards',
                             'red_cards'
                         ]
-                    ) ?? []
+                    )
             ]
         );
     }

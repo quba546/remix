@@ -10,7 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface PlayerRepositoryInterface
 {
-    public function playersListPaginated(int $limit, array $columns): LengthAwarePaginator;
+    public function playersListPaginated(array $columns, int $limit = 15): LengthAwarePaginator;
 
     public function playersList(array $columns, string $position) : Collection;
 

@@ -7,7 +7,7 @@ namespace App\Repository\Eloquent;
 
 use App\Models\GalleryPhoto;
 use App\Repository\GalleryRepositoryInterface;
-use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class GalleryRepository extends BaseRepository implements GalleryRepositoryInterface
 {
@@ -24,12 +24,12 @@ class GalleryRepository extends BaseRepository implements GalleryRepositoryInter
         $this->galleryPhoto->save();
     }
 
-    public function getPhotos(array $columns): Collection
+    public function getPhotosPaginated(array $columns, int $limit = 16): LengthAwarePaginator
     {
         return $this->galleryPhoto
             ->orderByDesc('created_at')
-            ->get($columns)
-            ?? Collection::empty();
+            ->paginate($limit, $columns)
+            ?? LengthAwarePaginator::empty();
     }
 
     public function getPhoto(int $id, array $columns): GalleryPhoto
