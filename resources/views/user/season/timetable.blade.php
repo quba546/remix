@@ -9,10 +9,9 @@
                     <hr class="hr-text">
                     <div class="mt-5">
                         @if ($rounds->count() !== 0)
-                            <div class="row mx-aut">
+                            <div class="row mx-auto">
                                 <div class="col-12">
-                                    <h3 class="text-center font-weight-bold">A klasa grupa krośnieńska I - sezon
-                                        2020/2021</h3>
+                                    <h3 class="text-center font-weight-bold">{{ $league }}</h3>
                                 </div>
                                 <div class="col-12 mt-4 mb-3">
                                     <h4>Wybierz kolejkę:</h4>

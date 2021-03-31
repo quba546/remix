@@ -8,7 +8,7 @@
                 <div class="text-center p-3">
                     <h2 class="text-uppercase font-weight-bold mt-3">Kadra</h2>
                     <hr class="hr-text">
-                    <div class="row mt-5 mb-5">
+                    <div class="row mt-5">
                         @if ($goalkeepers->count() !== 0 || $defenders->count() !== 0 || $midfielders->count() !== 0 || $strikers->count() !== 0)
                             <div class="col-12 mb-2">
                                 <div class="player-list-text mt-2 mb-5 ">

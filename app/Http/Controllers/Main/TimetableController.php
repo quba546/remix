@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Main;
 
+use App\CustomClasses\ReadWriteFileService;
 use App\Http\Controllers\Controller;
 use App\Repository\TimetableRepositoryInterface;
 use Artesaos\SEOTools\Facades\SEOMeta;
@@ -25,9 +26,17 @@ class TimetableController extends Controller
     {
         SEOMeta::setTitle('Terminarz');
 
+        // read standing data from file
+        $json = new ReadWriteFileService();
+        $data = $json->read();
+
         return view('user.season.timetable',
             [
-                'rounds' => $this->matchRoundRepository->getTimetable(['round', 'date', 'matches'])
+                'rounds' => $this->matchRoundRepository->getTimetable(
+                    [
+                        'round', 'date', 'matches'
+                    ]),
+                'league' => $data['league']
             ]
         );
     }
