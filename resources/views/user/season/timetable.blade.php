@@ -9,42 +9,58 @@
                     <hr class="hr-text">
                     <div class="mt-5">
                         @if ($rounds->count() !== 0)
-                        @foreach ($rounds as $round)
-                            @once <h3 class="text-center">A klasa grupa krośnieńska I - sezon 2020/2021</h3> @endonce
-                            <div class="border border-success shadow-lg mt-4 pb-4">
-                                <div class="row mx-auto">
-                                    <div class="col-12 text-center text-xl-left ml-0 ml-xl-5 mt-3 mb-4">
-                                        <h4><i class="far fa-calendar-check"></i> Kolejka {{ $round['round'] }} - {{ $round['date'] }}</h4>
-                                    </div>
+                            <div class="row mx-aut">
+                                <div class="col-12">
+                                    <h3 class="text-center font-weight-bold">A klasa grupa krośnieńska I - sezon
+                                        2020/2021</h3>
                                 </div>
-                                @foreach ($round['matches'] as $key => $match)
-                                    <div class="row mb-4 mb-xl-0">
-                                        @if (count($match) >= 4)
-                                            @if ($match[0] === 'Remix Niebieszczany' || $match[2] === 'Remix Niebieszczany')
-                                                {{--host--}}
-                                                <div class="col-5 col-xl-4 text-right text-uppercase font-weight-bold">{{ $match[0] ?? '' }}</div>
-                                                {{--score--}}
-                                                <div class="col-2 col-xl-1 text-center font-weight-bold">{{ $match[1] ?? '' }}</div>
-                                                {{--guest--}}
-                                                <div class="col-5 col-xl-4 text-left text-uppercase font-weight-bold">{{ $match[2] ?? '' }}</div>
-                                                {{--date--}}
-                                                <div class="col-12 col-xl-3 d-flex justify-content-center align-items-center text-center font-weight-bold">{{ $match[3] ?? '' }}</div>
-                                            @else
-                                                {{--host--}}
-                                                <div class="col-5 col-xl-4 text-right text-uppercase">{{ $match[0] ?? '' }}</div>
-                                                {{--score--}}
-                                                <div class="col-2 col-xl-1 text-center">{{ $match[1] ?? '' }}</div>
-                                                {{--guest--}}
-                                                <div class="col-5 col-xl-4 text-left text-uppercase">{{ $match[2] ?? '' }}</div>
-                                                {{--date--}}
-                                                <div class="col-12 col-xl-3 d-flex justify-content-center align-items-center text-center">{{ $match[3] ?? '' }}</div>
-                                            @endif
-                                        @endif
-                                    </div>
-                                    @if (count($match) >= 4 && !$loop->last) <hr class="hr-text d-flex d-xl-none"> @endif
-                                @endforeach
+                                <div class="col-12 mt-4 mb-3">
+                                    <h4>Wybierz kolejkę:</h4>
+                                    @foreach ($rounds as $round)
+                                        <a href="#round-{{ $round['round'] }}"
+                                           class="btn btn-outline-success mb-3 @if ($loop->iteration < $rounds->count()) mr-2 @endif">{{ $round['round'] }}</a>
+                                        @if ($loop->iteration > 15) @once <br> @endonce @endif
+                                    @endforeach
+                                </div>
                             </div>
-                        @endforeach
+                            @foreach ($rounds as $round)
+                                <div class="border border-success shadow-lg mt-4 pb-4">
+                                    <div class="row ">
+                                        <div class="col-12 text-center text-xl-left ml-0 ml-xl-5 mt-3 mb-4">
+                                            <span class="anchor" id="round-{{ $round['round'] }}"></span>
+                                            <h4><i class="far fa-calendar-check"></i> Kolejka {{ $round['round'] }}
+                                                | {{ $round['date'] }}
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    @foreach ($round['matches'] as $key => $match)
+                                        @if (count($match) >= 4)
+                                            <div class="row mx-auto">
+                                                @if ($match[0] === 'Remix Niebieszczany' || $match[2] === 'Remix Niebieszczany')
+                                                    @php $bold = 'font-weight-bold'; @endphp
+                                                @else
+                                                    @php $bold = ''; @endphp
+                                                @endif
+                                                {{--host--}}
+                                                <div
+                                                    class="col-5 col-xl-4 text-right text-uppercase {{ $bold }}">{{ $match[0] ?? '' }}</div>
+                                                {{--score--}}
+                                                <div
+                                                    class="col-2 col-xl-1 text-center {{ $bold }}">{{ $match[1] ?? '' }}</div>
+                                                {{--guest--}}
+                                                <div
+                                                    class="col-5 col-xl-4 text-left text-uppercase {{ $bold }}">{{ $match[2] ?? '' }}</div>
+                                                {{--date--}}
+                                                <div
+                                                    class="col-12 col-xl-3 d-flex justify-content-center align-items-center text-center {{ $bold }}">{{ $match[3] ?? '' }}</div>
+                                            </div>
+                                        @endif
+                                        @if (count($match) >= 4 && !$loop->last)
+                                            <hr class="hr-text d-flex d-xl-none">
+                                        @endif
+                                    @endforeach
+                                </div>
+                            @endforeach
                         @else
                             <div class="col-12 mb-5">
                                 <span class="font-16">Brak terminarza do wyświetlenia.</span>

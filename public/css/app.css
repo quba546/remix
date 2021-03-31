@@ -17320,3 +17320,12 @@ i.best-scorer-icon-3 {
 .font-message-icon {
   font-size: 20px;
 }
+
+.anchor {
+  display: block;
+  height: 100px;
+  /*same height as header*/
+  margin-top: -100px;
+  /*same height as header*/
+  visibility: hidden;
+}

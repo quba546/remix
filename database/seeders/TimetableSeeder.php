@@ -18,7 +18,7 @@ class TimetableSeeder extends Seeder
     public function run(): void
     {
         $faker = Faker::create();
-        $rounds = $faker->numberBetween(1, 38);
+        $rounds = $faker->numberBetween(20, 38);
         for ($i = 0; $i < $rounds; $i++) {
             Timetable::factory()->create(['round' => $i + 1]);
         }
