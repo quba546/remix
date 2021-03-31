@@ -57,7 +57,17 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">@if (isset($lastMatch->match_type_id)) {{ $lastMatch->match_type_id === 1 ? 'Kolejka ' . $lastMatch->round . ' - ' . \Carbon\Carbon::parse($lastMatch->date)->formatLocalized('%A, %d %B %Y') : \Carbon\Carbon::parse($lastMatch->date)->formatLocalized('%A, %d %B %Y') }} @endif</td>
+                        <td colspan="3" class="text-center align-middle">
+                            @if (isset($lastMatch->match_type_id))
+                                @if ($lastMatch->match_type_id === 1)
+                                    <span>{{ 'Kolejka ' . $lastMatch->round }}</span>
+                                    <br>
+                                    <span>{{ \Carbon\Carbon::parse($lastMatch->date)->formatLocalized('%A, %d %B %Y') }}</span>
+                                @else
+                                    <span>{{ \Carbon\Carbon::parse($lastMatch->date)->formatLocalized('%A, %d %B %Y') }}</span>
+                                @endif
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>
@@ -87,7 +97,17 @@
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-calendar-alt table-icon"></i></td>
-                        <td colspan="3" class="text-center align-middle">@if (isset($upcomingMatch->match_type_id)) {{ $upcomingMatch->match_type_id === 1 ? 'Kolejka ' . $upcomingMatch->round . ' - ' . \Carbon\Carbon::parse($upcomingMatch->date)->formatLocalized('%A, %d %B %Y') : \Carbon\Carbon::parse($upcomingMatch->date)->formatLocalized('%A, %d %B %Y') }} @endif</td>
+                        <td colspan="3" class="text-center align-middle">
+                            @if (isset($upcomingMatch->match_type_id))
+                                @if ($upcomingMatch->match_type_id === 1)
+                                    <span>{{ 'Kolejka ' . $upcomingMatch->round }}</span>
+                                    <br>
+                                    <span>{{ \Carbon\Carbon::parse($upcomingMatch->date)->formatLocalized('%A, %d %B %Y') }}</span>
+                                @else
+                                    <span>{{ \Carbon\Carbon::parse($upcomingMatch->date)->formatLocalized('%A, %d %B %Y') }}</span>
+                                @endif
+                            @endif
+                        </td>
                     </tr>
                     <tr>
                         <td class="text-center align-middle"><i class="far fa-handshake table-icon"></i></td>

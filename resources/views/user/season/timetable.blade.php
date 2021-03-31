@@ -42,16 +42,16 @@
                                                 @endif
                                                 {{--host--}}
                                                 <div
-                                                    class="col-5 col-xl-4 text-right text-uppercase {{ $bold }}">{{ $match[0] ?? '' }}</div>
+                                                    class="col-5 col-xl-4 text-right text-uppercase timetable-font {{ $bold }}">{{ $match[0] ?? '' }}</div>
                                                 {{--score--}}
                                                 <div
-                                                    class="col-2 col-xl-1 text-center {{ $bold }}">{{ $match[1] ?? '' }}</div>
+                                                    class="col-2 col-xl-1 text-center timetable-font-score {{ $bold }}">{{ $match[1] ?? '' }}</div>
                                                 {{--guest--}}
                                                 <div
-                                                    class="col-5 col-xl-4 text-left text-uppercase {{ $bold }}">{{ $match[2] ?? '' }}</div>
+                                                    class="col-5 col-xl-4 text-left text-uppercase timetable-font {{ $bold }}">{{ $match[2] ?? '' }}</div>
                                                 {{--date--}}
                                                 <div
-                                                    class="col-12 col-xl-3 d-flex justify-content-center align-items-center text-center {{ $bold }}">{{ $match[3] ?? '' }}</div>
+                                                    class="col-12 col-xl-3 d-flex justify-content-center align-items-center text-center timetable-font {{ $bold }}">{{ $match[3] ?? '' }}</div>
                                             </div>
                                         @endif
                                         @if (count($match) >= 4 && !$loop->last)
