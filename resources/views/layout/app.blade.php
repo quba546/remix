@@ -15,9 +15,6 @@
 
     <!-- Styles -->
     <link rel="stylesheet" href="{{ mix('/css/app.css') }}">
-
-    <!-- Fonts -->
-    <style>@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');</style>
 </head>
 <body>
     <header>

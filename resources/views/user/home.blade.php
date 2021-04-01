@@ -2,7 +2,7 @@
 
 @section('content')
     @include('shared.messages')
-    @php setlocale(LC_TIME, 'pl.UTF-8'); \Carbon\Carbon::setLocale('pl') @endphp
+    @php setlocale(LC_TIME, 'pl_PL.UTF-8'); \Carbon\Carbon::setLocale('pl') @endphp
     <div class="row mx-auto pt-5 pb-5">
         <div class="col-12 col-xl-4 pl-xl-5 order-3 order-xl-2">
             @if ($shortStanding->count() !== 0)
