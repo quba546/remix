@@ -15,7 +15,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class GalleryPhoto extends Model
 {
     use HasFactory;
-    use SoftDeletes;
 
     protected $table = 'gallery_photos';
 
