@@ -81,13 +81,19 @@
                                             </div>
                                             <div class="form-row ml-2 mr-2">
                                                 <div class="form-group order-1 order-xl-0 col-12 col-xl-6 mt-4">
-
-                                                    {{--                                    uploading new photo to gallery--}}
-                                                    <div class="custom-file-upload">
-                                                        <input type="file" name="uploadedPhoto" id="uploadPhoto"
-                                                               data-max-files="1" required/>
+                                                    <div class="custom-file">
+                                                        <input type="file" name="image"
+                                                               class="custom-file-input @error('image') is-invalid @enderror"
+                                                               id="image" accept="image/*">
+                                                        <label class="custom-file-label text-left" for="image"
+                                                               data-browse="Przeglądaj">Wybierz zdjęcie...</label>
+                                                        <small id="imageHelp" class="form-text text-muted">Zdjęcie
+                                                            powinno mieć tryb portretowy (pionowy), aby dawało najlepszy
+                                                            efekt.</small>
+                                                        @error('image')
+                                                        <div class="alert alert-danger d-block">{{ $message }}</div>
+                                                        @enderror
                                                     </div>
-
                                                 </div>
                                                 <div class="form-group col-12 col-xl-6">
                                                     <label for="number" class="mb-0">Numer</label>

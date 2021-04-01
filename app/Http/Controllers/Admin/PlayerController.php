@@ -106,13 +106,11 @@ class PlayerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param Request $request
      * @param PlayerRequest $playerRequest
      * @param string $id
      * @return RedirectResponse
-     * @throws Exception
      */
-    public function update(Request $request, PlayerRequest $playerRequest, string $id): RedirectResponse
+    public function update(PlayerRequest $playerRequest, string $id): RedirectResponse
     {
         Gate::authorize('moderator-level');
 
@@ -121,9 +119,13 @@ class PlayerController extends Controller
         $data = $this->playerRepository->playerDetails($id);
 
         $validated = $playerRequest->validated();
-        if (isset($request->uploadedPhoto)) {
-            $savePlayerImage = new UploadPhoto();
-            $fileName = $savePlayerImage->savePlayerImage($request->uploadedPhoto, $data->image);
+        if (!empty($validated['image'])) {
+            $originalPath = Storage::putFile('public/players-images', $validated['image']); // add new player image to storage
+            $path = str_replace('public/', '', $originalPath);
+
+            if ($originalPath) {
+                Storage::disk('public')->delete($data['image']); // delete old player image from storage
+            }
         }
 
         try {
@@ -139,7 +141,7 @@ class PlayerController extends Controller
                     'clean_sheets' => $validated['clean_sheets'],
                     'yellow_cards' => $validated['yellow_cards'],
                     'red_cards' => $validated['red_cards'],
-                    'image' => isset($fileName) ? 'players-images/' . $fileName : $data->image
+                    'image' => $path ?? $data['image']
                 ]
             );
             $message = [

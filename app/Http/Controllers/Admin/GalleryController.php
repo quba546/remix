@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\CustomClasses\UploadPhoto;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PhotoRequest;
 use App\Repository\GalleryRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
+use \Exception;
 
 class GalleryController extends Controller
 {
@@ -33,7 +33,7 @@ class GalleryController extends Controller
             ['photos' => $this->galleryRepository->getPhotosPaginated(
                 [
                     'id',
-                    'filename',
+                    'path',
                     'created_at'
                 ])
             ]);
@@ -42,22 +42,28 @@ class GalleryController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param Request $request
+     * @param PhotoRequest $request
      * @return RedirectResponse
      */
-    public function store(Request $request): RedirectResponse
+    public function store(PhotoRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
 
-        if (isset($request->uploadedPhoto)) {
-            $uploadPhoto = new UploadPhoto();
-            $filename = $uploadPhoto->savePhotoToGallery($request->uploadedPhoto);
-            $this->galleryRepository->savePhoto($filename);
+        $validated = $request->validated();
+
+        try {
+            $originalPath = Storage::putFile('public/photos', $validated['image']); // add new player image to storage
+            $path = str_replace('public/', '', $originalPath);
+
+            $this->galleryRepository->savePhoto([
+                'path' => $path,
+                'description' => $validated['description'] ?? null
+            ]);
             $message = [
                 'status' => 'success',
                 'message' => "Poprawnie dodano nowe zdjęcie do galerii"
             ];
-        } else {
+        } catch (Exception $e) {
             $message = [
                 'status' => 'error',
                 'message' => "Wystąpił błąd podczas dodawnia zdjęcia do galerii"
@@ -79,7 +85,7 @@ class GalleryController extends Controller
     {
         Gate::authorize('moderator-level');
 
-        $path = 'public/photos/' . $this->galleryRepository->getPhoto($id, ['filename'])->filename;
+        $path = 'public/' . $this->galleryRepository->getPhoto($id, ['path'])->path;
 
         if (Storage::delete($path)) {
             $this->galleryRepository->deletePhoto($id);

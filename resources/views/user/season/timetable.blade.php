@@ -18,7 +18,7 @@
                                     @foreach ($rounds as $round)
                                         <a href="#round-{{ $round['round'] }}"
                                            class="btn btn-outline-success mb-3 @if ($loop->iteration < $rounds->count()) mr-2 @endif">{{ $round['round'] }}</a>
-                                        @if ($loop->iteration > 15) @once <br> @endonce @endif
+                                        @if ($loop->iteration % 15 === 0) <br> @endif
                                     @endforeach
                                 </div>
                             </div>

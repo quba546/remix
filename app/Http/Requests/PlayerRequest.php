@@ -36,6 +36,15 @@ class PlayerRequest extends FormRequest
             'clean_sheets' => ['integer', 'min:0'],
             'yellow_cards' => ['integer', 'min:0'],
             'red_cards' => ['integer', 'min:0'],
+            'image' => ['nullable', 'image', 'mimes:jpeg,png,jpg,gif,svg', 'max:4096', function ($attribute, $value, $fails) {
+                $size = getimagesize($value->path());
+                $width = $size[0];
+                $height = $size[1];
+
+                if ($width > $height) {
+                    $fails('Zdjęcie musi być w trybie portretowym (wysokość zdjęcia musi być większa bądź równa szerokości)');
+                }
+            }]
         ];
     }
 
@@ -49,6 +58,9 @@ class PlayerRequest extends FormRequest
             'integer' => 'Pole :attribute może zawierać tylko liczby całkowite',
             'min' => 'Minimalna liczba to :min',
             'nr.max' => 'Maksymalna liczba to :max',
+            'image' => 'Dozwolone formaty: jpg, jpeg, png, bmp, gif, svg lub webp',
+            'mimes' => 'Wymagane formaty obrazu to jpeg, png, jpg, gif, svg',
+            'image.max' => 'Maksymalny rozmiar obrazu to :max kB'
         ];
     }
 
@@ -65,6 +77,7 @@ class PlayerRequest extends FormRequest
             'clean_sheets' => 'czyste konta',
             'yellow_cards' => 'żółte kartki',
             'red_cards' => 'czerwone kartki',
+            'image' => 'zdjęcie'
         ];
     }
 }

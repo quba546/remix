@@ -21,10 +21,6 @@ $success: $primary-color;
 // AOS
 @import "~aos/dist/aos.css";
 
-// FilePond
-@import "~filepond/dist/filepond.min.css";
-@import '~filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
-
 // SimpleLightbox
 @import "~simple-lightbox/dist/simpleLightbox";
 
@@ -767,8 +763,8 @@ i.best-scorer-icon-3 {
 
 .anchor {
     display: block;
-    height: 100px; /*same height as header*/
-    margin-top: -100px; /*same height as header*/
+    height: 235px; /*same height as header*/
+    margin-top: -235px; /*same height as header*/
     visibility: hidden;
 }
 

@@ -10,7 +10,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 interface GalleryRepositoryInterface
 {
-    public function savePhoto(string $filename): void;
+    public function savePhoto(array $data): void;
 
     public function getPhotosPaginated(array $columns, int $limit = 16): LengthAwarePaginator;
 

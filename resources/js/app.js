@@ -131,64 +131,6 @@ $(document).ready(function () {
     });
 });
 
-// Import FilePond
-import * as FilePond from "filepond";
-
-// Import the plugin code
-import FilePondPluginFileValidateSize from 'filepond-plugin-file-validate-size';
-import FilePondPluginFileValidateType from 'filepond-plugin-file-validate-type';
-import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
-
-
-// Register the plugin
-FilePond.registerPlugin(
-    FilePondPluginFileValidateSize,
-    FilePondPluginFileValidateType,
-    FilePondPluginImagePreview,
-    FilePondPluginImageExifOrientation,
-);
-
-const inputElement = document.querySelector('input[id="uploadPhoto"]');
-FilePond.create(inputElement);
-
-FilePond.setOptions({
-    server: {
-        url: '/admin/upload',
-        fetch: null,
-        restore: null,
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    },
-    labelIdle: 'Przeciągnij i upuść zdjęcie lub <span class="filepond--label-action"> Przeglądaj </span>',
-    labelFileLoading: 'Ładowanie',
-    labelFileLoadError: 'Błąd podczas ładowania',
-    labelFileProcessing: 'Wysyłanie',
-    labelFileProcessingComplete: 'Wysyłanie zakończone',
-    labelFileProcessingAborted: 'Wysyłanie anulowane',
-    labelFileProcessingError: 'Błąd podczas wysyłania',
-    labelFileProcessingRevertError: 'Błąd podczas cofania wysyłania',
-    labelFileRemoveError: 'Błąd podczas usuwania',
-    labelTapToCancel: 'Stuknij, aby anulować',
-    labelTapToRetry:  'Stuknij, aby ponowić',
-    labelTapToUndo: 'Stuknij, aby cofnąć',
-    labelButtonRemoveItem: 'Usuń',
-    labelButtonAbortItemLoad: 'Przerwij',
-    labelButtonRetryItemLoad: 'Ponów',
-    labelButtonAbortItemProcessing: 'Anuluj',
-    labelButtonUndoItemProcessing: 'Wycofaj',
-    labelButtonRetryItemProcessing: 'Ponów',
-    labelButtonProcessItem: 'Wyślij',
-    maxFileSize: '2MB',
-    labelMaxFileSizeExceeded: 'Plik jest zbyt duży',
-    labelMaxFileSize: 'Maksymalny rozmiar pliku to {filesize}',
-    maxFiles: 1,
-    acceptedFileTypes: ['image/jpeg', 'image/png', 'image/webp', 'image/avif'],
-    labelFileTypeNotAllowed: 'Plik ma nieprawidłowy typ',
-    fileValidateTypeLabelExpectedTypes: 'Oczekuje {allButLastType} lub {lastType}',
-});
-
 require('simple-lightbox');
 
 // simple lightbox

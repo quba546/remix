@@ -18,10 +18,12 @@ class GalleryRepository extends BaseRepository implements GalleryRepositoryInter
         $this->galleryPhoto = $galleryPhoto;
     }
 
-    public function savePhoto(string $filename): void
+    public function savePhoto(array $data): void
     {
-        $this->galleryPhoto->filename = $filename;
-        $this->galleryPhoto->save();
+        $this->galleryPhoto->create([
+            'path' => $data['path'],
+            'description' => $data['description']
+        ]);
     }
 
     public function getPhotosPaginated(array $columns, int $limit = 16): LengthAwarePaginator

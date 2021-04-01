@@ -146,7 +146,7 @@
                                                         @enderror
                                                     </div>
                                                     <div class="form-group col-md-6">
-                                                        <label for="number">Numer</label>
+                                                        <label for="number">Numer (opcjonalny)</label>
                                                         <input type="number" name="nr" value="{{ old('nr') }}"
                                                                class="form-control @error('nr') is-invalid @enderror"
                                                                id="number" min="1" step="1" max="99">

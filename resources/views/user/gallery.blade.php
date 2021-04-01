@@ -12,8 +12,8 @@
                             @foreach ($photos as $photo)
                                 <div class="col-12 col-xl-4 mb-4" data-aos="fade-up" data-aos-duration="1000">
                                     <div class="imageGallery1">
-                                        <a href="{{ asset('storage/photos/' . $photo->filename) }}"><img
-                                                src="{{ asset('storage/photos/' . $photo->filename) }}"
+                                        <a href="{{ asset('storage/' . $photo->path) }}"><img
+                                                src="{{ asset('storage/' . $photo->path) }}"
                                                 class="img-thumbnail" alt="Zdjęcie w galerii"/></a>
                                     </div>
                                 </div>

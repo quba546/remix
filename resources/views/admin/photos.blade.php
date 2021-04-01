@@ -36,12 +36,20 @@
                                         <form action="{{ route('admin.photos.store') }}" method="POST"
                                               enctype="multipart/form-data">
                                             @csrf
-
-                                            {{--                                        uploading new photo to gallery--}}
-                                            <div class="custom-file-upload">
-                                                <input type="file" name="uploadedPhoto" id="uploadPhoto"/>
+                                            <div class="custom-file">
+                                                <input type="file" name="image"
+                                                       class="custom-file-input @error('image') is-invalid @enderror"
+                                                       id="image" accept="image/*">
+                                                <label class="custom-file-label text-left" for="image"
+                                                       data-browse="Przeglądaj">Wybierz zdjęcie...</label>
+                                                @error('image')
+                                                <div class="alert alert-danger d-block">{{ $message }}</div>
+                                                @enderror
                                             </div>
-
+                                            <div class="form-group mt-2">
+                                                <label for="description">Opis (opcjonalny)</label>
+                                                <textarea name="description" class="form-control" id="description" rows="3"></textarea>
+                                            </div>
                                             <div class="modal-footer">
                                                 <button type="button" class="btn btn-outline-secondary"
                                                         data-dismiss="modal">Zamknij
@@ -64,8 +72,8 @@
                                             class="col-6 col-xl-3 mb-3 d-flex align-items-stretch justify-content-center">
                                             <div class="card" style="width: 14rem;">
                                                 <div class="imageGallery1">
-                                                    <a href="{{ asset('storage/photos/' . $photo->filename) }}"><img
-                                                            src="{{ asset('storage/photos/' . $photo->filename) }}"
+                                                    <a href="{{ asset('storage/' . $photo->path) }}"><img
+                                                            src="{{ asset('storage/' . $photo->path) }}"
                                                             class="card-img-top" alt="Zdjęcie"/></a>
                                                 </div>
                                                 <div class="card-body d-flex align-items-end justify-content-center">

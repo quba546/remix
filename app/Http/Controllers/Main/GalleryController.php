@@ -16,6 +16,6 @@ class GalleryController extends Controller
 
     public function __invoke()
     {
-        return view('user.gallery', ['photos' => $this->galleryRepository->getPhotosPaginated(['filename'])]);
+        return view('user.gallery', ['photos' => $this->galleryRepository->getPhotosPaginated(['path'])]);
     }
 }
