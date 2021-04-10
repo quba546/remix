@@ -157,8 +157,8 @@ Route::group([], function () {
 /* AUTH */
 Auth::routes();
 
-//Auth::routes([
-//     'register' => false,   // disable registration for new users
-//     'reset' => false,  // disable password reset
-//     'verify' => false, // disable email verification
-//]);
+Auth::routes([
+     'register' => false,   // disable registration for new users
+     'reset' => false,  // disable password reset
+     'verify' => false, // disable email verification
+]);
