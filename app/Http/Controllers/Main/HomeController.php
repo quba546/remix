@@ -34,11 +34,6 @@ class HomeController extends Controller
         $this->upcomingMatchRepository = $upcomingMatchRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return View
-     */
     public function index(): View
     {
         SEOMeta::setTitle('Remix Niebieszczany');

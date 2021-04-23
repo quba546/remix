@@ -27,11 +27,6 @@ class UpcomingMatchController extends Controller
         $this->matchTypeRepository = $matchTypeRepository;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return View
-     */
     public function edit(): View
     {
         Gate::authorize('moderator-level');
@@ -44,12 +39,6 @@ class UpcomingMatchController extends Controller
         );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param UpcomingMatchRequest $request
-     * @return RedirectResponse
-     */
     public function update(UpcomingMatchRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');

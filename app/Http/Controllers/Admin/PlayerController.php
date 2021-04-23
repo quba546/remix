@@ -25,11 +25,6 @@ class PlayerController extends Controller
         $this->playerRepository = $playerRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return View
-     */
     public function index(): View
     {
         Gate::authorize('moderator-level');
@@ -51,12 +46,6 @@ class PlayerController extends Controller
         );
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param PlayerRequest $request
-     * @return RedirectResponse
-     */
     public function store(PlayerRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -88,12 +77,6 @@ class PlayerController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param string $id
-     * @return View
-     */
     public function edit(string $id) : View
     {
         Gate::authorize('moderator-level');
@@ -103,13 +86,6 @@ class PlayerController extends Controller
         return view('admin.player-details', ['player' => $this->playerRepository->playerDetails($id)]);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param PlayerRequest $playerRequest
-     * @param string $id
-     * @return RedirectResponse
-     */
     public function update(PlayerRequest $playerRequest, string $id): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -183,12 +159,6 @@ class PlayerController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param SimplePlayerRequest $request
-     * @return RedirectResponse
-     */
     public function updatePlayedMatches(SimplePlayerRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -216,12 +186,6 @@ class PlayerController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Remove image from the specified resource.
-     *
-     * @param string $id
-     * @return RedirectResponse
-     */
     public function destroyImage(string $id): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -250,12 +214,6 @@ class PlayerController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param string $id
-     * @return RedirectResponse
-     */
     public function destroy(string $id): RedirectResponse
     {
         Gate::authorize('admin-level');

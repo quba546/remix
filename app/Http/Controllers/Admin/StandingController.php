@@ -22,11 +22,6 @@ class StandingController extends Controller
         $this->standingRepository = $standingRepository;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return View
-     */
     public function create(): View
     {
         Gate::authorize('moderator-level');
@@ -41,12 +36,6 @@ class StandingController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param StandingRequest $request
-     * @return RedirectResponse
-     */
     public function store(StandingRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -76,11 +65,6 @@ class StandingController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @return RedirectResponse
-     */
     public function destroy(): RedirectResponse
     {
         Gate::authorize('admin-level');

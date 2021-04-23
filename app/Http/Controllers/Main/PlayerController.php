@@ -20,11 +20,6 @@ class PlayerController extends Controller
         $this->playerRepository = $playerRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return View
-     */
     public function index(): View
     {
         SEOMeta::setTitle('Kadra');
@@ -41,12 +36,6 @@ class PlayerController extends Controller
         );
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param string $id
-     * @return View
-     */
     public function show(string $id): View
     {
         $id = (int)$id;

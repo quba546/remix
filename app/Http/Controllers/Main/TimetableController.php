@@ -17,11 +17,6 @@ class TimetableController extends Controller
         $this->matchRoundRepository = $matchRoundRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return View
-     */
     public function index(): View
     {
         SEOMeta::setTitle('Terminarz');

@@ -19,11 +19,6 @@ class StandingController extends Controller
         $this->standingRepository = $standingRepository;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return View
-     */
     public function index(): View
     {
         SEOMeta::setTitle('Tabela');

@@ -23,11 +23,6 @@ class TimetableController extends Controller
         $this->timetableRepository = $timetableRepository;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return View
-     */
     public function create(): View
     {
         Gate::authorize('moderator-level');
@@ -35,12 +30,6 @@ class TimetableController extends Controller
         return view('admin.add-timetable');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param TimetableRequest $request
-     * @return RedirectResponse
-     */
     public function store(TimetableRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -80,11 +69,6 @@ class TimetableController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return View
-     */
     public function edit(): View
     {
         Gate::authorize('moderator-level');
@@ -96,12 +80,6 @@ class TimetableController extends Controller
         );
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param Request $request
-     * @return RedirectResponse
-     */
     public function destroyOne(Request $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -124,11 +102,6 @@ class TimetableController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Remove the all resources from storage.
-     *
-     * @return RedirectResponse
-     */
     public function destroy(): RedirectResponse
     {
         Gate::authorize('admin-level');

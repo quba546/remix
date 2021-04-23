@@ -27,11 +27,6 @@ class LastMatchController extends Controller
         $this->matchTypeRepository = $matchTypeRepository;
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @return View
-     */
     public function edit(): View
     {
         Gate::authorize('moderator-level');
@@ -44,12 +39,6 @@ class LastMatchController extends Controller
         );
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param LastMatchRequest $request
-     * @return RedirectResponse
-     */
     public function update(LastMatchRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
