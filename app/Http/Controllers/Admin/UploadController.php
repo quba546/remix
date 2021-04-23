@@ -9,20 +9,16 @@ use Illuminate\Support\Facades\Gate;
 
 class UploadController extends Controller
 {
-    /**
-     * @param Request $request
-     * @return string
-     */
-    public function store(Request $request): string
-    {
-        Gate::authorize('moderator-level');
-
-        if ($request->hasFile('uploadedPhoto')) {
-            $saveTemporaryFile = new UploadPhoto();
-
-            return $saveTemporaryFile->saveTemporaryUploadedImage($request->file('uploadedPhoto'));
-        }
-
-        return '';
-    }
+//    public function store(Request $request): string
+//    {
+//        Gate::authorize('moderator-level');
+//
+//        if ($request->hasFile('uploadedPhoto')) {
+//            $saveTemporaryFile = new UploadPhoto();
+//
+//            return $saveTemporaryFile->saveTemporaryUploadedImage($request->file('uploadedPhoto'));
+//        }
+//
+//        return '';
+//    }
 }

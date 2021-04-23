@@ -7,6 +7,7 @@ use App\Http\Requests\PhotoRequest;
 use App\Repository\GalleryRepositoryInterface;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\View\View;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Storage;
 use \Exception;
@@ -20,11 +21,6 @@ class GalleryController extends Controller
         $this->galleryRepository = $galleryRepository;
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return View
-     */
     public function create(): View
     {
         Gate::authorize('moderator-level');
@@ -39,12 +35,6 @@ class GalleryController extends Controller
             ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param PhotoRequest $request
-     * @return RedirectResponse
-     */
     public function store(PhotoRequest $request): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -59,6 +49,9 @@ class GalleryController extends Controller
                 'path' => $path,
                 'description' => $validated['description'] ?? null
             ]);
+
+            Cache::forget('user-gallery');
+
             $message = [
                 'status' => 'success',
                 'message' => "Poprawnie dodano nowe zdjęcie do galerii"
@@ -75,12 +68,6 @@ class GalleryController extends Controller
             ->with($message['status'], $message['message']);
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param int $id
-     * @return RedirectResponse
-     */
     public function destroy(int $id): RedirectResponse
     {
         Gate::authorize('moderator-level');
@@ -89,6 +76,9 @@ class GalleryController extends Controller
 
         if (Storage::delete($path)) {
             $this->galleryRepository->deletePhoto($id);
+
+            Cache::forget('user-gallery');
+
             $message = [
                 'status' => 'success',
                 'message' => 'Poprawnie usunięto zdjęcie z galerii'

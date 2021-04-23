@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Main;
 
 use App\Http\Controllers\Controller;
 use App\Repository\GalleryRepositoryInterface;
+use Illuminate\Support\Facades\Cache;
 
 class GalleryController extends Controller
 {
@@ -14,8 +15,16 @@ class GalleryController extends Controller
         $this->galleryRepository = $galleryRepository;
     }
 
+    /**
+     * @throws \Exception
+     */
     public function __invoke()
     {
-        return view('user.gallery', ['photos' => $this->galleryRepository->getPhotosPaginated(['path'])]);
+        $photos = Cache::remember('user-gallery', now()->addSeconds(120), function () {
+            //dd('test');
+            return $this->galleryRepository->getPhotosPaginated(['path']);
+        });
+
+        return view('user.gallery', ['photos' => $photos]);
     }
 }
